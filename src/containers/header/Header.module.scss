@@ -1,0 +1,16 @@
+.mainBlock{
+    height: 130px;
+    width: 100%;
+    background-color: #ECCFB5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mainBlock_navbar{
+    display: flex;
+    list-style-type: none;
+    max-width: 626px;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+}
