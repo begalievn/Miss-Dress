@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import hero from '../../assets/header/hero.svg'
+
 import heart from '../../assets/header/heart.svg'
 import search from '../../assets/header/search.svg'
 import shopping from '../../assets/header/shopping-bag.svg'
 import sign from '../../assets/header/sign-in.svg'
 import user from '../../assets/header/user.svg'
 import style from './Header.module.scss'
+import ModalRegistration from '../modalRegistration/ModalRegistration';
+import Logo from '../../components/logo/Logo';
 const Header = () => {
 
+
+    const [modal, setModal] = useState(false)
     const pages = [
         { name: 'Товары', link: '/products', id: 1 },
       
@@ -24,14 +28,15 @@ const Header = () => {
    
    
     return (
-        <div className={style.mainBlock} >
+        <>
+        <div className={style.mainBlock} >  
             <div className={style.container}>
             <Link to="/">
-            <div className={style.logo} >MissDress <img src={hero} alt="hero" /></div>
+            <Logo/>
             </Link>
                 <ul className={style.mainBlock_navbar}>
                     {pages.map(page =>(
-                        <Link to={page.link}>
+                        <Link to={page.link} key={page.id}>
                      <li>{page.name}</li>
                      </Link>
                     ))}
@@ -40,11 +45,14 @@ const Header = () => {
                 <img src={search} alt="" />
                 <img src={heart} alt="" />
                 <img src={shopping} alt="" />
-                <img src={sign} alt="" />
-                {/* <img src={user} alt="" /> */}
+                
+                {true ? <img src={sign} alt=""  onClick={()=>setModal(!modal)} /> : <img src={user} alt="" /> }
+               
             </div>
             </div>
         </div>
+           { modal ? <ModalRegistration/> : ""}
+        </>
     );
 };
 

@@ -1,0 +1,75 @@
+.back{
+    width: 100%;
+    height: 100%;   
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+}
+.container{
+    max-width: 725px;
+    width: 33vw;
+    max-height: 713px;
+    
+    margin: 4px auto;
+   background:#F1DAC5;
+   padding-bottom: 3vw;
+
+
+   button{
+    max-width: 550px;
+    width: 100%;
+     max-height: 90px;
+     height: 3vw;    
+     border-radius: 45px;
+     border: none;
+     cursor: pointer;
+     font-size: 1vw;
+     background: #372E24;
+     color: white;
+   } 
+   input{
+    max-width: 550px;
+    width: 100%;
+     max-height: 90px;
+     height: 3vw; 
+     border-radius: 45px; 
+     padding-left: 2vw; 
+     font-size: 1vw;
+     border: none;
+     background: #DBB593;
+     margin: 1vw 0;
+     outline: none;
+   }
+
+    .hero{
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        padding-right: 12%;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+    }
+}
+.text{
+display: flex;
+flex-direction: column;
+padding-left: 5vw;
+padding-right: 5vw;
+font-size: 1vw;
+
+h2{
+    font-weight: 400;
+}
+}
+
+.text_sms{
+    margin: 0 auto;
+    margin-top: 36px;
+    margin-bottom: 19px;
+}
+.validation_text{
+    display: flex;
+    input{
+        width: 20px;
+        height: 20px;
+    }
+}
