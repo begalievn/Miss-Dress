@@ -1,0 +1,24 @@
+{
+  "extends": ["react-app", "react-app/jest"],
+  "rules": {
+    "quotes": ["warn", "double"],
+    "indent": ["warn", 2],
+    "semi": ["warn", "always"],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ]
+  }
+}

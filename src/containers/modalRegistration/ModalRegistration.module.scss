@@ -68,8 +68,32 @@ h2{
 }
 .validation_text{
     display: flex;
-    input{
-        width: 20px;
-        height: 20px;
+    font-size: 1vw;
+    
+    padding-left: 3.5vw;
+    p{
+        display: flex;
+        align-self: center;
+        max-width: 100%;
+        font-weight: 500;
+        margin-bottom: 1vw;
+    }
+ 
+
+
+    
+}
+
+.validation_check{
+    width: 24px;
+    height: 24px;
+    background-color:#DBB593;
+margin-right: 1vw;
+
+
+
+    img{
+        width: 24px;
+        height: 24px;
     }
 }

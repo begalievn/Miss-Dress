@@ -1,13 +1,14 @@
 .logo {
     font-family: 'arizonia';
     position: relative;
-    font-size: 30px;
+    font-size: 2vw;
 
     img {
         position: absolute;
-        top: -21px;
+        top: -17px;
         left: 110px;
-        width: 69px;
-        height: 100px;
+        width: 72px;
+        height: 90px;
+        z-index: 20;
     }
 }
