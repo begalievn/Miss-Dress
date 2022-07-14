@@ -1,10 +1,11 @@
 .mainBlock {
-    height: 130px;
+    height: 100px;
     width: 100%;
     background-color: #ECCFB5;
-    padding-left: 120px;
-    padding-right: 120px;
-    padding-top: 20px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 10px;
+    position: relative;
 
     a {
 
@@ -20,29 +21,15 @@
 
 }
 
-.logo {
-    font-family: 'arizonia';
-    position: relative;
-    font-size: 40px;
-
-    img {
-        position: absolute;
-        top: -17px;
-        left: 146px;
-        width: 82px;
-        height: 110px;
-    }
-}
-
 .mainBlock_navbar {
     display: flex;
     list-style-type: none;
     max-width: 626px;
-    width: 100%;
+    width: 35vw;
     justify-content: space-between;
 
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
 
     li {
         cursor: pointer;
@@ -53,11 +40,18 @@
 }
 
 .icons {
-    max-width: 218px;
+    max-width: 11vw;
     width: 100%;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+
+    img{
+        max-width: 31px;
+        max-height: 31px;
+        width: 1.5vw;
+        height: 1.5vw;
+    }
 
     img:hover {
 
