@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 
-import check from "../../assets/header/check.svg";
+import Logo from "../../components/logo/Logo";
 
-import ConfirmationModal from "./ConfirmationModal";
+import check from "../../assets/header/check.svg";
 
 import style from "./ModalRegistration.module.scss";
 
 
 const ModalRegistration = () => {
-
-
-  const [validationRegistr, setValidationRegistr] = useState(true);
+  const [validation, setValidation] = useState(true);
   const [checkState, setCheckState] = useState(false);
-
   return (
+    <div className={style.back}>
+      <div className={style.container}>
+        <div className={style.hero}>
+          <Logo />
+        </div>
 
-    <>
-      {
-        validationRegistr ? (
+        {validation ? (
           <>
             <div className={style.text}>
               <h2>Регистрация</h2>
@@ -33,12 +33,19 @@ const ModalRegistration = () => {
               <p>Я согласен с условиями публичной оферты</p>
             </div>
             <div className={style.text}>
-              <button onClick={() => setValidationRegistr(!validationRegistr)}>Продолжить</button>
+              <button onClick={() => setValidation(!validation)}>Продолжить</button>
             </div>
           </>
         ) : (
-          <ConfirmationModal title = "Регистрация"/>)}
-    </>
+          <div className={style.text} >
+            <h2>Регистрация</h2>
+            <input type="text" placeholder="Введите код подтверждения" />
+            <button >Подтвердить</button>
+            <div className={style.text_sms} >Не пришло SMS?</div>
+            <button>Отправить снова</button>
+          </div>)}
+      </div>
+    </div>
   );
 };
 
