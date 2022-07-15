@@ -1,11 +1,19 @@
 import React from "react";
-import Slider from "../../components/main/slider/Slider";
+
+
 import Main from "../../containers/main/Main";
+
+import classes from "./mainPage.module.scss";
 
 const MainPage = () => {
   return (
     <div>
-      <Main />
+
+      <div className={classes.container}>
+          <Main />
+        <div className={classes.content}>
+       </div>
+    </div>
     </div>
   );
 };

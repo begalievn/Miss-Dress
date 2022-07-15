@@ -26,13 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint -c .eslintrc --ext. .ts,.tsx .",
+    "lint:fix": "npm run lint -- --fix"
   },
   "browserslist": {
     "production": [
@@ -47,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "prettier": "^2.7.1",
     "sass": "^1.53.0"
   }
 }

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const DeliveryPage = () => {
-    return (
-        <div>
+  return (
+    <div>
              DeliveryPage
-        </div>
-    );
+    </div>
+  );
 };
 
 export default DeliveryPage;

@@ -6,6 +6,7 @@ function Main() {
   return (
     <div className={classes.all_container}>
       <Slider />
+      <br />
     </div>
   );
 }
