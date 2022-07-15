@@ -5,6 +5,8 @@ export const ModalSlice = createSlice({
   name: "ModalSlice",
   initialState: {
     modalState: false,
+    validationNumber: true,
+    textError: "",
 
   },
   reducers: {
@@ -12,12 +14,19 @@ export const ModalSlice = createSlice({
       state.modalState = action.payload;
     
     },
+    validationNumber(state,action){
+      state.validationNumber=action.payload;
+    },
+    textErrorNumber(state,action){
+      state.textError= action.payload;
+    }
   },
 });
 
 export const {
   openModal,
-
+  validationNumber,
+  textErrorNumber
 } = ModalSlice.actions;
 
 export default ModalSlice.reducer;

@@ -1,5 +1,8 @@
 import React, { FC, useState } from "react";
 
+import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
+import { checkValidation } from "../../utils/helpers/authorization";
+
 import ConfirmationModal from "./ConfirmationModal";
 
 import style from "./ModalRegistration.module.scss";
@@ -11,26 +14,11 @@ interface IModalAuthorization {
 const ModalAuthorization: FC<IModalAuthorization> = ({ setmodalOption }) => {
   const [valueNumber, setValueNumber] = useState("");
 
-  const [validationRegistr, setValidationRegistr] = useState(true);
 
+  const dispatch = useAppDispatch();
+  const textError = useAppSelector(state=>state.ModalSlice.textError);
 
-  const [textError, setTextError] = useState("");
-
-
-  const checkValidation = (valueNumber: string) => {
-    let regExp = /^0\d{9}$/;
-    if (regExp.test(valueNumber)) {
-      setValidationRegistr(!validationRegistr);
-
-      
-    }else{
-      setTextError("Введите корректный номер телефона");
-      setTimeout(() => {
-        setTextError("");
-        setValueNumber("");
-      }, 2000);
-    }
-  };
+  const validationRegistr = useAppSelector((state) => state.ModalSlice.validationNumber);
 
 
   return (
@@ -38,7 +26,7 @@ const ModalAuthorization: FC<IModalAuthorization> = ({ setmodalOption }) => {
       {validationRegistr ? <div className={style.text}>
         <h2>Вход</h2>
         <input type="text" placeholder="Введите номер телефона" value={valueNumber} onChange={(e) => setValueNumber(e.target.value)} />
-        <button onClick={() => checkValidation(valueNumber)}>Войти</button>
+        <button onClick={() => dispatch(checkValidation(valueNumber))}>Войти</button>
         <div className={style.registration_text} onClick={() => setmodalOption(false)} >Зарегистрироваться</div>
         <div className={style.text_error}>{textError}</div>
       </div> :

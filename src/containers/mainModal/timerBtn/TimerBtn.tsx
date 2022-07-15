@@ -31,7 +31,7 @@ const TimerBtn: FC = () => {
   const resetTimer = () => {
     setTimerCheck(true);
     setTimer(59);
-  }
+  };
 
 
 

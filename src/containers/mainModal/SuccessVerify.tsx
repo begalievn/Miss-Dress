@@ -18,7 +18,7 @@ const SuccessVerify = () => {
 
   return (
     <div className={style.text}>
-      <p  className={style.success_text}>
+      <p  className={`${style.success_text} ${style.first_text}`}>
         Поздравляем!
       </p>
       <p className={style.success_text}>Регистрация прошла успешно!</p>

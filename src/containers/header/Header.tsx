@@ -1,7 +1,7 @@
 import React, {}from "react";
 import { Link } from "react-router-dom";
 
-import { openModal } from "../../store/reducers/ModalSlice";
+import { openModal, validationNumber } from "../../store/reducers/ModalSlice";
 
 
 import heart from "../../assets/header/heart.svg";
@@ -31,6 +31,7 @@ const Header = () => {
 
   const modalFunc = ()=>{
     dispatch(openModal(!modal));
+    dispatch(validationNumber(true));
   };
 
 
