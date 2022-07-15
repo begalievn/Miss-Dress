@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  max-width: 1300px;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 40px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card:nth-child(5) {
+    display: none;
+  }
+
+  .card:nth-child(6) {
+    display: none;
+  }
+}
+
+

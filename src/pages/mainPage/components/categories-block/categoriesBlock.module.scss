@@ -1,0 +1,19 @@
+//.container {
+//  width: 100%;
+//  max-width: 1300px;
+//  margin-top: 60px;
+//  display: grid;
+//  grid-template-columns: 1fr 1fr 1fr;
+//  grid-column-gap: 40px;
+//}
+
+.card:nth-child(4) {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .card:nth-child(4) {
+    display: block;
+  }
+}
+

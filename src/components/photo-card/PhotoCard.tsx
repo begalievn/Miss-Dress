@@ -1,6 +1,6 @@
 import React from "react";
 
-import { photoCardImage } from "../../../assets/main-page/images";
+import { photoCardImage } from "../../assets/main-page/images";
 
 import classes from "./photoCard.module.scss";
 

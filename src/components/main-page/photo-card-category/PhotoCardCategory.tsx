@@ -1,16 +1,18 @@
 import React from "react";
 
-import PhotoCard from "../photo-card/PhotoCard";
+import PhotoCard from "../../photo-card/PhotoCard";
 
 import classes from "./photoCardCategory.module.scss";
 
 const PhotoCardCategory = () => {
   return (
-    <div>
+    <div className={classes.container}>
       <div>
         <PhotoCard />
       </div>
-      <div className={classes.content}></div>
+      <div className={classes.content}>
+        <p>{"Джинсы"}</p>
+      </div>
     </div>
   );
 };
