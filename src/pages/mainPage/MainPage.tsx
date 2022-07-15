@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+import Slider from "../../components/main/slider/Slider";
+import Main from "../../containers/main/Main";
 
 const MainPage = () => {
-    return (
-        <div>
-            MainPage
-        </div>
-    );
+  return (
+    <div>
+      <Main />
+    </div>
+  );
 };
 
 export default MainPage;
