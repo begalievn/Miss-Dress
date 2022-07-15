@@ -1,7 +1,5 @@
-import React, {}from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-import { openModal, validationNumber } from "../../store/reducers/ModalSlice";
 
 
 import heart from "../../assets/header/heart.svg";
@@ -10,40 +8,25 @@ import shopping from "../../assets/header/shopping-bag.svg";
 import sign from "../../assets/header/sign-in.svg";
 import user from "../../assets/header/user.svg";
 
-import MainModal from "../mainModal/MainModal";
+import ModalRegistration from "../modalRegistration/ModalRegistration";
 
 import Logo from "../../components/logo/Logo";
-
-import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 
 import style from "./Header.module.scss";
 
 
-
-
-
 const Header = () => {
-
-  const dispatch = useAppDispatch();
-
-  const modal = useAppSelector((state) => state.ModalSlice.modalState);
-
-
-  const modalFunc = ()=>{
-    dispatch(openModal(!modal));
-    dispatch(validationNumber(true));
-  };
-
-
+  const [modal, setModal] = useState(false);
   const pages = [
     { name: "Товары", link: "/products", id: 1 },
+
     { name: "О нас", link: "/about", id: 2 },
     { name: "Доставка", link: "/delivery", id: 3 },
     { name: "Контакты", link: "/contacts", id: 4 },
     { name: "Новости", link: "/news", id: 5 },
+
+
   ];
-
-
 
 
 
@@ -66,12 +49,12 @@ const Header = () => {
             <img src={heart} alt="" />
             <img src={shopping} alt="" />
 
-            {true ? <img src={sign} alt="" onClick={() => modalFunc()} /> : <img src={user} alt="" />}
+            {true ? <img src={sign} alt="" onClick={() => setModal(!modal)} /> : <img src={user} alt="" />}
 
           </div>
         </div>
       </div>
-      {modal ? <MainModal /> : null}
+      {modal ? <ModalRegistration /> : null}
     </>
   );
 };
