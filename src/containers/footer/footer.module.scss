@@ -59,6 +59,21 @@
   justify-content: space-between;
 }
 
+@media (max-width: 900px) {
+  .container {
+    height: 350px;
+    padding: 0 .5% 0 .5%;
+  }
+
+  .content {
+    transform: scale(0.9);
+  }
+
+  .social_medias_container {
+    margin-bottom: 40px;
+  }
+}
+
 @media (max-width: 768px) {
 
   .container {
