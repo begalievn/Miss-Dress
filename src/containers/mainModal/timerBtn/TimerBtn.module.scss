@@ -1,0 +1,25 @@
+.btn{
+  max-width: 550px;
+    width: 100%;
+     max-height: 90px;
+     height: 3vw;    
+     border-radius: 45px;
+     border: none;
+     font-size: 1vw;
+     padding-left: 2vw; 
+     padding-right: 2vw; 
+}
+
+.btnTimer{
+  
+     background: #A99783 !important;
+     color: #74614B !important;
+     display: flex; 
+     align-items: center;
+     justify-content: space-between;  
+     cursor: default !important;
+}
+
+.btnNotTimer{
+
+}
