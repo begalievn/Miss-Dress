@@ -10,7 +10,7 @@ const MainPage = () => {
   return (
     <div className={classes.container}>
       <div className={classes.content}>
-        {/* <PhotoCardContainer /> */}
+        <PhotoCardContainer />
         <Collection/>
       </div>
       
