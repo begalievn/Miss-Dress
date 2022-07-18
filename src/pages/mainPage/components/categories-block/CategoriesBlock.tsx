@@ -10,7 +10,7 @@ const cards = [{}, {}, {}, {}];
 
 const CategoriesBlock = () => {
   return (
-    <div>
+    <div className={classes.container}>
       <CardsContainer>
         {cards.map((item, index) => (
           <div className={classes.card}>

@@ -11,6 +11,7 @@ const MainPage = () => {
       <div className={classes.content}>
         <CategoriesBlock />
         <BestSellersBlock />
+        <NewProductsBlock />
       </div>
     </div>
   );

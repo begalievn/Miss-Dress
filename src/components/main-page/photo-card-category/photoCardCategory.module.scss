@@ -1,6 +1,7 @@
 .container {
   flex: 0 1 300px;
   height: auto;
+  margin-bottom: 10px;
 }
 
 //.content {
@@ -32,22 +33,22 @@
     font-weight: 400;
     //font-size: 27px;
     //line-height: 30px;
-    font-size: 2.05vw;
-    line-height: 2.2vw;
+    font-size: 28px;
+    line-height: 30px;
     text-align: center;
   }
 
-  //@media (max-width: 768px) {
-  //  p {
-  //    font-size: 23px;
-  //    line-height: 25px;
-  //  }
-  //}
-  //
-  //@media (max-width: 425px) {
-  //  p {
-  //    font-size: 18px;
-  //    line-height: 20px;
-  //  }
-  //}
+  @media (max-width: 768px) {
+    p {
+      font-size: 23px;
+      line-height: 25px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    p {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
 }

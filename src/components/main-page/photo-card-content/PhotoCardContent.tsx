@@ -49,7 +49,7 @@ const PhotoCardContent = () => {
           </p>
         </div>
         <div className={classes.fourth}>
-          <div>
+          <div className={classes.stars}>
             <img src={blackStarIcon} />
             <img src={blackStarIcon} />
             <img src={blackStarIcon} />

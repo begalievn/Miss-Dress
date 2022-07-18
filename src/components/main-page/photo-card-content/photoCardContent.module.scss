@@ -5,7 +5,7 @@
 }
 
 .content {
-  padding-top: 20px;
+  padding-top: 15px;
   color: #372E24;
   width: calc(100vw / 2.5);
   max-width: 350px;
@@ -26,9 +26,10 @@
   align-items: center;
 
   .price {
-    width: 130px;
+    width: 110px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
 
@@ -40,7 +41,7 @@
   span {
     font-style: normal;
     font-weight: 300;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 22px;
     /* identical to box height */
     color: #372E24;
@@ -50,8 +51,8 @@
 
 
   img {
-    width: 33px;
-    height: 33px;
+    width: 30px;
+    height: 30px;
   }
 
   .colors_container {
@@ -69,7 +70,7 @@
       line-height: 21px;
     }
     .price {
-      width: 110px;
+      width: 95px;
     }
 
     .colors_container {
@@ -82,14 +83,30 @@
     }
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 550px) {
+    .price {
+      width: 85px;
+    }
+
     span {
       font-size: 16px;
       line-height: 18px;
     }
+  }
+
+  @media (max-width: 425px) {
+    span {
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .old_price {
+      font-size: 13px;
+      line-height: 15px;
+    }
 
     .price {
-      width: 85px;
+      width: 75px;
     }
 
     .colors_container {
@@ -97,8 +114,8 @@
     }
 
     img {
-      width: 19px;
-      height: 19px;
+      width: 17px;
+      height: 17px;
     }
   }
 }
@@ -112,22 +129,22 @@
   h4 {
     font-style: normal;
     font-weight: 400;
-    font-size: 27px;
-    line-height: 30px;
+    font-size: 24.3px;
+    line-height: 27px;
     /* identical to box height */
   }
 
   @media (max-width: 768px) {
     h4 {
-      font-size: 23px;
-      line-height: 25px;
+      font-size: 20px;
+      line-height: 23px;
     }
   }
 
   @media (max-width: 425px) {
     h4 {
-      font-size: 18px;
-      line-height: 20px;
+      font-size: 16px;
+      line-height: 19px;
     }
   }
 }
@@ -154,8 +171,8 @@
 
   @media (max-width: 425px) {
     p {
-      font-size: 14px;
-      line-height: 16px;
+      font-size: 13px;
+      line-height: 15px;
     }
   }
 }
@@ -167,8 +184,9 @@
   justify-content: space-between;
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    margin-right: 3px;
   }
 
   .favorite_icon {
@@ -178,8 +196,8 @@
   @media (max-width: 768px) {
 
     img {
-      width: 26px;
-      height: 26px;
+      width: 22px;
+      height: 22px;
     }
   }
 
@@ -187,6 +205,7 @@
     img {
       width: 15px;
       height: 15px;
+      margin-right: 2px;
     }
   }
 }

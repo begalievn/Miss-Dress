@@ -1,15 +1,10 @@
 .container {
   width: 100%;
   max-width: 1300px;
-  margin-top: 60px;
-  //display: grid;
-  //grid-template-columns: 30% 30% 30%;
-  //grid-column-gap: 5%;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: space-around;
-  //justify-content: space-between;
 }
 
 //@media (max-width: 1200px) {
