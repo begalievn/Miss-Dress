@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./bottomButton.module.scss";
 
@@ -7,9 +8,15 @@ interface IBottomButton {
 }
 
 const BottomButton: FC<IBottomButton> = ({ text }) => {
+  const navigate = useNavigate();
+
+  const clickHandler = () => {
+    navigate("/products");
+  };
+
   return (
     <div className={classes.container}>
-      <button>{text}</button>
+      <button onClick={clickHandler}>{text}</button>
     </div>
   );
 };

@@ -23,11 +23,16 @@ const data = {
   isFavorite: false,
 };
 
-const PhotoCardContent = () => {
+interface IPhotoCardContent {
+  image: string;
+  id: number;
+}
+
+const PhotoCardContent = ({ image, id }: IPhotoCardContent) => {
   return (
     <div className={classes.container}>
       <div>
-        <PhotoCard />
+        <PhotoCard image={image} id={id} />
       </div>
       <div className={classes.content}>
         <div className={classes.first}>
@@ -36,7 +41,7 @@ const PhotoCardContent = () => {
             <span className={classes.new_price}>{data.price.newPrice}</span>
           </div>
           <div className={classes.colors_container}>
-            <img src={colorsPalletIcon} />
+            <img src={colorsPalletIcon} alt={"color pallet icon"} />
             <span className={classes.colors}>{data.colors}</span>
           </div>
         </div>
@@ -50,14 +55,14 @@ const PhotoCardContent = () => {
         </div>
         <div className={classes.fourth}>
           <div className={classes.stars}>
-            <img src={blackStarIcon} />
-            <img src={blackStarIcon} />
-            <img src={blackStarIcon} />
-            <img src={blackStarIcon} />
-            <img src={blackStarIcon} />
+            <img src={blackStarIcon} alt={"star"} />
+            <img src={blackStarIcon} alt={"star"} />
+            <img src={blackStarIcon} alt={"star"} />
+            <img src={blackStarIcon} alt={"star"} />
+            <img src={blackStarIcon} alt={"star"} />
           </div>
           <div className={classes.favorite_icon}>
-            <img src={favoriteIcon} />
+            <img src={favoriteIcon} alt={"favorite icon"} />
           </div>
         </div>
       </div>

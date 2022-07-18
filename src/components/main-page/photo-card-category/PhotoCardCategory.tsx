@@ -1,16 +1,23 @@
 import React from "react";
 
-import classes from "./photoCardCategory.module.scss";
 import PhotoCard from "../../photo-card/PhotoCard";
 
-const PhotoCardCategory = () => {
+import classes from "./photoCardCategory.module.scss";
+
+interface IPhotoCardCategory {
+  image: string;
+  category: string;
+  id: number;
+}
+
+const PhotoCardCategory = ({ image, category, id }: IPhotoCardCategory) => {
   return (
     <div className={classes.container}>
       <div>
-        <PhotoCard />
+        <PhotoCard image={image} category={category} id={id} />
       </div>
       <div className={classes.content}>
-        <p>{"Джинсы"}</p>
+        <p>{category}</p>
       </div>
     </div>
   );
