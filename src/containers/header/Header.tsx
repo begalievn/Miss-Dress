@@ -1,4 +1,4 @@
-import React, {}from "react";
+import React, { } from "react";
 import { Link } from "react-router-dom";
 
 import { openModal, validationNumber } from "../../store/reducers/ModalSlice";
@@ -9,6 +9,8 @@ import search from "../../assets/header/search.svg";
 import shopping from "../../assets/header/shopping-bag.svg";
 import sign from "../../assets/header/sign-in.svg";
 import user from "../../assets/header/user.svg";
+import burgerMenu from "../../assets/header/burgerMenu.svg";
+
 
 import MainModal from "../mainModal/MainModal";
 
@@ -29,7 +31,7 @@ const Header = () => {
   const modal = useAppSelector((state) => state.ModalSlice.modalState);
 
 
-  const modalFunc = ()=>{
+  const modalFunc = () => {
     dispatch(openModal(!modal));
     dispatch(validationNumber(true));
   };
@@ -51,9 +53,12 @@ const Header = () => {
     <>
       <div className={style.mainBlock} >
         <div className={style.container}>
-          <Link to="/">
-            <Logo />
-          </Link>
+          <div className={style.burgerMenu_logo} >
+            <img src={burgerMenu} className={style.burgerMenu} alt="" />
+            <Link to="/">
+              <Logo />
+            </Link>
+          </div>
           <ul className={style.mainBlock_navbar}>
             {pages.map(page => (
               <Link to={page.link}>
