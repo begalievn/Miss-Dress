@@ -1,8 +1,7 @@
 import React from "react";
 
-import PhotoCard from "../../photo-card/PhotoCard";
-
 import classes from "./photoCardCategory.module.scss";
+import PhotoCard from "../../photo-card/PhotoCard";
 
 const PhotoCardCategory = () => {
   return (
