@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+
+  button {
+    width: 300px;
+    height: 60px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 22px;
+    background: #372E24;
+    border-radius: 45px;
+    color: #F1DAC5;
+    border-style: none;
+  }
+
+  @media (max-width: 768px) {
+    button {
+      width: 250px;
+      height: 50px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    button {
+      width: 220px;
+      height: 45px;
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+}
+
