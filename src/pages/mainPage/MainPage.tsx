@@ -1,23 +1,23 @@
 import React from "react";
-import PhotoCard from "../../components/main-page/photo-card/PhotoCard";
-
-import Slider from "../../components/main/slider/Slider";
-
 
 import classes from "./mainPage.module.scss";
 import CategoriesBlock from "./components/categories-block/CategoriesBlock";
 import BestSellersBlock from "./components/best-sellers-block/BestSellersBlock";
 import NewProductsBlock from "./components/new-products-block/NewProductsBlock";
+import Slider from "./components/slider/Slider";
 
 const MainPage = () => {
   return (
-    <div className={classes.container}>
-      <div className={classes.content}>
-        <CategoriesBlock />
-        <BestSellersBlock />
-        <NewProductsBlock />
+    <>
+      <Slider />
+      <div className={classes.container}>
+        <div className={classes.content}>
+          <CategoriesBlock />
+          <BestSellersBlock />
+          <NewProductsBlock />
+        </div>
       </div>
-    
+    </>
   );
 };
 

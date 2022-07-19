@@ -1,6 +1,4 @@
-import React from "react";
-
-import classes from "../../../containers/main/Main.module.scss";
+import classes from "./Main.module.scss";
 
 function Dots(props: any) {
   const { activeIndex, onclick, sliderImage } = props;
@@ -22,5 +20,3 @@ function Dots(props: any) {
 }
 
 export default Dots;
-
-// className={`${activeIndex === index ? "dot active-dot" : "dot"}`}

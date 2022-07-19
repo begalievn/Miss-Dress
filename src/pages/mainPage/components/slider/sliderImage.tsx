@@ -1,6 +1,6 @@
-import First from "../../../assets/main/banner 1.png";
-import Second from "../../../assets/main/banner 1.png";
-import Third from "../../../assets/main/banner 1.png";
+import First from "../../../../assets/main-page/slider/banner 1.png";
+import Second from "../../../../assets/main-page/slider/banner 1.png";
+import Third from "../../../../assets/main-page/slider/banner 1.png";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [

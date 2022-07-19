@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import classes from "../../../containers/main/Main.module.scss";
+import classes from "./Main.module.scss";
 
 import SliderContent from "./SliderContent";
-import Dots from "./Dots";
+import Dot from "./Dot";
 import sliderImage from "./sliderImage";
-
 
 const len = sliderImage.length - 1;
 
@@ -23,7 +22,7 @@ function Slider() {
     <div className={classes.slider_container}>
       <SliderContent activeIndex={activeIndex} sliderImage={sliderImage} />
 
-      <Dots
+      <Dot
         activeIndex={activeIndex}
         sliderImage={sliderImage}
         onclick={(activeIndex: number) => setActiveIndex(activeIndex)}

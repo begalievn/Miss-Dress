@@ -1,11 +1,14 @@
-import classes from "../../../containers/main/Main.module.scss";
+import classes from "./Main.module.scss";
+
 interface MyObject {
   title: string;
   description: string;
   urls: string;
 }
+
 function SliderContent(props: any) {
   const { activeIndex, sliderImage } = props;
+
   return (
     <div className={classes.all_content}>
       {sliderImage.map((slide: MyObject, index: number) => (
