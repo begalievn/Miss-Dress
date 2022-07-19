@@ -7,7 +7,7 @@ import Footer from "./containers/footer/Footer";
 function App() {
   return (
     <div className="App">
-      {/*<Header />*/}
+      <Header />
       <MainRoutes />
       <Footer />
     </div>
