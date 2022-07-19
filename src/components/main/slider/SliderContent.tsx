@@ -7,7 +7,7 @@ interface MyObject {
 function SliderContent(props: any) {
   const { activeIndex, sliderImage } = props;
   return (
-    <section>
+    <div className={classes.all_content}>
       {sliderImage.map((slide: MyObject, index: number) => (
         <div
           key={index}
@@ -32,7 +32,7 @@ function SliderContent(props: any) {
           <button className={classes.btn_slider}>Подробнее</button>
         </div>
       ))}
-    </section>
+    </div>
   );
 }
 

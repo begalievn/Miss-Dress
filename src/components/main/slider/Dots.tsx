@@ -1,4 +1,5 @@
 import React from "react";
+
 import classes from "../../../containers/main/Main.module.scss";
 
 function Dots(props: any) {

@@ -1,20 +1,22 @@
 import React from "react";
+import PhotoCard from "../../components/main-page/photo-card/PhotoCard";
+
+import Slider from "../../components/main/slider/Slider";
 
 
-import Main from "../../containers/main/Main";
 
 import classes from "./mainPage.module.scss";
 
 const MainPage = () => {
   return (
-    <div>
+   
 
-      <div className={classes.container}>
-          <Main />
+  <div className={classes.container}>
+        <Slider/>
         <div className={classes.content}>
-       </div>
-    </div>
-    </div>
+        </div>
+      </div>
+    
   );
 };
 

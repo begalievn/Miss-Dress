@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+
+import classes from "../../../containers/main/Main.module.scss";
+
 import SliderContent from "./SliderContent";
 import Dots from "./Dots";
 import sliderImage from "./sliderImage";
-import classes from "../../../containers/main/Main.module.scss";
+
 
 const len = sliderImage.length - 1;
 
@@ -12,7 +15,7 @@ function Slider() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex(activeIndex === len ? 0 : activeIndex + 1);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [activeIndex]);
 
