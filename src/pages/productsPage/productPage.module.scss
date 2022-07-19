@@ -1,0 +1,22 @@
+.container {
+  padding: 0 10px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  color: #372E24;
+}
+
+.aside {
+  width: 30%;
+  height: 400px;
+  margin-top: 30px;
+  background: #e5e5c8;
+}
+
+.main {
+  width: 65%;
+  height: 800px;
+  background-color: #667366;
+}

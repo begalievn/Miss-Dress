@@ -51,7 +51,7 @@ const NewProductsBlock = () => {
       <div>
         <CardsContainer>
           {cards.map((item, index) => (
-            <div className={classes.card}>
+            <div key={index} className={classes.card}>
               <PhotoCardContent image={item.image} id={item.id} />
             </div>
           ))}

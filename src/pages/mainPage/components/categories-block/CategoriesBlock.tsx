@@ -49,7 +49,7 @@ const CategoriesBlock: FC = () => {
     <div className={classes.container}>
       <CardsContainer>
         {cards.map((item, index) => (
-          <div className={classes.card}>
+          <div key={index} className={classes.card}>
             <PhotoCardCategory {...item} />
           </div>
         ))}
