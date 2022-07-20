@@ -1,7 +1,8 @@
 import React, { FC, useState } from "react";
+import { userStateToogle } from "../../store/reducers/AuthorizationUserSlice";
 
-import { openModal } from "../../store/reducers/ModalSlice";
-import { useAppDispatch } from "../../utils/app/hooks";
+import { openModal, textErrorNumber } from "../../store/reducers/ModalSlice";
+import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 
 
 import style from "./ModalRegistration.module.scss";
@@ -14,15 +15,23 @@ interface iConfirmModal {
 
 const ConfirmationModal: FC<iConfirmModal> = ({ title }) => {
 
-
+  const textError = useAppSelector((state) => state.ModalSlice.textError);
   const [success, setSuccess] = useState(true);
   const dispatch = useAppDispatch();
 
+  const [value, setValue] = useState("");
+
   const successFunc = () => {
-    if (title === "Регистрация") {
+    if(!value){
+      dispatch(textErrorNumber("Вы не ввели код подтверждения"));
+    }else if (title === "Регистрация") {
       setSuccess(false);
+      dispatch(textErrorNumber(""));
+      dispatch(userStateToogle(true));
     } else {
       dispatch(openModal(false));
+      dispatch(userStateToogle(true));
+      dispatch(textErrorNumber(""));
     }
   };
 
@@ -30,10 +39,11 @@ const ConfirmationModal: FC<iConfirmModal> = ({ title }) => {
     <>
       {success ? <div className={style.text} >
         <h2>{title}</h2>
-        <input type="text" placeholder="Введите код подтверждения" />
+        <input type="text" onChange={(e)=>setValue(e.target.value)} placeholder="Введите код подтверждения" />
         <button onClick={() => successFunc()} >Подтвердить</button>
         <div className={style.text_sms} >Не пришло SMS?</div>
         <TimerBtn />
+        <div className={style.text_error_auth}>{textError}</div>
       </div> : <>
         {(title === "Регистрация") ? <SuccessVerify /> : null}
       </>

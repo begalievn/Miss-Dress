@@ -42,37 +42,97 @@
     }
 }
 
+
 .icons {
     max-width: 220px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    cursor: pointer;
     min-width: 122px;
-
+    
     img{
+        cursor: pointer;
         width: 25px;
         height: 25px;
         
         min-height: 20px;
         min-width: 20px;
     }
-
-    img:hover {
-
+    .activeIcon{
         filter: invert(62%) sepia(21%) saturate(5392%) hue-rotate(82deg) brightness(93%) contrast(85%);
+
     }
 
+}
+
+.shopping_img_count{
+position: relative;
+span{
+    position: absolute;
+    background:white;
+    display: inline-block;
+    min-width: 15px;
+    min-height: 15px;
+    border-radius:50%;
+    top:-5px;
+    right:-5px;
+    text-align: center;
+    line-height: 15px;
+}
 }
 
 .burgerMenu{
     display: none;
 }
 
+
+.menuModal{
+    position: absolute;
+    z-index: 100;
+    width: 241px;
+    height: 250px;
+    background: #F1DAC5;
+    padding-left: 13px;
+    li{
+        list-style-type: none;
+        margin-top:20px;
+        color:#372E24;
+    }
+}
+.menuModalOpen{
+animation: modalOpen 0.5s ;
+@keyframes modalOpen {
+    0%{
+       margin-left: -241px; 
+    }
+    100%{
+        margin-left: 0px;  
+    }
+}
+}
+
+.menuModalClose{
+    animation: modalClose 0.5s ;
+    @keyframes modalClose {
+        0%{
+           margin-left: 0px; 
+        }
+        100%{
+            margin-left: -241px;  
+        }
+    }
+}
+
+.activeNavbar{
+    font-weight: 500;
+}
+
+
+
 @media(max-width:1300px){
     .mainBlock{
-        padding-left: 1vw;
-        padding-right: 1vw;
+        padding-left: 13px;
+        padding-right: 13px;
 
     }
 }
@@ -96,7 +156,19 @@
 
 }
 
+@media(min-width:767px){
+
+    .menuModal{
+        display: none;
+    }
+}
+
 @media(max-width:767px){
+    .mainBlock{
+        height: 80px;
+        padding-top: 0px;
+    }
+    
     .burgerMenu{
         display: block;
         margin-right: 2vw;
@@ -107,5 +179,27 @@
     }
     .burgerMenu_logo{
         display: flex;
+    }
+
+    .activeNavbar{
+        font-weight: 400;
+        
+        
+     color: #E5A66E !important;
+        
+    }
+}
+@media(max-width:500px){
+    .mainBlock{
+        height: 73px;
+    }
+}
+
+@media(max-width:400px){
+
+    .icons{
+        min-width: 100px;
+        max-width: 130px;
+
     }
 }
