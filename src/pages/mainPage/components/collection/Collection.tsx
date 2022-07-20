@@ -2,8 +2,6 @@ import React, { FC } from "react";
 
 import styles from "./collection.module.scss";
 
-import { winter } from "../../../assets/main-page/images";
-
 interface ICollection {
   info: {
     image: string;
@@ -31,7 +29,5 @@ const Collection: FC<ICollection> = ({ info }) => {
     </div>
   );
 };
-
-
 
 export default Collection;

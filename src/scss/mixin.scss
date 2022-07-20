@@ -1,3 +1,4 @@
+@import "./settings";
 
 $phone: 425px;
 $desktop: 1462px;
@@ -34,5 +35,24 @@ $laptop: 992px;
   @media screen and (max-width: $tablet) {
     @content;
   }
-} 
+}
+// OTHER
+@mixin titleFont($ta:null){
+  text-align: left;
+  color: $fontColorTitle;
+  font-weight: 600;
+  font-size: 2.55vw;
+  margin-right:$ta;
+  @include desktop {
+    font-size: 37px;
+  }
+  @include phone {
+    font-size: 4.8vw;
+    margin: 0;
+  }
+
+}
+
+
+
 
