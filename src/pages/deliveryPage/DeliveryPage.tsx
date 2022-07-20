@@ -1,9 +1,11 @@
 import React from "react";
 
+import { DiliveryContent } from "./components/DiliveryContent";
+
 const DeliveryPage = () => {
   return (
     <div>
-             DeliveryPage
+      <DiliveryContent />
     </div>
   );
 };
