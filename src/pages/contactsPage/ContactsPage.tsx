@@ -1,9 +1,10 @@
 import React from "react";
+import ContentContacts from "./components/ContentContacts";
 
 const ContactsPage = () => {
   return (
     <div>
-            ContactsPage  
+      <ContentContacts />
     </div>
   );
 };

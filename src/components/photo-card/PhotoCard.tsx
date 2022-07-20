@@ -1,0 +1,28 @@
+import React, { FC } from "react";
+import { useNavigate } from "react-router-dom";
+
+import classes from "./photoCard.module.scss";
+
+interface IPhotoCard {
+  image?: string;
+  category?: string;
+  id: number;
+}
+
+const PhotoCard: FC<IPhotoCard> = ({ image, category, id }) => {
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate("/products");
+  };
+
+  return (
+    <div className={classes.container}>
+      <img src={image} alt="" />
+      <button className={classes.button} onClick={clickHandler}>
+        {"Смотреть"}
+      </button>
+    </div>
+  );
+};
+
+export default PhotoCard;

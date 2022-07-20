@@ -2,14 +2,16 @@ import React from "react";
 
 import { winter } from "../../assets/main-page/images";
 
-import PhotoCardContainer from "../../components/main-page/photo-card-container/PhotoCardContainer";
-
 import Collection from "./components/collection/Collection";
 import Subscribe from "./components/subscribe/Subscribe";
 import Advantages from "./components/advantages/Advantages";
 import NewsList from "./components/newsList/NewsList";
 
 import classes from "./mainPage.module.scss";
+import CategoriesBlock from "./components/categories-block/CategoriesBlock";
+import BestSellersBlock from "./components/best-sellers-block/BestSellersBlock";
+import NewProductsBlock from "./components/new-products-block/NewProductsBlock";
+import Slider from "./components/slider/Slider";
 
 const collectionInfo = [
   {
@@ -32,15 +34,20 @@ const collectionInfo = [
 
 const MainPage = () => {
   return (
-    <div className={classes.container}>
-      <div className={classes.content}>
-        <PhotoCardContainer />
-        <Collection info={collectionInfo} />
-        <Subscribe />
-        <Advantages />
-        <NewsList />
+    <>
+      <Slider />
+      <div className={classes.container}>
+        <div className={classes.content}>
+          <Collection info={collectionInfo} />
+          <Subscribe />
+          <Advantages />
+          <NewsList />
+          <CategoriesBlock />
+          <BestSellersBlock />
+          <NewProductsBlock />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
