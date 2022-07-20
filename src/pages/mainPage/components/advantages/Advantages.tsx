@@ -9,13 +9,10 @@ const Advantages = () => {
       <section className={styles.hero}>
         {[1, 2, 3, 4].map((item) => {
           return (
-            <section className={styles.block}>
+            <section key={item} className={styles.block}>
               <h3 className={styles.title}>
                 Гарантия обмена и возврата товара
               </h3>
-              {/*<div className={styles.test}>*/}
-              {/*  Гарантия обмена и возврата товара*/}
-              {/*</div>*/}
               <p className={styles.text}>100% гарантия возврата товара</p>
             </section>
           );

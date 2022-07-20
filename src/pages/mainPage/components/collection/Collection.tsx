@@ -15,7 +15,7 @@ const Collection: FC<ICollection> = ({ info }) => {
       <h1 className={styles.header}>Коллекция</h1>
       {info.map((item) => {
         return (
-          <section className={styles.block}>
+          <section key={item.title} className={styles.block}>
             <div className={styles.left}>
               <img className={styles.image} src={item.image} alt="" />
             </div>
