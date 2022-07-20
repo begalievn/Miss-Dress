@@ -30,5 +30,36 @@
       display: none;
     }
   }
+
+  .item {
+    display: flex;
+    align-items: center;
+    padding-right: 18px;
+  }
+
+  .label {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+  }
+
+  .arrow {
+    display: flex;
+    height: 25px;
+    width: 35px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .arrow::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+
+    border-top: 4px solid #000;
+  }
 }
 
