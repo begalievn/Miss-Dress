@@ -15,7 +15,13 @@ const categories = [
       {
         id: 11,
         title: "Пальто",
-        children: [],
+        children: [
+          {
+            id: 15,
+            title: "Юбки",
+            children: [],
+          },
+        ],
       },
     ],
   },

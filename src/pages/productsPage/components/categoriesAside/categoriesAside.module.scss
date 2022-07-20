@@ -19,7 +19,6 @@
     list-style: none;
 
     li {
-      margin-bottom: 15px;
 
       ul {
         margin-left: 15px;
@@ -34,7 +33,7 @@
   .item {
     display: flex;
     align-items: center;
-    padding-right: 18px;
+    padding: 12px 18px;
   }
 
   .label {
