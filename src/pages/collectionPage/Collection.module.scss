@@ -1,0 +1,18 @@
+.item_container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1187px;
+  margin: 40px auto;
+  align-items: center;
+  color: #372e24;
+}
+
+select {
+  border: none;
+  width: 250px;
+  background: #f1dac5;
+  text-align: center;
+  height: 40px;
+  color: #372e24;
+  font-size: 20px;
+}

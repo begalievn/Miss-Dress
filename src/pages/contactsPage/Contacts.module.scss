@@ -27,18 +27,16 @@
 
 .listItem {
   display: flex;
-}
-
-a {
-  color: #372e24;
-  margin-right: 6%;
+  a {
+    color: #372e24;
+    margin-right: 6%;
+  }
 }
 
 .li_container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0% 22% 0px 1.5%;
+  margin: 18.2% 31.4% 6% 0%;
 }
 
 @media (max-width: 605px) {
