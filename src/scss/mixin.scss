@@ -5,6 +5,11 @@ $desktop: 1462px;
 $tablet: 768px;
 $laptop: 992px;
 
+$desktopScale: 0.77;
+$mobileScale: 0.88;
+
+
+
 @mixin phone() {
   @media screen and (max-width: $phone) {
     @content;
@@ -52,6 +57,35 @@ $laptop: 992px;
   }
 
 }
+
+@function toMax($n) {
+  @return $n * $desktopScale;
+}
+@function toD($n) {
+  @return (toMax($n) * 100vw) / $desktop;
+}
+
+@function toM($n) {
+  @return ($n * 100vw) / 375px
+}
+@function toT($n) {
+  @return ($n * 100vw) / 748px
+}
+
+@mixin fontSize($max:null,$d:null,$m:null,$t:null,){
+  font-size: $d;
+  @include desktop {
+    font-size: toMax($max);
+  }
+  @include tablet {
+    font-size:  toT($t);
+  }
+  @include phone {
+    font-size: toM($m);
+  }
+
+}
+
 
 
 
