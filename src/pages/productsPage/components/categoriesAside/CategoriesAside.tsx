@@ -43,7 +43,24 @@ const categories = [
   {
     id: 5,
     title: "Футболки",
-    children: [],
+    children: [
+      {
+        id: 10,
+        title: "Куртка",
+        children: [],
+      },
+      {
+        id: 11,
+        title: "Пальто",
+        children: [
+          {
+            id: 15,
+            title: "Юбки",
+            children: [],
+          },
+        ],
+      },
+    ],
   },
   {
     id: 6,
@@ -148,14 +165,16 @@ const CategoriesAside = () => {
         {data.map((menu: any, index: number) => {
           const menuName = `sidebar-submenu-${dept}-${menuIndex}-${index}`;
           return (
-            <ListMenu
-              dept={dept}
-              data={menu}
-              hasChildren={menu.children}
-              menuName={menuName}
-              key={menuName}
-              menuIndex={index}
-            />
+            <div key={index}>
+              <ListMenu
+                dept={dept}
+                data={menu}
+                hasChildren={menu.children}
+                menuName={menuName}
+                key={menuName}
+                menuIndex={index}
+              />
+            </div>
           );
         })}
       </ul>
@@ -164,22 +183,21 @@ const CategoriesAside = () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.title}>
-        <h3>Категория</h3>
-      </div>
       <div className={classes.categories}>
         <ul>
           {categories.map((menu, index) => {
             const dept = 1;
             const menuName = `sidebar-menu-${dept}-${index}`;
             return (
-              <ListMenu
-                dept={dept}
-                data={menu}
-                hasChildren={menu.children}
-                menuName={menuName}
-                menuIndex={index}
-              />
+              <div key={index}>
+                <ListMenu
+                  dept={dept}
+                  data={menu}
+                  hasChildren={menu.children}
+                  menuName={menuName}
+                  menuIndex={index}
+                />
+              </div>
             );
           })}
         </ul>
