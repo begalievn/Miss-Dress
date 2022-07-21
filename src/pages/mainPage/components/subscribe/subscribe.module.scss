@@ -6,14 +6,16 @@
   display:flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 6.5vw;
+  @include desktop {
+    margin-bottom: 84.7px;
+  }
   @include phone{
+    margin-bottom:5.3vw;
     justify-content: center;
     background: url("../../../../assets/main-page/subBackMobile.jpg")  0 0/100% auto no-repeat;
   }
-
-
 }
-
 .form h1 {
   color: #F1DAC5;
   font-size:1.8vw ;
@@ -100,28 +102,16 @@
   height: 16vw;
   text-align: center;
   //padding-top: 1.5vw;
-
-
-
-
   @include phone {
     flex-direction: column-reverse;
     padding-bottom: 2.5vw;
-    //padding-top: 5vw;
     justify-content: space-between;
-
-
   }
   @include desktop{
     height: 256px;
     padding-top: 21.5px;
   }
 }
-
-
-
-
-
 .error {
   margin-left: 5%;
   margin-top: 1%;

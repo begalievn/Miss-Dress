@@ -38,13 +38,17 @@ const MainPage = () => {
       <Slider />
       <div className={classes.container}>
         <div className={classes.content}>
-          <Collection info={collectionInfo} />
-          <Subscribe />
-          <Advantages />
-          <NewsList />
           <CategoriesBlock />
           <BestSellersBlock />
           <NewProductsBlock />
+          <Collection info={collectionInfo} />
+          <Subscribe />
+        </div>
+        <div className={classes.advantagesContainer}>
+          <Advantages />
+        </div>
+        <div className={classes.content}>
+          <NewsList />
         </div>
       </div>
     </>

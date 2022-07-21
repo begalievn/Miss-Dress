@@ -1,9 +1,13 @@
 @import "../../../../scss/mixin";
 @import "../../../../scss/settings";
 
+.back{
+
+
+}
 .container{
-  width: 100%;
-  background-color: #F1DAC5;
+  margin: 0 auto 6.5vw auto;
+  max-width: 1300px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -13,10 +17,11 @@
   @include phone {
     padding-top: 5.33vw;
     padding-bottom:5.33vw;
-
+    margin-bottom: 5.33vw;
   }
   @include desktop{
     padding-top: 56px;
+    margin-bottom: 84.7px;
   }
 
 }
@@ -88,7 +93,6 @@
 
   }
   @include desktop{
-    margin-top:20px ;
     font-size: 24.6px;
     margin-top:11.55px ;
   }
