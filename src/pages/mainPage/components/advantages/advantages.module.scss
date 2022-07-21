@@ -1,0 +1,100 @@
+@import "../../../../scss/mixin";
+@import "../../../../scss/settings";
+
+.back{
+
+
+}
+.container{
+  margin: 0 auto 6.5vw auto;
+  max-width: 1300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4.32vw;
+  padding-bottom: 2.36vw;
+  @include phone {
+    padding-top: 5.33vw;
+    padding-bottom:5.33vw;
+    margin-bottom: 5.33vw;
+  }
+  @include desktop{
+    padding-top: 56px;
+    margin-bottom: 84.7px;
+  }
+
+}
+.test{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header {
+  text-align: center;
+  color: $fontColorTitle;
+  font-weight: 600;
+  font-size: 2.55vw;
+
+  @include desktop {
+    font-size: 37px;
+  }
+  @include phone {
+    font-size: 4.8vw;
+  }
+}
+
+.hero{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top:  4.32vw;
+  @include desktop{
+    margin-top:56px;
+}
+  @include phone{
+    flex-direction: column;
+    margin-top: 5.33vw;
+
+  }
+
+}
+.block{
+  display: flex;
+  flex-direction: column;
+  @include desktop{
+
+  }
+  @include phone{
+    max-width: 56%;
+    margin-top: 5.3vw;
+  }
+
+}
+.title{
+    font-size: 1.9vw;
+    font-weight: 500;
+  @include desktop{
+    font-size: 27.7px;
+  }
+  @include phone {
+    font-size: 4.5vw;
+  }
+}
+.text{
+  font-size: calc(1.9vw * .88);
+  font-weight: 500;
+  color: $fadedFont;
+  margin-top: 0.88vw;
+  @include phone {
+    font-size: calc(4.5vw * .88);
+    margin-top: 2.26vw;
+
+  }
+  @include desktop{
+    font-size: 24.6px;
+    margin-top:11.55px ;
+  }
+}
+
