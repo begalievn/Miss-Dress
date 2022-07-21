@@ -1,0 +1,39 @@
+.container {
+  width: 390px;
+  height: 533px;
+  position: relative;
+  top: 50px;
+}
+
+.container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.button {
+  width: 234px;
+  height: 67px;
+  position: absolute;
+  left: calc(50% - 234px/2);
+  bottom: 60px;
+  border-style: none;
+
+  background: #372E24;
+  border-radius: 45px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  /* identical to box height */
+
+
+  color: #F1DAC5;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: #F1DAC5;
+  color: #372E24;
+}
