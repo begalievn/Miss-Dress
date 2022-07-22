@@ -1,0 +1,31 @@
+.container{
+  max-width: 900px;
+  margin: 10px auto;
+  .image_error{
+    
+    max-width: 900px;
+    width: 100%;
+  }
+
+  
+}
+.logo{
+  display: none;
+}
+@media (max-width:919px) {
+  .container{
+    margin: 10px 13px;
+  }
+  
+}
+
+@media (max-width:676px) {
+  .container{
+  margin-top: 0px;
+  }
+  .logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
