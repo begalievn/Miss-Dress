@@ -8,6 +8,8 @@ import MainPage from "./mainPage/MainPage";
 import NewsPage from "./newsPage/NewsPage";
 import ProductPage from "./productsPage/ProductPage";
 import ErrorPage from "./errorPage/ErrorPage";
+import CollectionPage from "./collection/CollectionPage";
+import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -46,6 +48,16 @@ const MainRoutes = () => {
       element: <ErrorPage />,
       id: 7,
     },
+    {
+      link: "/collection",
+      element: <CollectionPage />,
+      id: 8,
+    },
+    {
+      link: "/collection/:category",
+      element: <CollectionPagesContent img={""} categories={""} />,
+      id: 9,
+    },
   ];
 
   return (
@@ -57,4 +69,4 @@ const MainRoutes = () => {
   );
 };
 
-export default MainRoutes;
+export { MainRoutes };
