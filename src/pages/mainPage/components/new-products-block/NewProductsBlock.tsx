@@ -14,7 +14,6 @@ import {
 } from "../../../../assets/main-page/images";
 
 import classes from "./newProductsBlock.module.scss";
-import ProductCard from "../../../../components/productCard/ProductCard";
 
 const cards = [
   {
@@ -52,8 +51,8 @@ const NewProductsBlock = () => {
       <div>
         <CardsContainer>
           {cards.map((item, index) => (
-            <div key={index} className={classes.card}>
-              <ProductCard image={item.image} id={item.id} />
+            <div className={classes.card}>
+              <PhotoCardContent image={item.image} id={item.id} />
             </div>
           ))}
         </CardsContainer>

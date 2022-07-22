@@ -8,7 +8,6 @@ import MainPage from "./mainPage/MainPage";
 import NewsPage from "./newsPage/NewsPage";
 import ProductPage from "./productsPage/ProductPage";
 import ErrorPage from "./errorPage/ErrorPage";
-import ProductIdPage from "./productIdPage/ProductIdPage";
 import CollectionPage from "./collection/CollectionPage";
 import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
 
@@ -50,19 +49,14 @@ const MainRoutes = () => {
       id: 7,
     },
     {
-      link: "/products/:productId",
-      element: <ProductIdPage />,
-      id: 8,
-    },
-    {
       link: "/collection",
       element: <CollectionPage />,
-      id: 9,
+      id: 8,
     },
     {
       link: "/collection/:category",
       element: <CollectionPagesContent img={""} categories={""} />,
-      id: 10,
+      id: 9,
     },
   ];
 

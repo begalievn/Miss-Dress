@@ -54,13 +54,13 @@ const Footer = () => {
   return (
     <footer className={classes.container}>
       <div className={classes.social_medias_container}>
-        {socialMediaIcons.map((icon, index) => (
-          <img key={index} src={icon} alt="icon" />
+        {socialMediaIcons.map((icon) => (
+          <img src={icon} alt="icon" />
         ))}
       </div>
       <div className={classes.content}>
-        {footerContent.map((item, index) => (
-          <div key={index} className={classes.content_block}>
+        {footerContent.map((item) => (
+          <div className={classes.content_block}>
             <h4>{item.title}</h4>
             <p>{item.first}</p>
             <p>{item.second}</p>
