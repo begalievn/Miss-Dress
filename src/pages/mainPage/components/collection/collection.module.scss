@@ -1,0 +1,72 @@
+@import "../../../../scss/mixin";
+
+.container{
+  width: 100%;
+}
+.header{
+  text-align: center;
+  font-weight: 600;
+  color: #372E24;
+  font-size: 2.7vw;
+  margin-top: 110px;
+  @include phone {
+    margin-top: 19px;
+    font-size: 4.7vw;
+  }
+  @include desktop{
+    font-size: 37px;
+  }
+}
+.block{
+  width:100%;
+  background-color: #fff;
+  display: flex;
+  margin-top: 4.32vw;
+  @include phone {
+  margin-top: 5.3vw;
+  }
+  @include desktop {
+    margin-top: 56.21px;
+  }
+}
+.block h1 {
+  font-weight: 300;
+  font-size: 3.4vw;
+  @include desktop {
+    font-size: 50px;
+  }
+  @include phone() {
+    font-size: 5.8vw;
+  }
+}
+
+.block:nth-child(odd){
+  flex-direction: row-reverse;
+}
+.block:last-child{
+  margin-bottom: 6.5vw;
+  @include desktop {
+    margin-bottom: 84.7px;
+  }
+  @include phone {
+    margin-bottom: 0;
+  }
+}
+.right{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left{
+  width: 50%; display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.image{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
