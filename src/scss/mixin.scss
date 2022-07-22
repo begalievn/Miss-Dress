@@ -69,16 +69,19 @@ $mobileScale: 0.88;
   @return ($n * 100vw) / 375px
 }
 @function toT($n) {
-  @return ($n * 100vw) / 748px
+  @return ($n * 100vw) / 768px
 }
 
-@mixin fontSize($max:null,$d:null,$m:null,$t:null,){
-  font-size: $d;
+@mixin fontSize($desk:null,$m:null,$t:null,){
+  font-size: toD($desk);
   @include desktop {
-    font-size: toMax($max);
+    font-size: toMax($desk);
   }
+  @if $t {
+
   @include tablet {
     font-size:  toT($t);
+  }
   }
   @include phone {
     font-size: toM($m);

@@ -1,0 +1,23 @@
+@import "../../scss/mixin";
+@import "../../scss/settings";
+
+.button{
+  background-color: $fontColorTitle;
+  border-radius: 45px;
+  border: none;
+  color: $primaryColor;
+  padding: toD(24px) toD(0px);
+  width: 100%;
+  font-size: toD(24px);
+  @include phone {
+    padding: toM(13px) toM(0px);
+    font-size: toM(16px);
+  }
+  @include desktop{
+    padding: toMax(24px) toMax(0px);
+    font-size: toMax(24px);
+
+
+  }
+
+}

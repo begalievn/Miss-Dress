@@ -1,6 +1,8 @@
 import React from "react";
 
 import styles from "./shoppingCardPage.module.scss";
+import Total from "./components/total/Total";
+import ProductOrder from "./components/productOrder/ProductOrder";
 
 const ShoppingCartPage = () => {
   return (
@@ -9,26 +11,21 @@ const ShoppingCartPage = () => {
         <div className={styles.flex}>
           <section className={styles.order}>
             <section className={styles.booking}>
-              <div className={styles.header}></div>
+              <div className={styles.header}>Оформление заказа</div>
+              <form className={styles.form} action="">
+                <div className={styles.inputBlock}>
+                  <input
+                    placeholder="Номер телефона"
+                    className={styles.input}
+                    type="text"
+                  />
+                  <p className={styles.warning}>Вышла ошибочка</p>
+                </div>
+              </form>
             </section>
+            <ProductOrder />
           </section>
-          <section className={styles.total}>
-            <h3 className={styles.totalTitle}>Итого</h3>
-            <div className={styles.totalBlock}>
-              <div className={styles.totalBlockRow}>
-                <p className={styles.totalLeft}>Общая сумма</p>
-                <p className={styles.totalRight}>224555</p>
-              </div>
-              <div className={styles.totalBlockRow}>
-                <p className={styles.totalLeft}>Скидка</p>
-                <p className={styles.totalRight}>1233</p>
-              </div>
-              <div className={styles.totalBlockRow}>
-                <p className={styles.totalLeft}>Итог</p>
-                <p className={styles.totalRight}>1231233</p>
-              </div>
-            </div>
-          </section>
+          <Total />
         </div>
       </div>
     </section>

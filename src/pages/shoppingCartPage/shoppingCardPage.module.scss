@@ -12,93 +12,94 @@
 }
 .flex{
   display: flex;
+  justify-content: space-between;
+  gap: 0 toD(64px);
   @include phone{
+    gap: 0;
     flex-direction: column;
+    justify-content: center;
+  }
+  @include desktop {
+    gap: toMax(64px);
   }
 }
-
-
-.total{
-  background-color: $primaryColor;
-  padding: toD(16px) toD(30px) toD(36px);
-  @include desktop{
-    padding: toMax(16px) toMax(30px) toMax(36px);
-  }
-  @include phone {
-    padding: toM(12px) toM(20px) ;
-  }
-  //width: 460px;
-  //height: 500px;
+.order{
+  width: 100%;
 }
-.totalTitle{
-  font-size: toD(44px);
-  font-weight: 500;
+.header{
+@include titleFont()
+}
+.form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 toD(113px);
+  padding-top: toD(29px);
+  margin-top: toD(20px);
+  border-top: 0.5px solid $fontColorTitle;
   @include desktop{
-    font-size: toMax(44px);
+    padding-top: toMax(29px);
+    gap: 0 toMax(113px);
+    margin-top: toMax(20px);
   }
   @include phone{
-    font-size: toM(24px);
+    border-top: 0;
+    padding-top: toM(20px);
+    grid-template-columns: 1fr ;
+    margin-top: 0;
+    gap: 0;
   }
+
 }
-.totalBlock{
-  border-top: 0.5px solid $fontColorTitle;
-  border-bottom: 0.5px solid $fontColorTitle;
-  margin-top: toD(19px);
+.inputBlock{
   display: flex;
   flex-direction: column;
-  padding: toD(29px) 0;
-  @include desktop {
-    padding: toMax(29px) 0;
-    margin-top: toMax(19);
+  height: toD(127px);
+  @include desktop{
+    height: toMax(127px);
   }
-  @include phone {
-    margin-top: 0;
-    border: none;
-    padding: toM(0px) 0;
+  @include phone{
+    height: toM(70px);
   }
 
 }
-.totalBlockRow{
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  width:toD(440px);
-  margin-top: toD(30px);
+.input{
+  border-radius: 45px;
+  background-color: $primaryColor;
+  border: none;
+  width: 100%;
+  height: toD(75px);
+  padding: toD(23px) 0 toD(23px) toD(48px);
   @include desktop{
-    margin-top: toMax(30px);
-    width: toMax(440px);
+    height: toD(75px);
   }
-  @include phone {
-    margin-top: toM(20px);
-    width: toM(300px);
+  @include phone{
+    height: toM(43px);
   }
 }
-.totalBlockRow:first-child{
-  margin-top: 0;
-  @include phone {
+.input::placeholder{
+   @include fontSize($desk:24px,$m:16px,$t:16px)
+}
+.warning{
+  margin-left: 5%;
+  margin-top: 1%;
+  color: $errorColor;
+  margin-bottom: toD(10px);
+  height: toD(50px);
+  @include fontSize($desk:24px,$m:16px,$t:16px);
 
-  margin-top: toM(20px);
-  }
-}
-.totalLeft{
-  font-weight: 400;
-  font-size: toD(20px);
-  @include desktop{
-  font-size: toMax(20px);
-  }
   @include phone {
-  font-size: toM(16px);
+    margin-bottom: toM(10px);
+    //height: toM(40px);
   }
-}
-.totalRight{
-  font-weight: 600;
-  font-size: toD(20px);
   @include desktop{
-    font-size: toMax(20px);
+    margin-bottom: toMax(10px);
+    //height: toMax(50px);
   }
-  @include phone {
-    font-size: toM(16px);
-  }
+
 }
+
+
+
+
 
 
