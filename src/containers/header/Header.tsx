@@ -15,11 +15,13 @@ import SearchMain from "../../components/searchMain/SearchMain";
 import { openSearch } from "../../store/reducers/ModalSlice";
 import user from "../../assets/header/user.svg";
 import sign from "../../assets/header/sign-in.svg";
+import { addBreadcrumb } from "../../store/reducers/BreadcrumbsSlice";
 
 import style from "./Header.module.scss";
 import HeaderBurgerMenu from "./HeaderBurgerMenu";
 import { icons, pages } from "./constants";
 import ProfileModal from "./ProfileModal/ProfileModal";
+
 
 
 
@@ -56,7 +58,7 @@ const Header = () => {
     if (burgerMenuModal) {
       animationfunc(burgerMenuModal);
     }
-    console.log("ooppeenn");
+
     let arr = iconsArr.map((icon) => {
       if (icon.class === "activeIcon") {
         return { ...icon, class: "" };
@@ -114,6 +116,9 @@ const Header = () => {
       animationfunc(burgerMenuModal);
     }
     dispatch(closeAll());
+
+    
+
   }, [location.pathname]);
 
 
