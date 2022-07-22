@@ -9,6 +9,8 @@ import NewsPage from "./newsPage/NewsPage";
 import ProductPage from "./productsPage/ProductPage";
 import ErrorPage from "./errorPage/ErrorPage";
 import ProductIdPage from "./productIdPage/ProductIdPage";
+import CollectionPage from "./collection/CollectionPage";
+import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -52,6 +54,16 @@ const MainRoutes = () => {
       element: <ProductIdPage />,
       id: 8,
     },
+    {
+      link: "/collection",
+      element: <CollectionPage />,
+      id: 9,
+    },
+    {
+      link: "/collection/:category",
+      element: <CollectionPagesContent img={""} categories={""} />,
+      id: 10,
+    },
   ];
 
   return (
@@ -63,4 +75,4 @@ const MainRoutes = () => {
   );
 };
 
-export default MainRoutes;
+export { MainRoutes };
