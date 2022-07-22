@@ -4,6 +4,7 @@ import { bestSellers } from "../../../../utils/consts/main-page/mainPageConsts";
 
 import PhotoCardContent from "../../../../components/main-page/photo-card-content/PhotoCardContent";
 import CardsContainer from "../../../../containers/cardsContainer/CardsContainer";
+
 import BottomButton from "../bottom-button/BottomButton";
 
 import {
@@ -14,6 +15,9 @@ import {
   bestSellers5,
   bestSellers6,
 } from "../../../../assets/main-page/images";
+
+import ProductCard from "../../../../components/productCard/ProductCard";
+import ProductsGridContainer from "../../../../containers/productsGridContainer/ProductsGridContainer";
 
 import classes from "./bestSellersBlock.module.scss";
 
@@ -54,7 +58,7 @@ const BestSellersBlock: FC = () => {
         <CardsContainer>
           {cards.map((item, index) => (
             <div key={index} className={classes.card}>
-              <PhotoCardContent image={item.image} id={item.id} />
+              <ProductCard image={item.image} id={item.id} />
             </div>
           ))}
         </CardsContainer>

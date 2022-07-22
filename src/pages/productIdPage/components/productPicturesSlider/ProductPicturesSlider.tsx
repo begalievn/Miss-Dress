@@ -6,7 +6,9 @@ const ProductPicturesSlider = () => {
   return (
     <div className={classes.container}>
       <div className={classes.arrow_up}></div>
-      <div className={classes.pictures}></div>
+      <div className={classes.pictures}>
+        <div className={classes.carousel}></div>
+      </div>
       <div className={classes.arrow_down}></div>
     </div>
   );
