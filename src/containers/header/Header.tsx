@@ -19,6 +19,7 @@ import SearchMain from "../../components/searchMain/SearchMain";
 import { openSearch } from "../../store/reducers/ModalSlice";
 import user from "../../assets/header/user.svg";
 import sign from "../../assets/header/sign-in.svg";
+import { addBreadcrumb } from "../../store/reducers/BreadcrumbsSlice";
 
 import style from "./Header.module.scss";
 import HeaderBurgerMenu from "./HeaderBurgerMenu";
@@ -48,7 +49,7 @@ const Header = () => {
     if (burgerMenuModal) {
       animationfunc(burgerMenuModal);
     }
-    console.log("ooppeenn");
+
     let arr = iconsArr.map((icon) => {
       if (icon.class === "activeIcon") {
         return { ...icon, class: "" };
