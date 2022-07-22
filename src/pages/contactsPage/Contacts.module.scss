@@ -2,6 +2,8 @@
   height: 500px;
   display: flex;
   justify-content: center;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 .item {
   list-style: none;
@@ -14,9 +16,8 @@
   display: flex;
   flex-direction: column;
   color: #372e24;
-  user-select: none;
   max-width: 100%;
-  margin: 0px 10% 0px 5%;
+  margin: auto auto auto 32%;
   align-items: flex-start;
 }
 
@@ -36,7 +37,9 @@
 .li_container {
   display: flex;
   justify-content: center;
-  margin: 18.2% 31.4% 6% 0%;
+  align-items: center;
+  width: 14%;
+  margin: 0% 0% 0% 0%;
 }
 
 @media (max-width: 605px) {
