@@ -16,6 +16,7 @@ import CardsContainer from "../../containers/cardsContainer/CardsContainer";
 import ProductsGridContainer from "../../containers/productsGridContainer/ProductsGridContainer";
 import ProductCard from "../../components/productCard/ProductCard";
 import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
+import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
 const cards = [
   {
@@ -62,6 +63,7 @@ const ProductPage = () => {
               <h2>{"Все товары"}</h2>
               <div>
                 <FilterSelect />
+                {/*<CategoriesDropdowBtn />*/}
               </div>
             </div>
 

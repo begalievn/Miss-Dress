@@ -36,18 +36,7 @@ const FilterSelect = () => {
   const selectStyles = {
     width: "100%",
     height: "100%",
-    display: "flex",
-    textAlign: "right",
-    alignItems: "center",
-    paddingRight: "20px",
-    paddingTop: "4px",
-    borderStyle: "none",
-    fontStyle: "normal",
-    fontWeight: 200,
-    fontSize: "23px",
-    fontFamily: "Montserrat",
-    letterSpacing: "0.1px",
-    lineHeight: "27px",
+    textAlign: "start",
     "&:hover": { cursor: "pointer" },
   };
 
@@ -56,18 +45,7 @@ const FilterSelect = () => {
       <FormControl sx={formStyles}>
         {name === "" ? (
           <InputLabel style={inputLabelStyles} id="demo-simple-select-label">
-            <p
-              style={{
-                width: "280px",
-                textAlign: "right",
-                fontSize: "23px",
-                fontWeight: 400,
-                lineHeight: "27px",
-                letterSpacing: "0.1px",
-              }}
-            >
-              {"Сортировать по"}
-            </p>
+            <p>{"Сортировать по"}</p>
           </InputLabel>
         ) : null}
         <Select
@@ -77,10 +55,18 @@ const FilterSelect = () => {
           value={name}
           onChange={handleChange}
         >
-          <MenuItem value={10}>По умолчанию</MenuItem>
-          <MenuItem value={20}>По цене</MenuItem>
-          <MenuItem value={30}>По алфавиту</MenuItem>
-          <MenuItem value={40}>По обновлению</MenuItem>
+          <MenuItem value={10}>
+            <p>По умолчанию</p>
+          </MenuItem>
+          <MenuItem value={20}>
+            <p>По цене</p>
+          </MenuItem>
+          <MenuItem value={30}>
+            <p>По алфавиту</p>
+          </MenuItem>
+          <MenuItem value={40}>
+            <p>По обновлению</p>
+          </MenuItem>
         </Select>
       </FormControl>
     </div>
