@@ -37,6 +37,8 @@ const FilterSelect = () => {
     width: "100%",
     height: "100%",
     textAlign: "start",
+    display: "flex",
+    justifyContent: "flext-start",
     "&:hover": { cursor: "pointer" },
   };
 
