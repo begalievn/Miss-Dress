@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 4%;
+  justify-items: center;
+}
+
+@media (max-width: 760px){
+  .container {
+
+  }
+}

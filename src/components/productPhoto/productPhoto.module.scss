@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.container:hover {
+  .button {
+    display: block;
+  }
+}
+
+.container img {
+  width: calc(100%);
+  height: auto;
+  object-fit: contain;
+}
+
+.button {
+  width: 68%;
+  height: 12%;
+  display: none;
+  position: absolute;
+  left: calc(50% - 60%/2);
+  bottom: 13%;
+  border-style: none;
+
+  background: #372E24;
+  border-radius: 45px;
+  color: #F1DAC5;
+  font-style: normal;
+  font-weight: 400;
+  /* identical to box height */
+
+  font-size: 24.3px;
+  line-height: 27px;
+}
+
+@media (max-width: 768px) {
+  .button {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+@media (max-width: 550px) {
+  .button {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 425px) {
+  .button {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.button:hover {
+  cursor: pointer;
+  background: #F1DAC5;
+  color: #372E24;
+}

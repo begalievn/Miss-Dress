@@ -1,16 +1,15 @@
-import React, { FC } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import classes from "./photoCard.module.scss";
+import classes from "./productPhoto.module.scss";
 
-interface IPhotoCard {
+interface IProductPhoto {
   image?: string;
   category?: string;
   id: number;
-  width?: string;
 }
 
-const PhotoCard: FC<IPhotoCard> = ({ image, category, id, width }) => {
+const ProductPhoto = ({ image, id, category }: IProductPhoto) => {
   const navigate = useNavigate();
   const clickHandler = () => {
     navigate("/products");
@@ -26,4 +25,4 @@ const PhotoCard: FC<IPhotoCard> = ({ image, category, id, width }) => {
   );
 };
 
-export default PhotoCard;
+export default ProductPhoto;
