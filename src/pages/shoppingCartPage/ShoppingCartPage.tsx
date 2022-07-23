@@ -23,7 +23,12 @@ const ShoppingCartPage = () => {
                 </div>
               </form>
             </section>
-            <ProductOrder />
+            <div className={styles.orderList}>
+              <h1 className={styles.orderListTitle}>Состав заказа</h1>
+              {[1, 2, 3].map((item) => {
+                return <ProductOrder key={item} />;
+              })}
+            </div>
           </section>
           <Total />
         </div>

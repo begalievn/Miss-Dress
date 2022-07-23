@@ -98,6 +98,24 @@
 
 }
 
+.orderList{
+  display: flex;
+  gap: toD(49px) 0;
+  flex-direction: column;
+  @include desktop {
+    gap: toD(49px) 0;
+  }
+  @include phone {
+    gap:toM(20px) ;
+  }
+}
+.orderListTitle{
+  @include titleFont();
+  @include phone{
+    @include titleFont($textAlign:center);
+  }
+
+}
 
 
 

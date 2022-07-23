@@ -42,8 +42,8 @@ $mobileScale: 0.88;
   }
 }
 // OTHER
-@mixin titleFont($ta:null){
-  text-align: left;
+@mixin titleFont($ta:null,$textAlign:left){
+  text-align: $textAlign ;
   color: $fontColorTitle;
   font-weight: 600;
   font-size: 2.55vw;
