@@ -7,7 +7,7 @@ import ModalRegistration from "./ModalRegistration";
 import NumberСhange from "./NumberСhange";
 import SuccessVerify from "./SuccessVerify";
 
-import { openModal } from "../../store/reducers/ModalSlice";
+import { openModal, validationNumber } from "../../store/reducers/ModalSlice";
 
 import style from "./ModalRegistration.module.scss";
 
@@ -27,11 +27,12 @@ const ModalChoice = () => {
     return (
       <ModalRegistration />
     );
-  case "numberСhange":
+  case "numberСhange": 
     return (
       <NumberСhange />
     );
   case "successVerify":
+    dispatch(validationNumber(true));
     return (
       <SuccessVerify>      
         <p  className={`${style.success_text} ${style.first_text}`}>
@@ -41,6 +42,7 @@ const ModalChoice = () => {
         <button onClick={()=>dispatch(openModal(false))} >Продолжить покупки</button></SuccessVerify >
     );
   case "successOrder":
+    dispatch(openModal(true));
     return (
       <SuccessVerify>      
         <p  className={`${style.success_text} ${style.first_text}`}>
@@ -51,6 +53,7 @@ const ModalChoice = () => {
         <button onClick={()=>dispatch(openModal(false))} >Продолжить покупки</button></SuccessVerify >
     );
   case "successProfile":
+    dispatch(validationNumber(true));
     return (
       <SuccessVerify>      
         <p  className={`${style.success_text} ${style.first_text}`}>
