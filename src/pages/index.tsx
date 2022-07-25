@@ -8,6 +8,7 @@ import MainPage from "./mainPage/MainPage";
 import NewsPage from "./newsPage/NewsPage";
 import ProductPage from "./productsPage/ProductPage";
 import ErrorPage from "./errorPage/ErrorPage";
+import ShoppingBagPage from "./shoppingBagPage/ShoppingBagPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -40,6 +41,11 @@ const MainRoutes = () => {
       link: "/contacts",
       element: <ContactsPage />,
       id: 6,
+    },
+    {
+      link: "shopping",
+      element: <ShoppingBagPage />,
+      id: 7,
     },
     {
       link: "*",

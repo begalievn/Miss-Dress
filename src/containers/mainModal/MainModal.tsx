@@ -8,11 +8,11 @@ import { openModal, validationNumber } from "../../store/reducers/ModalSlice";
 import style from "./ModalRegistration.module.scss";
 import ModalRegistration from "./ModalRegistration";
 import ModalAuthorization from "./ModalAuthorization";
+import ModalChoice from "./ModalChoice";
 
 
 const MainModal = () => {
 
-  const [modalOption, setmodalOption] = useState(true);
   const dispatch = useAppDispatch();
 
   const modalRegistrClose = (e:any) => {
@@ -30,7 +30,8 @@ const MainModal = () => {
         <div className={style.hero}>
           <Logo />
         </div>
-        {modalOption ? (<ModalAuthorization setmodalOption={setmodalOption} />) : (<ModalRegistration />)}
+        <ModalChoice/>
+
       </div>
     </div>
   );

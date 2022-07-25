@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { closeAll, openBurgerMenu, openModal, openProfile } from "../../store/reducers/ModalSlice";
+import { AddModalChoise, closeAll, openBurgerMenu, openModal, openProfile } from "../../store/reducers/ModalSlice";
 
 import burgerMenu from "../../assets/header/burgerMenu.svg";
 
@@ -86,6 +86,7 @@ const Header = () => {
       break;
     case "sign":
       dispatch(openModal(!modal));
+      dispatch(AddModalChoise("sign"));
       break;
     case "user":
       dispatch(openProfile(!menuProfile));
