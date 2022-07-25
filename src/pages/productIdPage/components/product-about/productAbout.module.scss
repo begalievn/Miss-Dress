@@ -1,0 +1,26 @@
+@use './src/utils/styles/variables';
+
+.container {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  margin-bottom: 3%;
+
+  h4 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: variables.$brown;
+    margin-bottom: 2.5%;
+  }
+
+  p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 20px;
+
+    color: variables.$brown;
+  }
+}

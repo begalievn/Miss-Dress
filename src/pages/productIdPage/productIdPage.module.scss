@@ -1,26 +1,54 @@
 .product_container {
   width: 100%;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
 }
 
 .product_slider {
   width: 10%;
+  height: auto;
   background: yellowgreen;
 }
 
 .product_content {
-  width: 85%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
+
+  .product_content_info {
+    width: 50%;
+  }
 }
 
 .product_image {
-  width: 43%;
+  width: 40%;
   background: dodgerblue;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
-.product_content_info {
-  width: 50%;
-  background: salmon;
+@media (max-width: 1000px) {
+  .product_slider {
+    display: none;
+  }
+
+  .product_content {
+    width: 100%;
+  }
 }
+
+@media (max-width: 900px) {
+  .about {
+    display: none;
+  }
+
+  .add_button {
+    display: none;
+  }
+
+}
+

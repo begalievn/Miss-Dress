@@ -1,0 +1,14 @@
+@use "./src/utils/styles/variables";
+
+.button {
+  width: 90%;
+  height: calc(60px);
+  background: variables.$brown;
+  color: variables.$yellow;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  border-radius: 45px;
+  border-style: none;
+}
