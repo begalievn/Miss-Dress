@@ -1,6 +1,8 @@
 .container {
-  flex: 0 1 300px;
+  //flex: 0 1 300px;
+  width: 100%;
   height: auto;
+
   margin-bottom: 10px;
 }
 
@@ -23,8 +25,7 @@
 .content {
   padding-top: 20px;
   color: #372E24;
-  width: calc(100vw / 2.5);
-  max-width: 350px;
+  width: 100%;
   height: auto;
   object-fit: contain;
 

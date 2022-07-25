@@ -23,7 +23,7 @@ const DiliveryContent = () => {
       </ul>
       {data.map((item: Data) => (
         <div className={classes.item_container}>
-          <h1>Доставка</h1>
+          <h1 className={classes.text}>Доставка</h1>
           <span className={classes.title}>{item.description}</span>
           <br />
           <p>{item.title}</p>

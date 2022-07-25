@@ -1,13 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import AuthorizationUserSlice from "./reducers/AuthorizationUserSlice";
+import Breadcrumbs from "./reducers/BreadcrumbsSlice";
 import  ModalSlice  from "./reducers/ModalSlice";
 
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
   AuthorizationUserSlice:AuthorizationUserSlice,
-  
+  Breadcrumbs:Breadcrumbs,
 
 });
 
