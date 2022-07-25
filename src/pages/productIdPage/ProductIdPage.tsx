@@ -19,6 +19,7 @@ import AddToBusketButton from "./components/add-to-busket-button/AddToBusketButt
 import ProductAbout from "./components/product-about/ProductAbout";
 
 import classes from "./productIdPage.module.scss";
+import ProductPicturesVerticalSlider from "./components/productPicturesVerticalSlider/ProductPicturesVerticalSlider";
 
 const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
 
@@ -29,6 +30,7 @@ const ProductIdPage = () => {
         <div className={classes.product_container}>
           <div className={classes.product_slider}>
             {/*<ProductPicturesSlider images={images} />*/}
+            <ProductPicturesVerticalSlider />
           </div>
           <div className={classes.product_content}>
             <div className={classes.product_image}>

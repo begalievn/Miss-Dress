@@ -2,6 +2,9 @@ import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/navigation";
+
+import { Navigation } from "swiper";
 
 import ImagesVerticalSlider from "../../../../containers/images-vertical-slider/ImagesVerticalSlider";
 
@@ -30,7 +33,7 @@ const ProductPicturesSlider = ({ images }: IProductPicturesSlider) => {
       <div className={classes.arrow_left}></div>
       <div className={classes.carousel}>
         <Swiper
-          spaceBetween={50}
+          spaceBetween={30}
           slidesPerView={4}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
