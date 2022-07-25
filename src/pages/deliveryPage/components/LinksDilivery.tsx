@@ -5,7 +5,6 @@ import classes from "../dilivery.module.scss";
 const LinksDilivery = () => {
   const location = useLocation();
 
-  console.log(location.pathname);
   return (
     <>
       <li className={classes.li}>

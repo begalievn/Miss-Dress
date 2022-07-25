@@ -11,7 +11,7 @@ import {
 
 import classes from "./photoCardContent.module.scss";
 
-const data = {
+export const data = {
   price: {
     oldPrice: 7500,
     newPrice: 5990,

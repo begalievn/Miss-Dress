@@ -1,0 +1,87 @@
+@import "../../../../scss/mixin";
+@import "../../../../scss/settings";
+
+
+.total{
+  background-color: $primaryColor;
+  padding: toD(16px) toD(30px) toD(36px);
+  @include desktop{
+    padding: toMax(16px) toMax(30px) toMax(36px);
+  }
+  @include phone {
+    padding: toM(12px) toM(20px) ;
+  }
+
+  height: 100%;
+}
+.totalTitle{
+  font-size: toD(44px);
+  font-weight: 500;
+  @include desktop{
+    font-size: toMax(44px);
+  }
+  @include phone{
+    font-size: toM(24px);
+  }
+}
+.totalBlock{
+  border-top: 0.5px solid $fontColorTitle;
+  border-bottom: 0.5px solid $fontColorTitle;
+  margin: toD(19px) 0 toD(37px);
+  display: flex;
+  flex-direction: column;
+  padding: toD(29px) 0;
+  @include desktop {
+    padding: toMax(29px) 0;
+    margin-top: toMax(19px);
+    margin-bottom: toMax(37px);
+  }
+  @include phone {
+    margin: 0 0 toM(20px);
+    border: none;
+    padding: toM(0px) 0;
+  }
+
+}
+.totalBlockRow{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  width:toD(440px);
+  margin-top: toD(30px);
+  @include desktop{
+    margin-top: toMax(30px);
+    width: toMax(440px);
+  }
+  @include phone {
+    margin-top: toM(20px);
+    width: toM(300px);
+  }
+}
+.totalBlockRow:first-child{
+  margin-top: 0;
+  @include phone {
+
+    margin-top: toM(20px);
+  }
+}
+.totalLeft{
+  font-weight: 400;
+  font-size: toD(20px);
+  @include desktop{
+    font-size: toMax(20px);
+  }
+  @include phone {
+    font-size: toM(16px);
+  }
+}
+.totalRight{
+  font-weight: 600;
+  font-size: toD(20px);
+  @include desktop{
+    font-size: toMax(20px);
+  }
+  @include phone {
+    font-size: toM(16px);
+  }
+}

@@ -13,7 +13,9 @@ import {
 
 import classes from "./categoriesBlock.module.scss";
 
-interface ICategoriesBlock extends Array<ICardData> {}
+interface ICategoriesBlock extends Array<ICardData> {
+  id?: number;
+}
 
 interface ICardData {
   image: string;
@@ -21,7 +23,7 @@ interface ICardData {
   id: number;
 }
 
-const cards: ICategoriesBlock = [
+export const cards: ICategoriesBlock = [
   {
     image: jeans,
     category: "Джинсы",
@@ -42,6 +44,26 @@ const cards: ICategoriesBlock = [
     category: "Брюки",
     id: 4,
   },
+  {
+    image: jeans,
+    category: "Джинсы",
+    id: 5,
+  },
+  {
+    image: skirts,
+    category: "Юбки",
+    id: 6,
+  },
+  {
+    image: dresses,
+    category: "Платья",
+    id: 7,
+  },
+  {
+    image: trousers,
+    category: "Брюки",
+    id: 8,
+  },
 ];
 
 const CategoriesBlock: FC = () => {
@@ -49,7 +71,7 @@ const CategoriesBlock: FC = () => {
     <div className={classes.container}>
       <CardsContainer>
         {cards.map((item, index) => (
-          <div className={classes.card}>
+          <div key={index} className={classes.card}>
             <PhotoCardCategory {...item} />
           </div>
         ))}

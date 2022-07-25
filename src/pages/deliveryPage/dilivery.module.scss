@@ -1,7 +1,9 @@
 .container {
-  height: 400px;
+  height: 500px;
   display: flex;
   align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .item_container {
@@ -16,7 +18,6 @@
 .li {
   display: flex;
   flex-direction: column;
-  margin-left: 2%;
 }
 
 .link {
@@ -25,7 +26,11 @@
 }
 
 .item {
-  margin: 2% auto 0px 11.4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14%;
+  margin: 0% 0% 0% 0%;
 }
 
 .active {
@@ -44,13 +49,19 @@
     flex-direction: row;
   }
   .item {
+    margin: 0% auto 0% 0%;
+    justify-content: flex-start;
     // margin: 0px 0px 10px 20px;
   }
   .link {
-    margin: 10px 10px 0px 0px;
+    margin: 10px 10% 0px 0px;
   }
   .item_container {
     max-width: 95%;
     align-items: center;
+  }
+  .text {
+    font-size: 26px;
+    margin: 8% auto;
   }
 }

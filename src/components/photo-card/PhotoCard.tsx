@@ -7,9 +7,10 @@ interface IPhotoCard {
   image?: string;
   category?: string;
   id: number;
+  width?: string;
 }
 
-const PhotoCard: FC<IPhotoCard> = ({ image, category, id }) => {
+const PhotoCard: FC<IPhotoCard> = ({ image, category, id, width }) => {
   const navigate = useNavigate();
   const clickHandler = () => {
     navigate("/products");

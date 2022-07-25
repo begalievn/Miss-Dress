@@ -68,7 +68,7 @@
 }
 
 .title{
-  color: $oppositeFont;
+  color: $primaryColor;
   font-size: 3.37vw;
   font-weight: 600;
   @include phone{
@@ -80,7 +80,7 @@
   }
 }
 .info{
-  color: $oppositeFont;
+  color: $primaryColor;
   font-size: calc(3.37vw * 0.5);
   font-weight: 500;
   display: flex;
@@ -100,7 +100,7 @@
 
 }
 .date{
-  color: $oppositeFont;
+  color: $primaryColor;
   font-size: calc(3.37vw * 0.37);
   font-weight: 500;
   margin-left: 1.54vw;

@@ -2,6 +2,8 @@
   height: 500px;
   display: flex;
   justify-content: center;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 .item {
   list-style: none;
@@ -14,9 +16,8 @@
   display: flex;
   flex-direction: column;
   color: #372e24;
-  user-select: none;
   max-width: 100%;
-  margin: 0px 10% 0px 5%;
+  margin: auto auto auto 32%;
   align-items: flex-start;
 }
 
@@ -27,20 +28,18 @@
 
 .listItem {
   display: flex;
-
-  
+  a {
+    color: #372e24;
+    margin-right: 6%;
+  }
 }
-
-// a {
-//   color: #372e24;
-//   margin-right: 6%;
-// }
 
 .li_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0% 22% 0px 1.5%;
+  width: 14%;
+  margin: 0% 0% 0% 0%;
 }
 
 @media (max-width: 605px) {
