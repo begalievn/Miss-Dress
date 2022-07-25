@@ -40,7 +40,7 @@ const ModalRegistration = () => {
 
   const sendRequest = (inputValue: IInpVal) => {
 
-    let regExp = /^0\d{9}$/;
+    let regExp = /^\+996\d{9}$/;
    console.log( regExp.test(inputValue.tel));
    
     if (!inputValue.name) {

@@ -12,6 +12,7 @@ import ShoppingCartPage from "./shoppingCartPage/ShoppingCartPage";
 import ProductIdPage from "./productIdPage/ProductIdPage";
 import CollectionPage from "./collection/CollectionPage";
 import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
+import ProfilePage from "./profilePage/ProfilePage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -69,6 +70,11 @@ const MainRoutes = () => {
       link: "shopping",
       element: <ShoppingCartPage />,
       id: 11,
+    },
+    {
+      link: "profile",
+      element: <ProfilePage />,
+      id: 12,
     },
   ];
 

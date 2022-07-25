@@ -28,7 +28,11 @@ const ConfirmationModal: FC<iConfirmModal> = ({ title }) => {
       dispatch(openModal(false));
       dispatch(textErrorNumber(""));
       dispatch(userStateToogle(true));
-    } else {
+    } else if (title === "Смена номера") {
+      dispatch(textErrorNumber(""));
+      dispatch(AddModalChoise("successProfile"));
+    }
+    else {
       dispatch(AddModalChoise("successVerify"));
       dispatch(userStateToogle(true));
       dispatch(textErrorNumber(""));

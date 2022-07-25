@@ -12,7 +12,7 @@ export interface IDispatch {
 
 export const checkValidation = (valueNumber: string) => {
   return (dispatch: Dispatch<IDispatch>) => {
-    let regExp = /^0\d{9}$/;
+    let regExp = /^\+996\d{9}$/;
     if (regExp.test(valueNumber)) {
       dispatch(validationNumber(false));
     } else {
