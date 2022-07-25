@@ -12,6 +12,8 @@ const ShoppingCartPage = () => {
           <section className={styles.order}>
             <section className={styles.booking}>
               <div className={styles.header}>Оформление заказа</div>
+              {/*<section className={styles.addressBlock}>h3</section>*/}
+
               <form className={styles.form} action="">
                 <div className={styles.inputBlock}>
                   <input
@@ -23,6 +25,7 @@ const ShoppingCartPage = () => {
                 </div>
               </form>
             </section>
+
             <div className={styles.orderList}>
               <h1 className={styles.orderListTitle}>Состав заказа</h1>
               {[1, 2, 3].map((item) => {
