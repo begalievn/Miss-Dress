@@ -8,16 +8,17 @@
   color: $primaryColor;
   padding: toD(24px) toD(0px);
   width: 100%;
+  height: toD(75px);
   font-size: toD(24px);
   @include phone {
     padding: toM(13px) toM(0px);
     font-size: toM(16px);
+    height: toM(46px);
   }
   @include desktop{
     padding: toMax(24px) toMax(0px);
     font-size: toMax(24px);
-
-
+    height: toMax(75px);
   }
 
 }
