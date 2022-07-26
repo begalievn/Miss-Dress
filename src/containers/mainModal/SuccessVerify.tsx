@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { openModal } from "../../store/reducers/ModalSlice";
 
@@ -6,23 +6,18 @@ import { useAppDispatch } from "../../utils/app/hooks";
 
 import style from "./ModalRegistration.module.scss";
 
-const SuccessVerify = () => {
+export interface ISucces {
+  children: React.ReactNode
+}
 
-  const dispatch = useAppDispatch();
+const SuccessVerify:FC<ISucces> = ({children}) => {
 
-  const modalFunc = ()=>{
 
-    dispatch(openModal(false));
-    
-  };
+
 
   return (
     <div className={style.text}>
-      <p  className={`${style.success_text} ${style.first_text}`}>
-        Поздравляем!
-      </p>
-      <p className={style.success_text}>Регистрация прошла успешно!</p>
-      <button onClick={()=>modalFunc()} >Продолжить покупки</button>
+      {children}
     </div>
   );
 };
