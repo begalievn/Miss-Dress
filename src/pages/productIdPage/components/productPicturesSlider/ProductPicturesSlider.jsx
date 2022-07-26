@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import classes from "./productPicturesVerticalSlider.module.scss";
+import classes from "./productPicturesSlider.module.scss";
+//
+// interface IProductPicturesSlider {
+//   cards: string[];
+// }
+//
+// interface ImageCardTypes {
+//   card: string;
+// }
 
-interface IProductPicturesVerticalSlider {
-  cards: string[];
-}
-
-interface ImageCardTypes {
-  card: string;
-}
-
-const ImageCard = ({ card }: ImageCardTypes) => {
+const ImageCard = ({ card }) => {
   return (
     <div className={classes.image_card}>
       <img src={card} alt="" />
@@ -18,27 +18,23 @@ const ImageCard = ({ card }: ImageCardTypes) => {
   );
 };
 
-const ProductPicturesVerticalSlider = ({
-  cards,
-}: IProductPicturesVerticalSlider) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [sliderCards, setSliderCards] = useState<any>([]);
-
+const ProductPicturesSlider = ({ cards }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [sliderCards, setSliderCards] = useState([]);
+  console.log(cards);
   useEffect(() => {
-    let arrCards: any = [];
+    let arrCards = [];
 
     if (cards === undefined) return;
 
     Array.isArray(cards) ? (arrCards = [...cards]) : (arrCards = [cards]);
 
-    // Here I add additional cards if there isn't necessary value
     let i = 0;
-    while (arrCards.length <= 7) {
+    while (arrCards.length <= 6) {
       arrCards.push(arrCards[i]);
       i++;
     }
-
-    console.log("Array Cards: ", arrCards);
+    console.log(arrCards);
     setSliderCards([...arrCards]);
   }, [cards]);
 
@@ -51,23 +47,19 @@ const ProductPicturesVerticalSlider = ({
   let hiddenRightIndex =
     rightmostIndex === sliderCards.length - 1 ? 0 : rightmostIndex + 1;
 
-  // Mobile version carousel indexes
-
   function prev() {
-    setActiveIndex((prev: number) =>
-      prev ? prev - 1 : sliderCards.length - 1
-    );
+    setActiveIndex((prev) => (prev ? prev - 1 : sliderCards.length - 1));
+    console.log("prev");
   }
 
   function next() {
-    setActiveIndex((prev: number) =>
-      prev === sliderCards.length - 1 ? 0 : prev + 1
-    );
+    setActiveIndex((prev) => (prev === sliderCards.length - 1 ? 0 : prev + 1));
+    console.log("next");
   }
 
   return (
     <div className={classes.container}>
-      <div className={classes.arrow_up} onClick={prev}></div>
+      <div className={classes.arrow_left} onClick={prev}></div>
       <div className={classes.carousel}>
         <div
           key={hiddenLeftIndex}
@@ -75,7 +67,11 @@ const ProductPicturesVerticalSlider = ({
         >
           <ImageCard card={sliderCards[hiddenLeftIndex]} />
         </div>
-        <div key={leftIndex} className={[classes.left, classes.card].join(" ")}>
+        <div
+          key={leftIndex}
+          className={[classes.left, classes.card].join(" ")}
+          onClick={prev}
+        >
           <ImageCard card={sliderCards[leftIndex]} />
         </div>
         <div
@@ -87,12 +83,14 @@ const ProductPicturesVerticalSlider = ({
         <div
           key={rightIndex}
           className={[classes.right, classes.card].join(" ")}
+          onClick={next}
         >
           <ImageCard card={sliderCards[rightIndex]} />
         </div>
         <div
           key={rightmostIndex}
           className={[classes.rightmost, classes.card].join(" ")}
+          onClick={next}
         >
           <ImageCard card={sliderCards[rightmostIndex]} />
         </div>
@@ -103,9 +101,9 @@ const ProductPicturesVerticalSlider = ({
           <ImageCard card={sliderCards[hiddenRightIndex]} />
         </div>
       </div>
-      <div className={classes.arrow_down} onClick={next}></div>
+      <div className={classes.arrow_right} onClick={next}></div>
     </div>
   );
 };
 
-export default ProductPicturesVerticalSlider;
+export default ProductPicturesSlider;
