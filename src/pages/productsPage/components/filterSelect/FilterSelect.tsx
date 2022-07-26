@@ -7,6 +7,14 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import classes from "./filterSelect.module.scss";
 
+// const useStyles = makeStyles(() =>
+//   createStyles({
+//     iconClassName: {
+//       fill: "red",
+//     },
+//   })
+// );
+
 const FilterSelect = () => {
   const [name, setName] = useState("");
   const handleChange = (e: SelectChangeEvent) => {
@@ -38,8 +46,12 @@ const FilterSelect = () => {
     height: "100%",
     textAlign: "start",
     display: "flex",
-    justifyContent: "flext-start",
+    justifyContent: "flex-start",
     "&:hover": { cursor: "pointer" },
+    border: "1px solid darkgrey",
+    "& .Mui-focused": {
+      borderColor: "red",
+    },
   };
 
   return (

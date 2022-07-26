@@ -1,8 +1,9 @@
 import React from "react";
 
-import classes from "./productPage.module.scss";
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
+
 import CategoriesAside from "./components/categoriesAside/CategoriesAside";
+
 import FilterSelect from "./components/filterSelect/FilterSelect";
 import {
   bestSellers1,
@@ -17,6 +18,8 @@ import ProductsGridContainer from "../../containers/productsGridContainer/Produc
 import ProductCard from "../../components/productCard/ProductCard";
 import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
+
+import classes from "./productPage.module.scss";
 
 const cards = [
   {
