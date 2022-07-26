@@ -3,36 +3,69 @@ import React from "react";
 import SubmitButton from "../../components/submitButton/SubmitButton";
 
 import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
+
+import useInput from "../../hooks/validation/useInput";
+
 import styles from "./shoppingCardPage.module.scss";
 import Total from "./components/total/Total";
 import ProductOrder from "./components/productOrder/ProductOrder";
 
-const inputs = [
-  {
-    placeholder: "Ваше имя",
-    name: "name",
-  },
-  {
-    placeholder: "Ваша фамилия",
-    name: "surname",
-  },
-  {
-    placeholder: "Номер телефона",
-    name: "number",
-  },
-  {
-    placeholder: "Страна",
-    name: "country",
-  },
-  {
-    placeholder: "Город",
-    name: "city",
-  },
-];
-
 const ShoppingCartPage = () => {
+  const inputs = [
+    {
+      placeholder: "Ваше имя",
+      name: "name",
+      hook: useInput("", {
+        minLength: 1,
+        maxLength: 30,
+        isEmpty: true,
+        cyrillic: true,
+      }),
+    },
+    {
+      placeholder: "Ваша фамилия",
+      name: "surname",
+      hook: useInput("", {
+        minLength: 2,
+        maxLength: 30,
+        isEmpty: true,
+        cyrillic: true,
+      }),
+    },
+    {
+      placeholder: "Номер телефона",
+      name: "number",
+      hook: useInput("", {
+        isEmpty: true,
+        minLength: 5,
+        maxLength: 13,
+        phoneNumber: true,
+      }),
+    },
+    {
+      placeholder: "Страна",
+      name: "country",
+      hook: useInput("", {
+        minLength: 2,
+        maxLength: 30,
+        isEmpty: true,
+        cyrillic: true,
+      }),
+    },
+    {
+      placeholder: "Город",
+      name: "city",
+      hook: useInput("", {
+        cyrillic: true,
+        minLength: 2,
+        maxLength: 30,
+        isEmpty: true,
+      }),
+    },
+  ];
   const { data: posts } = shoppingCartApi.useFetchAllPostsQuery("");
   console.log(posts);
+
   return (
     <section className={styles.container}>
       <div className={styles.content}>
@@ -56,10 +89,15 @@ const ShoppingCartPage = () => {
                       <input
                         placeholder={item.placeholder}
                         name={item.name}
+                        onChange={(e) => item.hook.onChange(e)}
+                        onBlur={() => item.hook.onBlur()}
+                        value={item.hook.value}
                         className={styles.input}
                         type="text"
                       />
-                      <p className={styles.warning}>Вышла ошибочка</p>
+                      <p className={styles.warning}>
+                        {item.hook.isDirty && item.hook.error}
+                      </p>
                     </div>
                   );
                 })}
