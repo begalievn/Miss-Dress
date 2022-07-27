@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
 
@@ -9,30 +9,51 @@ import {
   bestSellers4,
 } from "../../assets/main-page/images";
 
+import SimilarProductsBlock from "../../components/similar-products-block/SimilarProductsBlock";
+
 import ProductPicturesSlider from "./components/productPicturesSlider/ProductPicturesSlider";
 import ProductContentInfo from "./components/productContentInfo/ProductContentInfo";
-
 import AddToBusketButton from "./components/add-to-busket-button/AddToBusketButton";
-
 import ProductAbout from "./components/product-about/ProductAbout";
+import ProductPicturesVerticalSlider from "./components/productPicturesVerticalSlider/ProductPicturesVerticalSlider";
+
+import ZoomModal from "./components/zoom-modal/ZoomModal";
 
 import classes from "./productIdPage.module.scss";
-import ProductPicturesVerticalSlider from "./components/productPicturesVerticalSlider/ProductPicturesVerticalSlider";
+import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 
 const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
 
 const ProductIdPage = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleZoomOpen = () => {
+    setModalOpen(true);
+  };
+
   return (
     <div className={classes.container}>
       <ContentContainer>
+        <ZoomModal
+          isModalOpen={isModalOpen}
+          setModalOpen={setModalOpen}
+          image={images[activeIndex]}
+        />
         <div className={classes.product_container}>
           <div className={classes.product_vertical_slider}>
             {/*<ProductPicturesSlider images={images} />*/}
-            <ProductPicturesVerticalSlider cards={images} />
+            <ProductPicturesVerticalSlider
+              setImageIndex={setActiveIndex}
+              cards={images}
+            />
           </div>
           <div className={classes.product_content}>
-            <div className={classes.product_image}>
-              <img src={bestSellers2} alt={""} />
+            <div
+              className={classes.product_image}
+              onClick={() => handleZoomOpen()}
+            >
+              <img src={images[activeIndex]} alt={""} />
             </div>
             <div className={classes.product_content_info}>
               <ProductContentInfo />
@@ -67,6 +88,9 @@ const ProductIdPage = () => {
           <div className={classes.add_button}>
             <AddToBusketButton text={"Перейти в корзину"} />
           </div>
+        </div>
+        <div>
+          <SimilarProductsBlock />
         </div>
       </ContentContainer>
     </div>

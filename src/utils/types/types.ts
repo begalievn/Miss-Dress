@@ -7,6 +7,25 @@ export interface ProductTypes {
   article: string;
   rate: number;
   status: string;
+  children: ProductTypes[] | [];
 }
 
 export interface ImagesType {}
+
+// export interface Child {
+//   id: number;
+//   status: number;
+//   createDate: Date;
+//   updateDate: Date;
+//   title: string;
+//   children: any[];
+// }
+
+export interface CategoryTypes {
+  id: number;
+  status: number;
+  createDate: Date;
+  updateDate: Date;
+  title: string;
+  children: CategoryTypes[] | [];
+}
