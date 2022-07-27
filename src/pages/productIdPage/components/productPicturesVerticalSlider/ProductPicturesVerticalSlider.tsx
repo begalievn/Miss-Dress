@@ -4,6 +4,7 @@ import classes from "./productPicturesVerticalSlider.module.scss";
 
 interface IProductPicturesVerticalSlider {
   cards: string[];
+  setImageIndex: (value: number) => void;
 }
 
 interface ImageCardTypes {
@@ -19,6 +20,7 @@ const ImageCard = ({ card }: ImageCardTypes) => {
 };
 
 const ProductPicturesVerticalSlider = ({
+  setImageIndex,
   cards,
 }: IProductPicturesVerticalSlider) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -33,7 +35,7 @@ const ProductPicturesVerticalSlider = ({
 
     // Here I add additional cards if there isn't necessary value
     let i = 0;
-    while (arrCards.length <= 7) {
+    while (arrCards.length < 7) {
       arrCards.push(arrCards[i]);
       i++;
     }
@@ -41,6 +43,14 @@ const ProductPicturesVerticalSlider = ({
     console.log("Array Cards: ", arrCards);
     setSliderCards([...arrCards]);
   }, [cards]);
+
+  const handleImageClick = (index: number) => {
+    let currentIndex = index;
+    if (index >= 4) {
+      currentIndex = index - 4;
+    }
+    setImageIndex(currentIndex);
+  };
 
   let leftIndex = activeIndex ? activeIndex - 1 : sliderCards.length - 1;
   let rightIndex = activeIndex === sliderCards.length - 1 ? 0 : activeIndex + 1;
@@ -70,33 +80,42 @@ const ProductPicturesVerticalSlider = ({
       <div className={classes.arrow_up} onClick={prev}></div>
       <div className={classes.carousel}>
         <div
+          onClick={() => handleImageClick(hiddenLeftIndex)}
           key={hiddenLeftIndex}
           className={[classes.hiddenLeft, classes.card].join(" ")}
         >
           <ImageCard card={sliderCards[hiddenLeftIndex]} />
         </div>
-        <div key={leftIndex} className={[classes.left, classes.card].join(" ")}>
+        <div
+          onClick={() => handleImageClick(leftIndex)}
+          key={leftIndex}
+          className={[classes.left, classes.card].join(" ")}
+        >
           <ImageCard card={sliderCards[leftIndex]} />
         </div>
         <div
+          onClick={() => handleImageClick(activeIndex)}
           key={activeIndex}
           className={[classes.active, classes.card].join(" ")}
         >
           <ImageCard card={sliderCards[activeIndex]} />
         </div>
         <div
+          onClick={() => handleImageClick(rightIndex)}
           key={rightIndex}
           className={[classes.right, classes.card].join(" ")}
         >
           <ImageCard card={sliderCards[rightIndex]} />
         </div>
         <div
+          onClick={() => handleImageClick(rightmostIndex)}
           key={rightmostIndex}
           className={[classes.rightmost, classes.card].join(" ")}
         >
           <ImageCard card={sliderCards[rightmostIndex]} />
         </div>
         <div
+          onClick={() => handleImageClick(hiddenRightIndex)}
           key={hiddenRightIndex}
           className={[classes.hiddenRight, classes.card].join(" ")}
         >

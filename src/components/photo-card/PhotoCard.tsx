@@ -13,7 +13,7 @@ interface IPhotoCard {
 const PhotoCard: FC<IPhotoCard> = ({ image, category, id, width }) => {
   const navigate = useNavigate();
   const clickHandler = () => {
-    navigate("/products");
+    navigate("/category");
   };
 
   return (

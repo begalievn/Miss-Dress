@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
+import "./style.scss";
 import classes from "./filterSelect.module.scss";
 
 // const useStyles = makeStyles(() =>
@@ -46,17 +47,17 @@ const FilterSelect = () => {
     height: "100%",
     textAlign: "start",
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "flex-end",
     "&:hover": { cursor: "pointer" },
     border: "1px solid darkgrey",
-    "& .Mui-focused": {
+    "& MuiInputLabel-root.Mui-focused": {
       borderColor: "red",
     },
   };
 
   return (
     <div className={classes.container}>
-      <FormControl sx={formStyles}>
+      <FormControl className="MuiInputLabel-root" sx={formStyles}>
         {name === "" ? (
           <InputLabel style={inputLabelStyles} id="demo-simple-select-label">
             <p>{"Сортировать по"}</p>
