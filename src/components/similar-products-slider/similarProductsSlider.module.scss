@@ -1,0 +1,136 @@
+.container {
+  width: 100%;
+  height: 750px;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow_left {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+
+  border-right: 15px solid #372E24;
+
+  cursor: pointer
+}
+
+.arrow_right {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+
+  border-left: 15px solid #372E24;
+  cursor: pointer;
+}
+
+.carousel {
+  width: 95%;
+  height: 90%;
+  overflow: hidden;
+  position: relative;
+
+  .card {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    transition: all 0.5s;
+  }
+
+  .hiddenLeft {
+    transform: translateX(-300%);
+  }
+
+  .left {
+    transform: translateX(-170%);
+  }
+
+  .active {
+  }
+
+  .right {
+    transform: translateX(70%);
+  }
+
+  .hiddenRight {
+    transform: translateX(200%);
+  }
+}
+
+@media (max-width: 1300px) {
+  .container {
+    height: 730px;
+  }
+
+  .carousel {
+    .card {
+      width: 330px;
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .container {
+    height: 710px;
+  }
+
+  .carousel {
+    .card {
+      width: 310px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    height: 680px;
+  }
+
+  .carousel {
+    .card {
+      width: 290px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .container {
+    height: 650px;
+  }
+
+  .carousel {
+    .card {
+      width: 270px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    height: 620px;
+  }
+
+  .carousel {
+    .card {
+      width: 230px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    height: 580px;
+  }
+
+  .carousel {
+    .card {
+      width: 200px;
+    }
+  }
+}
+

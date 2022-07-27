@@ -1,89 +1,122 @@
 import React, { useState } from "react";
 
 import check from "../../assets/header/check.svg";
+import { addUserId } from "../../store/reducers/AuthorizationUserSlice";
 import { textErrorNumber } from "../../store/reducers/ModalSlice";
+import { AuthorizationAPI } from "../../store/services/AuthorizationApi";
 import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 
 import ConfirmationModal from "./ConfirmationModal";
 
 import style from "./ModalRegistration.module.scss";
 
-
 interface IInpVal {
-  name: string,
-  surname: string,
-  tel:  string,
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
 }
 
-
 const ModalRegistration = () => {
-
-
   const [validationRegistr, setValidationRegistr] = useState(true);
   const [checkState, setCheckState] = useState(false);
   const [inputValue, setInputValue] = useState({
-    name: "",
-    surname: "",
-    tel: "",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
   });
 
   const textError = useAppSelector((state) => state.ModalSlice.textError);
 
   const dispatch = useAppDispatch();
+
+  const [registrationNewUser, {}] =
+    AuthorizationAPI.useRegistrationNewUserMutation();
+
+
+
+  const [getActivatedCode, {}] = AuthorizationAPI.useGetActivatedCodeMutation();
+
   const handleInp = (e: any) => {
     let obj = {
       ...inputValue,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     };
     setInputValue(obj);
   };
 
-  const sendRequest = (inputValue: IInpVal) => {
+  const sendRequest = async (inputValue: IInpVal) => {
+    let regExp = /^\+996\d{9}$/;
 
-    let regExp = /^0\d{9}$/;
-   console.log( regExp.test(inputValue.tel));
-   
-    if (!inputValue.name) {
+    if (!inputValue.firstName) {
       dispatch(textErrorNumber("Заполните поле имя"));
-    } else if (!inputValue.surname) {
+    } else if (!inputValue.lastName) {
       dispatch(textErrorNumber("Заполните поле Фамилия"));
-    }else if(!regExp.test(inputValue.tel)){
+    } else if (!regExp.test(inputValue.phoneNumber)) {
       dispatch(textErrorNumber("Введите корректный номер телефона"));
-    }else if(!checkState){
+    } else if (!checkState) {
       dispatch(textErrorNumber("Вы не согласились с условиями оферты"));
-    }else{
-      setValidationRegistr(false);
-      dispatch(textErrorNumber(""));
+    } else {
+      await registrationNewUser(inputValue)
+        .then((response: any) => {
+          let id = response.data.result.user.id;
+          dispatch(addUserId(id));
+
+          getActivatedCode(id).then((response: any) => {
+            console.log(response.data.result.code);
+          });
+
+          setValidationRegistr(false);
+          dispatch(textErrorNumber(""));
+        })
+        .catch((e) => {
+          console.log("ошибка", e);
+        });
     }
   };
 
-
   return (
-
     <>
-      {
-        validationRegistr ? (
-          <>
-            <div className={style.text}>
-              <h2>Регистрация</h2>
-              <input type="text" onChange={(e) =>  handleInp(e)} name="name" placeholder="Имя" />
-              <input type="text" onChange={(e) =>  handleInp(e)} name="surname" placeholder="Фамилия" />
-              <input type="text" onChange={(e) =>  handleInp(e)} name="tel" placeholder="Номер телефона" />
-            </div>
+      {validationRegistr ? (
+        <>
+          <div className={style.text}>
+            <h2>Регистрация</h2>
+            <input
+              type="text"
+              onChange={(e) => handleInp(e)}
+              name="firstName"
+              placeholder="Имя"
+            />
+            <input
+              type="text"
+              onChange={(e) => handleInp(e)}
+              name="lastName"
+              placeholder="Фамилия"
+            />
+            <input
+              type="text"
+              onChange={(e) => handleInp(e)}
+              name="phoneNumber"
+              placeholder="Номер телефона"
+            />
+          </div>
 
-            <div className={style.validation_text} >
-              <div className={style.validation_check} onClick={() => setCheckState(!checkState)}>
-                {checkState ? <img src={check} alt="" /> : null}
-              </div>
-              <p>Я согласен с условиями публичной оферты</p>
+          <div className={style.validation_text}>
+            <div
+              className={style.validation_check}
+              onClick={() => setCheckState(!checkState)}
+            >
+              {checkState ? <img src={check} alt="" /> : null}
             </div>
-            <div className={style.text}>
-              <button onClick={() => sendRequest(inputValue)}>Продолжить</button>
-            </div>
-            <div className={style.text_error_auth}>{textError}</div>
-          </>
-        ) : (
-          <ConfirmationModal title="Регистрация" />)}
+            <p>Я согласен с условиями публичной оферты</p>
+          </div>
+          <div className={style.text}>
+            <button onClick={() => sendRequest(inputValue)}>Продолжить</button>
+          </div>
+          <div className={style.text_error_auth}>{textError}</div>
+        </>
+      ) : (
+        <ConfirmationModal title="Регистрация" />
+      )}
     </>
   );
 };

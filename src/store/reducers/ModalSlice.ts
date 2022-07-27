@@ -5,11 +5,12 @@ export const ModalSlice = createSlice({
   name: "ModalSlice",
   initialState: {
     modalState: false,
-    validationNumber: true,
-    textError: "",
+    ModalChoise:"",
     searchState: false,
     burgerMenu:false,
     menuProfile:false,
+    validationNumber: true,
+    textError: "",
 
 
   },
@@ -39,6 +40,9 @@ export const ModalSlice = createSlice({
       state.modalState = false;
       state.searchState = false;
     },
+    AddModalChoise(state,action){
+      state.ModalChoise = action.payload;
+    },
     closeAll(state){
       state.modalState = false;
       state.searchState = false;
@@ -60,7 +64,8 @@ export const {
   openSearch,
   openBurgerMenu,
   closeAll,
-  openProfile
+  openProfile,
+  AddModalChoise
 } = ModalSlice.actions;
 
 export default ModalSlice.reducer;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import {
+  AddModalChoise,
   closeAll,
   openBurgerMenu,
   openModal,
@@ -19,12 +20,15 @@ import SearchMain from "../../components/searchMain/SearchMain";
 import { openSearch } from "../../store/reducers/ModalSlice";
 import user from "../../assets/header/user.svg";
 import sign from "../../assets/header/sign-in.svg";
-import { addBreadcrumb } from "../../store/reducers/BreadcrumbsSlice";
+import { AuthorizationAPI } from "../../store/services/AuthorizationApi";
+import { userStateToogle } from "../../store/reducers/AuthorizationUserSlice";
 
 import style from "./Header.module.scss";
 import HeaderBurgerMenu from "./HeaderBurgerMenu";
 import { icons, pages } from "./constants";
 import ProfileModal from "./ProfileModal/ProfileModal";
+
+
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -39,17 +43,14 @@ const Header = () => {
     (state) => state.AuthorizationUserSlice.userState
   );
 
+  const [refreshToken] =
+    AuthorizationAPI.useRefreshTokenMutation();
+
   const [animation, setAnimation] = useState("menuModalOpen");
-
   const location = useLocation();
-
   const [iconsArr, setIconsArr] = useState([...icons]);
 
-  const modalFunc = (name: string) => {
-    if (burgerMenuModal) {
-      animationfunc(burgerMenuModal);
-    }
-
+  const editColorIcon = (name: string) => {
     let arr = iconsArr.map((icon) => {
       if (icon.class === "activeIcon") {
         return { ...icon, class: "" };
@@ -60,28 +61,67 @@ const Header = () => {
       }
     });
     setIconsArr(arr);
+  };
+
+  const modalFunc = (name: string) => {
+    if (burgerMenuModal) {
+      animationfunc(burgerMenuModal);
+    }
+
+    editColorIcon(name);
 
     switch (name) {
-      case "search":
-        dispatch(openSearch(!modalSearch));
-        break;
-      case "heart":
-        navigate("/favorites");
-        dispatch(closeAll());
-        break;
-      case "shopping":
-        navigate("/shopping");
-        dispatch(closeAll());
-        break;
-      case "sign":
-        dispatch(openModal(!modal));
-        break;
-      case "user":
-        dispatch(openProfile(!menuProfile));
-        break;
-      default:
-        break;
+    case "search":
+      dispatch(openSearch(!modalSearch));
+      break;
+    case "heart":
+      navigate("/favorites");
+      dispatch(closeAll());
+      break;
+    case "shopping":
+      navigate("/shopping");
+      dispatch(closeAll());
+      break;
+    case "sign":
+      dispatch(openModal(!modal));
+      dispatch(AddModalChoise("sign"));
+      break;
+    case "user":
+      dispatch(openProfile(!menuProfile));
+      break;
+    default:
+      break;
     }
+  };
+
+  const checkAuth = () => {
+    if (userState) {
+      let obj = [...iconsArr];
+      obj[3].url = user;
+      obj[3].name = "user";
+      obj[3].class = "";
+      setIconsArr(obj);
+    } else {
+      let obj = [...iconsArr];
+      obj[3].url = sign;
+      obj[3].name = "sign";
+      obj[3].class = "";
+      setIconsArr(obj);
+    }
+  };
+
+  const updateRefreshFunc = () => {
+    let token: any = localStorage.getItem("token");
+
+    refreshToken(JSON.parse(token)).then((response: any) => {
+      if ("data" in response) {
+        console.log("udacha");
+        localStorage.setItem("token", JSON.stringify(response.data.result));
+        dispatch(userStateToogle(true));
+      } else {
+        localStorage.removeItem("token");
+      }
+    });
   };
 
   const animationfunc = (burgerMenuModal: boolean) => {
@@ -104,34 +144,13 @@ const Header = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (userState) {
-      let obj = [...iconsArr];
-      obj[3].url = user;
-      obj[3].name = "user";
-      obj[3].class = "";
-      setIconsArr(obj);
-    } else {
-      let obj = [...iconsArr];
-      obj[3].url = sign;
-      obj[3].name = "sign";
-      obj[3].class = "";
-      setIconsArr(obj);
-    }
+    checkAuth();
   }, [userState]);
 
   useEffect(() => {
-    if (userState) {
-      let obj = [...iconsArr];
-      obj[3].url = user;
-      obj[3].name = "user";
-      setIconsArr(obj);
-    } else {
-      let obj = [...iconsArr];
-      obj[3].url = sign;
-      obj[3].name = "sign";
-      obj[3].class = "";
-      setIconsArr(obj);
-    }
+    updateRefreshFunc();
+
+    checkAuth();
   }, []);
 
   return (

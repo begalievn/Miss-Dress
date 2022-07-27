@@ -5,6 +5,7 @@ import {
   validationNumber,
 } from "../../store/reducers/ModalSlice";
 
+
 export interface IDispatch {
   payload: any;
   type: string;
@@ -12,7 +13,7 @@ export interface IDispatch {
 
 export const checkValidation = (valueNumber: string) => {
   return (dispatch: Dispatch<IDispatch>) => {
-    let regExp = /^0\d{9}$/;
+    let regExp = /^\+996\d{9}$/;
     if (regExp.test(valueNumber)) {
       dispatch(validationNumber(false));
     } else {
@@ -23,4 +24,14 @@ export const checkValidation = (valueNumber: string) => {
       }, 3000);
     }
   };
+};
+
+export const parseJwt = () => {
+  let token:any = localStorage.getItem("token");
+  token =(JSON.parse(token));
+  try {
+    return JSON.parse(atob(token.refreshToken.split(".")[1]));
+  } catch (e) {
+    return null;
+  }
 };

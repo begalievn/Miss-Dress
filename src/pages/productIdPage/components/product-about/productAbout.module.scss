@@ -1,0 +1,64 @@
+@use './src/utils/styles/variables';
+
+.container {
+  width: 100%;
+  overflow-y: scroll;
+  margin-bottom: 3%;
+
+
+
+  h4 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: variables.$brown;
+    margin-bottom: 2.5%;
+  }
+
+  p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 25px;
+
+    color: variables.$brown;
+  }
+
+  @media (max-width: 1100px) {
+    height: 170px;
+
+    h4 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 23px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    height: auto;
+    margin-bottom: 5%;
+  }
+
+  @media (max-width: 768px) {
+    h4 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  @media (max-width: 425px) {
+    p {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+}
+

@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { useParams } from "react-router-dom";
 import classes from "./CollectionPagesAll.module.scss";
+import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
 import {
   colorsPalletIcon,
@@ -8,53 +9,56 @@ import {
   whiteStarIcon,
   favoriteIcon,
 } from "../../assets/icons/icons";
-import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
-import BestSellersBlock from "../mainPage/components/best-sellers-block/BestSellersBlock";
 
-interface Data {
-  img: string;
-  categories?: string;
-}
+import {
+  photoCardImage,
+  trousers,
+  skirts,
+  dresses,
+  bestSellers1,
+  bestSellers2,
+  bestSellers3,
+  bestSellers4,
+  bestSellers5,
+  bestSellers6,
+} from "../../assets/main-page/images";
+// import {
+//   // IChild,
+//   useFetchAllCategoryQuery,
+// } from "../../store/services/CategoryApi";
 
-const CollectionPagesContent: FC<Data> = () => {
-  //   const { category } = useParams();
+const CollectionPagesContent: FC = () => {
+  const { id } = useParams();
 
-  //   console.log(category);
-
-  //   const [data, setData] = useState<Data[]>([
-  //     {
-  //       img: blackStarIcon,
-  //       categories: "Джинсы",
-  //     },
-  //     {
-  //       img: whiteStarIcon,
-  //       categories: "Джинсы",
-  //     },
-  //     {
-  //       img: favoriteIcon,
-  //       categories: "Платья",
-  //     },
-  //     {
-  //       img: colorsPalletIcon,
-  //       categories: "Платья",
-  //     },
-  //   ]);
-
-  //   const result = data.filter((item) => item.categories === category);
-
-  //   console.log(result);
+  // const {
+  //   data: product,
+  //   isLoading,
+  //   isError,
+  //   refetch,
+  // } = useFetchAllCategoryQuery("");
 
   return (
     <div>
-      {/* {result.map((item) => (
-        <span>{item.categories}</span>
-      ))} */}
       <div className={classes.dropDow_container}>
         <CategoriesDropdowBtn />
       </div>
-      <BestSellersBlock />
+      <h2>{id}</h2>
+      <div>
+        {/* {product.map((item: IChild) => (
+          <div>
+            <div>{item.images}</div>
+            <div>{item.title}</div>
+            <div>{item.price}</div>
+            <div>{item.color}</div>
+            <div>{item.size}</div>
+          </div>
+        ))} */}
+      </div>
     </div>
   );
 };
 
 export default CollectionPagesContent;
+function result(result: any) {
+  throw new Error("Function not implemented.");
+}

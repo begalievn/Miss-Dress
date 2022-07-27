@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import PhotoCardCategory from "../../../../components/main-page/photo-card-category/PhotoCardCategory";
+import PhotoCardCategory from "../../../../components/photo-card-category/PhotoCardCategory";
 
 import CardsContainer from "../../../../containers/cardsContainer/CardsContainer";
 
