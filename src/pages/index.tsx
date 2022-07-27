@@ -63,7 +63,7 @@ const MainRoutes = () => {
       id: 9,
     },
     {
-      link: "/collection/:categories",
+      link: "/collection/:id",
       element: <CollectionPagesContent />,
       id: 10,
     },
