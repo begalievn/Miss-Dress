@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  color: #372E24;
 }
 
 
@@ -34,7 +35,6 @@
     font-size: 23px;
     line-height: 28px;
 
-    color: #372E24;
   }
 
   @media (max-width: 1000px) {
@@ -70,7 +70,12 @@
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-radius: 10px;
-    border-top: 6px solid #000;
+    border-top: 6px solid;
   }
+}
+
+.orange_color {
+  color: #E6A66E;
+  border-top: #E6A66E;
 }
 

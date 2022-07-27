@@ -32,7 +32,7 @@ const ProductCard = ({ image, id, width }: IProductCard) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/products/4");
+    navigate("/category/4");
   };
 
   return (
