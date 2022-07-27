@@ -19,7 +19,8 @@ import ProductCard from "../../components/productCard/ProductCard";
 import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
-import classes from "./productPage.module.scss";
+import classes from "./categoryPage.module.scss";
+import { categoryApi } from "../../store/services/categoryApi";
 
 const cards = [
   {
@@ -48,7 +49,12 @@ const cards = [
   },
 ];
 
-const ProductPage = () => {
+const CategoryPage = () => {
+  const { data, isLoading, error } =
+    categoryApi.useFetchAllCateggoriesQuery("");
+
+  console.log(data);
+
   return (
     <div className={classes.container}>
       <ContentContainer>
@@ -97,4 +103,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default CategoryPage;

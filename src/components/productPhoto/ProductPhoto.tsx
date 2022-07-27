@@ -12,7 +12,7 @@ interface IProductPhoto {
 const ProductPhoto = ({ image, id, category }: IProductPhoto) => {
   const navigate = useNavigate();
   const clickHandler = () => {
-    navigate("/products");
+    navigate("/category");
   };
 
   return (
