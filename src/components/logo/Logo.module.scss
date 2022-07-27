@@ -13,6 +13,21 @@
     }
 }
 
+.logo2{
+    font-family: 'arizonia';
+    position: relative;
+    font-size: 30px;
+
+    img {
+        position: absolute;
+        top: -35%;
+        left: 84%;
+        width: 67px;
+        height: 85px;
+        z-index: 90;
+    }
+}
+
 @media(max-width:767px){
     .logo {
         font-size: 25px;

@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import {
-  closeAll,
-  openBurgerMenu,
-  openModal,
-  openProfile,
-} from "../../store/reducers/ModalSlice";
+import { AddModalChoise, closeAll, openBurgerMenu, openModal, openProfile } from "../../store/reducers/ModalSlice";
 
 import burgerMenu from "../../assets/header/burgerMenu.svg";
 
@@ -62,25 +57,26 @@ const Header = () => {
     setIconsArr(arr);
 
     switch (name) {
-      case "search":
-        dispatch(openSearch(!modalSearch));
-        break;
-      case "heart":
-        navigate("/favorites");
-        dispatch(closeAll());
-        break;
-      case "shopping":
-        navigate("/shopping");
-        dispatch(closeAll());
-        break;
-      case "sign":
-        dispatch(openModal(!modal));
-        break;
-      case "user":
-        dispatch(openProfile(!menuProfile));
-        break;
-      default:
-        break;
+    case "search":
+      dispatch(openSearch(!modalSearch));
+      break;
+    case "heart":
+      navigate("/favorites");
+      dispatch(closeAll());
+      break;
+    case "shopping":
+      navigate("/shopping");
+      dispatch(closeAll());
+      break;
+    case "sign":
+      dispatch(openModal(!modal));
+      dispatch(AddModalChoise("sign"));
+      break;
+    case "user":
+      dispatch(openProfile(!menuProfile));
+      break;
+    default:
+      break;
     }
   };
 

@@ -1,6 +1,6 @@
-import React, { FC, useState } from "react";
-import { AddModalChoise } from "../../store/reducers/ModalSlice";
+import React, { useState } from "react";
 
+import { AddModalChoise } from "../../store/reducers/ModalSlice";
 import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 import { checkValidation } from "../../utils/helpers/authorization";
 
@@ -8,9 +8,7 @@ import ConfirmationModal from "./ConfirmationModal";
 
 import style from "./ModalRegistration.module.scss";
 
-
-
-const ModalAuthorization: FC = () => {
+const NumberСhange = () => {
   const [valueNumber, setValueNumber] = useState("");
 
 
@@ -23,17 +21,15 @@ const ModalAuthorization: FC = () => {
   return (
     <>
       {validationRegistr ? <div className={style.text}>
-        <h2>Вход</h2>
-        <input type="text" placeholder="Введите номер телефона" value={valueNumber} onChange={(e) => setValueNumber(e.target.value)} />
-        <button onClick={() => dispatch(checkValidation(valueNumber))}>Войти</button>
-        <div className={style.registration_text} onClick={() => dispatch(AddModalChoise("auth"))} >Зарегистрироваться</div>
+        <h2>Смена номера</h2>
+        <input type="text" placeholder="Указать новый номер" value={valueNumber} onChange={(e) => setValueNumber(e.target.value)} />
+        <button onClick={() => dispatch(checkValidation(valueNumber))}>Подтвердить</button>
         <div className={style.text_error}>{textError}</div>
       </div> :
-        <ConfirmationModal title="Вход" />
+        <ConfirmationModal title="Смена номера" />
       }
-
     </>
   );
 };
 
-export default ModalAuthorization;
+export default NumberСhange;
