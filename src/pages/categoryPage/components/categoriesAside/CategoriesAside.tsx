@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+import { CategoryTypes } from "../../../../utils/types/types";
+
 import classes from "./categoriesAside.module.scss";
 
-const categories = [
+const categoriesMock = [
   {
     id: 1,
     title: "Верхняя одежда",
@@ -79,8 +81,14 @@ const categories = [
   },
 ];
 
-const CategoriesAside = () => {
+interface ICategoryAside {
+  categories: CategoryTypes[];
+}
+
+const CategoriesAside = ({ categories }: ICategoryAside) => {
   const [activeMenus, setActiveMenus] = useState<string[]>([]);
+
+  console.log("CategoryAside: ", categories);
 
   const handleMenuClick = (data: any) => {
     console.log(data);
@@ -101,10 +109,6 @@ const CategoriesAside = () => {
     setActiveMenus(newActiveMenus);
   };
 
-  if (categories[2].children) {
-    console.log("has children", categories[2].children);
-  }
-
   interface IListMenu {
     dept: any;
     data: any;
@@ -121,14 +125,32 @@ const CategoriesAside = () => {
     menuIndex,
   }: IListMenu) => (
     <li>
-      <div className={classes.item} style={{ paddingLeft: `${dept * 18}px` }}>
-        <span className={classes.label} onClick={() => handleMenuClick(data)}>
+      <div
+        className={
+          activeMenus.includes(menuName)
+            ? `${classes.item} ${classes.orange_color}`
+            : `${classes.item}`
+        }
+        style={{ paddingLeft: `${dept * 18}px` }}
+      >
+        <span
+          className={classes.label}
+          onClick={
+            hasChildren.length !== 0
+              ? () => handleArrowClick(menuName)
+              : () => handleMenuClick(data)
+          }
+        >
           {data.title}
         </span>
         {hasChildren.length !== 0 && (
           <span
             onClick={() => handleArrowClick(menuName)}
-            className={classes.arrow}
+            className={
+              activeMenus.includes(menuName)
+                ? `${classes.arrow} ${classes.orange_color}`
+                : `${classes.arrow}`
+            }
             style={{
               transform: activeMenus.includes(menuName)
                 ? "rotate(180deg)"

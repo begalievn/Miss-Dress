@@ -1,9 +1,10 @@
 import React from "react";
 
-import PhotoCard from "../../photo-card/PhotoCard";
+import ProductPhoto from "../productPhoto/ProductPhoto";
+
+import { CategoryTypes } from "../../utils/types/types";
 
 import classes from "./photoCardCategory.module.scss";
-import ProductPhoto from "../../productPhoto/ProductPhoto";
 
 interface IPhotoCardCategory {
   image: string;

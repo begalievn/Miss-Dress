@@ -19,7 +19,9 @@ import ProductCard from "../../components/productCard/ProductCard";
 import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
-import classes from "./productPage.module.scss";
+import classes from "./categoryPage.module.scss";
+import { categoryApi } from "../../store/services/categoryApi";
+import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
 
 const cards = [
   {
@@ -48,7 +50,17 @@ const cards = [
   },
 ];
 
-const ProductPage = () => {
+const CategoryPage = () => {
+  const {
+    data: categories,
+    isLoading: categoriesLoading,
+    error: categoriesError,
+  } = categoryApi.useFetchAllCateggoriesQuery("");
+
+  console.log(categories?.result);
+  if (!categoriesLoading) {
+    getNestedCategories(categories?.result || []);
+  }
   return (
     <div className={classes.container}>
       <ContentContainer>
@@ -58,7 +70,9 @@ const ProductPage = () => {
             <div className={classes.title_category}>
               <h3>Категория</h3>
             </div>
-            <CategoriesAside />
+            {!categoriesLoading && (
+              <CategoriesAside categories={categories?.result || []} />
+            )}
           </aside>
           <main className={classes.main}>
             {/* Desktop version*/}
@@ -66,14 +80,13 @@ const ProductPage = () => {
               <h2>{"Все товары"}</h2>
               <div>
                 <FilterSelect />
-                {/*<CategoriesDropdowBtn />*/}
               </div>
             </div>
 
             {/* Mobile version */}
             <div className={classes.mobile_filters_container}>
               <div className={classes.mobile_filters_row}>
-                <CategoryDropdown />
+                {/*<CategoryDropdown />*/}
                 <FilterSelect />
               </div>
               <div className={classes.mobile_filters_title}>
@@ -97,4 +110,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default CategoryPage;
