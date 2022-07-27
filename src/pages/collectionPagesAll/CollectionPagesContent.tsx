@@ -22,20 +22,20 @@ import {
   bestSellers5,
   bestSellers6,
 } from "../../assets/main-page/images";
-import {
-  // IChild,
-  useFetchAllCategoryQuery,
-} from "../../store/services/CategoryApi";
+// import {
+//   // IChild,
+//   useFetchAllCategoryQuery,
+// } from "../../store/services/CategoryApi";
 
 const CollectionPagesContent: FC = () => {
   const { id } = useParams();
 
-  const {
-    data: product,
-    isLoading,
-    isError,
-    refetch,
-  } = useFetchAllCategoryQuery("");
+  // const {
+  //   data: product,
+  //   isLoading,
+  //   isError,
+  //   refetch,
+  // } = useFetchAllCategoryQuery("");
 
   return (
     <div>

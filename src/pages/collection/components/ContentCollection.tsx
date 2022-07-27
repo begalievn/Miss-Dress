@@ -1,18 +1,28 @@
+import { useState } from "react";
 import CategoriesDropdowBtn from "../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 import Paginations from "../../../components/pagination/Paginations";
 import classes from "../Collection.module.scss";
-import { useFetchAllCategoryQuery } from "../../../store/services/CategoryApi";
+import { categoryApi } from "../../../store/services/categoryApi";
 
 import { skirts } from "../../../assets/main-page/images";
 import { IResult } from "../../../utils/types/typesCategory";
+import { getNestedCategories } from "../../../utils/helpers/getNestedCategories";
+import { CategoryTypes } from "../../../utils/types/types";
 
 const ContentCollection = () => {
   const {
-    data: category,
+    data: categories,
     isLoading,
     isError,
     refetch,
-  } = useFetchAllCategoryQuery("");
+  } = categoryApi.useFetchAllCateggoriesQuery("");
+  const [category, setCategory] = useState<CategoryTypes[]>([]);
+
+  if (!isLoading) {
+    setCategory(getNestedCategories(categories?.result || []));
+  }
+
+  // console.log(category);
 
   return (
     <div className={classes.container}>
@@ -33,8 +43,8 @@ const ContentCollection = () => {
             поменять запрос
           </h1>
         )}
-        {category &&
-          category.map((item: IResult) => (
+        {isLoading &&
+          category.map((item) => (
             <ul className={classes.item_map_container} key={item.id}>
               <li className={classes.item_map}>
                 <img className={classes.image} src={skirts} alt="" />
