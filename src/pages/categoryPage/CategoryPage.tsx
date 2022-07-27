@@ -21,6 +21,7 @@ import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/Categ
 
 import classes from "./categoryPage.module.scss";
 import { categoryApi } from "../../store/services/categoryApi";
+import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
 
 const cards = [
   {
@@ -50,11 +51,16 @@ const cards = [
 ];
 
 const CategoryPage = () => {
-  const { data, isLoading, error } =
-    categoryApi.useFetchAllCateggoriesQuery("");
+  const {
+    data: categories,
+    isLoading: categoriesLoading,
+    error: categoriesError,
+  } = categoryApi.useFetchAllCateggoriesQuery("");
 
-  console.log(data);
-
+  console.log(categories?.result);
+  if (!categoriesLoading) {
+    getNestedCategories(categories?.result || []);
+  }
   return (
     <div className={classes.container}>
       <ContentContainer>
@@ -64,7 +70,9 @@ const CategoryPage = () => {
             <div className={classes.title_category}>
               <h3>Категория</h3>
             </div>
-            <CategoriesAside />
+            {!categoriesLoading && (
+              <CategoriesAside categories={categories?.result || []} />
+            )}
           </aside>
           <main className={classes.main}>
             {/* Desktop version*/}
@@ -72,14 +80,13 @@ const CategoryPage = () => {
               <h2>{"Все товары"}</h2>
               <div>
                 <FilterSelect />
-                {/*<CategoriesDropdowBtn />*/}
               </div>
             </div>
 
             {/* Mobile version */}
             <div className={classes.mobile_filters_container}>
               <div className={classes.mobile_filters_row}>
-                <CategoryDropdown />
+                {/*<CategoryDropdown />*/}
                 <FilterSelect />
               </div>
               <div className={classes.mobile_filters_title}>

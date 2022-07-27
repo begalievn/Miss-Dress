@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+import { CategoryTypes } from "../../../../utils/types/types";
+
 import classes from "./categoriesAside.module.scss";
 
-const categories = [
+const categoriesMock = [
   {
     id: 1,
     title: "Верхняя одежда",
@@ -79,8 +81,14 @@ const categories = [
   },
 ];
 
-const CategoriesAside = () => {
+interface ICategoryAside {
+  categories: CategoryTypes[];
+}
+
+const CategoriesAside = ({ categories }: ICategoryAside) => {
   const [activeMenus, setActiveMenus] = useState<string[]>([]);
+
+  console.log("CategoryAside: ", categories);
 
   const handleMenuClick = (data: any) => {
     console.log(data);

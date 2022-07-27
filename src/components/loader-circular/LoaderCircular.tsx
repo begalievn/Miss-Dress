@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, CircularProgress } from "@mui/material";
 
+import classes from "./LoaderCircular.module.scss";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -11,8 +13,8 @@ const style = {
 
 const LoaderCircular = () => {
   return (
-    <div>
-      <Box sx={style}>
+    <div className={classes.container}>
+      <Box>
         <CircularProgress />
       </Box>
     </div>

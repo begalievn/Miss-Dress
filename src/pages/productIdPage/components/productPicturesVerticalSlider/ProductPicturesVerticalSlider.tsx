@@ -35,7 +35,7 @@ const ProductPicturesVerticalSlider = ({
 
     // Here I add additional cards if there isn't necessary value
     let i = 0;
-    while (arrCards.length <= 7) {
+    while (arrCards.length < 7) {
       arrCards.push(arrCards[i]);
       i++;
     }
@@ -46,12 +46,10 @@ const ProductPicturesVerticalSlider = ({
 
   const handleImageClick = (index: number) => {
     let currentIndex = index;
-    if (index > cards.length - 1) {
-      currentIndex = index - (cards.length - 1);
-      console.log("bigger");
+    if (index >= 4) {
+      currentIndex = index - 4;
     }
-    setImageIndex(index);
-    console.log("INDEX", currentIndex);
+    setImageIndex(currentIndex);
   };
 
   let leftIndex = activeIndex ? activeIndex - 1 : sliderCards.length - 1;

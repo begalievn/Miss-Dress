@@ -35,14 +35,8 @@ const ProductIdPage = () => {
   return (
     <div className={classes.container}>
       <ContentContainer>
-        <ZoomModal
-          isModalOpen={isModalOpen}
-          setModalOpen={setModalOpen}
-          image={images[activeIndex]}
-        />
         <div className={classes.product_container}>
           <div className={classes.product_vertical_slider}>
-            {/*<ProductPicturesSlider images={images} />*/}
             <ProductPicturesVerticalSlider
               setImageIndex={setActiveIndex}
               cards={images}
@@ -67,13 +61,16 @@ const ProductIdPage = () => {
                 />
               </div>
               <div className={classes.add_button}>
-                <AddToBusketButton text={"Перейти в корзину"} />
+                <AddToBusketButton text={"Добавить в корзину"} />
               </div>
             </div>
           </div>
         </div>
         <div className={classes.product_horizontal_slider}>
-          <ProductPicturesSlider cards={images} />
+          <ProductPicturesSlider
+            cards={images}
+            setImageIndex={setActiveIndex}
+          />
         </div>
         <div className={classes.product_content_info_bottom}>
           <div className={classes.about}>
@@ -92,6 +89,11 @@ const ProductIdPage = () => {
         <div>
           <SimilarProductsBlock />
         </div>
+        <ZoomModal
+          isModalOpen={isModalOpen}
+          setModalOpen={setModalOpen}
+          image={images[activeIndex]}
+        />
       </ContentContainer>
     </div>
   );

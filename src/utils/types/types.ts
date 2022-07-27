@@ -24,8 +24,8 @@ export interface ImagesType {}
 export interface CategoryTypes {
   id: number;
   status: number;
-  createDate: Date;
-  updateDate: Date;
+  // createDate: Date;
+  // updateDate: Date;
   title: string;
   children: CategoryTypes[] | [];
 }
