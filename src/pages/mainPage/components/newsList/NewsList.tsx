@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 
+import { subBackMobile } from "../../../../assets/main-page/images";
+
 import styles from "./newList.module.scss";
 
 interface INewsList {
@@ -22,6 +24,9 @@ const NewsList: FC<INewsList> = ({ page = "main", title = "Новости" }) =>
       {[1, 2, 3, 4].map((item) => (
         <div key={item} className={styles.imageBlock}>
           <div
+            style={{
+              backgroundImage: `url(${subBackMobile})`,
+            }}
             className={
               page === "about"
                 ? `${styles.infoBlock} ${styles.lost}`

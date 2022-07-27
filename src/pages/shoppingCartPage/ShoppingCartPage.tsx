@@ -65,6 +65,15 @@ const ShoppingCartPage = () => {
   ];
   const { data: posts } = shoppingCartApi.useFetchAllPostsQuery("");
   console.log(posts);
+  const saveHandler = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    inputs[0].hook.setError("");
+    inputs.every((i) => {
+      console.log(i.hook.inputValid, i.name);
+      return i.hook.inputValid;
+    }) && inputs.forEach((i) => i.hook.clearFields());
+  };
 
   return (
     <section className={styles.container}>
@@ -78,7 +87,9 @@ const ShoppingCartPage = () => {
                 <p>Исанова, 79, +996712345678</p>
                 <p>Кыргызстан, г. Бишкек</p>
                 <div className={styles.buttonBlock}>
-                  <SubmitButton />
+                  {/*<SubmitButton*/}
+                  {/*  onClick={(e: React.SyntheticEvent) => submitHandler(e)}*/}
+                  {/*/>*/}
                 </div>
               </section>
 
@@ -101,7 +112,9 @@ const ShoppingCartPage = () => {
                     </div>
                   );
                 })}
-                <SubmitButton />
+                <SubmitButton
+                  onClick={(e: React.SyntheticEvent) => saveHandler(e)}
+                />
               </form>
             </section>
 

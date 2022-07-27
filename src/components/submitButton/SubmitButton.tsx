@@ -1,10 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 
 import styles from "./submitButton.module.scss";
 
-const SubmitButton = () => {
+interface ISubmitButton {
+  onClick: (e: React.SyntheticEvent) => void;
+}
+
+const SubmitButton: FC<ISubmitButton> = ({ onClick }) => {
   return (
-    <button className={styles.button} type="submit">
+    <button className={styles.button} onClick={(e) => onClick(e)} type="submit">
       Привет
     </button>
   );

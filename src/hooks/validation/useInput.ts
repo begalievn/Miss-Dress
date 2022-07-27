@@ -36,7 +36,7 @@ const useValidation = (value: string, validations: IRules) => {
         error = "Неверный формат";
       }
       if (validation === "cyrillic" && !CYRYLLYC_INPUT.test(value)) {
-        error = "Имя не должно содержать латиницу";
+        error = "Поле не должно содержать латиницу";
       }
     }
     setError(error);
@@ -49,7 +49,7 @@ const useValidation = (value: string, validations: IRules) => {
       setInputValid(true);
     }
   }, [error]);
-  return { error, inputValid };
+  return { setError, error, inputValid };
   // isEmpty, minLengthError
 };
 
