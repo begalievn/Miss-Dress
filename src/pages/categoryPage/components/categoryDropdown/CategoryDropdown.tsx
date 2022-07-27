@@ -25,9 +25,7 @@ const CategoryDropdown = ({}: ICategoryDropdown) => {
         ></span>
       </div>
       {isOpen && (
-        <div className={classes.dropdown}>
-          <CategoriesAside />
-        </div>
+        <div className={classes.dropdown}>{/*<CategoriesAside />*/}</div>
       )}
     </div>
   );

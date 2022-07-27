@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { CategoryTypes } from "../../utils/types/types";
 
 // http://discoverystudio.xyz:4343/api/category
 
@@ -16,6 +17,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 //   }),
 // });
 
+interface CategoryQueryTypes {
+  status: number;
+  result: CategoryTypes[];
+}
+
 export const categoryApi = createApi({
   reducerPath: "categoryAPI",
   baseQuery: fetchBaseQuery({
@@ -23,10 +29,11 @@ export const categoryApi = createApi({
   }),
   tagTypes: ["Category"],
   endpoints: (build) => ({
-    fetchAllCateggories: build.query({
+    fetchAllCateggories: build.query<CategoryQueryTypes, any>({
       query: () => ({
         url: "/category",
       }),
+      // transformResponse: (response: CategoryQueryTypes) => response.result,
       providesTags: ["Category"],
     }),
   }),
