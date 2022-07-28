@@ -1,20 +1,40 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { CategoryTypes } from "../../utils/types/types";
 
-import { IChild, IRootObject } from "../../utils/types/typesCategory";
+// http://discoverystudio.xyz:4343/api/category
 
-export const CategoryApi = createApi({
-  reducerPath: "CategoryApi",
+// export const categoryAPI = createApi({
+//   reducerPath: "categoryAPI",
+//   baseQuery: fetchBaseQuery({ baseUrl: API }),
+//   tagTypes: ["Category"],
+//   endpoints: (build) => ({
+//     fetchAllCategory: build.query({
+//       query: () => ({
+//         url: "/category",
+//       }),
+//       providesTags: ["Category"],
+//     }),
+//   }),
+// });
+
+interface CategoryQueryTypes {
+  status: number;
+  result: CategoryTypes[];
+}
+
+export const categoryApi = createApi({
+  reducerPath: "categoryAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://discoverystudio.xyz:4343/api",
+    baseUrl: "http://discoverystudio.xyz:4343/api/",
   }),
+  tagTypes: ["Category"],
   endpoints: (build) => ({
-    fetchAllCategory: build.query<IChild[], any>({
+    fetchAllCateggories: build.query<CategoryQueryTypes, any>({
       query: () => ({
         url: "/category",
       }),
-      transformResponse: (response: IRootObject<IChild>) => response.result,
+      // transformResponse: (response: CategoryQueryTypes) => response.result,
+      providesTags: ["Category"],
     }),
   }),
 });
-
-export const { useFetchAllCategoryQuery } = CategoryApi;

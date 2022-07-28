@@ -2,15 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import { AuthorizationAPI } from "./services/AuthorizationApi";
 
-
 import AuthorizationUserSlice from "./reducers/AuthorizationUserSlice";
 import Breadcrumbs from "./reducers/BreadcrumbsSlice";
 import ModalSlice from "./reducers/ModalSlice";
 
 import { shoppingCartApi } from "./services/shoppingCartQuery";
 import { LikeApi } from "./services/LikeApi";
-import { categoryApi } from "./services/categoryApi";
-
+import { categoryApi } from "./services/CategoryApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -18,7 +16,7 @@ const rootreducer = combineReducers({
   Breadcrumbs: Breadcrumbs,
   [shoppingCartApi.reducerPath]: shoppingCartApi.reducer,
   [LikeApi.reducerPath]: LikeApi.reducer,
-  [AuthorizationAPI.reducerPath]:AuthorizationAPI.reducer,
+  [AuthorizationAPI.reducerPath]: AuthorizationAPI.reducer,
   [categoryApi.reducerPath]: categoryApi.reducer,
 });
 

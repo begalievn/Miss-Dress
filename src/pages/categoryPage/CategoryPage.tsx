@@ -20,7 +20,7 @@ import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
 import classes from "./categoryPage.module.scss";
-import { categoryApi } from "../../store/services/categoryApi";
+import { categoryApi } from "../../store/services/CategoryApi";
 import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
 
 const cards = [
