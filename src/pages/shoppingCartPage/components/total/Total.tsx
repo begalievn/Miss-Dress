@@ -5,6 +5,10 @@ import styles from "../../components/total/total.module.scss";
 import SubmitButton from "../../../../components/submitButton/SubmitButton";
 
 const Total = () => {
+  const submitHandler = (e: React.SyntheticEvent) => {
+    console.log(e);
+  };
+
   return (
     <section className={styles.total}>
       <h3 className={styles.totalTitle}>Итого</h3>
@@ -22,7 +26,7 @@ const Total = () => {
           <p className={styles.totalRight}>1231233</p>
         </div>
       </div>
-      <SubmitButton />
+      <SubmitButton onClick={(e) => submitHandler(e)} />
     </section>
   );
 };

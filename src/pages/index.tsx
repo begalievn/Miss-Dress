@@ -38,7 +38,7 @@ const MainRoutes = () => {
       id: 4,
     },
     {
-      link: "/news",
+      link: "/news/:id",
       element: <NewsPage />,
       id: 5,
     },
