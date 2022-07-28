@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import { CategoryTypes } from "../../utils/types/types";
 
 // http://discoverystudio.xyz:4343/api/category
