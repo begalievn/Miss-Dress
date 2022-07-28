@@ -7,9 +7,13 @@ import { CategoryTypes } from "../../../../utils/types/types";
 
 interface ICategoryDropdown {
   categories: CategoryTypes[];
+  setSelectedCategory: (value: number) => void;
 }
 
-const CategoryDropdown = ({ categories }: ICategoryDropdown) => {
+const CategoryDropdown = ({
+  categories,
+  setSelectedCategory,
+}: ICategoryDropdown) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -29,7 +33,10 @@ const CategoryDropdown = ({ categories }: ICategoryDropdown) => {
       </div>
       {isOpen && (
         <div className={classes.dropdown}>
-          <CategoriesAside categories={categories} />
+          <CategoriesAside
+            categories={categories}
+            setSelectedCategory={setSelectedCategory}
+          />
         </div>
       )}
     </div>
