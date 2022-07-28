@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
 
@@ -22,6 +22,8 @@ import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/Categ
 import classes from "./categoryPage.module.scss";
 import { categoryApi } from "../../store/services/categoryApi";
 import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
+import { CategoryTypes } from "../../utils/types/types";
+import { productsApi } from "../../store/services/productsApi";
 
 const cards = [
   {
@@ -57,10 +59,24 @@ const CategoryPage = () => {
     error: categoriesError,
   } = categoryApi.useFetchAllCateggoriesQuery("");
 
+  const {
+    data: products,
+    isLoading: productsLoading,
+    error: productsError,
+  } = productsApi.useGetAllProductsQuery("");
+
+  const [outputCategories, setOutputCategories] = useState<CategoryTypes[]>([]);
+
+  console.log("Products", products);
+
   console.log(categories?.result);
   if (!categoriesLoading) {
-    getNestedCategories(categories?.result || []);
+    let nestedresult = getNestedCategories(categories?.result || []);
+    console.log("nestedResult", nestedresult);
+    // setOutputCategories(nestedresult);
   }
+
+  console.log("setOutputCategories", outputCategories);
   return (
     <div className={classes.container}>
       <ContentContainer>
@@ -86,7 +102,7 @@ const CategoryPage = () => {
             {/* Mobile version */}
             <div className={classes.mobile_filters_container}>
               <div className={classes.mobile_filters_row}>
-                {/*<CategoryDropdown />*/}
+                <CategoryDropdown categories={categories?.result || []} />
                 <FilterSelect />
               </div>
               <div className={classes.mobile_filters_title}>
