@@ -2,7 +2,7 @@ import { useState } from "react";
 import CategoriesDropdowBtn from "../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 import Paginations from "../../../components/pagination/Paginations";
 import classes from "../Collection.module.scss";
-import { categoryApi } from "../../../store/services/CategoryApi";
+import { categoryApi } from "../../../store/services/categoryApi";
 
 import { skirts } from "../../../assets/main-page/images";
 import { IResult } from "../../../utils/types/typesCategory";

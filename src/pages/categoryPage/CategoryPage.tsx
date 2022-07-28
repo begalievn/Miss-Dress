@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
 
@@ -20,8 +20,10 @@ import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
 import classes from "./categoryPage.module.scss";
-import { categoryApi } from "../../store/services/CategoryApi";
+import { categoryApi } from "../../store/services/categoryApi";
 import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
+import { CategoryTypes } from "../../utils/types/types";
+import { productsApi } from "../../store/services/productsApi";
 
 const cards = [
   {
@@ -51,16 +53,33 @@ const cards = [
 ];
 
 const CategoryPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  console.log("Selected category", selectedCategory);
+
   const {
     data: categories,
     isLoading: categoriesLoading,
     error: categoriesError,
   } = categoryApi.useFetchAllCateggoriesQuery("");
 
-  console.log(categories?.result);
-  if (!categoriesLoading) {
-    getNestedCategories(categories?.result || []);
-  }
+  const {
+    data: products,
+    isLoading: productsLoading,
+    error: productsError,
+  } = productsApi.useGetAllProductsQuery("");
+
+  const {
+    data: productsByCategory,
+    isLoading: productsByCategoryLoading,
+    error: productsByCategoryError,
+  } = productsApi.useGetProductsByCategoryQuery(selectedCategory);
+
+  console.log("Products by Category", productsByCategory);
+
+  const [outputCategories, setOutputCategories] = useState<CategoryTypes[]>([]);
+
+  console.log("Products", products);
+
   return (
     <div className={classes.container}>
       <ContentContainer>
@@ -71,7 +90,10 @@ const CategoryPage = () => {
               <h3>Категория</h3>
             </div>
             {!categoriesLoading && (
-              <CategoriesAside categories={categories?.result || []} />
+              <CategoriesAside
+                categories={categories?.result || []}
+                setSelectedCategory={setSelectedCategory}
+              />
             )}
           </aside>
           <main className={classes.main}>
@@ -86,7 +108,10 @@ const CategoryPage = () => {
             {/* Mobile version */}
             <div className={classes.mobile_filters_container}>
               <div className={classes.mobile_filters_row}>
-                {/*<CategoryDropdown />*/}
+                <CategoryDropdown
+                  categories={categories?.result || []}
+                  setSelectedCategory={setSelectedCategory}
+                />
                 <FilterSelect />
               </div>
               <div className={classes.mobile_filters_title}>

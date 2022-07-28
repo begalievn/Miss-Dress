@@ -8,7 +8,9 @@ import ModalSlice from "./reducers/ModalSlice";
 
 import { shoppingCartApi } from "./services/shoppingCartQuery";
 import { LikeApi } from "./services/LikeApi";
-import { categoryApi } from "./services/CategoryApi";
+import { categoryApi } from "./services/categoryApi";
+import { UserApi } from "./services/UserApi";
+import { productsApi } from "./services/productsApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -18,6 +20,8 @@ const rootreducer = combineReducers({
   [LikeApi.reducerPath]: LikeApi.reducer,
   [AuthorizationAPI.reducerPath]: AuthorizationAPI.reducer,
   [categoryApi.reducerPath]: categoryApi.reducer,
+  [UserApi.reducerPath]: UserApi.reducer,
+  [productsApi.reducerPath]: productsApi.reducer,
 });
 
 export const store = configureStore({
@@ -27,7 +31,10 @@ export const store = configureStore({
       shoppingCartApi.middleware,
       LikeApi.middleware,
       AuthorizationAPI.middleware,
-      categoryApi.middleware
+      categoryApi.middleware,
+      UserApi.middleware,
+      productsApi.middleware,
+     
     ),
 });
 

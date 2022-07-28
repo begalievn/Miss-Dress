@@ -27,6 +27,7 @@ const FilterSelect = () => {
     height: "100%",
     display: "flex",
     alignItems: "center",
+    border: "none",
   };
 
   const inputLabelStyles = {
@@ -47,11 +48,14 @@ const FilterSelect = () => {
     height: "100%",
     textAlign: "start",
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "start",
     "&:hover": { cursor: "pointer" },
-    border: "1px solid darkgrey",
     "& MuiInputLabel-root.Mui-focused": {
       borderColor: "red",
+    },
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      border: "none",
+      borderRadius: 0,
     },
   };
 
