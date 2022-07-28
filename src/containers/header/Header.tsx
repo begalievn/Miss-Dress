@@ -28,8 +28,6 @@ import HeaderBurgerMenu from "./HeaderBurgerMenu";
 import { icons, pages } from "./constants";
 import ProfileModal from "./ProfileModal/ProfileModal";
 
-
-
 const Header = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -43,8 +41,7 @@ const Header = () => {
     (state) => state.AuthorizationUserSlice.userState
   );
 
-  const [refreshToken] =
-    AuthorizationAPI.useRefreshTokenMutation();
+  const [refreshToken] = AuthorizationAPI.useRefreshTokenMutation();
 
   const [animation, setAnimation] = useState("menuModalOpen");
   const location = useLocation();
@@ -71,26 +68,26 @@ const Header = () => {
     editColorIcon(name);
 
     switch (name) {
-    case "search":
-      dispatch(openSearch(!modalSearch));
-      break;
-    case "heart":
-      navigate("/favorites");
-      dispatch(closeAll());
-      break;
-    case "shopping":
-      navigate("/shopping");
-      dispatch(closeAll());
-      break;
-    case "sign":
-      dispatch(openModal(!modal));
-      dispatch(AddModalChoise("sign"));
-      break;
-    case "user":
-      dispatch(openProfile(!menuProfile));
-      break;
-    default:
-      break;
+      case "search":
+        dispatch(openSearch(!modalSearch));
+        break;
+      case "heart":
+        navigate("/favorites");
+        dispatch(closeAll());
+        break;
+      case "shopping":
+        navigate("/shopping");
+        dispatch(closeAll());
+        break;
+      case "sign":
+        dispatch(openModal(!modal));
+        dispatch(AddModalChoise("sign"));
+        break;
+      case "user":
+        dispatch(openProfile(!menuProfile));
+        break;
+      default:
+        break;
     }
   };
 
@@ -111,17 +108,34 @@ const Header = () => {
   };
 
   const updateRefreshFunc = () => {
-    let token: any = localStorage.getItem("token");
+    let access = localStorage.getItem("accessToken") || "";
+    let refresh = localStorage.getItem("refreshToken") || "";
+  
 
-    refreshToken(JSON.parse(token)).then((response: any) => {
-      if ("data" in response) {
-        console.log("udacha");
-        localStorage.setItem("token", JSON.stringify(response.data.result));
-        dispatch(userStateToogle(true));
-      } else {
-        localStorage.removeItem("token");
-      }
-    });
+    if (refresh) {
+      let token: any = {
+        accessToken: JSON.parse(access),
+        refreshToken: JSON.parse(refresh),
+      };
+
+      refreshToken(token).then((response: any) => {
+        if ("data" in response) {
+     
+          localStorage.setItem(
+            "accessToken",
+            JSON.stringify(response.data.result.accessToken)
+          );
+          localStorage.setItem(
+            "refreshToken",
+            JSON.stringify(response.data.result.refreshToken)
+          );
+          dispatch(userStateToogle(true));
+        } else {
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+        }
+      });
+    }
   };
 
   const animationfunc = (burgerMenuModal: boolean) => {

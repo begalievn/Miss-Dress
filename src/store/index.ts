@@ -8,6 +8,7 @@ import Breadcrumbs from "./reducers/BreadcrumbsSlice";
 import ModalSlice from "./reducers/ModalSlice";
 import { LikeApi } from "./services/LikeApi";
 import { categoryApi } from "./services/categoryApi";
+import { UserApi } from "./services/UserApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -16,6 +17,7 @@ const rootreducer = combineReducers({
   [LikeApi.reducerPath]: LikeApi.reducer,
   [AuthorizationAPI.reducerPath]:AuthorizationAPI.reducer,
   [categoryApi.reducerPath]: categoryApi.reducer,
+  [UserApi.reducerPath]: UserApi.reducer,
 });
 
 export const store = configureStore({
@@ -24,7 +26,8 @@ export const store = configureStore({
     getDefaultMiddleware().concat(
       LikeApi.middleware,
       AuthorizationAPI.middleware,
-      categoryApi.middleware
+      categoryApi.middleware,
+      UserApi.middleware,
     ),
 });
 
