@@ -1,5 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
+import { AuthorizationAPI } from "./services/AuthorizationApi";
+
 import AuthorizationUserSlice from "./reducers/AuthorizationUserSlice";
 import Breadcrumbs from "./reducers/BreadcrumbsSlice";
 import ModalSlice from "./reducers/ModalSlice";
@@ -12,6 +14,7 @@ const rootreducer = combineReducers({
   AuthorizationUserSlice: AuthorizationUserSlice,
   Breadcrumbs: Breadcrumbs,
   [LikeApi.reducerPath]: LikeApi.reducer,
+  [AuthorizationAPI.reducerPath]: AuthorizationAPI.reducer,
   [categoryApi.reducerPath]: categoryApi.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
 });
@@ -22,7 +25,8 @@ export const store = configureStore({
     getDefaultMiddleware().concat(
       LikeApi.middleware,
       categoryApi.middleware,
-      productsApi.middleware
+      productsApi.middleware,
+      AuthorizationAPI.middleware
     ),
 });
 

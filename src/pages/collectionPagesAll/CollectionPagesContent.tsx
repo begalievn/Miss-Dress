@@ -22,146 +22,29 @@ import {
   bestSellers5,
   bestSellers6,
 } from "../../assets/main-page/images";
-
-interface ProductCart {
-  title: string;
-  price: number;
-  color: number;
-  size: string;
-  rate: number;
-  images: string;
-  category: string;
-}
+// import {
+//   // IChild,
+//   useFetchAllCategoryQuery,
+// } from "../../store/services/CategoryApi";
 
 const CollectionPagesContent: FC = () => {
-  const [result, setResult] = useState<ProductCart[]>([]);
+  const { id } = useParams();
 
-  const { categories } = useParams();
-
-  console.log(categories);
-
-  const [product, setProduct] = useState<ProductCart[]>([
-    {
-      title: "Envy Look All Season Skirt",
-      price: 5990,
-      color: 4,
-      size: "Размер 29",
-      rate: 5.1,
-      images: photoCardImage,
-      category: "Jeans",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 7990,
-      color: 1,
-      size: "Размер 9",
-      rate: 2.1,
-      images: trousers,
-      category: "Jeans",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 3990,
-      color: 1,
-      size: "Размер 9",
-      rate: 2.1,
-      images: dresses,
-      category: "Dresses",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 4990,
-      color: 2,
-      size: "Размер 20",
-      rate: 5.1,
-      images: skirts,
-      category: "Skirts",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 5990,
-      color: 6,
-      size: "Размер 24",
-      rate: 3.5,
-      images: photoCardImage,
-      category: "Jeans",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 2990,
-      color: 2,
-      size: "Размер 14",
-      rate: 2.1,
-      images: dresses,
-      category: "Dresses",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 3990,
-      color: 4,
-      size: "Размер 19",
-      rate: 1.1,
-      images: bestSellers2,
-      category: "Dresses",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 6990,
-      color: 7,
-      size: "Размер 24",
-      rate: 7.1,
-      images: bestSellers1,
-      category: "Dresses",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 2990,
-      color: 2,
-      size: "Размер 21",
-      rate: 5.1,
-      images: bestSellers3,
-      category: "Dresses",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 7990,
-      color: 5,
-      size: "Размер 27",
-      rate: 2.1,
-      images: bestSellers4,
-      category: "Dresses",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 4990,
-      color: 6,
-      size: "Размер 20",
-      rate: 8.1,
-      images: bestSellers5,
-      category: "Dresses",
-    },
-    {
-      title: "Envy Look All Season Skirt",
-      price: 1990,
-      color: 1,
-      size: "Размер 30",
-      rate: 1.1,
-      images: bestSellers6,
-      category: "Dresses",
-    },
-  ]);
-
-  const filterProducts = product.filter((item) => item.category === categories);
-  console.log(filterProducts);
+  // const {
+  //   data: product,
+  //   isLoading,
+  //   isError,
+  //   refetch,
+  // } = useFetchAllCategoryQuery("");
 
   return (
     <div>
       <div className={classes.dropDow_container}>
         <CategoriesDropdowBtn />
       </div>
-      <h2>{categories}</h2>
+      <h2>{id}</h2>
       <div>
-        {result.map((item: ProductCart) => (
+        {/* {product.map((item: IChild) => (
           <div>
             <div>{item.images}</div>
             <div>{item.title}</div>
@@ -169,7 +52,7 @@ const CollectionPagesContent: FC = () => {
             <div>{item.color}</div>
             <div>{item.size}</div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
