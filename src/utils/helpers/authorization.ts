@@ -1,6 +1,10 @@
 import { Dispatch } from "@reduxjs/toolkit";
 
-import { textErrorNumber, validationNumber } from "../../store/reducers/ModalSlice";
+import {
+  textErrorNumber,
+  validationNumber,
+} from "../../store/reducers/ModalSlice";
+
 
 export interface IDispatch {
   payload: any;
@@ -9,19 +13,25 @@ export interface IDispatch {
 
 export const checkValidation = (valueNumber: string) => {
   return (dispatch: Dispatch<IDispatch>) => {
-
-
-    let regExp = /^0\d{9}$/;
+    let regExp = /^\+996\d{9}$/;
     if (regExp.test(valueNumber)) {
       dispatch(validationNumber(false));
-    
     } else {
       dispatch(textErrorNumber("Введите корректный номер телефона"));
 
       setTimeout(() => {
         dispatch(textErrorNumber(""));
-
       }, 3000);
     }
   };
+};
+
+export const parseJwt = () => {
+  let token:any = localStorage.getItem("token");
+  token =(JSON.parse(token));
+  try {
+    return JSON.parse(atob(token.refreshToken.split(".")[1]));
+  } catch (e) {
+    return null;
+  }
 };

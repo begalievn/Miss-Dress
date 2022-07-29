@@ -1,0 +1,165 @@
+@import "../../scss/mixin";
+@import "../../scss/settings";
+
+.container{
+  width: 100%;
+  padding: 0 13px 0 13px;
+}
+.content{
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+  gap: 0 toD(64px);
+  @include phone{
+    gap: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @include desktop {
+    gap: toMax(64px);
+  }
+}
+.order{
+  width: 100%;
+}
+.header{
+@include titleFont();
+  @include phone{
+    @include titleFont($textAlign:center)
+  }
+}
+.form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 toD(113px);
+  padding-top: toD(29px);
+  margin-top: toD(20px);
+  border-top: 0.5px solid $fontColorTitle;
+  @include desktop{
+    padding-top: toMax(29px);
+    gap: 0 toMax(113px);
+    margin-top: toMax(20px);
+  }
+  @include phone{
+    border-top: 0;
+    padding-top: toM(20px);
+    grid-template-columns: 1fr ;
+    margin-top: 0;
+    gap: 0;
+  }
+
+}
+.inputBlock{
+  display: flex;
+  flex-direction: column;
+  height: toD(127px);
+  @include desktop{
+    height: toMax(127px);
+  }
+  @include phone{
+    height: toM(70px);
+  }
+
+}
+.input{
+  border-radius: 45px;
+  background-color: $primaryColor;
+  border: none;
+  width: 100%;
+  height: toD(75px);
+  padding: toD(23px) 0 toD(23px) toD(48px);
+  @include desktop{
+    height: toD(75px);
+  }
+  @include phone{
+    height: toM(43px);
+  }
+}
+.input::placeholder{
+   @include fontSize($desk:24px,$m:16px,$t:16px)
+}
+.warning{
+  margin-left: 5%;
+  margin-top: 1%;
+  color: $errorColor;
+  margin-bottom: toD(10px);
+  height: toD(50px);
+  @include fontSize($desk:24px,$m:16px,$t:16px);
+
+  @include phone {
+    margin-bottom: toM(10px);
+    //height: toM(40px);
+  }
+  @include desktop{
+    margin-bottom: toMax(10px);
+    //height: toMax(50px);
+  }
+
+}
+
+.orderList{
+  display: flex;
+  gap: toD(49px) 0;
+  flex-direction: column;
+  @include desktop {
+    gap: toD(49px) 0;
+  }
+  @include phone {
+    gap:toM(20px) ;
+  }
+}
+.orderListTitle{
+  @include titleFont();
+  @include phone{
+    @include titleFont($textAlign:center);
+  }
+
+}
+
+.addressBlock{
+  display: flex;
+  flex-direction: column;
+  padding-top: toD(20px);
+    border-top: 0.5px solid $fontColorTitle;
+  gap: toD(20px) 0;
+  padding-bottom: toMax(40px);
+  margin-top: toD(20px);
+  @include desktop{
+    padding-top: toMax(20px);
+    padding-bottom: toMax(40px);
+    gap: toD(20px) 0;
+    margin-top: toMax(20px);
+  }
+  @include phone{
+    margin-top: 0;
+    padding-bottom: toM(20px);
+    text-align: center;
+    padding-top: toM(20px);
+    gap: toM(20px);
+    border: none;
+  }
+}
+.addressTitle{
+    @include fontSize(48px,20px);
+  font-weight: 500;
+
+}
+.addressBlock p {
+  @include fontSize(24px,16px);
+
+}
+.buttonBlock{
+    width: 30%;
+
+  @include phone{
+    width: 100%;
+  }
+}
+
+
+
+

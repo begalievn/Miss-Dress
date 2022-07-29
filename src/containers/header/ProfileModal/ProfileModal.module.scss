@@ -1,0 +1,49 @@
+.container{
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  }
+  .mainProfile{
+    position: absolute;
+    z-index: 100;
+    right: 0px;
+
+    li{
+      list-style-type: none;
+      width: 200px;
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      cursor: pointer;
+      background:#F1DAC5;
+      margin-bottom: 2px;
+      font-size: 20px;
+    }
+  }  
+
+  @media (max-width:767px) {
+    .mainProfile{
+ 
+      li{
+    
+        width: 180px;
+        height: 60px;
+        line-height: 60px;
+        background:#F1DAC5;
+        font-size: 18px;
+      }
+    }  
+  }
+  @media (max-width:500px) {
+    .mainProfile{
+ 
+      li{
+    
+        width: 150px;
+        height: 36px;
+        line-height: 36px;
+        background:#F1DAC5;
+        font-size: 14px;
+      }
+    }  
+  }

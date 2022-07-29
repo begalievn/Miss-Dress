@@ -6,8 +6,14 @@ import ContactsPage from "./contactsPage/ContactsPage";
 import DeliveryPage from "./deliveryPage/DeliveryPage";
 import MainPage from "./mainPage/MainPage";
 import NewsPage from "./newsPage/NewsPage";
-import ProductPage from "./productsPage/ProductPage";
+import CategoryPage from "./categoryPage/CategoryPage";
 import ErrorPage from "./errorPage/ErrorPage";
+import ShoppingCartPage from "./shoppingCartPage/ShoppingCartPage";
+import ProductIdPage from "./productIdPage/ProductIdPage";
+import CollectionPage from "./collection/CollectionPage";
+import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
+import Test from "./test/Test";
+import ProfilePage from "./profilePage/ProfilePage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -27,12 +33,12 @@ const MainRoutes = () => {
       id: 3,
     },
     {
-      link: "/products",
-      element: <ProductPage />,
+      link: "/category",
+      element: <CategoryPage />,
       id: 4,
     },
     {
-      link: "/news",
+      link: "/news/:id",
       element: <NewsPage />,
       id: 5,
     },
@@ -46,6 +52,36 @@ const MainRoutes = () => {
       element: <ErrorPage />,
       id: 7,
     },
+    {
+      link: "/category/:productId",
+      element: <ProductIdPage />,
+      id: 8,
+    },
+    {
+      link: "/collection",
+      element: <CollectionPage />,
+      id: 9,
+    },
+    {
+      link: "/collection/:id",
+      element: <CollectionPagesContent />,
+      id: 10,
+    },
+    {
+      link: "shopping",
+      element: <ShoppingCartPage />,
+      id: 11,
+    },
+    {
+      link: "profile",
+      element: <ProfilePage />,
+      id: 12,
+    },
+    {
+      link: "test",
+      element: <Test />,
+      id: 13,
+    },
   ];
 
   return (
@@ -57,4 +93,4 @@ const MainRoutes = () => {
   );
 };
 
-export default MainRoutes;
+export { MainRoutes };

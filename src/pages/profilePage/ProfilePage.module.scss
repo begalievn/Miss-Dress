@@ -1,0 +1,208 @@
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  margin-top: 50px;
+}
+
+
+.left_block {
+
+  margin-right: 60px;
+  position: relative;
+
+
+
+
+  .heroImage {
+    img {
+      max-width: 500px;
+      width: 100%;
+    }
+  }
+
+}
+
+.logo_block {
+  display: flex;
+  position: absolute;
+  right: 17%;
+  top: -8%;
+}
+
+.right_block {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-weight: 400;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    color:
+    #372E24
+  }
+
+  input {
+    width: 500px;
+    height: 50px;
+    background: #DBB593;
+    border-radius: 45px;
+    border: none;
+    padding-left: 10%;
+
+    margin-bottom: 1em;
+    color: #74614D;
+    font-size: 20px;
+  }
+
+  input:focus{
+    border:2px solid  #A99783 !important
+  }
+
+  button {
+    margin-bottom: 1em;
+    width: 500px;
+    height: 50px;
+    border-radius: 45px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+
+}
+
+.btnEdit{
+  background: #402B1E;
+  color:
+  #F1DAC5
+}
+
+.btnEdit:active{
+  background: #322319;
+}
+.btnSave{
+  background: #A99783;
+  color:
+  #74614D
+}
+
+.btnSave:active{
+  background: #b19a80;
+}
+
+
+@media (max-width:1300px) {
+  .container {
+    margin: 0 13px;
+  }
+}
+
+
+@media (max-width:1080px) {
+
+
+  .right_block {
+
+    input,
+    button {
+      max-width: 400px;
+      max-height: 40px;
+    }
+
+    ;
+
+  }
+}
+
+@media (max-width:940px) {
+  .heroImage {
+    img {
+      min-width: 350px;
+
+    }
+  }
+}
+
+@media (max-width:850px) {
+  .right_block {
+
+    input,
+    button {
+      max-width: 320px;
+      max-height: 32px;
+      font-size: 18px;
+    }
+
+    ;
+
+  }
+}
+
+@media (max-width:767px) {
+  .heroImage {
+    img {
+      max-width: 300px;
+      min-width: 250px;
+
+    }
+  }
+
+  .left_block {
+    margin-right: 10px;
+  }
+
+}
+
+@media (max-width:620px) {
+  .right_block {
+
+    input,
+    button {
+      max-width: 250px;
+      max-height: 25px;
+    }
+
+    ;
+  }
+}
+
+@media (max-width:550px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .logo_block {
+
+    right: 48%;
+    top: 87%;
+  }
+
+  .heroImage {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 300px !important;
+    }
+  }
+
+  .right_block {
+align-items: center;
+    input,
+    button {
+      max-width: 300px;
+      max-height: 46px;
+      font-size: 16px;
+    }
+
+    h3{
+      font-weight: 600;
+    }
+  }
+
+}

@@ -1,8 +1,14 @@
+@import "./settings";
 
 $phone: 425px;
 $desktop: 1462px;
 $tablet: 768px;
 $laptop: 992px;
+
+$desktopScale: 0.77;
+$mobileScale: 0.88;
+
+
 
 @mixin phone() {
   @media screen and (max-width: $phone) {
@@ -34,5 +40,56 @@ $laptop: 992px;
   @media screen and (max-width: $tablet) {
     @content;
   }
-} 
+}
+// OTHER
+@mixin titleFont($ta:null,$textAlign:left){
+  text-align: $textAlign ;
+  color: $fontColorTitle;
+  font-weight: 600;
+  font-size: 2.55vw;
+  margin-right:$ta;
+  @include desktop {
+    font-size: 37px;
+  }
+  @include phone {
+    font-size: 4.8vw;
+    margin: 0;
+  }
+
+}
+
+@function toMax($n) {
+  @return $n * $desktopScale;
+}
+@function toD($n) {
+  @return (toMax($n) * 100vw) / $desktop;
+}
+
+@function toM($n) {
+  @return ($n * 100vw) / 375px
+}
+@function toT($n) {
+  @return ($n * 100vw) / 768px
+}
+
+@mixin fontSize($desk:null,$m:null,$t:null,){
+  font-size: toD($desk);
+  @include desktop {
+    font-size: toMax($desk);
+  }
+  @if $t {
+
+  @include tablet {
+    font-size:  toT($t);
+  }
+  }
+  @include phone {
+    font-size: toM($m);
+  }
+
+}
+
+
+
+
 

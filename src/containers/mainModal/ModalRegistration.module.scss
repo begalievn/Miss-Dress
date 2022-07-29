@@ -4,27 +4,29 @@
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
     z-index: 100;
-    overflow: hidden;
+    overflow-x: hidden;
+    
+    
 }
 .container{
-    max-width: 725px;
-    width: 33vw;
+    max-width: 475px;
+    
+    width: 100%;
     margin: 4px auto;
    background:#F1DAC5;
-   padding-bottom: 3vw;
-   transition-property: height;
-   transition-duration: 4s;
-
+   padding-bottom: 1em;
+   font-size: 16px;
+   overflow: hidden;
 
    button{
     max-width: 550px;
     width: 100%;
      max-height: 90px;
-     height: 3vw;    
+     height: 3em;    
      border-radius: 45px;
      border: none;
      cursor: pointer;
-     font-size: 1vw;
+     font-size: 1em;
      background: #372E24;
      color: white;
    } 
@@ -32,13 +34,13 @@
     max-width: 550px;
     width: 100%;
      max-height: 90px;
-     height: 3vw; 
+     height: 3em; 
      border-radius: 45px; 
-     padding-left: 2vw; 
-     font-size: 1vw;
+    text-align: center; 
+     font-size: 1em;
      border: none;
      background: #DBB593;
-     margin: 1vw 0;
+     margin: 1em 0;
      outline: none;
      color:#77644F
    }
@@ -55,9 +57,9 @@
 .text{
 display: flex;
 flex-direction: column;
-padding-left: 5vw;
-padding-right: 5vw;
-font-size: 1vw;
+padding-left: 3em;
+padding-right: 3em;
+font-size: 1em;
 transition: all 1s;
 h2{
     font-weight: 400;
@@ -71,9 +73,9 @@ h2{
 }
 .validation_text{
     display: flex;
-    font-size: 1vw;
+    font-size: 1em;
     
-    padding-left: 3.5vw;
+    padding-left: 2em;
     p{
         display: flex;
         align-self: center;
@@ -111,15 +113,73 @@ h2{
 
 .text_error{
    color:red;
-   margin: 0 auto;
+   text-align: center;
+}
+.text_error_auth{
+    color:red;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .success_text{
  
     text-align: center;
-    margin-bottom: 1vw;
+    margin-bottom: 1em;
 
 }
 .first_text{
-    margin-top: 1vw;  
+    margin-top: 1em;  
+}
+
+@media(max-width:767px){
+    .hero{
+        display: none !important
+    }
+    .container{
+        max-width: 375px;
+
+        
+
+        h2{
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        input{
+            height: 2.5em;
+            margin:10px auto;
+        }
+        button{
+            height: 2.5em;
+        } 
+    }
+
+    .validation_text{
+        p{
+            font-size: 12px;
+        }
+    }
+
+
+}
+@media(max-width:400px){
+    .container{
+        // margin-left: 10px;
+        // margin-right: 10px;
+        width:90%;
+
+      
+        .text{
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+    
+}
+}
+
+@media(max-width:360px){
+    .container{
+        font-size: 14px;
+    }
 }

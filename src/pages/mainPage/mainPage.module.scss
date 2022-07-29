@@ -1,10 +1,18 @@
+@import "../../scss/mixin";
 .container {
   width: 100%;
+  padding: 0 13px 0 13px;
 }
 
 .content {
   width: 100%;
   max-width: 1300px;
-  background: aquamarine;
   margin: 0 auto;
 }
+.advantagesContainer{
+  margin: 0 auto;
+  background-color: #F1DAC5;
+
+}
+
+

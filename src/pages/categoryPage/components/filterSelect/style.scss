@@ -1,0 +1,36 @@
+.MenuInputLabel.Mui-focused {
+  border-color: green;
+}
+
+.MuiList-root {
+  border-radius: 0;
+}
+
+.MuiList-root.MuiMenu-list {
+  padding-top: 0;
+  padding-bottom: 0;
+  background: #F1DAC5;
+  color: #372E24;
+  border-radius: 0;
+}
+
+.MuiOutlinedInput-root.Mui-focused {
+  border: none;
+}
+
+.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiSelect-root {
+  border-radius: 0;
+  border: none;
+}
+
+.MuiPaper-root.MuiMenu-paper.MuiPaper-root.MuiPopover-paper {
+  border-radius: 0;
+}
+
+.MuiInputBase-root.MuiOutlinedInput-root.MuiSelect-root {
+  border-radius: 0;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border: none;
+}

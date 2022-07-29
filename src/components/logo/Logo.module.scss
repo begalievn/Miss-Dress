@@ -6,9 +6,50 @@
     img {
         position: absolute;
         top: -35%;
-        left: 79%;
-        width: 72px;
-        height: 90px;
+        left: 84%;
+        width: 67px;
+        height: 85px;
         z-index: 101;
+    }
+}
+
+.logo2{
+    font-family: 'arizonia';
+    position: relative;
+    font-size: 30px;
+
+    img {
+        position: absolute;
+        top: -35%;
+        left: 84%;
+        width: 67px;
+        height: 85px;
+        z-index: 90;
+    }
+}
+
+@media(max-width:767px){
+    .logo {
+        font-size: 25px;
+
+        img{
+            width: 62px;
+            height: 80px; 
+            top: -47%;
+            left: 80%; 
+        }
+    } 
+}
+
+@media(max-width:500px){
+    .logo{
+        font-size: 20px;
+
+        img{
+            width: 52;
+            height: 70px;
+            top: -57%;
+            left: 75%;  
+        }
     }
 }
