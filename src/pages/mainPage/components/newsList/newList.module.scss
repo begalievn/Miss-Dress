@@ -110,5 +110,22 @@
     margin-left: 20px;
   }
 }
+.buttonBlock{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  margin-top: toD(60px);
+}
+.buttonBlock div {
+    width: toD(550px);
+  @include desktop{
+    width: toMax(550px);
+    margin-top: toMax(60px);
+  }
+  @include phone{
+    width: toM(300px);
+    margin-top: toM(20px);
+  }
 
+}
 

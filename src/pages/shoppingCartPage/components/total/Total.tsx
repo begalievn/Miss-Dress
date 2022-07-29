@@ -26,7 +26,7 @@ const Total = () => {
           <p className={styles.totalRight}>1231233</p>
         </div>
       </div>
-      <SubmitButton onClick={(e) => submitHandler(e)} />
+      <SubmitButton text={"Оформить заказ"} onClick={(e) => submitHandler(e)} />
     </section>
   );
 };

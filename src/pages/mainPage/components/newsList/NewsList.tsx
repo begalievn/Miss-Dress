@@ -4,14 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 import { IList } from "../../../newsPage/NewsArray";
 
+import SubmitButton from "../../../../components/submitButton/SubmitButton";
+
 import styles from "./newList.module.scss";
 
 interface INewsList {
   title: "Другие новости" | "Новости";
   info: IList[] | null | undefined;
+  showMore?: (e: React.SyntheticEvent) => void;
 }
 
-const NewsList: FC<INewsList> = ({ title = "Новости", info }) => {
+const NewsList: FC<INewsList> = ({ title = "Новости", info, showMore }) => {
   const navigate = useNavigate();
 
   const zero = (int: number) => {
@@ -27,6 +30,12 @@ const NewsList: FC<INewsList> = ({ title = "Новости", info }) => {
     )}.${new Date().getFullYear()}`
   );
 
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <section className={styles.container}>
       {title === undefined && (
@@ -64,6 +73,13 @@ const NewsList: FC<INewsList> = ({ title = "Новости", info }) => {
             </div>
           </div>
         ))}
+      {title === "Другие новости" && showMore && (
+        <div className={styles.buttonBlock}>
+          <div>
+            <SubmitButton onClick={showMore} text={"Еще новости"} />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

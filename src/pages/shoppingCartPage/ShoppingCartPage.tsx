@@ -63,6 +63,7 @@ const ShoppingCartPage = () => {
       }),
     },
   ];
+
   const { data: posts } = shoppingCartApi.useFetchAllPostsQuery("");
   console.log(posts);
   const saveHandler = (e: React.SyntheticEvent) => {
@@ -114,6 +115,7 @@ const ShoppingCartPage = () => {
                 })}
                 <SubmitButton
                   onClick={(e: React.SyntheticEvent) => saveHandler(e)}
+                  text={"Редактировать"}
                 />
               </form>
             </section>
@@ -121,7 +123,7 @@ const ShoppingCartPage = () => {
             <div className={styles.orderList}>
               <h1 className={styles.orderListTitle}>Состав заказа</h1>
               {[1, 2, 3].map((item) => {
-                return <ProductOrder key={item} />;
+                return <ProductOrder page={"viewing"} key={item} />;
               })}
             </div>
           </section>

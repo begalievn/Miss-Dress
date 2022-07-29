@@ -1,12 +1,27 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { productImg } from "../../../../assets/shoppingCart/shoppingCart";
 
 import styles from "./productOrder.module.scss";
 
-const ProductOrder = () => {
+interface IProductOrder {
+  page: "sending" | "viewing";
+  info?: {
+    name: string;
+    article: string;
+    size: string;
+    color: string;
+    count: string;
+    price: number;
+    discount?: number;
+  };
+}
+
+const ProductOrder: FC<IProductOrder> = ({ info, page }) => {
+  const pageContainer =
+    page === "sending" ? styles.container : styles.myOrdersContainer;
   return (
-    <div className={styles.container}>
+    <div className={pageContainer}>
       <img className={styles.img} src={productImg} alt="" />
 
       <section className={styles.block}>
@@ -26,14 +41,16 @@ const ProductOrder = () => {
               Количество товара в линейке: <span>6</span>
             </p>
           </div>
-          <section className={styles.control}>
-            <div className={styles.minus}>-</div>
-            <div className={styles.count}>2</div>
-            <div className={styles.plus}>+</div>
-          </section>
+          {page === "sending" && (
+            <section className={styles.control}>
+              <div className={styles.minus}>-</div>
+              <div className={styles.count}>2</div>
+              <div className={styles.plus}>+</div>
+            </section>
+          )}
         </div>
         <div className={styles.rightSection}>
-          <div className={styles.cross}>+</div>
+          {page === "sending" && <div className={styles.cross}>+</div>}
           <div className={styles.priceBlock}>
             <p className={styles.realPrice}>5990</p>
             <p className={styles.wrongPrice}>7500</p>

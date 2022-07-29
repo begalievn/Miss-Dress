@@ -31,6 +31,10 @@ const NewsPage = () => {
     setRefreshInfo({ currentNews: one, otherNews: other });
   }, [params]);
 
+  const showMoreHandler = (e: React.SyntheticEvent) => {
+    console.log(e);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -49,7 +53,11 @@ const NewsPage = () => {
             <p className={styles.date}>{refreshInfo?.currentNews.date}</p>
           </div>
         </section>
-        <NewsList title="Другие новости" info={refreshInfo?.otherNews} />
+        <NewsList
+          title="Другие новости"
+          showMore={(e) => showMoreHandler(e)}
+          info={refreshInfo?.otherNews}
+        />
       </div>
     </div>
   );
