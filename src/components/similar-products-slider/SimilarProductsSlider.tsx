@@ -9,7 +9,6 @@ interface ISimilarProductsSlider {
 const SimilarProductsSlider = ({ children }: ISimilarProductsSlider) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sliderCards, setSliderCards] = useState<React.ReactNode[]>([]);
-  console.log(children);
   useEffect(() => {
     let arrCards: React.ReactNode[] = [];
 
@@ -24,14 +23,11 @@ const SimilarProductsSlider = ({ children }: ISimilarProductsSlider) => {
       arrCards.push(arrCards[i]);
       i++;
     }
-    console.log(arrCards);
     setSliderCards([...arrCards]);
   }, [children]);
 
   let leftIndex = activeIndex ? activeIndex - 1 : sliderCards.length - 1;
   let rightIndex = activeIndex === sliderCards.length - 1 ? 0 : activeIndex + 1;
-  // let rightmostIndex =
-  //   rightIndex === sliderCards.length - 1 ? 0 : rightIndex + 1;
 
   let hiddenLeftIndex = leftIndex ? leftIndex - 1 : sliderCards.length - 1;
   let hiddenRightIndex =
@@ -39,12 +35,10 @@ const SimilarProductsSlider = ({ children }: ISimilarProductsSlider) => {
 
   function prev() {
     setActiveIndex((prev) => (prev ? prev - 1 : sliderCards.length - 1));
-    console.log("prev");
   }
 
   function next() {
     setActiveIndex((prev) => (prev === sliderCards.length - 1 ? 0 : prev + 1));
-    console.log("next");
   }
 
   return (
@@ -57,11 +51,7 @@ const SimilarProductsSlider = ({ children }: ISimilarProductsSlider) => {
         >
           {sliderCards[hiddenLeftIndex]}
         </div>
-        <div
-          key={leftIndex}
-          className={[classes.left, classes.card].join(" ")}
-          onClick={prev}
-        >
+        <div key={leftIndex} className={[classes.left, classes.card].join(" ")}>
           {sliderCards[leftIndex]}
         </div>
         <div
@@ -73,7 +63,6 @@ const SimilarProductsSlider = ({ children }: ISimilarProductsSlider) => {
         <div
           key={rightIndex}
           className={[classes.right, classes.card].join(" ")}
-          onClick={next}
         >
           {sliderCards[rightIndex]}
         </div>
