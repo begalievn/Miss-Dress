@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
 
@@ -53,6 +53,9 @@ const cards = [
 ];
 
 const CategoryPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  console.log("Selected category", selectedCategory);
+
   const {
     data: categories,
     isLoading: categoriesLoading,
@@ -65,18 +68,18 @@ const CategoryPage = () => {
     error: productsError,
   } = productsApi.useGetAllProductsQuery("");
 
+  const {
+    data: productsByCategory,
+    isLoading: productsByCategoryLoading,
+    error: productsByCategoryError,
+  } = productsApi.useGetProductsByCategoryQuery(selectedCategory);
+
+  console.log("Products by Category", productsByCategory);
+
   const [outputCategories, setOutputCategories] = useState<CategoryTypes[]>([]);
 
   console.log("Products", products);
 
-  console.log(categories?.result);
-  if (!categoriesLoading) {
-    let nestedresult = getNestedCategories(categories?.result || []);
-    console.log("nestedResult", nestedresult);
-    // setOutputCategories(nestedresult);
-  }
-
-  console.log("setOutputCategories", outputCategories);
   return (
     <div className={classes.container}>
       <ContentContainer>
@@ -87,7 +90,10 @@ const CategoryPage = () => {
               <h3>Категория</h3>
             </div>
             {!categoriesLoading && (
-              <CategoriesAside categories={categories?.result || []} />
+              <CategoriesAside
+                categories={categories?.result || []}
+                setSelectedCategory={setSelectedCategory}
+              />
             )}
           </aside>
           <main className={classes.main}>
@@ -102,14 +108,16 @@ const CategoryPage = () => {
             {/* Mobile version */}
             <div className={classes.mobile_filters_container}>
               <div className={classes.mobile_filters_row}>
-                <CategoryDropdown categories={categories?.result || []} />
+                <CategoryDropdown
+                  categories={categories?.result || []}
+                  setSelectedCategory={setSelectedCategory}
+                />
                 <FilterSelect />
               </div>
               <div className={classes.mobile_filters_title}>
                 <h2>{"Все товары"}</h2>
               </div>
             </div>
-
             <section className={classes.products}>
               <ProductsGridContainer>
                 {cards.map((item, index) => (

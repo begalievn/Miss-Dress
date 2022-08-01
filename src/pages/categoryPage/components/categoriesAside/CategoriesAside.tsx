@@ -83,15 +83,20 @@ const categoriesMock = [
 
 interface ICategoryAside {
   categories: CategoryTypes[];
+  setSelectedCategory: (value: number) => void;
 }
 
-const CategoriesAside = ({ categories }: ICategoryAside) => {
+const CategoriesAside = ({
+  categories,
+  setSelectedCategory,
+}: ICategoryAside) => {
   const [activeMenus, setActiveMenus] = useState<string[]>([]);
 
-  console.log("CategoryAside: ", categories);
+  // console.log("CategoryAside: ", categories);
 
   const handleMenuClick = (data: any) => {
     console.log(data);
+    setSelectedCategory(data.id);
   };
 
   const handleArrowClick = (menuName: string) => {

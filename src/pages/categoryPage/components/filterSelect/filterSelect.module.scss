@@ -1,16 +1,17 @@
 .container {
-  width: 346px;
+  width: 370px;
   height: 60px;
   background: #F1DAC5;
 
   p {
     width: 280px;
-    text-align: center;
+    text-align: start;
     font-size: 23px;
     font-weight: 400;
     line-height: 27px;
     letter-spacing: 0.1px;
     cursor: pointer;
+    user-select: none;
   }
 
   @media (max-width: 768px) {

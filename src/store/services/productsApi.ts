@@ -13,5 +13,14 @@ export const productsApi = createApi({
       }),
       providesTags: ["Products"],
     }),
+    getProductsByCategory: build.query({
+      query: (category) => ({
+        url: "/product/get-all",
+        params: {
+          category: category,
+        },
+      }),
+      providesTags: ["Products"],
+    }),
   }),
 });

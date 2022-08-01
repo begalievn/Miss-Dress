@@ -2,6 +2,8 @@ import React from "react";
 
 import { winter } from "../../assets/main-page/images";
 
+import { newsArray } from "../newsPage/NewsArray";
+
 import Collection from "./components/collection/Collection";
 import Subscribe from "./components/subscribe/Subscribe";
 import Advantages from "./components/advantages/Advantages";
@@ -48,7 +50,7 @@ const MainPage = () => {
           <Advantages />
         </div>
         <div className={classes.content}>
-          <NewsList />
+          <NewsList title={"Новости"} info={newsArray} />
         </div>
       </div>
     </>

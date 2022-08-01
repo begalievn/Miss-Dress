@@ -21,7 +21,7 @@
   font-size:1.8vw ;
   margin-bottom: 5vw;
   @include phone {
-    font-size:5vw ;
+    font-size:5vw;
   }
   @include desktop{
   margin-bottom: 65px;
@@ -73,10 +73,9 @@
   @include phone {
     font-size: 3.9vw;
     width: 80vw;
-    height: 12.26vw;
+    height: 10.26vw;
     padding-left: 8%;
     padding-bottom:.5vw;
-    //margin-bottom: 5vw;
   }
 }
 
@@ -99,17 +98,28 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 16vw;
+  height: 18vw;
   text-align: center;
   //padding-top: 1.5vw;
   @include phone {
     flex-direction: column-reverse;
-    padding-bottom: 2.5vw;
+    padding-bottom: 4.5vw;
     justify-content: space-between;
   }
   @include desktop{
     height: 256px;
     padding-top: 21.5px;
+  }
+}
+.success{
+  text-align: center;
+  color: #F1DAC5;
+  font-size: 1.5vw;
+  @include phone {
+    font-size: 3vw;
+  }
+  @include desktop{
+    font-size: 21.5px;
   }
 }
 .error {

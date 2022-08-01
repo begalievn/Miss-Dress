@@ -67,6 +67,7 @@ const ProductPicturesSlider = ({
       currentIndex = currentIndex - 4;
     }
     setImageIndex(currentIndex);
+    console.log("Image is clicked");
   };
 
   return (
