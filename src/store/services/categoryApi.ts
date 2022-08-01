@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { CategoryTypes } from "../../utils/types/types";
 
-
 export interface CategoryQueryTypes {
   status: number;
   result: CategoryTypes[];

@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 
 import styles from "./collection.module.scss";
+
 import { useNavigate } from "react-router-dom";
+
 import { CollectionApi } from "../../../../store/services/CollectionApi";
 
 interface ICollection {
