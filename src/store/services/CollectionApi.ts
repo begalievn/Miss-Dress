@@ -13,7 +13,7 @@ export const CollectionApi = createApi({
         url: "collections/all",
         headers: {
           Authorization: `Bearer ${JSON.parse(
-            localStorage.getItem("accessToken") || "{}"
+            localStorage.getItem("token") || "{}"
           )}`,
         },
       }),

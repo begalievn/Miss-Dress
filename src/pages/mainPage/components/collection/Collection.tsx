@@ -19,9 +19,9 @@ const Collection: FC<ICollection> = ({ info }) => {
     refetch,
   } = CollectionApi.useFetchAllCollectionsQuery("");
 
-  console.log(JSON.parse(localStorage.getItem("accessToken") || "{}"));
-  console.log(Collections);
+  console.log(JSON.parse(localStorage.getItem("token") || "{}"));
 
+  console.log(Collections);
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
