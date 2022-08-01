@@ -21,6 +21,8 @@ const ProfileModal = () => {
     case "Выйти":
       dispatch(userStateToogle(false));
       dispatch(openProfile(false));
+      localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
       break;
 
     default:

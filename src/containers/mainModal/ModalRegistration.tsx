@@ -29,7 +29,7 @@ const ModalRegistration = () => {
 
   const dispatch = useAppDispatch();
 
-  const [registrationNewUser, {}] =
+  const [registrationNewUser] =
     AuthorizationAPI.useRegistrationNewUserMutation();
 
 

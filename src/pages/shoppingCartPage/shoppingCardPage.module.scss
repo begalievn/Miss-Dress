@@ -27,7 +27,10 @@
   width: 100%;
 }
 .header{
-@include titleFont()
+@include titleFont();
+  @include phone{
+    @include titleFont($textAlign:center)
+  }
 }
 .form{
   display: grid;
@@ -120,8 +123,42 @@
 .addressBlock{
   display: flex;
   flex-direction: column;
+  padding-top: toD(20px);
+    border-top: 0.5px solid $fontColorTitle;
+  gap: toD(20px) 0;
+  padding-bottom: toMax(40px);
+  margin-top: toD(20px);
+  @include desktop{
+    padding-top: toMax(20px);
+    padding-bottom: toMax(40px);
+    gap: toD(20px) 0;
+    margin-top: toMax(20px);
+  }
+  @include phone{
+    margin-top: 0;
+    padding-bottom: toM(20px);
+    text-align: center;
+    padding-top: toM(20px);
+    gap: toM(20px);
+    border: none;
+  }
 }
+.addressTitle{
+    @include fontSize(48px,20px);
+  font-weight: 500;
 
+}
+.addressBlock p {
+  @include fontSize(24px,16px);
+
+}
+.buttonBlock{
+    width: 30%;
+
+  @include phone{
+    width: 100%;
+  }
+}
 
 
 
