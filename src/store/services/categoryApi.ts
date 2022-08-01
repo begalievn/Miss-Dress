@@ -17,7 +17,7 @@ import { CategoryTypes } from "../../utils/types/types";
 //   }),
 // });
 
-interface CategoryQueryTypes {
+export interface CategoryQueryTypes {
   status: number;
   result: CategoryTypes[];
 }

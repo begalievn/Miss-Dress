@@ -54,6 +54,7 @@ select {
   flex-wrap: wrap;
   max-width: 1300px;
   margin: 0 auto;
+  // position: relative;
 }
 .item_map_container {
   list-style: none;
@@ -71,4 +72,10 @@ select {
   text-align: center;
   width: 100%;
   position: relative;
+}
+
+.block_pagination {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
 }
