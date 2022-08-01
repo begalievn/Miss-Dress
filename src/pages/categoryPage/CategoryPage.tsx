@@ -58,6 +58,7 @@ const CategoryPage = () => {
   } = categoryApi.useFetchAllCateggoriesQuery("");
 
   console.log(categories?.result);
+
   if (!categoriesLoading) {
     getNestedCategories(categories?.result || []);
   }
