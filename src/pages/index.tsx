@@ -14,7 +14,6 @@ import CollectionPage from "./collection/CollectionPage";
 import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
 import Test from "./test/Test";
 import ProfilePage from "./profilePage/ProfilePage";
-import Loader from "../components/Loader/Loader";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
