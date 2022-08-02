@@ -14,4 +14,4 @@ function HowOrderPage() {
   );
 }
 
-export default HowOrderPage
+export default HowOrderPage;
