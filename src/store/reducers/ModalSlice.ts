@@ -11,15 +11,12 @@ export const ModalSlice = createSlice({
     menuProfile:false,
     validationNumber: true,
     textError: "",
-
-
   },
   reducers: {
     openModal(state,action) {
       state.modalState = action.payload;
       state.searchState = false;
       state.menuProfile = false;
-
     },
     openSearch(state,action) {
       state.searchState = action.payload; 
@@ -32,8 +29,7 @@ export const ModalSlice = createSlice({
         state.modalState = false;
         state.searchState = false;
         state.menuProfile = false;
-      }
-      
+      }  
     },
     openProfile(state,action){
       state.menuProfile = action.payload;

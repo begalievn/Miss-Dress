@@ -14,6 +14,9 @@ import CollectionPage from "./collection/CollectionPage";
 import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
 import Test from "./test/Test";
 import ProfilePage from "./profilePage/ProfilePage";
+import OrderPage from "./ordersPage/OrderPage";
+import PublicOfferPage from "./publicOfferPage/PublicOfferPage";
+import HowOrderPage from "./howOrderPage/HowOrderPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -82,6 +85,22 @@ const MainRoutes = () => {
       element: <Test />,
       id: 13,
     },
+    {
+      link: "order",
+      element: <OrderPage />,
+      id: 14,
+    },
+    {
+      link: "public-offer",
+      element: <PublicOfferPage />,
+      id: 15,
+    },
+    {
+      link: "how-order",
+      element: <HowOrderPage />,
+      id: 16,
+    },
+
   ];
 
   return (
