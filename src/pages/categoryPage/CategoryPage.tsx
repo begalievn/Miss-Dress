@@ -118,7 +118,6 @@ const CategoryPage = () => {
                 <h2>{"Все товары"}</h2>
               </div>
             </div>
-
             <section className={classes.products}>
               <ProductsGridContainer>
                 {cards.map((item, index) => (
