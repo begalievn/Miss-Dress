@@ -95,7 +95,7 @@ const CategoriesAside = ({
   // console.log("CategoryAside: ", categories);
 
   const handleMenuClick = (data: any) => {
-    console.log(data);
+    // console.log(data);
     setSelectedCategory(data.id);
   };
 
