@@ -11,6 +11,7 @@ import { LikeApi } from "./services/LikeApi";
 import { categoryApi } from "./services/categoryApi";
 import { UserApi } from "./services/UserApi";
 import { productsApi } from "./services/productsApi";
+import { searchApi } from "./services/SearchApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -22,19 +23,20 @@ const rootreducer = combineReducers({
   [categoryApi.reducerPath]: categoryApi.reducer,
   [UserApi.reducerPath]: UserApi.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
+  [searchApi.reducerPath]: searchApi.reducer,
 });
 
 export const store = configureStore({
   reducer: rootreducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
+      searchApi.middleware,
       shoppingCartApi.middleware,
       LikeApi.middleware,
       AuthorizationAPI.middleware,
       categoryApi.middleware,
       UserApi.middleware,
-      productsApi.middleware,
-     
+      productsApi.middleware
     ),
 });
 

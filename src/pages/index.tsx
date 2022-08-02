@@ -14,6 +14,7 @@ import CollectionPage from "./collection/CollectionPage";
 import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
 import Test from "./test/Test";
 import ProfilePage from "./profilePage/ProfilePage";
+import SearchPage from "./searchPage/SearchPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -80,6 +81,11 @@ const MainRoutes = () => {
     {
       link: "test",
       element: <Test />,
+      id: 13,
+    },
+    {
+      link: `search/name=:name`,
+      element: <SearchPage />,
       id: 13,
     },
   ];
