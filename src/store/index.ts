@@ -12,7 +12,7 @@ import { LikeApi } from "./services/LikeApi";
 import { categoryApi } from "./services/categoryApi";
 import { UserApi } from "./services/UserApi";
 import { productsApi } from "./services/productsApi";
-import { orderApi } from './services/OrderApi';
+import { orderApi } from "./services/OrderApi";
 import { searchApi } from "./services/SearchApi";
 
 const rootreducer = combineReducers({
@@ -41,8 +41,7 @@ export const store = configureStore({
       UserApi.middleware,
       productsApi.middleware,
       orderApi.middleware,
-     
-      productsApi.middleware
+      productsApi.middleware,
     ),
 });
 
