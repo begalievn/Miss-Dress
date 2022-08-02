@@ -1,0 +1,22 @@
+.content {
+    font-size: 16px;
+    line-height: 25px;
+    color: #372e24;
+}
+
+.mainContent {
+    margin: 0px auto 20px;
+}
+
+.mainList li {
+    list-style-type: none;
+}
+
+.mainList li::before {
+    content: '- ';
+}
+
+.instructionList li p {
+    display: inlane-block;
+}
+

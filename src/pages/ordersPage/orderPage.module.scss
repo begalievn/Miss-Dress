@@ -1,0 +1,42 @@
+// @import "../../scss/mixin";
+// @import "../../scss/settings";
+
+
+.container {
+    width: 100%;
+    padding: 0 13px 0 13px;
+}
+
+.content {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-bottom: 180px;
+}
+
+.header {
+    margin-top: 100px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 35px;
+    color: #372E24;
+    // @include fontSize(48px,20px);
+}
+
+hr {
+    margin: 20px 0px 60px;
+    width: 65%;
+    border: 1px solid #372E24;
+}
+
+
+
+@media (max-width: 970px) {
+    .content {
+        padding-bottom: 140px;
+    }
+
+    .header {
+        font-size: 30px;
+    }
+}
