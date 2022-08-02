@@ -23,60 +23,60 @@ const footerContent = [
     title: "Покупателям",
     first: {
       text: "Как оформить заказ",
-      link: "/how-order"
+      link: "/how-order",
     },
     second: {
       text: "Способы оплаты",
-      link: "/categories"
+      link: "/categories",
     },
     third: {
       text: "Доставка",
-      link: "/delivery"
+      link: "/delivery",
     },
   },
   {
     title: "Покупателям",
     first: {
       text: "Возврат товара",
-      link: "/categories"
+      link: "/return-product",
     },
     second: {
       text: "Вопросы и ответы",
-      link: "categories"
+      link: "/faq",
     },
     third: {
       text: "Публичная оферта",
-      link: "/public-offer"
+      link: "/public-offer",
     },
   },
   {
     title: "Компания",
     first: {
       text: "О нас",
-      link: "/about"
+      link: "/about",
     },
     second: {
       text: "Реквизиты",
-      link: "/categories"
+      link: "/categories",
     },
     third: {
       text: "Контакты",
-      link: "/contacts"
+      link: "/contacts",
     },
   },
   {
     title: "Контакты",
     first: {
       text: "+996712345678",
-      link: "/"
+      link: "/",
     },
     second: {
       text: "missdress@gmail.com",
-      link: "/"
+      link: "/",
     },
     third: {
       text: "Исанова, 79",
-      link: "/"
+      link: "/",
     },
   },
 ];
@@ -107,26 +107,61 @@ const Footer = () => {
           <div key={index} className={classes.content_block}>
             <h4>{item.title}</h4>
 
-            { item.first.text === "+996712345678" 
-            ? <a className={classes.linkToCall} href="tel:+996712345678">{item.first.text}</a>
-            : <Link to={item.first.link}><p>{item.first.text}</p></Link>}
+            {item.first.text === "+996712345678" ? (
+              <a className={classes.linkToCall} href="tel:+996712345678">
+                {item.first.text}
+              </a>
+            ) : (
+              <Link to={item.first.link}>
+                <p>{item.first.text}</p>
+              </Link>
+            )}
 
-            {item.second.text === "missdress@gmail.com" 
-            ? <a className={classes.linkToMail} target={"_blank"} href="https://gmail.com">{item.second.text}</a>
-            : <Link to={item.second.link}><p>{item.second.text}</p></Link>}
-            
-            {item.third.text === "Исанова, 79" 
-            ? <a className={classes.linkToMap} target={"_blank"} href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63">{item.third.text}</a>
-            : <Link to={item.third.link}><p>{item.third.text}</p></Link>}
+            {item.second.text === "missdress@gmail.com" ? (
+              <a
+                className={classes.linkToMail}
+                target={"_blank"}
+                href="https://gmail.com"
+              >
+                {item.second.text}
+              </a>
+            ) : (
+              <Link to={item.second.link}>
+                <p>{item.second.text}</p>
+              </Link>
+            )}
+
+            {item.third.text === "Исанова, 79" ? (
+              <a
+                className={classes.linkToMap}
+                target={"_blank"}
+                href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63"
+              >
+                {item.third.text}
+              </a>
+            ) : (
+              <Link to={item.third.link}>
+                <p>{item.third.text}</p>
+              </Link>
+            )}
           </div>
         ))}
       </div>
 
       <div className={classes.content_mobile}>
         <h4>{mobileContent.title}</h4>
-        <a href="tel:+996712345678"><p>{mobileContent.first.text}</p></a>
-        <a target={"_blank"} href="https://gmail.com"><p>{mobileContent.second.text}</p></a>
-        <a target={"_blank"} href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63"><p>{mobileContent.third.text}</p></a>    
+        <a href="tel:+996712345678">
+          <p>{mobileContent.first.text}</p>
+        </a>
+        <a target={"_blank"} href="https://gmail.com">
+          <p>{mobileContent.second.text}</p>
+        </a>
+        <a
+          target={"_blank"}
+          href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63"
+        >
+          <p>{mobileContent.third.text}</p>
+        </a>
       </div>
     </footer>
   );
