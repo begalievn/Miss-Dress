@@ -31,16 +31,12 @@ interface IProductCard {
 const ProductCard = ({ image, id, width }: IProductCard) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/category/4");
-  };
-
   return (
     <div className={classes.container}>
       <div>
         <ProductPhoto image={image} id={id} />
       </div>
-      <div onClick={handleClick} className={classes.content}>
+      <div className={classes.content}>
         <div className={classes.first}>
           <div className={classes.price}>
             <span className={classes.old_price}>{data.price.oldPrice}</span>
