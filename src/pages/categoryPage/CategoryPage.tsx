@@ -66,7 +66,13 @@ const CategoryPage = () => {
     data: products,
     isLoading: productsLoading,
     error: productsError,
+    refetch,
   } = productsApi.useGetAllProductsQuery("");
+
+  // useEffect(() => {
+  //   console.log("Refetched");
+  //   refetch();
+  // }, [selectedCategory]);
 
   const {
     data: productsByCategory,
@@ -78,7 +84,7 @@ const CategoryPage = () => {
 
   const [outputCategories, setOutputCategories] = useState<CategoryTypes[]>([]);
 
-  console.log("Products", products);
+  // console.log("Products", products);
 
   return (
     <div className={classes.container}>
