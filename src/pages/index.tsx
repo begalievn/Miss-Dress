@@ -18,6 +18,8 @@ import OrderPage from "./ordersPage/OrderPage";
 import PublicOfferPage from "./publicOfferPage/PublicOfferPage";
 import HowOrderPage from "./howOrderPage/HowOrderPage";
 import SearchPage from "./searchPage/SearchPage";
+import PaymentPage from "./paymentPage/PaymentPage";
+import RequisitePage from "./requisitePage/RequisitePage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -101,10 +103,20 @@ const MainRoutes = () => {
       element: <HowOrderPage />,
       id: 16,
     },
-{
+    {
       link: `search/name=:name`,
       element: <SearchPage />,
       id: 17,
+    },
+    {
+      link: "payment",
+      element: <PaymentPage />,
+      id: 18,
+    },
+    {
+      link: "requisite",
+      element: <RequisitePage />,
+      id: 19,
     },
   ];
 

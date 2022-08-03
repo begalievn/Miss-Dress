@@ -1,0 +1,44 @@
+.container {
+    max-width: 1300px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.requisiteContent {
+    margin: 100px auto;
+}
+
+.requisiteContent h3 {
+    margin-bottom: 20px;
+}
+
+.requisiteContent p {
+    line-height: 30px;
+}
+
+.requisiteLink {
+    margin-left: 5px;
+}
+
+
+// ===== Adaptive =====
+@media (max-width: 800px) {
+    .requisiteContent p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: 80%;
+    }
+
+    .requisiteContent h3 {
+        font-size: 13px;
+    }
+
+    .requisiteContent p {
+        font-size: 10px;
+        line-height: 24px;
+    }
+}
