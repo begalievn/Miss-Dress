@@ -63,8 +63,16 @@ const ShoppingCartPage = () => {
       }),
     },
   ];
-  const { data: posts } = shoppingCartApi.useFetchAllPostsQuery("");
-  console.log(posts);
+
+  const {
+    data: getProducts,
+    isLoading,
+    error,
+  } = shoppingCartApi.useFetchAllPostsQuery();
+
+  const products = getProducts?.result.products;
+  console.log(products);
+
   const saveHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
@@ -75,6 +83,13 @@ const ShoppingCartPage = () => {
     }) && inputs.forEach((i) => i.hook.clearFields());
   };
 
+  if (products && !products.length) {
+    return (
+      <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
+        В вашей корзине нет заказов
+      </h1>
+    );
+  }
   return (
     <section className={styles.container}>
       <div className={styles.content}>
@@ -114,15 +129,19 @@ const ShoppingCartPage = () => {
                 })}
                 <SubmitButton
                   onClick={(e: React.SyntheticEvent) => saveHandler(e)}
+                  text={"Редактировать"}
                 />
               </form>
             </section>
 
             <div className={styles.orderList}>
               <h1 className={styles.orderListTitle}>Состав заказа</h1>
-              {[1, 2, 3].map((item) => {
-                return <ProductOrder key={item} />;
-              })}
+              {products &&
+                products.map((item) => {
+                  return (
+                    <ProductOrder page={"sending"} info={item} key={item.id} />
+                  );
+                })}
             </div>
           </section>
           <Total />
