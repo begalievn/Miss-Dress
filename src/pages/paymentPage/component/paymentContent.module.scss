@@ -1,0 +1,59 @@
+.title {
+    margin: 30px 0px 10px;
+}
+
+.text {
+    line-height: 30px;
+    font-size: 16px;
+}
+
+.textConcat {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.link {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.titleOther {
+    margin-top: 30px;
+}
+
+.textOther {
+    line-height: 24px;
+    font-weight: 600;
+    margin-top: 3%;
+}
+
+// ===== Adaptive =====
+@media (max-width: 800px) {
+    .title, .titleOther {
+        font-size: 18px;
+    }  
+}
+
+@media (max-width: 760px) {
+    .link {
+        margin-left: 0px;
+        display: block;
+    }  
+}
+
+@media (max-width: 580px) {
+    .title, .titleOther {
+        font-size: 13px;
+    }
+
+    .titleOther {
+        margin-top: 10px;
+    }
+
+    .text, .link, .textOther {
+        font-size: 10px;
+        line-height: 14px;
+        margin-top: 5%;
+    }
+}

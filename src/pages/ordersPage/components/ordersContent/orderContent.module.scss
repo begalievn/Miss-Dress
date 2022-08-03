@@ -1,0 +1,125 @@
+
+.infoBlock {
+    margin: 50px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoBlockLeft {
+    display: flex;
+}
+
+.infoOrder {
+    margin-right: 25px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #372E24;
+}
+
+.infoStatus {
+    font-weight: 300;
+    font-size: 20px;
+    color: #6A5844;
+}
+
+.infoDate {
+    font-weight: 400;
+    font-size: 20px;
+    color: #372E24;
+}
+
+.contentBlock {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;
+}
+
+.contentBlockList {
+    display: flex;
+}
+
+.contentBlockList li {
+    list-style-type: none;
+}
+
+.contentBlockImg {
+    margin-right: 8px;
+    width: 200px;
+    height: 300px;
+    // background-color: #6A5844;
+}
+
+.contentBlockImgPlus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 48px;
+    color: #372E24;
+    
+    width: 200px;
+    height: 300px;
+    background: #F1DAC5;
+}
+
+.contentBlockPrice {
+    font-weight: 400;
+    font-size: 26px;
+    color: #372E24;
+}
+
+
+
+// ===== Adaptive =====
+@media (max-width: 970px) {
+    .contentBlockImg,
+    .contentBlockImgPlus {
+        width: 180px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 890px) {
+    .contentBlockImg,
+    .contentBlockImgPlus {
+        width: 160px;
+        height: 260px;
+    }
+}
+
+@media (max-width: 810px) {
+    .contentBlockImg,
+    .contentBlockImgPlus {
+        width: 140px;
+        height: 230px;
+        font-size: 35px;
+    }
+
+    .infoOrder,
+    .infoStatus,
+    .infoDate {
+        font-size: 16px;
+    }
+
+    .contentBlockPrice {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 715px) {
+    .contentBlockImg,
+    .contentBlockImgPlus {
+        width: 120px;
+        height: 200px;
+    }
+
+    .infoOrder,
+    .infoStatus,
+    .infoDate {
+        font-size: 16px;
+    }
+
+    .contentBlockPrice {
+        font-size: 20px;
+    }
+}

@@ -1,3 +1,11 @@
+export interface ProductTest {
+  id: number;
+  title: string;
+  price: number;
+  discount: number;
+  rate: number;
+  image: string;
+}
 export interface ProductTypes {
   id: number;
   title: string;
