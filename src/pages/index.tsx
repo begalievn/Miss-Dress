@@ -22,6 +22,8 @@ import PaymentPage from "./paymentPage/PaymentPage";
 import RequisitePage from "./requisitePage/RequisitePage";
 import FaqPage from "./faqPage/FaqPage";
 import ReturnProduct from "./returnProduct/ReturnProduct";
+import ProductOrder from "./shoppingCartPage/components/productOrder/ProductOrder";
+import OrderProductPage from "./orderProductPage/OrderProductPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -91,7 +93,7 @@ const MainRoutes = () => {
       id: 13,
     },
     {
-      link: "order",
+      link: "order/",
       element: <OrderPage />,
       id: 14,
     },
@@ -130,6 +132,16 @@ const MainRoutes = () => {
       link: `return-product`,
       element: <ReturnProduct />,
       id: 21,
+    },
+    {
+      link: "order-product",
+      element: <OrderProductPage />,
+      id: 22,
+    },
+    {
+      link: "product-order",
+      element: <ProductOrder />,
+      id: 23,
     },
   ];
 

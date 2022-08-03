@@ -7,17 +7,14 @@ const Breadcrumbs = () => {
 
   const breadcrumbs = useAppSelector(state=>state.Breadcrumbs.breadcrumbs);
 
-
-
-  
   return (
     <div className={style.mainBlock}>
       <div>Главная</div>
-    <div>/</div>
+      <div>/</div>
       {breadcrumbs.map(item=>(
         <>
-        <div>{item}</div>
-        <div>/</div>
+          <div>{item}</div>
+          <div>/</div>
         </>
       ))}
     </div>

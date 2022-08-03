@@ -36,3 +36,9 @@ hr {
         font-size: 30px;
     }
 }
+
+@media (max-width: 715px) {
+    .content {
+        padding-bottom: 100px;
+    }
+}
