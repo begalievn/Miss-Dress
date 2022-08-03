@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import classes from "./requisitePage.module.scss"
+import classes from "./requisitePage.module.scss";
 
 function RequisitePage() {
   return (

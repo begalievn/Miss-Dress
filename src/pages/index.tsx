@@ -20,6 +20,8 @@ import HowOrderPage from "./howOrderPage/HowOrderPage";
 import SearchPage from "./searchPage/SearchPage";
 import PaymentPage from "./paymentPage/PaymentPage";
 import RequisitePage from "./requisitePage/RequisitePage";
+import FaqPage from "./faqPage/FaqPage";
+import ReturnProduct from "./returnProduct/ReturnProduct";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -109,6 +111,7 @@ const MainRoutes = () => {
       id: 17,
     },
     {
+
       link: "payment",
       element: <PaymentPage />,
       id: 18,
@@ -117,6 +120,16 @@ const MainRoutes = () => {
       link: "requisite",
       element: <RequisitePage />,
       id: 19,
+    },
+{
+      link: `Faq`,
+      element: <FaqPage />,
+      id: 20,
+    },
+    {
+      link: `return-product`,
+      element: <ReturnProduct />,
+      id: 21,
     },
   ];
 
