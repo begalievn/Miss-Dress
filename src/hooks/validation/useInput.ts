@@ -50,7 +50,6 @@ const useValidation = (value: string, validations: IRules) => {
     }
   }, [error]);
   return { setError, error, inputValid };
-  // isEmpty, minLengthError
 };
 
 const useInput = (initialValue: string, validations: IRules) => {

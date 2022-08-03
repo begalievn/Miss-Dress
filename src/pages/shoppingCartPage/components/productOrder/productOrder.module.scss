@@ -89,6 +89,7 @@
 }
 .text span {
   color: $fontColorTitle;
+  @include fontSize(20px,12px)
 }
 
 .control{

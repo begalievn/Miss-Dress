@@ -1,5 +1,3 @@
-import { subBack, subBackMobile } from "../../assets/main-page/images";
-
 export interface IList {
   title: string;
   text: string;
@@ -8,33 +6,31 @@ export interface IList {
   id: number;
 }
 
-export const newsArray: IList[] = [
-  {
-    title: "Новость 1",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    date: "0б.08.1234",
-    image: subBack,
-    id: 12,
-  },
-  {
-    title: "Новость 2",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    date: "0б.08.3211",
-    image: subBackMobile,
-    id: 1,
-  },
-  {
-    title: "Новость 3",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    date: "0б.03.1034",
-    image: subBack,
-    id: 2,
-  },
-  {
-    title: "Новость 3",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    date: "0б.03.1034",
-    id: 3,
-    image: subBack,
-  },
-];
+export function setLocalStorage(item: IList) {
+  if (!localStorage.getItem("news")) {
+    localStorage.setItem("news", `[${JSON.stringify(item)}]`);
+  } else {
+    let currentState = JSON.parse(localStorage.getItem("news") || "");
+    currentState.length >= 5 && currentState.pop();
+
+    let newState = [item, ...currentState];
+    let arr = newState.map((i: IList, index: number) => {
+      return { ...i, id: index + 1 };
+    });
+    console.log(arr);
+    localStorage.setItem("news", JSON.stringify(arr));
+  }
+}
+
+export function deleteHandler(id: number) {
+  if (localStorage.getItem("news")) {
+    let currentState = JSON.parse(localStorage.getItem("news") || "");
+    const rest = currentState.filter((item: IList) => {
+      return item.id !== id;
+    });
+    let sorted = rest.map((i: IList, index: number) => {
+      return { ...i, id: index + 1 };
+    });
+    localStorage.setItem("news", JSON.stringify(sorted));
+  }
+}

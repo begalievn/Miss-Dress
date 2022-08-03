@@ -44,8 +44,10 @@
 
   width: toMax(600px);
   }
+  border: #3B210A;
 }
 .title{
+
   @include phone {
     display: none;
   }
@@ -60,6 +62,32 @@
   }
 
 }
+.textInput{
+  margin-top: toD(94px);
+  width: toD(920px);
+  @include fontSize(36px,12px);
+  @include desktop{
+    margin-top: toMax(94px);
+    width: toMax(920px);
+  }
+  @include phone{
+    margin-top: 0;
+    width: toM(170px);
+  }
+}
+.titleInput{
+  width: toD(920px);
+  @include phone {
+    display: none;
+  }
+  @include desktop{
+    width: toMax(920px);
+  }
+  @include titleFont();
+}
+.cursor{
+  cursor: pointer;
+}
 .text{
 
   @include fontSize(36px,12px);
@@ -70,10 +98,22 @@
   @include phone{
     margin-top: 0;
   }
-  @include fontSize(36px,12px)
+
 }
 .date{
   @include fontSize(24px,12px);
   text-align: right;
 }
-
+.downloadBlock{
+  background-color: rgba(128, 128, 128, 0.35);
+  width: toD(600px);
+  height: toD(1000px);
+  @include desktop{
+    width: toMax(600px);
+    height: toMax(1000px);
+  }
+  @include phone {
+    width: toM(165px);
+    height: toM(275px);
+  }
+}
