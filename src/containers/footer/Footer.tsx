@@ -27,7 +27,7 @@ const footerContent = [
     },
     second: {
       text: "Способы оплаты",
-      link: "/categories",
+      link: "/payment"
     },
     third: {
       text: "Доставка",
@@ -57,7 +57,7 @@ const footerContent = [
     },
     second: {
       text: "Реквизиты",
-      link: "/categories",
+      link: "/requisite"
     },
     third: {
       text: "Контакты",
@@ -121,7 +121,7 @@ const Footer = () => {
               <a
                 className={classes.linkToMail}
                 target={"_blank"}
-                href="https://gmail.com"
+                href="https://gmail.com" rel="noreferrer"
               >
                 {item.second.text}
               </a>
@@ -135,7 +135,7 @@ const Footer = () => {
               <a
                 className={classes.linkToMap}
                 target={"_blank"}
-                href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63"
+                href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63" rel="noreferrer"
               >
                 {item.third.text}
               </a>
@@ -153,12 +153,12 @@ const Footer = () => {
         <a href="tel:+996712345678">
           <p>{mobileContent.first.text}</p>
         </a>
-        <a target={"_blank"} href="https://gmail.com">
+        <a target={"_blank"} href="https://gmail.com" rel="noreferrer">
           <p>{mobileContent.second.text}</p>
         </a>
         <a
           target={"_blank"}
-          href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63"
+          href="https://2gis.kg/bishkek/search/%D0%B8%D1%81%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0%2079/firm/70000001036409659/74.592026%2C42.874238?floor=1&m=74.592042%2C42.874223%2F17.63" rel="noreferrer"
         >
           <p>{mobileContent.third.text}</p>
         </a>

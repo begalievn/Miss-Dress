@@ -1,14 +1,18 @@
 .content {
     font-size: 16px;
-    line-height: 25px;
+    line-height: 30px;
     color: #372e24;
+    text-align: center;
+    margin: 0px 0px 100px;
+    padding: 0px 20px;
 }
 
 .mainContent {
     margin: 0px auto 20px;
 }
 
-.mainList li {
+.mainList li,
+.instructionList {
     list-style-type: none;
 }
 
@@ -16,7 +20,14 @@
     content: '- ';
 }
 
-.instructionList li p {
-    display: inlane-block;
+
+// ===== Adaptive =====
+@media (max-width: 500px) {
+    .content {
+        margin-bottom: 70px;
+    }
+    .instructionItem {
+        font-size: 14px;
+    }
 }
 
