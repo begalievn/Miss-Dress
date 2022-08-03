@@ -39,7 +39,7 @@ const MainRoutes = () => {
     },
     {
       link: "/news/:id",
-      element: <NewsPage />,
+      element: <NewsPage edit={false} />,
       id: 5,
     },
     {

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -9,36 +9,28 @@ import SubmitButton from "../../../../components/submitButton/SubmitButton";
 import styles from "./newList.module.scss";
 
 interface INewsList {
-  title: "Другие новости" | "Новости";
+  title: "Другие новости" | "Новости" | "Удаление";
   info: IList[] | null | undefined;
   showMore?: (e: React.SyntheticEvent) => void;
+  editNews?: (
+    e: React.MouseEvent<HTMLParagraphElement, MouseEvent>,
+    id: number
+  ) => void | undefined;
+  deleteNews?: (e: React.MouseEvent<HTMLDivElement>, id: number) => void;
 }
 
-const NewsList: FC<INewsList> = ({ title = "Новости", info, showMore }) => {
+const NewsList: FC<INewsList> = ({
+  title = "Новости",
+  info,
+  showMore,
+  editNews,
+  deleteNews,
+}) => {
   const navigate = useNavigate();
 
-  const zero = (int: number) => {
-    if (int < 10) {
-      return `0${int}`;
-    }
-    return int;
-  };
-
-  console.log(
-    `${zero(new Date().getDay())}.${zero(
-      new Date().getMonth()
-    )}.${new Date().getFullYear()}`
-  );
-
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
   return (
     <section className={styles.container}>
-      {title === undefined && (
+      {title !== undefined && (
         <h1
           className={
             title === "Новости" ? styles.headerMain : styles.headerCurrentNews
@@ -55,6 +47,14 @@ const NewsList: FC<INewsList> = ({ title = "Новости", info, showMore }) =
             key={item.id}
             className={styles.imageBlock}
           >
+            {title === "Удаление" && (
+              <div
+                onClick={(e) => deleteNews && deleteNews(e, item.id)}
+                className={`${styles.cross} ${styles.cursor}`}
+              >
+                X
+              </div>
+            )}
             <div
               style={{
                 backgroundImage: `url(${item.image})`,
@@ -65,9 +65,22 @@ const NewsList: FC<INewsList> = ({ title = "Новости", info, showMore }) =
                   : `${styles.infoBlock}`
               }
             >
-              <h3 className={styles.title}>{item.title}</h3>
+              <div className={styles.titleBlock}>
+                <h3 className={styles.title}>{item.title}</h3>
+              </div>
+
               <div className={styles.info}>
-                <p className={styles.read}>Читать</p>
+                {title === "Удаление" ? (
+                  <p
+                    onClick={(e) => editNews && editNews(e, item.id)}
+                    className={`${styles.read} ${styles.cursor}`}
+                  >
+                    Редактировать
+                  </p>
+                ) : (
+                  <p className={styles.read}>Читать</p>
+                )}
+
                 <p className={styles.date}>{item.date}</p>
               </div>
             </div>

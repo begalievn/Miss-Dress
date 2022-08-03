@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
-// console.log(JSON.parse(localStorage.getItem("accessToken"), "acsess");
+import { IShoppingCart } from "../../utils/types/typesShoppingCart";
+
 export const shoppingCartApi = createApi({
   reducerPath: "shoppingCardApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://discoverystudio.xyz:4343/api",
   }),
   endpoints: (build) => ({
-    fetchAllPosts: build.query({
+    fetchAllPosts: build.query<IShoppingCart, void>({
       query: () => ({
         method: "GET",
         url: "/cart",
