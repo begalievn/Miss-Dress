@@ -7,6 +7,7 @@ export const shoppingCartApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://discoverystudio.xyz:4343/api",
   }),
+  tagTypes: ["Product"],
   endpoints: (build) => ({
     fetchAllPosts: build.query<IShoppingCart, void>({
       query: () => ({
@@ -18,6 +19,33 @@ export const shoppingCartApi = createApi({
           )}`,
         },
       }),
+      providesTags: (result) => ["Product"],
+    }),
+    addProduct: build.mutation({
+      query: (body) => ({
+        url: "/cart/add",
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("accessToken") || "{}"
+          )}`,
+        },
+        body,
+      }),
+      invalidatesTags: ["Product"],
+    }),
+    removeProduct: build.mutation({
+      query: (body) => ({
+        url: "/cart/reduce",
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("accessToken") || "{}"
+          )}`,
+        },
+        body,
+      }),
+      invalidatesTags: ["Product"],
     }),
   }),
 });

@@ -9,18 +9,15 @@ import styles from "./productOrder.module.scss";
 interface IProductOrder {
   page: "sending" | "viewing";
   info: IProduct;
-
-  // name: string;
-  // article: string;
-  // size: string;
-  // color: string;
-  // count: string;
-  // price: number;
-  // discount?: number;
+  change?: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    id: number,
+    action: "+" | "-"
+  ) => void;
 }
 
-const ProductOrder: FC<IProductOrder> = ({ info, page }) => {
-  const { title, price, amount, article, discount } = info.product;
+const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
+  const { title, price, amount, article, discount, id } = info.product;
 
   const pageContainer =
     page === "sending" ? styles.container : styles.myOrdersContainer;
@@ -47,9 +44,19 @@ const ProductOrder: FC<IProductOrder> = ({ info, page }) => {
           </div>
           {page === "sending" && (
             <section className={styles.control}>
-              <div className={styles.minus}>-</div>
+              <div
+                onClick={(e) => change && change(e, id, "-")}
+                className={styles.minus}
+              >
+                -
+              </div>
               <div className={styles.count}>{info.amount}</div>
-              <div className={styles.plus}>+</div>
+              <div
+                onClick={(e) => change && change(e, id, "+")}
+                className={styles.plus}
+              >
+                +
+              </div>
             </section>
           )}
         </div>

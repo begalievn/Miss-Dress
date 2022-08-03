@@ -68,10 +68,16 @@ const ShoppingCartPage = () => {
     data: getProducts,
     isLoading,
     error,
+    refetch,
   } = shoppingCartApi.useFetchAllPostsQuery();
 
+  const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
+  const [removeProduct, {}] = shoppingCartApi.useRemoveProductMutation();
+
   const products = getProducts?.result.products;
-  console.log(products);
+  const cartId = getProducts?.result.id;
+  console.log(cartId);
+  console.log(getProducts);
 
   const saveHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -82,6 +88,17 @@ const ShoppingCartPage = () => {
       return i.hook.inputValid;
     }) && inputs.forEach((i) => i.hook.clearFields());
   };
+
+  async function changeHandler(
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    id: number,
+    action: "+" | "-"
+  ) {
+    refetch();
+    console.log(action);
+    if (action === "+") await addProduct({ productId: id });
+    if (action === "-") await removeProduct({ productId: id, cartId: cartId });
+  }
 
   if (products && !products.length) {
     return (
@@ -98,7 +115,7 @@ const ShoppingCartPage = () => {
             <section className={styles.booking}>
               <h3 className={styles.header}>Оформление заказа</h3>
               <section className={styles.addressBlock}>
-                <h3 className={styles.addressTitle}>Адресс доставки</h3>
+                <h3 className={styles.addressTitle}>Адрес доставки</h3>
                 <p>Исанова, 79, +996712345678</p>
                 <p>Кыргызстан, г. Бишкек</p>
                 <div className={styles.buttonBlock}>
@@ -139,7 +156,12 @@ const ShoppingCartPage = () => {
               {products &&
                 products.map((item) => {
                   return (
-                    <ProductOrder page={"sending"} info={item} key={item.id} />
+                    <ProductOrder
+                      change={changeHandler}
+                      page={"sending"}
+                      info={item}
+                      key={item.id}
+                    />
                   );
                 })}
             </div>
