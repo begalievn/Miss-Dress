@@ -34,7 +34,15 @@
     font-weight: 300;
     font-size: 23px;
     line-height: 28px;
+  }
 
+  .label:hover {
+    color: #E6A66E;
+    font-size: 24px;
+  }
+
+  .active_category {
+    color: #E6A66E;
   }
 
   @media (max-width: 1000px) {
