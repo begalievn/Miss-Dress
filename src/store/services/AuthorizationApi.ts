@@ -59,7 +59,7 @@ export const AuthorizationAPI = createApi({
       invalidatesTags: (result) => ["Authorization"],
     }),
     updateCode: build.mutation({
-      query: (id:number) => ({
+      query: (id: number) => ({
         url: "/auth/update-code",
         method: "POST",
         body: {

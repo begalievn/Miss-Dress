@@ -1,0 +1,43 @@
+.container {
+    max-width: 1300px;
+    width: 90%;
+    margin: 0 auto 80px;
+}
+
+.header {
+    text-align: center;
+    margin: 70px auto 30px;
+}
+
+.headerText {
+    line-height: 30px;
+}
+
+
+// ===== Adaptive =====
+@media (max-width: 800px) {
+    .header {
+        margin-top: 50px;
+        font-size: 20px;
+    }
+
+    .headerText {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 580px) {
+    .container {
+        margin-bottom: 50px;
+    }
+
+    .header {
+        font-size: 14px;
+        margin: 40px 0px 20px;
+    }
+
+    .headerText {
+        font-size: 10px;
+        line-height: 14px;
+    }
+}

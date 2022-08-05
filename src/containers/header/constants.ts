@@ -9,7 +9,7 @@ export const pages = [
   { name: "О нас", link: "/about", id: 2 },
   { name: "Доставка", link: "/delivery", id: 3 },
   { name: "Контакты", link: "/contacts", id: 4 },
-  { name: "Новости", link: "/news", id: 5 },
+  { name: "Новости", link: "/news/1", id: 5 },
 ];
 
 export const icons = [
