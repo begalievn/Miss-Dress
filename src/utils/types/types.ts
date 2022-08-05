@@ -1,3 +1,17 @@
+export interface IAdmin {
+  title: string;
+  image: string;
+  route: string;
+}
+
+export interface IFavorites {
+  name: string;
+  price: number;
+  colors: number;
+  size: number;
+  id: number;
+}
+
 interface Images {
   contentSize: number;
   contentType: string;
