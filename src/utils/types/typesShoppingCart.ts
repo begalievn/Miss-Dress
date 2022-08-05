@@ -10,6 +10,7 @@ export interface IProductCurrent {
   article: string;
   rate: number;
   discount?: any;
+  images?: Iimage[];
 }
 
 export interface IProduct {
@@ -36,4 +37,21 @@ export interface IResult {
 export interface IShoppingCart {
   statusCode: number;
   result: IResult;
+}
+export interface IData {
+  data: IShoppingCart;
+}
+//ВЫШЕ ТИПИЗАЦИЯ ДЛЯ КАРТ
+
+// ОБЩАЯ КАРТИНКА
+export interface Iimage {
+  id: number;
+  status: number;
+  createDate: Date;
+  updateDate: Date;
+  name: string;
+  fileKey: string;
+  contentSize: number;
+  contentType: string;
+  url: string;
 }

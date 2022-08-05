@@ -19,9 +19,14 @@ export const shoppingCartApi = createApi({
           )}`,
         },
       }),
-      providesTags: (result) => ["Product"],
+      // providesTags: (result) => ["Product"],
     }),
-    addProduct: build.mutation({
+    addProduct: build.mutation<
+      IShoppingCart,
+      {
+        productId: number;
+      }
+    >({
       query: (body) => ({
         url: "/cart/add",
         method: "PATCH",
@@ -32,9 +37,15 @@ export const shoppingCartApi = createApi({
         },
         body,
       }),
-      invalidatesTags: ["Product"],
+      // invalidatesTags: ["Product"],
     }),
-    removeProduct: build.mutation({
+    removeProduct: build.mutation<
+      IShoppingCart,
+      {
+        productId: number;
+        cartId: number;
+      }
+    >({
       query: (body) => ({
         url: "/cart/reduce",
         method: "PATCH",
@@ -45,7 +56,25 @@ export const shoppingCartApi = createApi({
         },
         body,
       }),
-      invalidatesTags: ["Product"],
+      // invalidatesTags: ["Product"],
+    }),
+    deleteProduct: build.mutation<
+      IShoppingCart,
+      {
+        productId: number;
+        cartId: number;
+      }
+    >({
+      query: (body) => ({
+        url: "/cart",
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("accessToken") || "{}"
+          )}`,
+        },
+        body,
+      }),
     }),
   }),
 });

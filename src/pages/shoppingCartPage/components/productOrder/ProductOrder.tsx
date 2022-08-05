@@ -12,7 +12,7 @@ interface IProductOrder {
   change?: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     id: number,
-    action: "+" | "-"
+    action: "+" | "-" | "x"
   ) => void;
 }
 
@@ -21,6 +21,7 @@ const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
 
   const pageContainer =
     page === "sending" ? styles.container : styles.myOrdersContainer;
+  let e;
   return (
     <div className={pageContainer}>
       <img className={styles.img} src={productImg} alt="" />
@@ -61,7 +62,14 @@ const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
           )}
         </div>
         <div className={styles.rightSection}>
-          {page === "sending" && <div className={styles.cross}>+</div>}
+          {page === "sending" && (
+            <div
+              onClick={(e) => change && change(e, id, "x")}
+              className={styles.cross}
+            >
+              +
+            </div>
+          )}
           <div className={styles.priceBlock}>
             {discount ? (
               <>
