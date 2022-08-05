@@ -45,7 +45,8 @@ const SearchPage = () => {
                 price={card.price}
                 discount={card.discount}
                 rate={card.rate}
-                image={card.images.image}
+                image={card.images}
+                status={card.status}
               />
             </div>
           ))
