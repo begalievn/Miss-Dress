@@ -107,12 +107,11 @@ const MainRoutes = () => {
       id: 16,
     },
     {
-      link: `search/name=:name`,
+      link: "search/name=:name",
       element: <SearchPage />,
       id: 17,
     },
     {
-
       link: "payment",
       element: <PaymentPage />,
       id: 18,
@@ -128,7 +127,7 @@ const MainRoutes = () => {
       id: 20,
     },
     {
-      link: `return-product`,
+      link: "return-product",
       element: <ReturnProduct />,
       id: 21,
     },

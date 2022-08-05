@@ -1,4 +1,3 @@
-
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import { AuthorizationAPI } from "./services/AuthorizationApi";
@@ -14,6 +13,7 @@ import { UserApi } from "./services/UserApi";
 import { productsApi } from "./services/productsApi";
 import { orderApi } from "./services/OrderApi";
 import { searchApi } from "./services/SearchApi";
+import { ratingApi } from "./services/RatingApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -27,6 +27,7 @@ const rootreducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
+  [ratingApi.reducerPath]: ratingApi.reducer,
 });
 
 export const store = configureStore({
@@ -42,6 +43,7 @@ export const store = configureStore({
       productsApi.middleware,
       orderApi.middleware,
       productsApi.middleware,
+      ratingApi.middleware
     ),
 });
 
