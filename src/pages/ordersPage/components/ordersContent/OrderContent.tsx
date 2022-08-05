@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { orderApi } from "../../../../store/services/OrderApi";
 
@@ -19,20 +19,28 @@ import styles from "./orderContent.module.scss";
 
 function OrderContent() {
 
-  const {data=[], isError, isLoading} = orderApi.useFetchAllOrderQuery("");
+  const {data, isError, isLoading} = orderApi.useFetchAllOrderQuery();
   const cart=data?.result;
   // console.log(cart);
 
-  console.log(data);
+  // const navigate = useNavigate();
+  // console.log(navigate)
+
+
+  // const {result} = data && data;
+  // console.log(result);
+  
+
+  // console.log(data);
   
   return (
     <div>
-      {!isLoading ? cart?.map((item:any) => {
+      {!isLoading ? cart?.map((item) => {
         return (
           <div key={item.id} className={styles.block}>
             <div className={styles.infoBlock}>
               <div className={styles.infoBlockLeft}>
-                <h4 className={styles.infoOrder}>Заказ   {item.id}</h4>
+                <h4 className={styles.infoOrder}>Заказ   №{item.id}</h4>
                 <p className={styles.infoStatus}>{item.status}</p>
               </div>
               <p className={styles.infoDate}>{item.createDate.slice(0, 10)}</p>

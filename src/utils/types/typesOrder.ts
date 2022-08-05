@@ -85,11 +85,11 @@ export interface IResult {
   user: IUser;
   id: number;
   status: number;
-  createDate: Date;
+  createDate: string;
   updateDate: Date;
 }
 
 export interface Iorder {
   statusCode: number;
-  result: IResult;
+  result: IResult[];
 }
