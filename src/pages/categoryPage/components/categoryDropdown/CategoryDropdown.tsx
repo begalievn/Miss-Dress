@@ -3,10 +3,17 @@ import React, { useState } from "react";
 import CategoriesAside from "../categoriesAside/CategoriesAside";
 
 import classes from "./categoryDropdown.module.scss";
+import { CategoryTypes } from "../../../../utils/types/types";
 
-interface ICategoryDropdown {}
+interface ICategoryDropdown {
+  categories: CategoryTypes[];
+  setSelectedCategory: (value: number) => void;
+}
 
-const CategoryDropdown = ({}: ICategoryDropdown) => {
+const CategoryDropdown = ({
+  categories,
+  setSelectedCategory,
+}: ICategoryDropdown) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -25,7 +32,12 @@ const CategoryDropdown = ({}: ICategoryDropdown) => {
         ></span>
       </div>
       {isOpen && (
-        <div className={classes.dropdown}>{/*<CategoriesAside />*/}</div>
+        <div className={classes.dropdown}>
+          <CategoriesAside
+            categories={categories}
+            setSelectedCategory={setSelectedCategory}
+          />
+        </div>
       )}
     </div>
   );

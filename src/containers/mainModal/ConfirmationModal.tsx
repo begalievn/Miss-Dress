@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+
 import { userStateToogle } from "../../store/reducers/AuthorizationUserSlice";
 
 import { AddModalChoise, openModal, textErrorNumber } from "../../store/reducers/ModalSlice";
@@ -37,10 +38,10 @@ const ConfirmationModal: FC<iConfirmModal> = ({ title }) => {
       dispatch(textErrorNumber("Вы не ввели код подтверждения"));
     } else {
       sendActivatedCode(data).then((response: any) => {
-        localStorage.setItem(
-          "token",
-          JSON.stringify(response.data.result.token)
-        );
+        console.log(response);
+        
+        localStorage.setItem("accessToken", JSON.stringify(response.data.result.token.accessToken));
+        localStorage.setItem("refreshToken", JSON.stringify(response.data.result.token.refreshToken));
         switch (title) {
         case "Вход":
           dispatch(openModal(false));

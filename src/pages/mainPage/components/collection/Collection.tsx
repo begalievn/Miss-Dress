@@ -4,26 +4,15 @@ import styles from "./collection.module.scss";
 
 import { useNavigate } from "react-router-dom";
 
-import { CollectionApi } from "../../../../store/services/CollectionApi";
-
 interface ICollection {
   info: {
     image: string;
     title: string;
+    path: string;
   }[];
 }
 
 const Collection: FC<ICollection> = ({ info }) => {
-  const {
-    data: Collections,
-    isLoading,
-    isError,
-    refetch,
-  } = CollectionApi.useFetchAllCollectionsQuery("");
-
-  console.log(JSON.parse(localStorage.getItem("token") || "{}"));
-
-  console.log(Collections);
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
@@ -31,7 +20,7 @@ const Collection: FC<ICollection> = ({ info }) => {
       {info.map((item) => {
         return (
           <section
-            onClick={() => navigate("./collection")}
+            onClick={() => navigate(`/collection/${item.path}`)}
             key={item.title}
             className={styles.block}
           >

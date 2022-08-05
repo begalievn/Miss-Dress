@@ -1,0 +1,79 @@
+@import "../../scss/mixin";
+@import "../../scss/settings";
+
+.container{
+  width: 100%;
+  padding: 0 13px 0 13px;
+}
+.content{
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.textBlock{
+  display: flex;
+  flex-direction: column;
+}
+.block{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+.newsContainer{
+  width: 100%;
+  //height: 1006px;
+  display: flex;
+  padding: toD(70px) 0;
+  padding-right: toD(20px);
+  gap: 0 toD(138px);
+  @include phone{
+    gap: toM(15px);
+  }
+  @include desktop{
+    padding: toMax(70px) 0;
+    gap: 0 toMax(138px);
+  }
+}
+.image{
+  width: toD(600px);
+  @include phone{
+    width: toM(165px);
+  }
+  @include desktop{
+
+  width: toMax(600px);
+  }
+}
+.title{
+  @include phone {
+    display: none;
+  }
+  @include titleFont();
+}
+.titleMobile{
+  @include titleFont($textAlign:center);
+ display: none;
+  @include phone{
+  margin-top: toM(19px);
+    display: block;
+  }
+
+}
+.text{
+
+  @include fontSize(36px,12px);
+  margin-top: toD(94px);
+  @include desktop{
+    margin-top: toMax(94px);
+  }
+  @include phone{
+    margin-top: 0;
+  }
+  @include fontSize(36px,12px)
+}
+.date{
+  @include fontSize(24px,12px);
+  text-align: right;
+}
+

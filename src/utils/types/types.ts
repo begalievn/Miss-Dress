@@ -22,10 +22,10 @@ export interface ImagesType {}
 // }
 
 export interface CategoryTypes {
-  id: number;
+  category_id: number | null | undefined;
   status: number;
+  category_title: string;
   // createDate: Date;
   // updateDate: Date;
-  title: string;
   children: CategoryTypes[] | [];
 }

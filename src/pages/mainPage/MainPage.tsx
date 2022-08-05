@@ -2,6 +2,8 @@ import React from "react";
 
 import { winter } from "../../assets/main-page/images";
 
+import { newsArray } from "../newsPage/NewsArray";
+
 import Collection from "./components/collection/Collection";
 import Subscribe from "./components/subscribe/Subscribe";
 import Advantages from "./components/advantages/Advantages";
@@ -17,18 +19,22 @@ const collectionInfo = [
   {
     image: winter,
     title: "ЛЕТО",
+    path: "summer",
   },
   {
     image: "https://picsum.photos/500",
     title: "ВЕСНА",
+    path: "spring",
   },
   {
     image: winter,
     title: "ОСЕНЬ ",
+    path: "autumn",
   },
   {
     image: winter,
     title: "ЗИМА",
+    path: "winter",
   },
 ];
 
@@ -48,7 +54,7 @@ const MainPage = () => {
           <Advantages />
         </div>
         <div className={classes.content}>
-          <NewsList />
+          <NewsList title={"Новости"} info={newsArray} />
         </div>
       </div>
     </>

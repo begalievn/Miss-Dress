@@ -4,8 +4,6 @@
 
 .container{
   width: 100%;
-  //height: 60vw;
-  //background-color: #DBB593;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +14,7 @@
 
 }
 .headerCurrentNews{
-  @include titleFont(85%)
+  @include titleFont($ta:70%)
 }
 
 
@@ -30,9 +28,8 @@
 }
 
 .infoBlock{
-  background-color: #ff7373;
+  background:  0 0/100% auto no-repeat;
   z-index: 1;
-  //visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: start;
