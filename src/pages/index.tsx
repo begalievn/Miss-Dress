@@ -22,7 +22,6 @@ import PaymentPage from "./paymentPage/PaymentPage";
 import RequisitePage from "./requisitePage/RequisitePage";
 import FaqPage from "./faqPage/FaqPage";
 import ReturnProduct from "./returnProduct/ReturnProduct";
-import ProductOrder from "./shoppingCartPage/components/productOrder/ProductOrder";
 import OrderProductPage from "./orderProductPage/OrderProductPage";
 
 const MainRoutes = () => {
@@ -123,7 +122,7 @@ const MainRoutes = () => {
       element: <RequisitePage />,
       id: 19,
     },
-{
+    {
       link: `Faq`,
       element: <FaqPage />,
       id: 20,
@@ -134,15 +133,11 @@ const MainRoutes = () => {
       id: 21,
     },
     {
-      link: "order-product",
+      link: "order-product/:id",
       element: <OrderProductPage />,
       id: 22,
     },
-    {
-      link: "product-order",
-      element: <ProductOrder />,
-      id: 23,
-    },
+    
   ];
 
   return (

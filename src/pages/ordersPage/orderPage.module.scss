@@ -37,8 +37,51 @@ hr {
     }
 }
 
+@media (max-width: 810px) {
+    .header {
+        margin-top: 70px;
+        font-size: 24px;
+    }
+
+    hr {
+        margin: 10px 0px 40px;
+    }
+}
+
 @media (max-width: 715px) {
     .content {
         padding-bottom: 100px;
+    }
+}
+
+@media (max-width: 650px) {
+    .header {
+        font-weight: 600;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        text-align: center;
+    }
+
+    hr {
+        display: none;
+    }
+
+    .content {
+        padding-bottom: 70px;
+    }
+}
+
+@media (max-width: 386px) {
+    .header {
+        margin-top: 50px;
+        font-size: 14px;
+    }
+
+    .content {
+        padding-bottom: 40px;
     }
 }
