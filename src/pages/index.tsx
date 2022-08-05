@@ -104,19 +104,19 @@ const MainRoutes = () => {
       id: 16,
     },
     {
-      link: `search/name=:name`,
+      link: "search/name=:name",
       element: <SearchPage />,
       id: 17,
     },
     {
-      link: `Faq`,
+      link: "Faq",
       element: <FaqPage />,
-      id: 17,
+      id: 18,
     },
     {
-      link: `return-product`,
+      link: "return-product",
       element: <ReturnProduct />,
-      id: 18,
+      id: 19,
     },
   ];
 

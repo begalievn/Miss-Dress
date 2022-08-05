@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -6,35 +6,38 @@ import classes from "../search.module.scss";
 
 import ProductPhoto from "../../../components/productPhoto/ProductPhoto";
 
-import {
-  blackStarIcon,
-  colorsPalletIcon,
-  favoriteIcon,
-} from "../../../assets/icons/icons";
+import { colorsPalletIcon, favoriteIcon } from "../../../assets/icons/icons";
 
 import { ProductTest } from "../../../utils/types/types";
 
-const ContentSearch = ({ id, title, price, discount, rate }: ProductTest) => {
+import { RatingComponent } from "../../../components/RatingComponent/RatingComponent";
+
+const ContentSearch = ({
+  id,
+  title,
+  price,
+  image,
+  discount,
+  rate,
+  status,
+}: ProductTest) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/category/4");
+    navigate("/category/5");
   };
 
   return (
     <>
       <div className={classes.content}>
         <div className={classes.container}>
-          <div>
-            <ProductPhoto
-              image="https://img1.akspic.ru/crops/2/5/8/3/4/143852/143852-atmosfera-prirodnyj_landshaft-utro-nebo-gora-1500x2100.jpg"
-              id={id}
-            />
+          <div onClick={() => handleClick()}>
+            <ProductPhoto image={image[1]?.url} id={id} />
           </div>
-          <div onClick={handleClick} className={classes.content}>
+          <div className={classes.content}>
             <div className={classes.first}>
               <div className={classes.price}>
-                <span className={classes.old_price}>200</span>
+                <span className={classes.old_price}>1000</span>
                 <span className={classes.new_price}>{price}</span>
               </div>
               <div className={classes.colors_container}>
@@ -52,12 +55,7 @@ const ContentSearch = ({ id, title, price, discount, rate }: ProductTest) => {
             </div>
             <div className={classes.fourth}>
               <div className={classes.stars}>
-                <img src={blackStarIcon} alt={"star"} />
-                <img src={blackStarIcon} alt={"star"} />
-                <img src={blackStarIcon} alt={"star"} />
-                <img src={blackStarIcon} alt={"star"} />
-                <img src={blackStarIcon} alt={"star"} />
-                {rate}
+                <RatingComponent rate={rate} />
               </div>
               <div className={classes.favorite_icon}>
                 <img src={favoriteIcon} alt={"favorite icon"} />

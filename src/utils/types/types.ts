@@ -1,10 +1,22 @@
+interface Images {
+  contentSize: number;
+  contentType: string;
+  createDate: string;
+  fileKey: string;
+  id: number;
+  name: string;
+  status: number;
+  updateDate: string;
+  url: string;
+}
 export interface ProductTest {
   id: number;
   title: string;
   price: number;
   discount: number;
   rate: number;
-  image: string;
+  image: Images[] | [];
+  status: number;
 }
 export interface ProductTypes {
   id: number;
