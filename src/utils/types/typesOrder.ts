@@ -1,4 +1,4 @@
-import { Iimage } from "./typesShoppingCart";
+import { Iimage, IProductCurrent } from "./typesShoppingCart";
 
 export interface ICartType {
   id: number;
@@ -31,7 +31,7 @@ export interface IProduct {
   updateDate: Date;
   totalCount: number;
   amount: number;
-  product: IProductInner;
+  product: IProductInner | IProductCurrent;
 }
 
 export interface ICart {

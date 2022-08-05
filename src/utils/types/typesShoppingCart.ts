@@ -1,3 +1,5 @@
+import { IProductInner } from "./typesOrder";
+
 export interface IProductCurrent {
   id: number;
   status: number;
@@ -20,7 +22,7 @@ export interface IProduct {
   updateDate: Date;
   totalCount: number;
   amount: number;
-  product: IProductCurrent;
+  product: IProductCurrent | IProductInner;
 }
 
 export interface IResult {
