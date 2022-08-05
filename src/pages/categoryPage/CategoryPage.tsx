@@ -24,6 +24,7 @@ import { categoryApi } from "../../store/services/categoryApi";
 import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
 import { CategoryTypes } from "../../utils/types/types";
 import { productsApi } from "../../store/services/productsApi";
+import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 
 const cards = [
   {
@@ -95,7 +96,9 @@ const CategoryPage = () => {
             <div className={classes.title_category}>
               <h3>Категория</h3>
             </div>
-            {!categoriesLoading && (
+            {categoriesLoading ? (
+              <LoaderCircular />
+            ) : (
               <CategoriesAside
                 categories={categories?.result || []}
                 setSelectedCategory={setSelectedCategory}
