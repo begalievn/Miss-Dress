@@ -1,6 +1,9 @@
 import React from "react";
-import ContentFaq from "./components/ContentFaq";
+
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
+
+import ContentFaq from "./components/ContentFaq";
+
 import classes from "./faq.module.scss";
 
 const FaqPage = () => {

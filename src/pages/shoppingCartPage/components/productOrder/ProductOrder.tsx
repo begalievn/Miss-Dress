@@ -1,20 +1,37 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { productImg } from "../../../../assets/shoppingCart/shoppingCart";
 
+import { IProduct } from "../../../../utils/types/typesShoppingCart";
+
 import styles from "./productOrder.module.scss";
 
-const ProductOrder = () => {
+interface IProductOrder {
+  page: "sending" | "viewing";
+  info: IProduct;
+  change?: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    id: number,
+    action: "+" | "-" | "x"
+  ) => void;
+}
+
+const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
+  const { title, price, amount, article, discount, id } = info.product;
+
+  const pageContainer =
+    page === "sending" ? styles.container : styles.myOrdersContainer;
+  let e;
   return (
-    <div className={styles.container}>
+    <div className={pageContainer}>
       <img className={styles.img} src={productImg} alt="" />
 
       <section className={styles.block}>
         <div className={styles.infoBlock}>
           <div className={styles.infoBlockText}>
-            <h3 className={styles.title}>Benito Kate Wrap Dress</h3>
+            <h3 className={styles.title}>{title}</h3>
             <p className={`${styles.text} ${styles.itemNone}`}>
-              Артикул: <span>Платья AD-875</span>
+              Артикул: <span>{article}</span>
             </p>
             <p className={styles.text}>
               Размер: <span>29-49</span>
@@ -23,20 +40,45 @@ const ProductOrder = () => {
               Цвет: <span>Бежевый</span>
             </p>
             <p className={`${styles.text} ${styles.itemNone}`}>
-              Количество товара в линейке: <span>6</span>
+              Количество товара в линейке: <span>{amount}</span>
             </p>
           </div>
-          <section className={styles.control}>
-            <div className={styles.minus}>-</div>
-            <div className={styles.count}>2</div>
-            <div className={styles.plus}>+</div>
-          </section>
+          {page === "sending" && (
+            <section className={styles.control}>
+              <div
+                onClick={(e) => change && change(e, id, "-")}
+                className={styles.minus}
+              >
+                -
+              </div>
+              <div className={styles.count}>{info.amount}</div>
+              <div
+                onClick={(e) => change && change(e, id, "+")}
+                className={styles.plus}
+              >
+                +
+              </div>
+            </section>
+          )}
         </div>
         <div className={styles.rightSection}>
-          <div className={styles.cross}>+</div>
+          {page === "sending" && (
+            <div
+              onClick={(e) => change && change(e, id, "x")}
+              className={styles.cross}
+            >
+              +
+            </div>
+          )}
           <div className={styles.priceBlock}>
-            <p className={styles.realPrice}>5990</p>
-            <p className={styles.wrongPrice}>7500</p>
+            {discount ? (
+              <>
+                <p className={styles.realPrice}>{price * (discount / 100)}</p>
+                <p className={styles.wrongPrice}>{price}</p>
+              </>
+            ) : (
+              <p className={styles.realPrice}>{price}</p>
+            )}
           </div>
         </div>
       </section>
