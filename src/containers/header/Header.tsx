@@ -110,7 +110,6 @@ const Header = () => {
   const updateRefreshFunc = () => {
     let access = localStorage.getItem("accessToken") || "";
     let refresh = localStorage.getItem("refreshToken") || "";
-  
 
     if (refresh) {
       let token: any = {
@@ -120,7 +119,6 @@ const Header = () => {
 
       refreshToken(token).then((response: any) => {
         if ("data" in response) {
-     
           localStorage.setItem(
             "accessToken",
             JSON.stringify(response.data.result.accessToken)

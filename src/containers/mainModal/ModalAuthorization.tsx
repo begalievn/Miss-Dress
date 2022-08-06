@@ -32,11 +32,9 @@ const ModalAuthorization: FC = () => {
 
   const sendNumberPhone = (valueNumber: string) => {
     let regExp = /^\+996\d{9}$/;
-console.log(regExp.test(valueNumber));
 
     if (regExp.test(valueNumber)) {
       authorizationUser(valueNumber).then((response:any) => {
-        console.log(response);
         let id = response.data.result.id;
         dispatch(addUserId(id));
 

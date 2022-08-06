@@ -24,33 +24,7 @@ import { categoryApi } from "../../store/services/categoryApi";
 import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
 import { CategoryTypes } from "../../utils/types/types";
 import { productsApi } from "../../store/services/productsApi";
-
-const cards = [
-  {
-    image: bestSellers1,
-    id: 1,
-  },
-  {
-    image: bestSellers2,
-    id: 2,
-  },
-  {
-    image: bestSellers3,
-    id: 3,
-  },
-  {
-    image: bestSellers4,
-    id: 4,
-  },
-  {
-    image: bestSellers5,
-    id: 5,
-  },
-  {
-    image: bestSellers6,
-    id: 6,
-  },
-];
+import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 
 const CategoryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
@@ -71,7 +45,13 @@ const CategoryPage = () => {
     data: products,
     isLoading: productsLoading,
     error: productsError,
+    refetch,
   } = productsApi.useGetAllProductsQuery("");
+
+  // useEffect(() => {
+  //   console.log("Refetched");
+  //   refetch();
+  // }, [selectedCategory]);
 
   const {
     data: productsByCategory,
@@ -83,7 +63,11 @@ const CategoryPage = () => {
 
   const [outputCategories, setOutputCategories] = useState<CategoryTypes[]>([]);
 
-  console.log("Products", products);
+  // console.log("Products", products);
+
+  const { data = [] } = productsApi.useGetAllProductsQuery("");
+
+  const cards = data.result?.data || [];
 
   const [name, setName] = useState("");
 
@@ -98,7 +82,9 @@ const CategoryPage = () => {
             <div className={classes.title_category}>
               <h3>Категория</h3>
             </div>
-            {!categoriesLoading && (
+            {categoriesLoading ? (
+              <LoaderCircular />
+            ) : (
               <CategoriesAside
                 categories={categories?.result || []}
                 setSelectedCategory={setSelectedCategory}
@@ -129,9 +115,17 @@ const CategoryPage = () => {
             </div>
             <section className={classes.products}>
               <ProductsGridContainer>
-                {cards.map((item, index) => (
+                {cards.map((item: any, index: any) => (
                   <div className={classes.product_card}>
-                    <ProductCard key={index} image={item.image} id={item.id} />
+                    <ProductCard
+                      status={item.status}
+                      rate={item.rate}
+                      title={item.title}
+                      price={item.price}
+                      key={index}
+                      image={item.images}
+                      id={item.id}
+                    />
                   </div>
                 ))}
               </ProductsGridContainer>

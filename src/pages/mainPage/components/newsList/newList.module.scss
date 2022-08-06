@@ -8,10 +8,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+  }
 .headerMain{
   @include titleFont(0)
 
+}
+.cursor{
+  cursor:pointer;
 }
 .headerCurrentNews{
   @include titleFont($ta:70%)
@@ -68,13 +71,16 @@
   color: $primaryColor;
   font-size: 3.37vw;
   font-weight: 600;
-  @include phone{
-    font-size: 4.75vw;
-  }
-  @include desktop {
-  font-size: 49.28px;
-
-  }
+  @include fontSize(64px,20px);
+}
+.cross{
+  text-shadow: 1px 1px 1px #000;
+  color: $errorColor;
+  font-weight:600;
+  position: absolute;
+  top: 25%;
+  left:92%;
+  @include fontSize(64px,20px);
 }
 .info{
   color: $primaryColor;
@@ -110,5 +116,22 @@
     margin-left: 20px;
   }
 }
+.buttonBlock{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  margin-top: toD(60px);
+}
+.buttonBlock div {
+    width: toD(550px);
+  @include desktop{
+    width: toMax(550px);
+    margin-top: toMax(60px);
+  }
+  @include phone{
+    width: toM(300px);
+    margin-top: toM(20px);
+  }
 
+}
 

@@ -4,83 +4,6 @@ import { CategoryTypes } from "../../../../utils/types/types";
 
 import classes from "./categoriesAside.module.scss";
 
-const categoriesMock = [
-  {
-    id: 1,
-    title: "Верхняя одежда",
-    children: [
-      {
-        id: 10,
-        title: "Куртка",
-        children: [],
-      },
-      {
-        id: 11,
-        title: "Пальто",
-        children: [
-          {
-            id: 15,
-            title: "Юбки",
-            children: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "Юбки",
-    children: [],
-  },
-  {
-    id: 3,
-    title: "Джинсы",
-    children: [],
-  },
-  {
-    id: 4,
-    title: "Брюки",
-    children: [],
-  },
-  {
-    id: 5,
-    title: "Футболки",
-    children: [
-      {
-        id: 10,
-        title: "Куртка",
-        children: [],
-      },
-      {
-        id: 11,
-        title: "Пальто",
-        children: [
-          {
-            id: 15,
-            title: "Юбки",
-            children: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: "Шорты",
-    children: [],
-  },
-  {
-    id: 7,
-    title: "Топы",
-    children: [],
-  },
-  {
-    id: 8,
-    title: "Пижамы",
-    children: [],
-  },
-];
-
 interface ICategoryAside {
   categories: CategoryTypes[];
   setSelectedCategory: (value: number) => void;
@@ -91,12 +14,14 @@ const CategoriesAside = ({
   setSelectedCategory,
 }: ICategoryAside) => {
   const [activeMenus, setActiveMenus] = useState<string[]>([]);
+  const [activeCategory, setActiveCategory] = useState(0);
 
   // console.log("CategoryAside: ", categories);
 
   const handleMenuClick = (data: any) => {
-    console.log(data);
+    // console.log(data);
     setSelectedCategory(data.id);
+    setActiveCategory(data.id);
   };
 
   const handleArrowClick = (menuName: string) => {
@@ -139,7 +64,11 @@ const CategoriesAside = ({
         style={{ paddingLeft: `${dept * 18}px` }}
       >
         <span
-          className={classes.label}
+          className={
+            activeCategory === data.id
+              ? [classes.active_category, classes.label].join(" ")
+              : classes.label
+          }
           onClick={
             hasChildren.length !== 0
               ? () => handleArrowClick(menuName)

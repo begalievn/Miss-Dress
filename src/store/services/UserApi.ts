@@ -17,7 +17,36 @@ export const UserApi = createApi({
           )}`,
         },
       }),
-      providesTags: (result) => ["UserAPI"],
+    }),
+    editNumber: build.mutation({
+      query: (data) => ({
+        url: "/user/add-phone",
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("accessToken") || "{}"
+          )}`,
+        },
+        body: {
+          phoneNumber: data
+        }
+      }),
+    }),
+    updateNumber: build.mutation({
+      query: (data) => ({
+        url: "user/update-phone",
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("accessToken") || "{}"
+          )}`,
+        },
+        body: {
+          phoneNumber: data.phoneNumber,
+          code: data.code
+        }
+      }),
     }),
   }),
+  
 });

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import check from "../../assets/header/check.svg";
 import { addUserId } from "../../store/reducers/AuthorizationUserSlice";
-import { textErrorNumber } from "../../store/reducers/ModalSlice";
+import { textErrorNumber, validationNumber } from "../../store/reducers/ModalSlice";
 import { AuthorizationAPI } from "../../store/services/AuthorizationApi";
 import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 
@@ -17,7 +17,7 @@ interface IInpVal {
 }
 
 const ModalRegistration = () => {
-  const [validationRegistr, setValidationRegistr] = useState(true);
+  // const [validationRegistr, setValidationRegistr] = useState(true);
   const [checkState, setCheckState] = useState(false);
   const [inputValue, setInputValue] = useState({
     firstName: "",
@@ -25,6 +25,9 @@ const ModalRegistration = () => {
     phoneNumber: "",
   });
 
+  const validationRegistr = useAppSelector(
+    (state) => state.ModalSlice.validationNumber
+  );
   const textError = useAppSelector((state) => state.ModalSlice.textError);
 
   const dispatch = useAppDispatch();
@@ -65,7 +68,7 @@ const ModalRegistration = () => {
             console.log(response.data.result.code);
           });
 
-          setValidationRegistr(false);
+          dispatch(validationNumber(false));   
           dispatch(textErrorNumber(""));
         })
         .catch((e) => {
