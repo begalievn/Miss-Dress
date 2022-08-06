@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Logo from "../../components/logo/Logo";
 
@@ -6,34 +6,47 @@ import hero from "../../assets/profile/hero.png";
 
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
-import style from "./ProfilePage.module.scss";
 
-import { useAppDispatch } from "../../utils/app/hooks";
+import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 import { AddModalChoise, openModal } from "../../store/reducers/ModalSlice";
 import { UserApi } from "../../store/services/UserApi";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
+import { addUserId } from "../../store/reducers/AuthorizationUserSlice";
+
+import style from "./ProfilePage.module.scss";
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
 
-  const ProfileData = {
-    name: "Нурс",
-    surname: "Бегалиев",
-    phoneNumber: "+996702702702",
-  };
-
-  const editNumber = () => {
+  const editNumberFunc = () => {
     dispatch(openModal(true));
     dispatch(AddModalChoise("numberСhange"));
   };
 
-  let { data: dataMe, isLoading } = UserApi.useGetMeQuery(1);
+  // const { data: dataMe, isLoading } = UserApi.useLazyGetMeQuery();
+  const modalState = useAppSelector((state) => state.ModalSlice.modalState);
+  
+  const [getMe, { data:dataMe,isSuccess }] = UserApi.useLazyGetMeQuery();
 
+  useEffect(() => {
+
+    getMe(1);
+    if(dataMe){
+      dispatch(addUserId(dataMe.result.id));
+    }
+
+  }, [dataMe]);
+
+  useEffect(() => {
+    getMe(1);
+  }, [modalState]);
+  
+  
 
   return (
     <div className={style.container}>
       <Breadcrumbs />
-      {isLoading ? (
+      {!isSuccess ? (
         <LoaderCircular />
       ) : (
         <div className={style.content}>
@@ -68,7 +81,7 @@ const ProfilePage = () => {
               disabled
               value={dataMe.result.phoneNumber}
             />
-            <button className={style.btnEdit} onClick={() => editNumber()}>
+            <button className={style.btnEdit} onClick={() => editNumberFunc()}>
               Изменить номер
             </button>
             <h3> Адрес доставки</h3>

@@ -22,7 +22,20 @@ import PaymentPage from "./paymentPage/PaymentPage";
 import RequisitePage from "./requisitePage/RequisitePage";
 import FaqPage from "./faqPage/FaqPage";
 import ReturnProduct from "./returnProduct/ReturnProduct";
+<<<<<<< HEAD
 import OrderProductPage from "./orderProductPage/OrderProductPage";
+=======
+import FavoritePage from "./favoritePage/FavoritePage";
+import AdminPageDashboard from "./adminPage/adminPageDashboard/AdminPageDashboard";
+import AdminPageUsers from "./adminPage/adminPageUsers/AdminPageUsers";
+import AdminPageGoods from "./adminPage/adminPageGoods/AdminPageGoods";
+import AdminPageSales from "./adminPage/adminPageSales/AdminPageSales";
+import AdminPageShopping from "./adminPage/adminPageShopping/AdminPageShopping";
+import AdminPageAd from "./adminPage/adminPageAd/AdminPageAd";
+import AdminPageChat from "./adminPage/adminPageChat/AdminPageChat";
+import AdminMenu from "./adminPage/adminPageMain/AdminMenu";
+import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
+>>>>>>> aba571968edd5b6b93861f8b7e0bbd2cad1e73fd
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -132,11 +145,58 @@ const MainRoutes = () => {
       id: 21,
     },
     {
+<<<<<<< HEAD
       link: "order-product/:id",
       element: <OrderProductPage />,
       id: 22,
     },
     
+=======
+      link: "favorites",
+      element: <FavoritePage />,
+      id: 22,
+    },
+    {
+      link: "admin",
+      element: <AdminPageMain />,
+      id: 23,
+    },
+    {
+      link: "dashboard",
+      element: <AdminPageDashboard />,
+      id: 24,
+    },
+    {
+      link: "users",
+      element: <AdminPageUsers />,
+      id: 25,
+    },
+    {
+      link: "goods",
+      element: <AdminPageGoods />,
+      id: 26,
+    },
+    {
+      link: "sales",
+      element: <AdminPageSales />,
+      id: 27,
+    },
+    {
+      link: "shoppingBag",
+      element: <AdminPageShopping />,
+      id: 28,
+    },
+    {
+      link: "ad",
+      element: <AdminPageAd />,
+      id: 29,
+    },
+    {
+      link: "chat",
+      element: <AdminPageChat />,
+      id: 30,
+    },
+>>>>>>> aba571968edd5b6b93861f8b7e0bbd2cad1e73fd
   ];
 
   return (
