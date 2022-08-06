@@ -2,40 +2,29 @@ import { useParams } from "react-router-dom";
 
 import { orderApi } from "../../../../store/services/OrderApi";
 
-// import { UserApi } from "../../../../store/services/UserApi";
-
 import ProductOrder from "../../../shoppingCartPage/components/productOrder/ProductOrder";
-
 
 import classes from "./orderProductContent.module.scss";
 
 function OrderProductContent() {
 
   const {id} = useParams();
-  // console.log(params);
-  // console.log(typeof id);
-
   const {data, isLoading, isError} = orderApi.useFetchOrderByIdQuery(id!);
-  
-  const cartOrderId = data?.result;
-  // console.log(cartOrderId);
-
-  // let { data: dataMe } = UserApi.useGetMeQuery(1);
-  // console.log(dataMe.result);
+  const cartOrderId = data?.result; 
   
   return (
     <div>
-      {  cartOrderId?.map((item)=>{
+      {!isLoading ? cartOrderId?.map((item)=>{
         return (
           <div key={item.id}>
-            <section className={classes.header}>
+            <div className={classes.header}>
               <div className={classes.title}>Заказ №{item.id}</div>
               <div className={classes.status}>{item.status}</div>
-            </section>
+            </div>
+            <div className={classes.titleLine}></div>
 
             {
               item.cart.products.map((elem) => {
-                // console.log(elem);
                 return (
                   <ProductOrder key={elem.id} page={"viewing"} info={elem}  />
                 );
@@ -44,20 +33,29 @@ function OrderProductContent() {
 
             <section className={classes.footer}>
               <div className={classes.footerContent}>
-                <p className={classes.footerTitle}>Получатель:</p>
-                <p className={classes.footerTitle}>Адрес доставки:</p>
+                <p className={classes.footerTitle} id={classes.footerTitle}>
+                  Получатель: 
+                </p>
+                <p className={classes.footerTitle}><br/>Адрес доставки:</p>
                 <p className={classes.footerTitle}>Итого к оплате:</p>       
               </div>
           
               <div className={classes.footerContent}>
-                <p className={classes.footerText}>Манки Д. Луффи +996712345678</p>
-                <p className={classes.footerText}>Кыргызстан, г. Бишкек</p>
+                <p className={classes.footerText}>
+                  {item.contactInfo.firstName}&nbsp;&nbsp;&nbsp;   
+                  {item.contactInfo.lastName} 
+                  <br /> {item.contactInfo.phoneNumber}
+                </p>
+                <p className={classes.footerText}>
+                  {item.contactInfo.address.country.title},&nbsp;&nbsp;&nbsp;
+                  {item.contactInfo.address.city.title}
+                </p>
                 <p className={classes.footerText}>{item.cart.price} с.</p>
               </div>
             </section>
           </div>    
         );
-      }) }
+      }) : null}
       {isError && <h1>Ошибка на сервере</h1>}
     </div>
   );

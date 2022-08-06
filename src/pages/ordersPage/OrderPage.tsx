@@ -13,7 +13,7 @@ function OrderPage() {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
-      <Breadcrumbs />
+        <Breadcrumbs />
         <h3 className={styles.header}>Мои заказы</h3>
         <hr />
         <OrdersContent />

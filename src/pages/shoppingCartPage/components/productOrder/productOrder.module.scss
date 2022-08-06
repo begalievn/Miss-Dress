@@ -3,9 +3,7 @@
 
 .container {
   display: flex;
-
   width: 100%;
-  //height: 308px;
   background-color: $primaryColor;
   padding: toD(40px) toD(44px) toD(40px) toD(30px);
   gap:0 toD(29px);
@@ -16,24 +14,24 @@
   }
 
   @include phone {
-    padding: toM(15px); height: 200px;
-  gap:0 toM(10px);
+    padding: toM(15px); 
+    height: 200px;
+    gap:0 toM(10px);
   }
 }
 
 .myOrdersContainer {
   display: flex;
   width: 100%;
-  //height: 500px;
-  border-top: 0.5px solid $fontColorTitle;
-  border-bottom:0.5px solid $fontColorTitle;
+  border-bottom: 1px solid $fontColorTitle;
   padding: toD(32px) toD(0px) ;
   gap:0 toD(29px);
 
   @include desktop {
-    gap:0 toMax(29px);
+    gap:0 toMax(20px);
     padding: toMax(32px) toMax(0px) ;
   }
+
   @include phone {
     gap:0 toM(10px);
     padding: toM(0px);
@@ -44,8 +42,10 @@
 .img {
   width: toD(320px);
   @include phone{
-    width: toM(140px);
+    width: toM(100px);
+    margin-bottom: 5%;
   }
+
   @include desktop{
     width: toMax(320px);
   }
@@ -68,31 +68,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  @include desktop {
-
-  }
 }
 
 .title {
   font-weight: 400;
-  @include fontSize($desk:26px,$m:16px)
-}
-
-.itemNone {
-  @include phone{
-  display: none;
-  }
+  @include fontSize($desk:28px, $m:12px)
 }
 
 .text {
-  @include fontSize(20px,14px);
+  @include fontSize(20px, 10px);
   color: $fadedFont;
   margin-top: toD(14px);
 
   @include desktop{
     margin-top: toMax(14px);
   }
+
   @include phone{
     margin-top: toM(5px);
   }
@@ -100,7 +91,7 @@
 
 .text span {
   color: $fontColorTitle;
-  @include fontSize(20px,12px)
+  @include fontSize(20px, 10px)
 }
 
 .control {
@@ -159,11 +150,11 @@
 }
 
 .realPrice {
-  @include fontSize(48px,20px)
+  @include fontSize(48px, 17px)
 }
 
 .wrongPrice {
-  @include fontSize(32px,16px);
+  @include fontSize(32px, 16px);
   text-decoration: line-through;
   @include phone{
     display: none;

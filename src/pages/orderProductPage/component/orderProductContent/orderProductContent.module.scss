@@ -4,7 +4,6 @@
 .container {
     display: flex;
     width: 100%;
-    //height: 308px;
     background-color: $primaryColor;
     padding: toD(40px) toD(44px) toD(40px) toD(30px);
     gap: 0 toD(29px);
@@ -39,6 +38,15 @@
     color: #6A5844;
 }
 
+.titleLine {
+    width: 100%;
+    border-bottom: 1px solid #372E24;
+
+    @include phone{
+        margin-bottom: 5%;
+    }
+}
+
 .title,
 .footerTitle,
 .footerText,
@@ -47,24 +55,33 @@
     @include fontSize($desk: 36px, $m: 14px);
 }
 
+#footerTitle { 
+    white-space:nowrap; 
+    overflow:hidden; 
+    text-overflow:ellipsis;
+}
+
 .footerTitle {
     font-weight: 500;
-    @include fontSize($desk: 28px, $m: 14px);
+    line-height: 30px;
+    @include fontSize($desk: 28px, $m: 12px);
 }
 
 .footerText {
     font-weight: 300;
-    @include fontSize($desk: 28px, $m: 14px);
+    line-height: 30px;
+    @include fontSize($desk: 28px, $m: 12px);
 }
-
 
 .footer {
     @include phone{
         width: 100%;
     }
+
     margin: 30px 0px 15%;
     width: toD(1200px);
     display: flex;
+
     @include desktop{
         width: toMax(1200px); 
     }
@@ -73,7 +90,7 @@
 .footerContent {
     display: flex;
     flex-direction: column;
-    margin-right: 50px;
+    margin-right: 10%;
 }
 
 

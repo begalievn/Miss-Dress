@@ -2,29 +2,25 @@ import React, { FC } from "react";
 
 import { productImg } from "../../../../assets/shoppingCart/shoppingCart";
 
-import { IProduct } from "../../../../utils/types/typesShoppingCart";
+import { IProductOrder } from "../../../../utils/types/typesOrder";
 
 import styles from "./productOrder.module.scss";
 
-interface IProductOrder {
-  page: "sending" | "viewing";
-  info: IProduct;
-  change?: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    id: number,
-    action: "+" | "-" | "x"
-  ) => void;
-}
-
 const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
-  const { title, price, amount, article, discount, id } = info.product;
+
+  const { title, price, amount, article, discount, id, images } = info.product;
 
   const pageContainer =
     page === "sending" ? styles.container : styles.myOrdersContainer;
-  let e;
+
   return (
     <div className={pageContainer}>
-      <img className={styles.img} src={productImg} alt="" />
+      {
+        images?.length ? 
+          <img className={styles.img} src={images && images[1].url} alt="" />
+          :
+          <img className={styles.img} src={productImg} alt="" />
+      }
 
       <section className={styles.block}>
         <div className={styles.infoBlock}>

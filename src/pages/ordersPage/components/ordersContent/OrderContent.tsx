@@ -1,37 +1,15 @@
 import React from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { orderApi } from "../../../../store/services/OrderApi";
 
-// import { productsApi } from "../../../../store/services/productsApi";
-
 import styles from "./orderContent.module.scss";
-
-
-// export enum EntityStatus {
-//   PENDING = 0,
-//   ACTIVE = 1,
-//   DELETED = 2,
-//   BANNED = 3,
-// }
-
 
 function OrderContent() {
 
   const {data, isError, isLoading} = orderApi.useFetchAllOrderQuery();
   const cart=data?.result;
-  // console.log(cart);
-
-  // const navigate = useNavigate();
-  // console.log(navigate)
-
-
-  // const {result} = data && data;
-  // console.log(result);
-  
-
-  // console.log(data);
   
   return (
     <div>
