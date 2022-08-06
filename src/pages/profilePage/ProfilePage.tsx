@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Logo from "../../components/logo/Logo";
 
@@ -35,11 +35,11 @@ const ProfilePage = () => {
       dispatch(addUserId(dataMe.result.id));
     }
 
-  }, [dataMe]);
+  }, [dataMe, dispatch, getMe]);
 
   useEffect(() => {
     getMe(1);
-  }, [modalState]);
+  }, [getMe, modalState]);
   
   
 

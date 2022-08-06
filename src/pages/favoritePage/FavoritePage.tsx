@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
