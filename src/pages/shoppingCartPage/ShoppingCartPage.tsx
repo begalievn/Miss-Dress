@@ -11,6 +11,7 @@ import { IResult } from "../../utils/types/typesShoppingCart";
 import styles from "./shoppingCardPage.module.scss";
 import Total from "./components/total/Total";
 import ProductOrder from "./components/productOrder/ProductOrder";
+import Select from "./components/select/Select";
 
 const ShoppingCartPage = () => {
   const inputs = [
@@ -78,6 +79,7 @@ const ShoppingCartPage = () => {
   const [removeProduct, {}] = shoppingCartApi.useRemoveProductMutation();
   const [deleteProduct, {}] = shoppingCartApi.useDeleteProductMutation();
   const [saveUserData, {}] = shoppingCartApi.useSaveUserDataMutation();
+  const token = localStorage.getItem("accessToken");
   const products = getProducts?.result.products;
   const result = getProducts?.result;
   const cartId = getProducts?.result.id;
@@ -85,6 +87,7 @@ const ShoppingCartPage = () => {
   useEffect(() => {
     setResultState(result);
   }, [getProducts]);
+  console.log(error);
 
   const saveHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -144,6 +147,16 @@ const ShoppingCartPage = () => {
 
   function placeOrderHandler() {}
 
+  function editHandler() {}
+
+  // if (!token) {
+  //   return (
+  //     <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
+  //       Вам необходимо зарегистрироваться
+  //     </h1>
+  //   );
+  // }
+
   if (products && !products.length) {
     return (
       <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
@@ -151,9 +164,13 @@ const ShoppingCartPage = () => {
       </h1>
     );
   }
-
-  function editHandler() {}
-
+  // if (error) {
+  //   return (
+  //     <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
+  //       Ошибка сервера
+  //     </h1>
+  //   );
+  // }
   return (
     <section className={styles.container}>
       <div className={styles.content}>
@@ -174,18 +191,23 @@ const ShoppingCartPage = () => {
               </section>
 
               <form className={styles.form} action="">
-                {inputs.map((item) => {
+                {inputs.map((item, index) => {
+                  console.log(index);
                   return (
                     <div className={styles.inputBlock}>
-                      <input
-                        placeholder={item.placeholder}
-                        name={item.name}
-                        onChange={(e) => item.hook.onChange(e)}
-                        onBlur={() => item.hook.onBlur()}
-                        value={item.hook.value}
-                        className={styles.input}
-                        type="text"
-                      />
+                      {index >= 3 ? (
+                        <Select />
+                      ) : (
+                        <input
+                          placeholder={item.placeholder}
+                          name={item.name}
+                          onChange={(e) => item.hook.onChange(e)}
+                          onBlur={() => item.hook.onBlur()}
+                          value={item.hook.value}
+                          className={styles.input}
+                          type="text"
+                        />
+                      )}
                       <p className={styles.warning}>
                         {item.hook.isDirty && item.hook.error}
                       </p>
