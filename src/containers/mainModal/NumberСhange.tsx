@@ -26,20 +26,21 @@ const NumberСhange = () => {
   const validationRegistr = useAppSelector(
     (state) => state.ModalSlice.validationNumber
   );
-  const userId = useAppSelector((state) => state.AuthorizationUserSlice.userIdForBack);
+  const userId = useAppSelector(
+    (state) => state.AuthorizationUserSlice.userIdForBack
+  );
   const sendEditNumber = (valueNumber: string) => {
     let regExp = /^\+996\d{9}$/;
     if (regExp.test(valueNumber)) {
       editNumber(valueNumber);
       dispatch(validationNumber(false));
       dispatch(addPhoneNumber(valueNumber));
-      
     } else {
       dispatch(textErrorNumber("Введите корректный номер телефона"));
     }
   };
   useEffect(() => {
-    if(isSuccess){
+    if (isSuccess) {
       getActivatedCode(userId).then((response: any) => {
         console.log(response.data.result.code);
       });

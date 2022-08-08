@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
@@ -33,12 +33,19 @@ import AdminPageAd from "./adminPage/adminPageAd/AdminPageAd";
 import AdminPageChat from "./adminPage/adminPageChat/AdminPageChat";
 import AdminMenu from "./adminPage/adminPageMain/AdminMenu";
 import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
-import { useAppSelector } from "../utils/app/hooks";
-import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
+import { parseJwt } from "../utils/helpers/authorization";
 
 const MainRoutes = () => {
-  const isAdmin = useAppSelector((state) => state.AuthorizationUserSlice.token);
-  console.log(isAdmin);
+  const validAdmin = parseJwt();
+  let [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  if (validAdmin?.role === "SUPER_ADMIN" || validAdmin?.role === "ADMIN") {
+    isAdmin = true;
+  } else {
+    isAdmin = false;
+  }
+
+  console.log(validAdmin);
 
   const PUBLIC_ROUTES = [
     {
@@ -147,26 +154,33 @@ const MainRoutes = () => {
       element: <FavoritePage />,
       id: 22,
     },
+  ];
 
+  const PRIVATE_ROUTES = [
+    {
+      link: "admin",
+      element: <AdminPageMain />,
+      id: 1,
+    },
     {
       link: "dashboard",
       element: <AdminPageDashboard />,
-      id: 24,
+      id: 2,
     },
     {
       link: "users",
       element: <AdminPageUsers />,
-      id: 25,
+      id: 3,
     },
     {
       link: "goods",
       element: <AdminPageGoods />,
-      id: 26,
+      id: 4,
     },
     {
       link: "sales",
       element: <AdminPageSales />,
-      id: 27,
+      id: 5,
     },
     {
       link: "shoppingBag",
@@ -185,23 +199,19 @@ const MainRoutes = () => {
     },
   ];
 
-  const PRIVATE_ROUTES = [
-    {
-      link: "admin",
-      element: <AdminPageMain />,
-      id: 1,
-    },
-  ];
-
   return (
     <Routes>
-      {isAdmin &&
-        PRIVATE_ROUTES.map(({ link, id, element }) => {
-          <Route path={link} element={element} key={id} />;
-        })}
+      {isAdmin ? (
+        PRIVATE_ROUTES.map(({ link, id, element }) => (
+          <Route path={link} element={element} key={id} />
+        ))
+      ) : (
+        <Route path="*" element={<ErrorPage />} />
+      )}
       {PUBLIC_ROUTES.map(({ link, id, element }) => (
         <Route path={link} element={element} key={id} />
       ))}
+      {/* <Route path="*" element={<Navigate to="/errorPage" replace />} /> */}
     </Routes>
   );
 };

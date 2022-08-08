@@ -63,6 +63,7 @@ export const FilterSelect: FC<IFilterSelectProps> = ({ setName, name }) => {
         ) : null}
 
         <Select
+          // className={classes.select}
           sx={selectStyles}
           labelId="demo-simple-select-label"
           id="demo-simple-select"

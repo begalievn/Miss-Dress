@@ -29,7 +29,7 @@ export const parseJwt = () => {
   let token: any = localStorage.getItem("accessToken");
   token = JSON.parse(token);
   try {
-    return JSON.parse(atob(token.refreshToken.split(".")[1]));
+    return JSON.parse(atob(token.split(".")[1]));
   } catch (e) {
     return null;
   }
