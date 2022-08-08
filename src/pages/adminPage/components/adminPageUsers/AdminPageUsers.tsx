@@ -1,15 +1,16 @@
 import React from "react";
 
-import classes from "../../adminPageMain.module.scss";
-
 import styles from "./adminPageUsers.module.scss";
 
-import AdminMenu from "../../AdminMenu";
+import AdminMenu from "../UI/adminMenu/AdminMenu";
 import {
   bellIcon,
   profileAva,
 } from "../../../../assets/adminPage/adminPageIcons";
+
 import CategoriesDropdowBtn from "../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
+import ProfileAva from "../UI/profileAva/ProfileAva";
+import UsersBlock from "../UI/usersBlock/UsersBlock";
 
 const AdminPageUsers = () => {
   const regularUsers = [
@@ -31,15 +32,12 @@ const AdminPageUsers = () => {
   ];
 
   return (
-    <div className={classes.container_parent}>
+    <div className={styles.users_container}>
       <AdminMenu />
       <div className={styles.main}>
         <div className={styles.content_top}>
           <div className={styles.users}>
-            <div className={styles.newUsers}>
-              <h3>230</h3>
-              <h4>новых пользователей</h4>
-            </div>
+            <UsersBlock value={"230"} text={"новых пользователей"} />
             <div className={styles.regularUsers}>
               <h2>Постоянные пользователи</h2>
               {regularUsers.map((item) => (
@@ -52,14 +50,7 @@ const AdminPageUsers = () => {
               <button className={styles.view_more}>Посмотреть все</button>
             </div>
           </div>
-          <div className={styles.profile}>
-            <img src={profileAva} alt="avatar" />
-            <div className={styles.text}>
-              <h4>Манки Д. Луффи</h4>
-              <p>Админ</p>
-            </div>
-            <img src={bellIcon} alt="bellIcon" />
-          </div>
+          <ProfileAva />
         </div>
         <div className={styles.content_bot}>
           <h2>Все пользователи</h2>

@@ -134,6 +134,10 @@
   transition: all 0.2s ease-in;
 }
 
+.btn_slider:active {
+  width: 18%;
+}
+
 @media (max-width: 1177px) {
   .slide_title,
   .slide_text {

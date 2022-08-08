@@ -4,6 +4,18 @@ export interface IAdmin {
   route: string;
 }
 
+export interface IBlock {
+  value: string;
+  text: string;
+}
+
+export interface IFavBlock {
+  title: string;
+  name: string;
+  sales: string | number;
+  income: string | number;
+}
+
 export interface IFavorites {
   name: string;
   price: number;
@@ -56,10 +68,10 @@ export interface ImagesType {}
 // }
 
 export interface CategoryTypes {
-  id: number;
+  category_id: number | null | undefined;
   status: number;
+  category_title: string;
   // createDate: Date;
   // updateDate: Date;
-  title: string;
   children: CategoryTypes[] | [];
 }

@@ -1,14 +1,16 @@
+import React from "react";
 import { Pagination } from "@mui/material";
-import { cards } from "../../pages/mainPage/components/categories-block/CategoriesBlock";
-
 import classes from "./Pagination.module.scss";
-const Paginations = () => {
-  // Массив для работы
-  const countries = cards;
 
+const Paginations = (props: any) => {
   return (
     <div className={classes.block_pagination}>
-      <Pagination count={countries.length} variant="outlined" color="primary" />
+      <Pagination
+        count={props.count}
+        variant="outlined"
+        color="primary"
+        onChange={props.onChange}
+      />
     </div>
   );
 };
