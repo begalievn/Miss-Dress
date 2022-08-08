@@ -8,9 +8,9 @@ import AdminPageMain from "./pages/adminPage/AdminPageMain";
 function App() {
   return (
     <div className="App">
-      {/*<Header />*/}
+      <Header />
       <MainRoutes />
-      {/*<Footer />*/}
+      <Footer />
     </div>
   );
 }

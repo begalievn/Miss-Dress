@@ -13,15 +13,15 @@
   color: #372e24;
 }
 
-select {
-  border: none;
-  width: 250px;
-  background: #f1dac5;
-  text-align: center;
-  height: 40px;
-  color: #372e24;
-  font-size: 20px;
-}
+// .select {
+//   border: none;
+//   width: 250px;
+//   background: #f1dac5;
+//   text-align: center;
+//   height: 40px;
+//   color: #372e24;
+//   font-size: 20px;
+// }
 
 .image {
   width: 100%;
@@ -60,7 +60,6 @@ select {
   flex-wrap: wrap;
   max-width: 1300px;
   margin: 0 auto;
-  // position: relative;
 }
 .item_map_container {
   list-style: none;

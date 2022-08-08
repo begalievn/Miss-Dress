@@ -17,6 +17,9 @@ export const AuthorizationUserSlice = createSlice({
     addUserId(state, action) {
       state.userIdForBack = action.payload;
     },
+    addRole(state, action) {
+      state.role = action.payload;
+    },
     addPhoneNumber(state, action) {
       state.phoneNumber = action.payload;
     },
@@ -35,6 +38,7 @@ export const {
   addPhoneNumber,
   addToken,
   deleteToken,
+  addRole,
 } = AuthorizationUserSlice.actions;
 
 export default AuthorizationUserSlice.reducer;
