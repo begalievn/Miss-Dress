@@ -8,6 +8,7 @@ interface ICollection {
   info: {
     image: string;
     title: string;
+    path: string;
   }[];
 }
 
@@ -18,7 +19,11 @@ const Collection: FC<ICollection> = ({ info }) => {
       <h1 className={styles.header}>Коллекция</h1>
       {info.map((item) => {
         return (
-          <section onClick={() => navigate("./collection")} key={item.title} className={styles.block}>
+          <section
+            onClick={() => navigate(`/collection/${item.path}`)}
+            key={item.title}
+            className={styles.block}
+          >
             <div className={styles.left}>
               <img className={styles.image} src={item.image} alt="" />
             </div>
