@@ -1,6 +1,6 @@
 import React from "react";
 
-import AdminMenu from "./AdminMenu";
+import AdminMenu from "./components/UI/adminMenu/AdminMenu";
 
 import classes from "./adminPageMain.module.scss";
 
@@ -11,8 +11,14 @@ import { bellIcon } from "../../assets/adminPage/adminPageIcons";
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
 import LinearProgress from "@mui/material/LinearProgress";
+
 import Paginations from "../../components/pagination/Paginations";
+
 import BrownButton from "../../components/brown-button/BrownButton";
+import ProfileAva from "./components/UI/profileAva/ProfileAva";
+import UsersBlock from "./components/UI/usersBlock/UsersBlock";
+import PopularProducts from "./components/UI/popularProducts/PopularProducts";
+import ViewMoreButton from "./components/UI/viewMoreButton/ViewMoreButton";
 
 const AdminPageMain = () => {
   const users = [
@@ -96,25 +102,7 @@ const AdminPageMain = () => {
     },
   ];
 
-  const products = [
-    {
-      name: "Benito Kate Wrap Dress",
-      amount: 254,
-      income: "1.2m+",
-    },
-    {
-      name: "JUSTONE Shy Embo Can Skirt",
-      amount: 210,
-      income: "1m+",
-    },
-    {
-      name: "Envy Look Button Eco Dress",
-      amount: 159,
-      income: "790k+",
-    },
-  ];
-
-  const refularUsers = [
+  const regularUsers = [
     {
       name: "Ророноа Зоро",
       sales: 104,
@@ -159,24 +147,14 @@ const AdminPageMain = () => {
             </svg>
             <input placeholder={"Поиск..."} type="text" />
           </div>
-          <div className={classes.profile}>
-            <img src={profileAva} alt="avatar" />
-            <div className={classes.profile_text}>
-              <h4>Манки Д. Луффи</h4>
-              <p>Админ</p>
-            </div>
-            <img src={bellIcon} alt="bellIcon" />
-          </div>
+          <ProfileAva />
         </div>
         <div className={classes.main_bot}>
           <div className={classes.left}>
             <h3>За последние 30 дней,</h3>
             <div className={classes.blocks}>
               {info.map((item) => (
-                <div className={classes.block}>
-                  <h4>{item.amount}</h4>
-                  <p>{item.item}</p>
-                </div>
+                <UsersBlock value={item.amount} text={item.item} />
               ))}
             </div>
             <div className={classes.users}>
@@ -291,28 +269,17 @@ const AdminPageMain = () => {
             <Paginations />
           </div>
           <div className={classes.right}>
-            <h3>Популярные товары</h3>
-            {products.map((item) => (
-              <div className={classes.products}>
-                <h4>{item.name}</h4>
-                <h5>{item.amount} продаж</h5>
-                <h5>{item.income} доход</h5>
-              </div>
-            ))}
-            <div className={classes.view_more}>
-              <BrownButton text={"Посмотреть все"} />
-            </div>
+            <PopularProducts />
+            <ViewMoreButton />
             <h3 className={classes.regularUsers}>Постоянные пользователи</h3>
-            {refularUsers.map((item) => (
+            {regularUsers.map((item) => (
               <div className={classes.products}>
                 <h4>{item.name}</h4>
                 <h5>{item.sales} продаж</h5>
                 <h5>{item.income} доход</h5>
               </div>
             ))}
-            <div className={classes.view_more}>
-              <BrownButton text={"Посмотреть все"} />
-            </div>
+            <ViewMoreButton />
           </div>
         </div>
       </div>

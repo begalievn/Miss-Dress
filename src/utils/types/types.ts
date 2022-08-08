@@ -4,6 +4,18 @@ export interface IAdmin {
   route: string;
 }
 
+export interface IBlock {
+  value: string;
+  text: string;
+}
+
+export interface IFavBlock {
+  title: string;
+  name: string;
+  sales: string | number;
+  income: string | number;
+}
+
 export interface IFavorites {
   name: string;
   price: number;

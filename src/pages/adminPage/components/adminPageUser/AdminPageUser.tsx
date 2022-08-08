@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import AdminMenu from "../../AdminMenu";
+import AdminMenu from "../UI/adminMenu/AdminMenu";
 
 import classes from "../../adminPageMain.module.scss";
 

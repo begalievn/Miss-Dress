@@ -5,7 +5,8 @@
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background: #f1dac5;
+  /*background: #f1dac5;*/
+  background-color: #FFF2E3;
 }
 a {
   text-decoration: none;

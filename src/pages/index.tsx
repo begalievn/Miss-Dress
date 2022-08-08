@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Route, Routes } from "react-router-dom";
 
 import { useAppSelector } from "../utils/app/hooks";
@@ -28,7 +29,9 @@ import ReturnProduct from "./returnProduct/ReturnProduct";
 
 import OrderProductPage from "./orderProductPage/OrderProductPage";
 import FavoritePage from "./favoritePage/FavoritePage";
+
 import AdminPageDashboard from "./adminPage/components/adminPageDashboard/AdminPageDashboard";
+
 import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers";
 import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
 import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
@@ -36,15 +39,14 @@ import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPag
 import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
 
 import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
+
 // import AdminMenu from "./adminPage/AdminMenu";
 
 import AdminPageMain from "./adminPage/AdminPageMain";
 
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
 
-
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
-
 
 const MainRoutes = () => {
   const isAdmin = useAppSelector((state) => state.AuthorizationUserSlice.token);
@@ -206,22 +208,27 @@ const MainRoutes = () => {
       element: <AdminPageUser />,
       id: 32,
     },
-  ];
-
-  const PRIVATE_ROUTES = [
     {
       link: "admin",
       element: <AdminPageMain />,
-      id: 1,
+      id: 31,
     },
   ];
 
+  // const PRIVATE_ROUTES = [
+  //   {
+  //     link: "admin",
+  //     element: <AdminPageMain />,
+  //     id: 1,
+  //   },
+  // ];
+
   return (
     <Routes>
-      {isAdmin &&
-        PRIVATE_ROUTES.map(({ link, id, element }) => {
-          <Route path={link} element={element} key={id} />;
-        })}
+      {/*{isAdmin &&*/}
+      {/*  PRIVATE_ROUTES.map(({ link, id, element }) => {*/}
+      {/*    <Route path={link} element={element} key={id} />;*/}
+      {/*  })}*/}
       {PUBLIC_ROUTES.map(({ link, id, element }) => (
         <Route path={link} element={element} key={id} />
       ))}

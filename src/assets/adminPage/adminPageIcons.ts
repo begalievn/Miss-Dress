@@ -8,6 +8,10 @@ import commentsIcon from "./commentsIcon.svg";
 import goBackIcon from "./goBack.svg";
 import bellIcon from "./bellIcon.svg";
 import profileAva from "./profileAva.svg";
+import autumnCollection from "./autumnCollection.png";
+import winterCollection from "./winterCollection.png";
+import springCollection from "./autumnCollection.png";
+import summerCollection from "./autumnCollection.png";
 
 export {
   dashboardIcon,
@@ -20,4 +24,8 @@ export {
   goBackIcon,
   bellIcon,
   profileAva,
+  autumnCollection,
+  winterCollection,
+  springCollection,
+  summerCollection,
 };

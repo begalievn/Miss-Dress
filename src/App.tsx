@@ -1,6 +1,6 @@
 import React from "react";
 
-// import Header from "./containers/header/Header";
+import Header from "./containers/header/Header";
 import { MainRoutes } from "./pages";
 // import Footer from "./containers/footer/Footer";
 // import AdminPageMain from "./pages/adminPage/AdminPageMain";
@@ -8,7 +8,7 @@ import { MainRoutes } from "./pages";
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       <MainRoutes />
       {/* <Footer /> */}
     </div>
