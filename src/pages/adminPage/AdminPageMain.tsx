@@ -17,74 +17,9 @@ import Paginations from "../../components/pagination/Paginations";
 import BrownButton from "../../components/brown-button/BrownButton";
 import ProfileAva from "./components/UI/profileAva/ProfileAva";
 import UsersBlock from "./components/UI/usersBlock/UsersBlock";
+import { UserApi } from "../../store/services/UserApi";
 
 const AdminPageMain = () => {
-  const users = [
-    {
-      name: "Ророноа Зоро",
-      sales: "104 продаж",
-      income: "500k+ доход",
-      status: "Проверен",
-      rating: 100,
-    },
-    {
-      name: "Портгас Д. Эйс",
-      sales: "185 продаж",
-      income: "85 продаж",
-      status: "Проверен",
-      rating: 100,
-    },
-    {
-      name: "Ророноа Зоро",
-      sales: "104 продаж",
-      income: "500k+ доход",
-      status: "Проверен",
-      rating: 100,
-    },
-    {
-      name: "Винсмок Санджи",
-      sales: "25 продаж",
-      income: "125k+ доход",
-      status: "Проверен",
-      rating: 100,
-    },
-    {
-      name: "Нико Робин",
-      sales: "18 продаж",
-      income: "90k+ доход",
-      status: "В ожидании",
-      rating: 100,
-    },
-    {
-      name: "Тони Чоппер",
-      sales: "10 продаж",
-      income: "50k+ доход",
-      status: "В ожидании",
-      rating: 50,
-    },
-    {
-      name: "Нефертари Виви",
-      sales: "9 продаж",
-      income: "45k+ доход",
-      status: "Проверен",
-      rating: 20,
-    },
-    {
-      name: "Борсалино Кизару",
-      sales: "0 продаж",
-      income: "0 доход",
-      status: "Не проверен",
-      rating: 70,
-    },
-    {
-      name: "Борсалино Кизару",
-      sales: "0 продаж",
-      income: "0 доход",
-      status: "В ожидании",
-      rating: "Рейтинг не подтвержден",
-    },
-  ];
-
   const info = [
     {
       amount: "1050",
@@ -135,6 +70,12 @@ const AdminPageMain = () => {
       income: "125k+",
     },
   ];
+
+  const { data = {} } = UserApi.useGetAllQuery("");
+
+  const cards = data.result?.data || {};
+
+  console.log(cards);
 
   return (
     <div className={classes.container_parent}>
@@ -204,81 +145,69 @@ const AdminPageMain = () => {
             <div className={classes.table}>
               <div>
                 <h4>Пользователь</h4>
-                {users.map((item) => (
-                  <h4>{item.name}</h4>
-                ))}
+                <h4>
+                  {cards.firstName} {cards.lastName}
+                </h4>
               </div>
               <div>
                 <h4>Продажи</h4>
-                {users.map((item) => (
-                  <h5>{item.sales}</h5>
-                ))}
+                <h5>{cards.id}</h5>
               </div>
               <div>
                 <h4>Доход</h4>
-                {users.map((item) => (
-                  <h5>{item.income}</h5>
-                ))}
+                <h5>{cards.id}</h5>
               </div>
               <div className={classes.status}>
                 <h4>Статус</h4>
-                {users.map((item) =>
-                  item.status == "В ожидании" ? (
-                    <h5 style={{ backgroundColor: "#F1F2C1" }}>
-                      {item.status}
-                    </h5>
-                  ) : item.status == "Не проверен" ? (
-                    <h5 style={{ backgroundColor: "#ECCFB5" }}>
-                      {item.status}
-                    </h5>
-                  ) : (
-                    <h5>{item.status}</h5>
-                  )
+                {cards.status == "В ожидании" ? (
+                  <h5 style={{ backgroundColor: "#F1F2C1" }}>{cards.status}</h5>
+                ) : cards.status == "Не проверен" ? (
+                  <h5 style={{ backgroundColor: "#ECCFB5" }}>{cards.status}</h5>
+                ) : (
+                  <h5>{cards.status}</h5>
                 )}
               </div>
               <div className={classes.rating}>
                 <h4>Рейтинг</h4>
-                {users.map((item) =>
-                  item.rating == "Рейтинг не подтвержден" ? (
-                    <h5 className={classes.confirmRating}>
-                      Рейтинг не подтвержден
+                {cards.id == "Рейтинг не подтвержден" ? (
+                  <h5 className={classes.confirmRating}>
+                    Рейтинг не подтвержден
+                  </h5>
+                ) : (
+                  <div className={classes.content}>
+                    <LinearProgress
+                      className={classes.progress}
+                      variant="determinate"
+                      value={+cards.id}
+                      color={"inherit"}
+                    />
+                    <h5>
+                      {cards.id}%{" "}
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.83203 14.1668L14.1654 5.8335"
+                          stroke="#374151"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M5.83203 5.8335H14.1654V14.1668"
+                          stroke="#374151"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      3%
                     </h5>
-                  ) : (
-                    <div className={classes.content}>
-                      <LinearProgress
-                        className={classes.progress}
-                        variant="determinate"
-                        value={+item.rating}
-                        color={"inherit"}
-                      />
-                      <h5>
-                        {item.rating}%{" "}
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M5.83203 14.1668L14.1654 5.8335"
-                            stroke="#374151"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.83203 5.8335H14.1654V14.1668"
-                            stroke="#374151"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                        3%
-                      </h5>
-                    </div>
-                  )
+                  </div>
                 )}
               </div>
             </div>

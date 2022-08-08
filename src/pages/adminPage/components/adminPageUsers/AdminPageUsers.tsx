@@ -3,16 +3,25 @@ import React from "react";
 import styles from "./adminPageUsers.module.scss";
 
 import AdminMenu from "../UI/adminMenu/AdminMenu";
-import {
-  bellIcon,
-  profileAva,
-} from "../../../../assets/adminPage/adminPageIcons";
 
 import CategoriesDropdowBtn from "../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
+
 import ProfileAva from "../UI/profileAva/ProfileAva";
+
 import UsersBlock from "../UI/usersBlock/UsersBlock";
+import { UserApi } from "../../../../store/services/UserApi";
+import classes from "../../adminPageMain.module.scss";
+import LinearProgress from "@mui/material/LinearProgress";
+import Paginations from "../../../../components/pagination/Paginations";
+import DeleteButton from "../UI/deleteButton/DeleteButton";
 
 const AdminPageUsers = () => {
+  const { data = [] } = UserApi.useGetAllQuery("");
+
+  const cards = data.result?.data || [];
+
+  console.log(cards);
+
   const regularUsers = [
     {
       name: "Ророноа Зоро",
@@ -80,9 +89,101 @@ const AdminPageUsers = () => {
             <CategoriesDropdowBtn />
           </div>
         </div>
+        <div className={classes.table}>
+          <div>
+            <h4>Пользователь</h4>
+            <h4>
+              {cards.firstName} {cards.lastName}
+            </h4>
+          </div>
+          <div>
+            <h4>Адрес почты</h4>
+            <h5 className={styles.subtitle}>
+              {cards.firstName} {cards.lastName}
+            </h5>
+          </div>
+          <div>
+            <h4>Номер телефона</h4>
+            <h5 className={styles.subtitle}>{cards.phoneNumber}</h5>
+          </div>
+          <div>
+            <h4>Продажи</h4>
+            <h5 className={styles.subtitle}>{cards.id} продаж</h5>
+          </div>
+          <div>
+            <h4>Доход</h4>
+            <h5 className={styles.subtitle}>{cards.id}k+ доход</h5>
+          </div>
+          <div className={classes.status}>
+            <h4>Статус</h4>
+            <h5>Проверен</h5>
+            {/*{cards.status == "В ожидании" ? (*/}
+            {/*  <h5*/}
+            {/*    className={styles.subtitle}*/}
+            {/*    style={{ backgroundColor: "#F1F2C1" }}*/}
+            {/*  >*/}
+            {/*    {cards.status}*/}
+            {/*  </h5>*/}
+            {/*) : cards.status == "Не проверен" ? (*/}
+            {/*  <h5*/}
+            {/*    className={styles.subtitle}*/}
+            {/*    style={{ backgroundColor: "#ECCFB5" }}*/}
+            {/*  >*/}
+            {/*    {cards.status}*/}
+            {/*  </h5>*/}
+            {/*) : (*/}
+            {/*  <h5>{cards.status}</h5>*/}
+            {/*)}*/}
+          </div>
+          <div className={classes.rating}>
+            <h4>Рейтинг</h4>
+            {cards.id == "Рейтинг не подтвержден" ? (
+              <h5 className={classes.confirmRating}>Рейтинг не подтвержден</h5>
+            ) : (
+              <div className={classes.content}>
+                <LinearProgress
+                  className={classes.progress}
+                  variant="determinate"
+                  value={+cards.id}
+                  color={"inherit"}
+                />
+                <h5>
+                  {cards.id}%{" "}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5.83203 14.1668L14.1654 5.8335"
+                      stroke="#374151"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5.83203 5.8335H14.1654V14.1668"
+                      stroke="#374151"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  3%
+                </h5>
+              </div>
+            )}
+          </div>
+          <DeleteButton />
+        </div>
+        <Paginations />
       </div>
     </div>
   );
 };
 
+// @ts-ignore
 export default AdminPageUsers;
+// @ts-ignore
