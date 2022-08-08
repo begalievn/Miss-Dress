@@ -5,6 +5,8 @@ import salesIcon from "./salesIcon.svg";
 import shoppingBagIcon from "./shoppingBagIcon.svg";
 import adIcon from "./adIcon.svg";
 import commentsIcon from "./commentsIcon.svg";
+import bellIcon from "./bellIcon.svg";
+import profileAva from "./profileAva.svg";
 
 export {
   dashboardIcon,
@@ -14,4 +16,6 @@ export {
   salesIcon,
   commentsIcon,
   adIcon,
+  bellIcon,
+  profileAva,
 };

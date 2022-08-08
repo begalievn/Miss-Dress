@@ -7,6 +7,15 @@ export const UserApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API }),
   tagTypes: ["UserAPI"],
   endpoints: (build) => ({
+    // getAll:build.query({
+    //   query:(data) => ({
+    //     url: "/user/get-all",
+    //     method: "GET",
+    //     headers: {
+    //
+    //     }
+    //   })
+    // })
     getMe: build.query({
       query: (data) => ({
         url: "/user/me",
@@ -28,8 +37,8 @@ export const UserApi = createApi({
           )}`,
         },
         body: {
-          phoneNumber: data
-        }
+          phoneNumber: data,
+        },
       }),
     }),
     updateNumber: build.mutation({
@@ -43,10 +52,9 @@ export const UserApi = createApi({
         },
         body: {
           phoneNumber: data.phoneNumber,
-          code: data.code
-        }
+          code: data.code,
+        },
       }),
     }),
   }),
-  
 });
