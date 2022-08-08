@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
 import { IShoppingCart } from "../../utils/types/typesShoppingCart";
+import { ISaveUserData, IUserData } from "../../utils/types/typesUserData";
 
 export const shoppingCartApi = createApi({
   reducerPath: "shoppingCardApi",
@@ -68,6 +69,18 @@ export const shoppingCartApi = createApi({
       query: (body) => ({
         url: "/cart",
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("accessToken") || "{}"
+          )}`,
+        },
+        body,
+      }),
+    }),
+    saveUserData: build.mutation<ISaveUserData, IUserData>({
+      query: (body) => ({
+        url: "/cart/order",
+        method: "POST",
         headers: {
           Authorization: `Bearer ${JSON.parse(
             localStorage.getItem("accessToken") || "{}"

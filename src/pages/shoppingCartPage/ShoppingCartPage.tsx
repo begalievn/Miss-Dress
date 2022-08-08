@@ -6,16 +6,17 @@ import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
 
 import useInput from "../../hooks/validation/useInput";
 
+import { IResult } from "../../utils/types/typesShoppingCart";
+
 import styles from "./shoppingCardPage.module.scss";
 import Total from "./components/total/Total";
 import ProductOrder from "./components/productOrder/ProductOrder";
-import { IProduct, IResult } from "../../utils/types/typesShoppingCart";
 
 const ShoppingCartPage = () => {
   const inputs = [
     {
       placeholder: "Ваше имя",
-      name: "name",
+      name: "firsName",
       hook: useInput("", {
         minLength: 1,
         maxLength: 30,
@@ -25,7 +26,7 @@ const ShoppingCartPage = () => {
     },
     {
       placeholder: "Ваша фамилия",
-      name: "surname",
+      name: "lastName",
       hook: useInput("", {
         minLength: 2,
         maxLength: 30,
@@ -35,7 +36,7 @@ const ShoppingCartPage = () => {
     },
     {
       placeholder: "Номер телефона",
-      name: "number",
+      name: "phoneNumber",
       hook: useInput("", {
         isEmpty: true,
         minLength: 5,
@@ -45,7 +46,7 @@ const ShoppingCartPage = () => {
     },
     {
       placeholder: "Страна",
-      name: "country",
+      name: "countryId",
       hook: useInput("", {
         minLength: 2,
         maxLength: 30,
@@ -55,7 +56,7 @@ const ShoppingCartPage = () => {
     },
     {
       placeholder: "Город",
-      name: "city",
+      name: "cityId",
       hook: useInput("", {
         cyrillic: true,
         minLength: 2,
@@ -76,7 +77,7 @@ const ShoppingCartPage = () => {
   const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
   const [removeProduct, {}] = shoppingCartApi.useRemoveProductMutation();
   const [deleteProduct, {}] = shoppingCartApi.useDeleteProductMutation();
-
+  const [saveUserData, {}] = shoppingCartApi.useSaveUserDataMutation();
   const products = getProducts?.result.products;
   const result = getProducts?.result;
   const cartId = getProducts?.result.id;
@@ -85,14 +86,27 @@ const ShoppingCartPage = () => {
     setResultState(result);
   }, [getProducts]);
 
-  const saveHandler = (e: React.SyntheticEvent) => {
+  const saveHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    const data: string[] = [];
+    console.log(inputs[0].hook.value);
+    let sendData: { [name: string]: string } = {};
 
-    inputs[0].hook.setError("");
-    inputs.every((i) => {
-      console.log(i.hook.inputValid, i.name);
-      return i.hook.inputValid;
-    }) && inputs.forEach((i) => i.hook.clearFields());
+    inputs.forEach((item) => {
+      sendData[item.name] = item.hook.value;
+    });
+
+    console.log(sendData, "ASdASd");
+    const valid = inputs.every(({ hook }) => {
+      // console.log(i.hook.inputValid, i.name);
+      data.push(hook.value);
+      return hook.inputValid;
+    });
+    console.log(data);
+    if (valid) {
+      inputs.forEach((i) => i.hook.clearFields());
+      // await saveUserData();
+    }
   };
 
   async function changeHandler(
@@ -112,10 +126,13 @@ const ShoppingCartPage = () => {
         ? await removeProduct(body).unwrap()
         : await deleteProduct(body).unwrap();
     const { products } = result;
-    if (!products.length) {
+    if (action === "x" && products.length < resultState?.products.length!) {
+      const shortedArray = resultState?.products.filter((item) => {
+        return item.product.id !== id;
+      });
+      setResultState({ ...result, products: shortedArray! });
       return;
     }
-
     const changed = products?.filter((item) => {
       return item.product.id === id;
     })[0];
@@ -125,6 +142,8 @@ const ShoppingCartPage = () => {
     setResultState({ ...result, products: newProductState! });
   }
 
+  function placeOrderHandler() {}
+
   if (products && !products.length) {
     return (
       <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
@@ -132,6 +151,9 @@ const ShoppingCartPage = () => {
       </h1>
     );
   }
+
+  function editHandler() {}
+
   return (
     <section className={styles.container}>
       <div className={styles.content}>
@@ -144,9 +166,10 @@ const ShoppingCartPage = () => {
                 <p>Исанова, 79, +996712345678</p>
                 <p>Кыргызстан, г. Бишкек</p>
                 <div className={styles.buttonBlock}>
-                  {/*<SubmitButton*/}
-                  {/*  onClick={(e: React.SyntheticEvent) => submitHandler(e)}*/}
-                  {/*/>*/}
+                  <SubmitButton
+                    text="Редактировать"
+                    onClick={() => editHandler()}
+                  />
                 </div>
               </section>
 
@@ -191,7 +214,12 @@ const ShoppingCartPage = () => {
                 })}
             </div>
           </section>
-          <Total />
+          <Total
+            placeOrder={placeOrderHandler}
+            fullPrice={resultState?.price!}
+            discount={123}
+            total={122}
+          />
         </div>
       </div>
     </section>

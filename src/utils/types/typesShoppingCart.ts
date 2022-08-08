@@ -57,3 +57,10 @@ export interface Iimage {
   contentType: string;
   url: string;
 }
+export interface IUserData {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  cityId: number;
+  countryId: number;
+}
