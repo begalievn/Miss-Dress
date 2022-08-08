@@ -4,6 +4,7 @@ import { userStateToogle } from "../../store/reducers/AuthorizationUserSlice";
 
 import { AddModalChoise, openModal, textErrorNumber } from "../../store/reducers/ModalSlice";
 import { AuthorizationAPI } from "../../store/services/AuthorizationApi";
+import { UserApi } from "../../store/services/UserApi";
 import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 
 
@@ -21,7 +22,8 @@ const ConfirmationModal: FC<iConfirmModal> = ({ title }) => {
 
   const [sendActivatedCode, { }] = AuthorizationAPI.useSendActivatedCodeMutation();
   const userId = useAppSelector((state) => state.AuthorizationUserSlice.userIdForBack);
-
+  const phoneNumber = useAppSelector((state) => state.AuthorizationUserSlice.phoneNumber);
+  const [updateNumber,{ data, isLoading }] = UserApi.useUpdateNumberMutation();
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState("");
@@ -33,12 +35,24 @@ const ConfirmationModal: FC<iConfirmModal> = ({ title }) => {
       userId
     };
 
+    let dataEditNumber={
+      phoneNumber: phoneNumber,
+      code:value
+    };
+
 
     if (!value) {
       dispatch(textErrorNumber("Вы не ввели код подтверждения"));
-    } else {
+    }else if (title === "Смена номера"){
+
+      updateNumber(dataEditNumber).then((response)=>{
+        dispatch(AddModalChoise("successProfile"));
+      }).catch(e=>{
+        dispatch(textErrorNumber("Неверный код подтверждения"));
+      })
+      dispatch(AddModalChoise("successProfile"));
+    } else  {
       sendActivatedCode(data).then((response: any) => {
-        console.log(response);
         
         localStorage.setItem("accessToken", JSON.stringify(response.data.result.token.accessToken));
         localStorage.setItem("refreshToken", JSON.stringify(response.data.result.token.refreshToken));
@@ -46,9 +60,6 @@ const ConfirmationModal: FC<iConfirmModal> = ({ title }) => {
         case "Вход":
           dispatch(openModal(false));
           dispatch(userStateToogle(true));
-          break;
-        case "Смена номера":
-          dispatch(AddModalChoise("successProfile"));
           break;
         case "Регистрация":
           dispatch(AddModalChoise("successVerify"));

@@ -1,10 +1,36 @@
+export interface IAdmin {
+  title: string;
+  image: string;
+  route: string;
+}
+
+export interface IFavorites {
+  name: string;
+  price: number;
+  colors: number;
+  size: number;
+  id: number;
+}
+
+interface Images {
+  contentSize: number;
+  contentType: string;
+  createDate: string;
+  fileKey: string;
+  id: number;
+  name: string;
+  status: number;
+  updateDate: string;
+  url: string;
+}
 export interface ProductTest {
   id: number;
   title: string;
   price: number;
   discount: number;
   rate: number;
-  image: string;
+  image: Images[] | [];
+  status: number;
 }
 export interface ProductTypes {
   id: number;

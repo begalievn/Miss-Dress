@@ -31,7 +31,7 @@ export const AuthorizationAPI = createApi({
     }),
     getActivatedCode: build.mutation({
       query: (id: number) => ({
-        url: `/user/sms-code/${id}`,
+        url: `/auth/sms-code/${id}`,
         method: "GET",
       }),
       invalidatesTags: (result) => ["Authorization"],
@@ -59,7 +59,7 @@ export const AuthorizationAPI = createApi({
       invalidatesTags: (result) => ["Authorization"],
     }),
     updateCode: build.mutation({
-      query: (id:number) => ({
+      query: (id: number) => ({
         url: "/auth/update-code",
         method: "POST",
         body: {

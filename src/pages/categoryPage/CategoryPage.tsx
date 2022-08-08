@@ -26,33 +26,6 @@ import { CategoryTypes } from "../../utils/types/types";
 import { productsApi } from "../../store/services/productsApi";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 
-const cards = [
-  {
-    image: bestSellers1,
-    id: 1,
-  },
-  {
-    image: bestSellers2,
-    id: 2,
-  },
-  {
-    image: bestSellers3,
-    id: 3,
-  },
-  {
-    image: bestSellers4,
-    id: 4,
-  },
-  {
-    image: bestSellers5,
-    id: 5,
-  },
-  {
-    image: bestSellers6,
-    id: 6,
-  },
-];
-
 const CategoryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
   console.log("Selected category", selectedCategory);
@@ -86,6 +59,10 @@ const CategoryPage = () => {
   const [outputCategories, setOutputCategories] = useState<CategoryTypes[]>([]);
 
   // console.log("Products", products);
+
+  const { data = [] } = productsApi.useGetAllProductsQuery("");
+
+  const cards = data.result?.data || [];
 
   return (
     <div className={classes.container}>
@@ -129,9 +106,17 @@ const CategoryPage = () => {
             </div>
             <section className={classes.products}>
               <ProductsGridContainer>
-                {cards.map((item, index) => (
+                {cards.map((item: any, index: any) => (
                   <div className={classes.product_card}>
-                    <ProductCard key={index} image={item.image} id={item.id} />
+                    <ProductCard
+                      status={item.status}
+                      rate={item.rate}
+                      title={item.title}
+                      price={item.price}
+                      key={index}
+                      image={item.images}
+                      id={item.id}
+                    />
                   </div>
                 ))}
               </ProductsGridContainer>

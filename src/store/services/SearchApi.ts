@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { API } from "../../utils/consts/API";
 
 export const searchApi = createApi({
   reducerPath: "searchApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://discoverystudio.xyz:4343/api",
+    baseUrl: API,
   }),
   endpoints: (build) => ({
     fetchSearch: build.query({
