@@ -11,6 +11,11 @@ import { LikeApi } from "./services/LikeApi";
 import { categoryApi } from "./services/categoryApi";
 import { UserApi } from "./services/UserApi";
 import { productsApi } from "./services/productsApi";
+
+import { categoriesApi } from "./services/categoriesApi";
+import { collectionCategoryApi } from "./services/collectionCategoryApi";
+import { dropDownApi } from "./services/dropDownApi";
+
 import { orderApi } from "./services/OrderApi";
 import { searchApi } from "./services/SearchApi";
 import { ratingApi } from "./services/RatingApi";
@@ -25,6 +30,11 @@ const rootreducer = combineReducers({
   [categoryApi.reducerPath]: categoryApi.reducer,
   [UserApi.reducerPath]: UserApi.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
+
+  [categoriesApi.reducerPath]: categoriesApi.reducer,
+  [collectionCategoryApi.reducerPath]: collectionCategoryApi.reducer,
+  [dropDownApi.reducerPath]: dropDownApi.reducer,
+
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
   [ratingApi.reducerPath]: ratingApi.reducer,
@@ -41,6 +51,11 @@ export const store = configureStore({
       categoryApi.middleware,
       UserApi.middleware,
       productsApi.middleware,
+
+      categoriesApi.middleware,
+      collectionCategoryApi.middleware,
+      dropDownApi.middleware,
+
       orderApi.middleware,
       productsApi.middleware,
       ratingApi.middleware

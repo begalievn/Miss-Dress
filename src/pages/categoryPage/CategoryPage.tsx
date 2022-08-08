@@ -36,6 +36,11 @@ const CategoryPage = () => {
     error: categoriesError,
   } = categoryApi.useFetchAllCateggoriesQuery("");
 
+  console.log(categories?.result);
+
+  if (!categoriesLoading) {
+    getNestedCategories(categories?.result || []);
+  }
   const {
     data: products,
     isLoading: productsLoading,
@@ -64,6 +69,10 @@ const CategoryPage = () => {
 
   const cards = data.result?.data || [];
 
+  const [name, setName] = useState("");
+
+  console.log(name);
+
   return (
     <div className={classes.container}>
       <ContentContainer>
@@ -87,7 +96,7 @@ const CategoryPage = () => {
             <div className={classes.filters_container}>
               <h2>{"Все товары"}</h2>
               <div>
-                <FilterSelect />
+                <FilterSelect setName={setName} name={name} />
               </div>
             </div>
 
@@ -98,7 +107,7 @@ const CategoryPage = () => {
                   categories={categories?.result || []}
                   setSelectedCategory={setSelectedCategory}
                 />
-                <FilterSelect />
+                <FilterSelect setName={setName} name={name} />
               </div>
               <div className={classes.mobile_filters_title}>
                 <h2>{"Все товары"}</h2>

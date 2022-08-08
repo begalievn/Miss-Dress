@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
 
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,17 +7,11 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import "./style.scss";
 import classes from "./filterSelect.module.scss";
-
-// const useStyles = makeStyles(() =>
-//   createStyles({
-//     iconClassName: {
-//       fill: "red",
-//     },
-//   })
-// );
-
-const FilterSelect = () => {
-  const [name, setName] = useState("");
+interface IFilterSelectProps {
+  setName: Dispatch<SetStateAction<string>>;
+  name: string;
+}
+export const FilterSelect: FC<IFilterSelectProps> = ({ setName, name }) => {
   const handleChange = (e: SelectChangeEvent) => {
     setName(e.target.value);
   };
@@ -67,6 +61,7 @@ const FilterSelect = () => {
             <p>{"Сортировать по"}</p>
           </InputLabel>
         ) : null}
+
         <Select
           sx={selectStyles}
           labelId="demo-simple-select-label"
@@ -74,16 +69,16 @@ const FilterSelect = () => {
           value={name}
           onChange={handleChange}
         >
-          <MenuItem value={10}>
+          <MenuItem value={"rate"}>
             <p>По умолчанию</p>
           </MenuItem>
-          <MenuItem value={20}>
+          <MenuItem value={"price"}>
             <p>По цене</p>
           </MenuItem>
-          <MenuItem value={30}>
+          <MenuItem value={"title"}>
             <p>По алфавиту</p>
           </MenuItem>
-          <MenuItem value={40}>
+          <MenuItem value={"updateDate"}>
             <p>По обновлению</p>
           </MenuItem>
         </Select>

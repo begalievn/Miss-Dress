@@ -1,50 +1,51 @@
 @import "../../../../scss/mixin";
 
-.container{
+.container {
   width: 100%;
-  background: url("../../../../assets/main-page/subBack.jpg")  0 0/100% auto no-repeat;
-  display:flex;
+  background: url("../../../../assets/main-page/subBack.jpg") 0 0/100% auto
+    no-repeat;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 6.5vw;
   @include desktop {
     margin-bottom: 84.7px;
   }
-  @include phone{
-    margin-bottom:5.3vw;
+  @include phone {
+    margin-bottom: 5.3vw;
     justify-content: center;
-    background: url("../../../../assets/main-page/subBackMobile.jpg")  0 0/100% auto no-repeat;
+    background: url("../../../../assets/main-page/subBackMobile.jpg") 0 0/100%
+      auto no-repeat;
   }
 }
 .form h1 {
-  color: #F1DAC5;
-  font-size:1.8vw ;
+  color: #f1dac5;
+  font-size: 1.8vw;
   margin-bottom: 5vw;
   @include phone {
-    font-size:5vw;
+    font-size: 5vw;
   }
-  @include desktop{
-  margin-bottom: 65px;
-    font-size:27px;
+  @include desktop {
+    margin-bottom: 65px;
+    font-size: 27px;
   }
 }
-.form{
+.form {
   display: flex;
   flex-direction: column;
   width: 50%;
   align-items: center;
-  margin-top:9vw;
+  margin-top: 9vw;
   @include desktop {
     margin-top: 118px;
   }
-  @include phone{
+  @include phone {
     width: 100%;
     margin-top: 9.3vw;
   }
-
 }
-.inputBlock{
- height: 7.76vw;
+.inputBlock {
+  height: 7.76vw;
   @include phone {
     height: 17.26vw;
   }
@@ -53,17 +54,18 @@
   }
 }
 
-.input{
+.input {
   border-radius: 45px;
-  background-color:  rgba(241, 218, 197, 0.8);
-  border:none;
+  background-color: rgba(241, 218, 197, 0.8);
+  border: none;
   width: 36vw;
   height: 5vw;
   //margin-bottom: 2.76vw;
   padding-left: 9%;
   font-size: 1.6vw;
-  color: #8C6D4B;
-  @include desktop{
+  color: #8c6d4b;
+
+  @include desktop {
     font-size: 24.5px;
     height: 69px;
     width: 538px;
@@ -75,26 +77,30 @@
     width: 80vw;
     height: 10.26vw;
     padding-left: 8%;
-    padding-bottom:.5vw;
+    padding-bottom: 0.5vw;
   }
 }
 
-.input::placeholder{
+.input:focus {
+  outline-color: wheat;
+}
+
+.input::placeholder {
   font-size: 1.6vw;
-  color: #8C6D4B;
+  color: #8c6d4b;
   @include phone {
-    font-size: 3.9vw
+    font-size: 3.9vw;
   }
-  @include desktop{
+  @include desktop {
     font-size: 24.5px;
   }
 }
 
-
-.input:nth-child(4){
+.input:nth-child(4) {
   margin-bottom: 0;
 }
-.submitBlock{
+
+.submitBlock {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -106,43 +112,42 @@
     padding-bottom: 4.5vw;
     justify-content: space-between;
   }
-  @include desktop{
+  @include desktop {
     height: 256px;
     padding-top: 21.5px;
   }
 }
-.success{
+.success {
   text-align: center;
-  color: #F1DAC5;
+  color: #f1dac5;
   font-size: 1.5vw;
   @include phone {
     font-size: 3vw;
   }
-  @include desktop{
+  @include desktop {
     font-size: 21.5px;
   }
 }
 .error {
   margin-left: 5%;
   margin-top: 1%;
-  color: #FF5050;
+  color: #ff5050;
   font-size: 1.5vw;
 
   @include phone {
     font-size: 3vw;
   }
-  @include desktop{
+  @include desktop {
     font-size: 21.5px;
   }
-
 }
 .submitBlock button {
   min-width: 40%;
   margin: 0 auto;
-  background-color: #372E24;
+  background-color: #372e24;
   border: none;
   border-radius: 45px;
-  color: #F1DAC5;
+  color: #f1dac5;
   padding: 1.3vw 4.3vw 1.53vw 4.46vw;
   font-size: 1.8vw;
   margin-top: 2.3vw;
@@ -152,7 +157,7 @@
     font-size: 3.8vw;
   }
 
-  @include desktop{
+  @include desktop {
     padding: 17.7px 56px 20px 58px;
     font-size: 24.6px;
     margin-top: 31px;

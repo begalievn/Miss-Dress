@@ -17,18 +17,22 @@ const collectionInfo = [
   {
     image: winter,
     title: "ЛЕТО",
+    path: "summer",
   },
   {
     image: "https://picsum.photos/500",
     title: "ВЕСНА",
+    path: "spring",
   },
   {
     image: winter,
     title: "ОСЕНЬ ",
+    path: "autumn",
   },
   {
     image: winter,
     title: "ЗИМА",
+    path: "winter",
   },
 ];
 

@@ -1,33 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 export const AuthorizationUserSlice = createSlice({
   name: "AuthorizationUserSlice",
   initialState: {
     userState: false,
     userIdForBack: 0,
-    role:"",
-    phoneNumber:0
-
+    role: "",
+    phoneNumber: 0,
+    token: localStorage.accessToken || "",
   },
+
   reducers: {
     userStateToogle(state, action) {
       state.userState = action.payload;
     },
-    addUserId(state,action){
+    addUserId(state, action) {
       state.userIdForBack = action.payload;
     },
-    addPhoneNumber(state,action){
+    addPhoneNumber(state, action) {
       state.phoneNumber = action.payload;
-    }
-
+    },
+    addToken(state, action) {
+      state.token = action.payload;
+    },
+    deleteToken(state, action) {
+      state.token = "";
+    },
   },
 });
 
 export const {
   userStateToogle,
   addUserId,
-  addPhoneNumber
+  addPhoneNumber,
+  addToken,
+  deleteToken,
 } = AuthorizationUserSlice.actions;
 
 export default AuthorizationUserSlice.reducer;

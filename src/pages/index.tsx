@@ -10,10 +10,11 @@ import CategoryPage from "./categoryPage/CategoryPage";
 import ErrorPage from "./errorPage/ErrorPage";
 import ShoppingCartPage from "./shoppingCartPage/ShoppingCartPage";
 import ProductIdPage from "./productIdPage/ProductIdPage";
-import CollectionPage from "./collection/CollectionPage";
 import CollectionPagesContent from "./collectionPagesAll/CollectionPagesContent";
-import Test from "./test/Test";
 import ProfilePage from "./profilePage/ProfilePage";
+
+import CollectionCategory from "./collectionPagesAll/components/CollectionCategory";
+
 import OrderPage from "./ordersPage/OrderPage";
 import PublicOfferPage from "./publicOfferPage/PublicOfferPage";
 import HowOrderPage from "./howOrderPage/HowOrderPage";
@@ -32,8 +33,13 @@ import AdminPageAd from "./adminPage/adminPageAd/AdminPageAd";
 import AdminPageChat from "./adminPage/adminPageChat/AdminPageChat";
 import AdminMenu from "./adminPage/adminPageMain/AdminMenu";
 import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
+import { useAppSelector } from "../utils/app/hooks";
+import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
 const MainRoutes = () => {
+  const isAdmin = useAppSelector((state) => state.AuthorizationUserSlice.token);
+  console.log(isAdmin);
+
   const PUBLIC_ROUTES = [
     {
       link: "/",
@@ -75,29 +81,25 @@ const MainRoutes = () => {
       element: <ProductIdPage />,
       id: 8,
     },
+
     {
-      link: "/collection",
-      element: <CollectionPage />,
-      id: 9,
-    },
-    {
-      link: "/collection/:id",
+      link: "/collection/:collection",
       element: <CollectionPagesContent />,
       id: 10,
     },
     {
+      link: "/collection/:id/:collection",
+      element: <CollectionCategory />,
+      id: 11,
+    },
+    {
       link: "shopping",
       element: <ShoppingCartPage />,
-      id: 11,
+      id: 12,
     },
     {
       link: "profile",
       element: <ProfilePage />,
-      id: 12,
-    },
-    {
-      link: "test",
-      element: <Test />,
       id: 13,
     },
     {
@@ -131,7 +133,7 @@ const MainRoutes = () => {
       id: 19,
     },
     {
-      link: `Faq`,
+      link: "Faq",
       element: <FaqPage />,
       id: 20,
     },
@@ -145,11 +147,7 @@ const MainRoutes = () => {
       element: <FavoritePage />,
       id: 22,
     },
-    {
-      link: "admin",
-      element: <AdminPageMain />,
-      id: 23,
-    },
+
     {
       link: "dashboard",
       element: <AdminPageDashboard />,
@@ -187,8 +185,20 @@ const MainRoutes = () => {
     },
   ];
 
+  const PRIVATE_ROUTES = [
+    {
+      link: "admin",
+      element: <AdminPageMain />,
+      id: 1,
+    },
+  ];
+
   return (
     <Routes>
+      {isAdmin &&
+        PRIVATE_ROUTES.map(({ link, id, element }) => {
+          <Route path={link} element={element} key={id} />;
+        })}
       {PUBLIC_ROUTES.map(({ link, id, element }) => (
         <Route path={link} element={element} key={id} />
       ))}
