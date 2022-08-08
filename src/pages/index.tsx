@@ -1,8 +1,10 @@
-import React from "react";
 
+
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { useAppSelector } from "../utils/app/hooks";
+import { parseJwt } from "../utils/helpers/authorization";
+
 
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
 import ContactsPage from "./contactsPage/ContactsPage";
@@ -49,8 +51,16 @@ import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
 const MainRoutes = () => {
-  const isAdmin = useAppSelector((state) => state.AuthorizationUserSlice.token);
-  console.log(isAdmin);
+  const validAdmin = parseJwt();
+  let [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  if (validAdmin?.role === "SUPER_ADMIN" || validAdmin?.role === "ADMIN") {
+    isAdmin = true;
+  } else {
+    isAdmin = false;
+  }
+
+  console.log(validAdmin);
 
   const PUBLIC_ROUTES = [
     {
@@ -163,30 +173,33 @@ const MainRoutes = () => {
       element: <FavoritePage />,
       id: 23,
     },
+  ];
+
+  const PRIVATE_ROUTES = [
     {
       link: "admin",
       element: <AdminPageMain />,
-      id: 24,
+      id: 1,
     },
     {
       link: "dashboard",
       element: <AdminPageDashboard />,
-      id: 25,
+      id: 2,
     },
     {
       link: "users",
       element: <AdminPageUsers />,
-      id: 26,
+      id: 3,
     },
     {
       link: "goods",
       element: <AdminPageGoods />,
-      id: 27,
+      id: 4,
     },
     {
       link: "sales",
       element: <AdminPageSales />,
-      id: 28,
+      id: 5,
     },
     {
       link: "shoppingBag",
@@ -208,27 +221,18 @@ const MainRoutes = () => {
       element: <AdminPageUser />,
       id: 32,
     },
-    {
-      link: "admin",
-      element: <AdminPageMain />,
-      id: 31,
-    },
   ];
-
-  // const PRIVATE_ROUTES = [
-  //   {
-  //     link: "admin",
-  //     element: <AdminPageMain />,
-  //     id: 1,
-  //   },
-  // ];
 
   return (
     <Routes>
-      {/*{isAdmin &&*/}
-      {/*  PRIVATE_ROUTES.map(({ link, id, element }) => {*/}
-      {/*    <Route path={link} element={element} key={id} />;*/}
-      {/*  })}*/}
+      {isAdmin ? (
+        PRIVATE_ROUTES.map(({ link, id, element }) => (
+          <Route path={link} element={element} key={id} />
+        ))
+      ) : (
+        <Route path="*" element={<ErrorPage />} />
+      )}
+
       {PUBLIC_ROUTES.map(({ link, id, element }) => (
         <Route path={link} element={element} key={id} />
       ))}

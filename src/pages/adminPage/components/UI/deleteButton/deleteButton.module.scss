@@ -1,0 +1,15 @@
+.delete{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button{
+    background: #ECCFB5;
+    border-radius: 20px;
+    padding: 10px 12px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    cursor: pointer;
+  }
+}

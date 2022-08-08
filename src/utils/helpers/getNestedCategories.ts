@@ -7,7 +7,6 @@ export function getNestedCategories(
   function dig(categories: CategoryTypes[]) {
     categories.forEach((item) => {
       if (item.children.length > 0) {
-        // console.log("STOP recursion");
         dig(item.children);
         if (item.children) {
         }
@@ -18,6 +17,6 @@ export function getNestedCategories(
   }
 
   dig(categories);
-  // console.log(result);
+
   return result;
 }
