@@ -5,7 +5,6 @@ import {
   validationNumber,
 } from "../../store/reducers/ModalSlice";
 
-
 export interface IDispatch {
   payload: any;
   type: string;
@@ -27,8 +26,8 @@ export const checkValidation = (valueNumber: string) => {
 };
 
 export const parseJwt = () => {
-  let token:any = localStorage.getItem("token");
-  token =(JSON.parse(token));
+  let token: any = localStorage.getItem("accessToken");
+  token = JSON.parse(token);
   try {
     return JSON.parse(atob(token.refreshToken.split(".")[1]));
   } catch (e) {
