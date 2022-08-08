@@ -1,6 +1,6 @@
 import React from "react";
 
-import ContentAdminMain from "./components/ContentAdminMain";
+import ContentAdminMain from "../../ContentAdminMain";
 
 import {
   adIcon,
@@ -10,13 +10,13 @@ import {
   salesIcon,
   shoppingBagIcon,
   userIcon,
-} from "../../assets/adminPage/adminPageIcons";
+} from "../../../../../assets/adminPage/adminPageIcons";
 
-import Logo from "../../components/logo/Logo";
+import Logo from "../../../../../components/logo/Logo";
 
 import { Link } from "react-router-dom";
 
-import classes from "./adminPageMain.module.scss";
+import classes from "../../../adminPageMain.module.scss";
 
 const AdminMenu = () => {
   const info = [

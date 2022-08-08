@@ -1,23 +1,3 @@
-*{
-  color: #372E24;
-  font-weight: 500;
-}
-h3{
-  font-size: 32px;
-  text-align: center;
-}
-h4{
-  font-size: 20px;
-}
-h2{
-  font-size: 24px;
-  line-height: 29px;
-}
-h5{
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 600;
-}
 
 .main{
   width: 100%;
@@ -32,11 +12,6 @@ h5{
       justify-content: space-between;
       width: 100%;
       max-width: 850px;
-    }
-    .newUsers{
-      background: #ECCFB5;
-      border-radius: 20px;
-      padding: 30px 34px;
     }
     .regularUsers{
       display: flex;
@@ -96,11 +71,31 @@ h5{
   }
 }
 
-.profile{
+.users_container{
+  height: 100%;
   display: flex;
-  align-items: center;
-  .text{
-    margin: 0 20px;
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  *{
+    color: #372E24;
+    font-weight: 500;
+  }
+  h3{
+    font-size: 32px;
+    text-align: center;
+  }
+  h4{
+    font-size: 20px;
+  }
+  h2{
+    font-size: 24px;
+    line-height: 29px;
+  }
+  h5{
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
   }
 }
 

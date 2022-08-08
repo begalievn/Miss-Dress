@@ -1,6 +1,6 @@
 import React from "react";
 
-import AdminMenu from "./AdminMenu";
+import AdminMenu from "./components/UI/adminMenu/AdminMenu";
 
 import classes from "./adminPageMain.module.scss";
 
@@ -11,8 +11,12 @@ import { bellIcon } from "../../assets/adminPage/adminPageIcons";
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
 import LinearProgress from "@mui/material/LinearProgress";
+
 import Paginations from "../../components/pagination/Paginations";
+
 import BrownButton from "../../components/brown-button/BrownButton";
+import ProfileAva from "./components/UI/profileAva/ProfileAva";
+import UsersBlock from "./components/UI/usersBlock/UsersBlock";
 
 const AdminPageMain = () => {
   const users = [
@@ -159,24 +163,14 @@ const AdminPageMain = () => {
             </svg>
             <input placeholder={"Поиск..."} type="text" />
           </div>
-          <div className={classes.profile}>
-            <img src={profileAva} alt="avatar" />
-            <div className={classes.profile_text}>
-              <h4>Манки Д. Луффи</h4>
-              <p>Админ</p>
-            </div>
-            <img src={bellIcon} alt="bellIcon" />
-          </div>
+          <ProfileAva />
         </div>
         <div className={classes.main_bot}>
           <div className={classes.left}>
             <h3>За последние 30 дней,</h3>
             <div className={classes.blocks}>
               {info.map((item) => (
-                <div className={classes.block}>
-                  <h4>{item.amount}</h4>
-                  <p>{item.item}</p>
-                </div>
+                <UsersBlock value={item.amount} text={item.item} />
               ))}
             </div>
             <div className={classes.users}>
