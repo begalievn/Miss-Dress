@@ -15,7 +15,7 @@ const LoaderCircular = () => {
   return (
     <div className={classes.container}>
       <Box>
-        <CircularProgress />
+        <CircularProgress sx={{ color: "#3C210A" }} />
       </Box>
     </div>
   );
