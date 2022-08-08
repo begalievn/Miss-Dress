@@ -23,15 +23,14 @@ import RequisitePage from "./requisitePage/RequisitePage";
 import FaqPage from "./faqPage/FaqPage";
 import ReturnProduct from "./returnProduct/ReturnProduct";
 import FavoritePage from "./favoritePage/FavoritePage";
-import AdminPageDashboard from "./adminPage/adminPageDashboard/AdminPageDashboard";
-import AdminPageUsers from "./adminPage/adminPageUsers/AdminPageUsers";
-import AdminPageGoods from "./adminPage/adminPageGoods/AdminPageGoods";
-import AdminPageSales from "./adminPage/adminPageSales/AdminPageSales";
-import AdminPageShopping from "./adminPage/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/adminPageAd/AdminPageAd";
-import AdminPageChat from "./adminPage/adminPageChat/AdminPageChat";
-import AdminMenu from "./adminPage/adminPageMain/AdminMenu";
-import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
+import AdminPageDashboard from "./adminPage/components/adminPageDashboard/AdminPageDashboard";
+import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers";
+import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
+import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
+import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
+import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
+import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
+import AdminPageMain from "./adminPage/AdminPageMain";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [

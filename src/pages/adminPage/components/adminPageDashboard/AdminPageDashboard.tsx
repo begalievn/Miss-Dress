@@ -1,13 +1,13 @@
 import React from "react";
 
-import classes from "../adminPageMain/adminPageMain.module.scss";
-import AdminMenu from "../adminPageMain/AdminMenu";
+import classes from "../../adminPageMain.module.scss";
+import AdminMenu from "../../AdminMenu";
+import AdminPageMain from "../../AdminPageMain";
 
 const AdminPageDashboard = () => {
   return (
     <div className={classes.container_parent}>
-      <AdminMenu />
-      dashboard
+      <AdminPageMain />
     </div>
   );
 };

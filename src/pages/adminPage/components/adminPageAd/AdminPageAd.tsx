@@ -1,7 +1,7 @@
 import React from "react";
 
-import classes from "../adminPageMain/adminPageMain.module.scss";
-import AdminMenu from "../adminPageMain/AdminMenu";
+import classes from "../../adminPageMain.module.scss";
+import AdminMenu from "../../AdminMenu";
 
 const AdminPageAd = () => {
   return (
