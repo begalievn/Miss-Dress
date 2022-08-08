@@ -35,6 +35,7 @@ import AdminPageAd from "./adminPage/adminPageAd/AdminPageAd";
 import AdminPageChat from "./adminPage/adminPageChat/AdminPageChat";
 import AdminMenu from "./adminPage/adminPageMain/AdminMenu";
 import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
+import AdminPageUser from "./adminPage/adminPageUser/AdminPageUser";
 // >>>>>>> aba571968edd5b6b93861f8b7e0bbd2cad1e73fd
 
 const MainRoutes = () => {
@@ -193,6 +194,11 @@ const MainRoutes = () => {
       link: "chat",
       element: <AdminPageChat />,
       id: 31,
+    },
+    {
+      link: "user",
+      element: <AdminPageUser />,
+      id: 32,
     },
   ];
 
