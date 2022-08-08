@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import AdminMenu from "../adminPageMain/AdminMenu";
+import AdminMenu from "../../AdminMenu";
 
-import classes from "../adminPageMain/adminPageMain.module.scss";
+import classes from "../../adminPageMain.module.scss";
 
-import {goBackIcon} from "../../../assets/adminPage/adminPageIcons";
+import { goBackIcon } from "../../../../assets/adminPage/adminPageIcons";
 
-import AdminProfile from "../components/adminProfile/AdminProfile";
+import AdminProfile from "../adminProfile/AdminProfile";
 
 import styles from "./adminPageUser.module.scss";
 
@@ -31,15 +31,6 @@ function AdminPageUser() {
           </div>
 
           <AdminProfile />
-
-          {/* <div className={styles.profile}>
-            <img src={profileAva} alt="avatar" />
-            <div className={styles.profile_text}>
-              <h4>Манки Д. Луффи</h4>
-              <p>Админ</p>
-            </div>
-            <img src={bellIcon} alt="bellIcon" />
-          </div> */}
         </div>
 
         <AdminPageUserContent />

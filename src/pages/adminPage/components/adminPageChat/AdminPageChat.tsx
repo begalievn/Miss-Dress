@@ -1,8 +1,8 @@
 import React from "react";
 
-import classes from "../adminPageMain/adminPageMain.module.scss";
+import classes from "../../adminPageMain.module.scss";
 
-import AdminMenu from "../adminPageMain/AdminMenu";
+import AdminMenu from "../../AdminMenu";
 
 const AdminPageChat = () => {
   return (

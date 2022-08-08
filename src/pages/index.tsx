@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
+import { useAppSelector } from "../utils/app/hooks";
+
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
 import ContactsPage from "./contactsPage/ContactsPage";
 import DeliveryPage from "./deliveryPage/DeliveryPage";
@@ -26,22 +28,23 @@ import ReturnProduct from "./returnProduct/ReturnProduct";
 
 import OrderProductPage from "./orderProductPage/OrderProductPage";
 import FavoritePage from "./favoritePage/FavoritePage";
-import AdminPageDashboard from "./adminPage/adminPageDashboard/AdminPageDashboard";
-import AdminPageUsers from "./adminPage/adminPageUsers/AdminPageUsers";
-import AdminPageGoods from "./adminPage/adminPageGoods/AdminPageGoods";
-import AdminPageSales from "./adminPage/adminPageSales/AdminPageSales";
-import AdminPageShopping from "./adminPage/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/adminPageAd/AdminPageAd";
-import AdminPageChat from "./adminPage/adminPageChat/AdminPageChat";
-import AdminMenu from "./adminPage/adminPageMain/AdminMenu";
+import AdminPageDashboard from "./adminPage/components/adminPageDashboard/AdminPageDashboard";
+import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers";
+import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
+import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
+import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
+import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
 
-import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
+import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
+// import AdminMenu from "./adminPage/AdminMenu";
 
-import AdminPageUser from "./adminPage/adminPageUser/AdminPageUser";
+import AdminPageMain from "./adminPage/AdminPageMain";
 
-import { useAppSelector } from "../utils/app/hooks";
+import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
 
-import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
+
+// import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
+
 
 const MainRoutes = () => {
   const isAdmin = useAppSelector((state) => state.AuthorizationUserSlice.token);

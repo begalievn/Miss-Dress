@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import AdminProfile from "../../../components/adminProfile/AdminProfile";
+import AdminProfile from "../../../adminProfile/AdminProfile";
 
 import classes from "./adminPageGoodsTopInfo.module.scss";
 

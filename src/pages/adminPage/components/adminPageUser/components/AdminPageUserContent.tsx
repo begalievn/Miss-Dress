@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import classes from "./adminPageUserContent.module.scss";
 
@@ -35,14 +35,12 @@ const adminUserContent = [
     income: "500k+ доход",
     status: "Проверен",
     rating: "87% Удалить пользователя",     
-  },
-   
+  },  
 ];
 
 function AdminPageUserContent() {
 
   
-
   return (
     <div>
       <h2 className={classes.userTitle}>Информация о пользователе</h2>
@@ -50,7 +48,7 @@ function AdminPageUserContent() {
         {adminUserContent.map((item, index)=>{
           return (
             <div key={index} className={classes.userContentList}>
-              <p className={classes.userContentItem}>{item.user}</p>
+              <p className={classes.userContentItem}>{item.name}</p>
               <p className={classes.userContentItem}>{item.email}</p>
               <p className={classes.userContentItem}>{item.phone}</p>
               <p className={classes.userContentItem}>{item.address}</p>

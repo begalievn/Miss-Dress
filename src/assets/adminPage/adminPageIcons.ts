@@ -6,8 +6,8 @@ import shoppingBagIcon from "./shoppingBagIcon.svg";
 import adIcon from "./adIcon.svg";
 import commentsIcon from "./commentsIcon.svg";
 import goBackIcon from "./goBack.svg";
-import profileAva from "./profileAva.svg";
 import bellIcon from "./bellIcon.svg";
+import profileAva from "./profileAva.svg";
 
 export {
   dashboardIcon,
@@ -18,6 +18,6 @@ export {
   commentsIcon,
   adIcon,
   goBackIcon,
-  profileAva,
   bellIcon,
+  profileAva,
 };

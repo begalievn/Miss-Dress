@@ -1,8 +1,9 @@
 import React from "react";
 
-import classes from "../adminPageMain/adminPageMain.module.scss";
 
-import AdminMenu from "../adminPageMain/AdminMenu";
+import classes from "../../adminPageMain.module.scss";
+
+import AdminMenu from "../../AdminMenu";
 
 import AdminPageGoodsTopInfo from "./components/adminPageGoodsTopInfo/AdminPageGoodsTopInfo";
 
@@ -16,7 +17,7 @@ const AdminPageGoods = () => {
       <AdminMenu />
       <div className={styles.container}>
         <AdminPageGoodsTopInfo />
-        {/* <AdminPageGoodsContent /> */}
+        <AdminPageGoodsContent />
       </div>
     </div>
   );
