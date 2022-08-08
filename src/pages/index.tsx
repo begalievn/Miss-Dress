@@ -36,6 +36,7 @@ import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
 import { useAppSelector } from "../utils/app/hooks";
 import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
+
 const MainRoutes = () => {
   const isAdmin = useAppSelector((state) => state.AuthorizationUserSlice.token);
   console.log(isAdmin);
