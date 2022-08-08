@@ -7,15 +7,17 @@ export const UserApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: API }),
   tagTypes: ["UserAPI"],
   endpoints: (build) => ({
-    // getAll:build.query({
-    //   query:(data) => ({
-    //     url: "/user/get-all",
-    //     method: "GET",
-    //     headers: {
-    //
-    //     }
-    //   })
-    // })
+    getAll: build.query({
+      query: (data) => ({
+        url: "/user/get-all",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("accessToken") || "{}"
+          )}`,
+        },
+      }),
+    }),
     getMe: build.query({
       query: (data) => ({
         url: "/user/me",
