@@ -28,9 +28,17 @@
     color: #372E24;
 }
 
-.contentBlock {
+.contentBlock img {
     display: flex;
     justify-content: space-between; 
+    align-items: flex-end;
+    width: 200px;
+    height: 290px;
+}
+
+.contentBlock {
+    display: flex;
+    justify-content: space-between;
     align-items: flex-end;
 }
 
@@ -40,13 +48,11 @@
 
 .contentBlockList li {
     list-style-type: none;
+    display: flex;
 }
 
 .contentBlockImg {
     margin-right: 8px;
-    width: 200px;
-    height: 300px;
-    // background-color: #6A5844;
 }
 
 .contentBlockImgPlus {
@@ -58,7 +64,7 @@
     color: #372E24;
     
     width: 200px;
-    height: 300px;
+    height: 290px;
     background: #F1DAC5;
 }
 
@@ -73,44 +79,60 @@
 // ===== Adaptive =====
 @media (max-width: 970px) {
     .contentBlockImg,
-    .contentBlockImgPlus {
+    .contentBlockImgPlus,
+    .contentBlock img {
         width: 180px;
-        height: 280px;
+        height: 260px;
     }
 }
 
 @media (max-width: 890px) {
     .contentBlockImg,
-    .contentBlockImgPlus {
+    .contentBlockImgPlus, 
+    .contentBlock img {
         width: 160px;
-        height: 260px;
+        height: 230px;
+    }
+
+    .contentBlockImgPlus {
+        font-size: 36px;
     }
 }
 
 @media (max-width: 810px) {
     .contentBlockImg,
-    .contentBlockImgPlus {
+    .contentBlockImgPlus,  
+    .contentBlock img {
         width: 140px;
-        height: 230px;
+        height: 200px;
         font-size: 35px;
+    }
+
+    .infoBlock {
+        margin: 30px 0px;
     }
 
     .infoOrder,
     .infoStatus,
     .infoDate {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .contentBlockPrice {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
 @media (max-width: 715px) {
     .contentBlockImg,
-    .contentBlockImgPlus {
+    .contentBlockImgPlus,   
+    .contentBlock img {
         width: 120px;
-        height: 200px;
+        height: 180px;
+    }
+
+    .contentBlockImgPlus {
+        font-size: 30px;
     }
 
     .infoOrder,
@@ -120,6 +142,71 @@
     }
 
     .contentBlockPrice {
-        font-size: 20px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 650px) {
+    .contentBlockImg,
+    .contentBlockImgPlus,   
+    .contentBlock img {
+        width: 84px;
+        height: 114px;
+    }
+
+    .contentBlockImgPlus {
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    .infoOrder {
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .infoStatus {
+        font-weight: 300;
+        font-size: 14px;
+    }
+
+    .infoDate {
+        font-weight: 400;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .contentBlock {
+        display: block;
+    }
+
+    .contentBlockPrice {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 386px) {
+    .contentBlockImg,
+    .contentBlockImgPlus,   
+    .contentBlock img {
+        width: 63px;
+        height: 87px;
+    }
+
+    .contentBlockImgPlus {
+        font-size: 12px;
+    }
+
+    .infoOrder,
+    .infoStatus,
+    .infoDate {
+        font-size: 12px;
+    }
+
+    .contentBlockPrice {
+        font-size: 13px;
     }
 }

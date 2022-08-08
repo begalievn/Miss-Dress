@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./adminPageUsers.module.scss";
+import classes from "../../adminPageMain.module.scss";
 
 import AdminMenu from "../UI/adminMenu/AdminMenu";
 
@@ -10,10 +10,13 @@ import ProfileAva from "../UI/profileAva/ProfileAva";
 
 import UsersBlock from "../UI/usersBlock/UsersBlock";
 import { UserApi } from "../../../../store/services/UserApi";
-import classes from "../../adminPageMain.module.scss";
+
 import LinearProgress from "@mui/material/LinearProgress";
 import Paginations from "../../../../components/pagination/Paginations";
 import DeleteButton from "../UI/deleteButton/DeleteButton";
+
+import styles from "./adminPageUsers.module.scss";
+
 
 const AdminPageUsers = () => {
   const { data = [] } = UserApi.useGetAllQuery("");

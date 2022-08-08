@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Logo from "../../components/logo/Logo";
 
@@ -6,13 +6,14 @@ import hero from "../../assets/profile/hero.png";
 
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
-import style from "./ProfilePage.module.scss";
 
 import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
 import { AddModalChoise, openModal } from "../../store/reducers/ModalSlice";
 import { UserApi } from "../../store/services/UserApi";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 import { addUserId } from "../../store/reducers/AuthorizationUserSlice";
+
+import style from "./ProfilePage.module.scss";
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -34,11 +35,11 @@ const ProfilePage = () => {
       dispatch(addUserId(dataMe.result.id));
     }
 
-  }, [dataMe]);
+  }, [dataMe, dispatch, getMe]);
 
   useEffect(() => {
     getMe(1);
-  }, [modalState]);
+  }, [getMe, modalState]);
   
   
 

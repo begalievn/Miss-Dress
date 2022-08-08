@@ -1,0 +1,22 @@
+.profile {
+    display: flex;
+      align-items: center;
+    img:first-child {
+        border-radius: 50%;
+        width: 56px;
+    }
+    .profile_text {
+        margin: 0 20px;
+        h4 {
+            font-weight: 500;
+            line-height: 20px;
+            color: #372e24;
+        }
+        p {
+            font-weight: 300;
+            line-height: 20px;
+
+            color: #372e24;
+        }
+    }
+}  

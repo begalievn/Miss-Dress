@@ -15,9 +15,14 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Paginations from "../../components/pagination/Paginations";
 
 import BrownButton from "../../components/brown-button/BrownButton";
+
 import ProfileAva from "./components/UI/profileAva/ProfileAva";
 import UsersBlock from "./components/UI/usersBlock/UsersBlock";
+import PopularProducts from "./components/UI/popularProducts/PopularProducts";
+import ViewMoreButton from "./components/UI/viewMoreButton/ViewMoreButton";
+
 import { UserApi } from "../../store/services/UserApi";
+
 
 const AdminPageMain = () => {
   const info = [
@@ -35,25 +40,7 @@ const AdminPageMain = () => {
     },
   ];
 
-  const products = [
-    {
-      name: "Benito Kate Wrap Dress",
-      amount: 254,
-      income: "1.2m+",
-    },
-    {
-      name: "JUSTONE Shy Embo Can Skirt",
-      amount: 210,
-      income: "1m+",
-    },
-    {
-      name: "Envy Look Button Eco Dress",
-      amount: 159,
-      income: "790k+",
-    },
-  ];
-
-  const refularUsers = [
+  const regularUsers = [
     {
       name: "Ророноа Зоро",
       sales: 104,
@@ -214,28 +201,17 @@ const AdminPageMain = () => {
             <Paginations />
           </div>
           <div className={classes.right}>
-            <h3>Популярные товары</h3>
-            {products.map((item) => (
-              <div className={classes.products}>
-                <h4>{item.name}</h4>
-                <h5>{item.amount} продаж</h5>
-                <h5>{item.income} доход</h5>
-              </div>
-            ))}
-            <div className={classes.view_more}>
-              <BrownButton text={"Посмотреть все"} />
-            </div>
+            <PopularProducts />
+            <ViewMoreButton />
             <h3 className={classes.regularUsers}>Постоянные пользователи</h3>
-            {refularUsers.map((item) => (
+            {regularUsers.map((item) => (
               <div className={classes.products}>
                 <h4>{item.name}</h4>
                 <h5>{item.sales} продаж</h5>
                 <h5>{item.income} доход</h5>
               </div>
             ))}
-            <div className={classes.view_more}>
-              <BrownButton text={"Посмотреть все"} />
-            </div>
+            <ViewMoreButton />
           </div>
         </div>
       </div>

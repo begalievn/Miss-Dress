@@ -68,26 +68,26 @@ const Header = () => {
     editColorIcon(name);
 
     switch (name) {
-      case "search":
-        dispatch(openSearch(!modalSearch));
-        break;
-      case "heart":
-        navigate("/favorites");
-        dispatch(closeAll());
-        break;
-      case "shopping":
-        navigate("/shopping");
-        dispatch(closeAll());
-        break;
-      case "sign":
-        dispatch(openModal(!modal));
-        dispatch(AddModalChoise("sign"));
-        break;
-      case "user":
-        dispatch(openProfile(!menuProfile));
-        break;
-      default:
-        break;
+    case "search":
+      dispatch(openSearch(!modalSearch));
+      break;
+    case "heart":
+      navigate("/favorites");
+      dispatch(closeAll());
+      break;
+    case "shopping":
+      navigate("/shopping");
+      dispatch(closeAll());
+      break;
+    case "sign":
+      dispatch(openModal(!modal));
+      dispatch(AddModalChoise("sign"));
+      break;
+    case "user":
+      dispatch(openProfile(!menuProfile));
+      break;
+    default:
+      break;
     }
   };
 
@@ -161,7 +161,6 @@ const Header = () => {
 
   useEffect(() => {
     updateRefreshFunc();
-
     checkAuth();
   }, []);
 
@@ -196,7 +195,7 @@ const Header = () => {
           </ul>
           <div className={style.icons}>
             {iconsArr.map((icon, index) => (
-              <div className={style.shopping_img_count}>
+              <div key={index} className={style.shopping_img_count}>
                 <img
                   src={icon.url}
                   onClick={() => modalFunc(icon.name)}

@@ -1,7 +1,10 @@
+
+
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { parseJwt } from "../utils/helpers/authorization";
+
 
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
 import ContactsPage from "./contactsPage/ContactsPage";
@@ -25,6 +28,8 @@ import PaymentPage from "./paymentPage/PaymentPage";
 import RequisitePage from "./requisitePage/RequisitePage";
 import FaqPage from "./faqPage/FaqPage";
 import ReturnProduct from "./returnProduct/ReturnProduct";
+
+import OrderProductPage from "./orderProductPage/OrderProductPage";
 import FavoritePage from "./favoritePage/FavoritePage";
 
 import AdminPageDashboard from "./adminPage/components/adminPageDashboard/AdminPageDashboard";
@@ -34,8 +39,16 @@ import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods
 import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
 import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
 import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
+
 import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
+
+// import AdminMenu from "./adminPage/AdminMenu";
+
 import AdminPageMain from "./adminPage/AdminPageMain";
+
+import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
+
+// import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
 const MainRoutes = () => {
   const validAdmin = parseJwt();
@@ -90,7 +103,6 @@ const MainRoutes = () => {
       element: <ProductIdPage />,
       id: 8,
     },
-
     {
       link: "/collection/:collection",
       element: <CollectionPagesContent />,
@@ -112,7 +124,7 @@ const MainRoutes = () => {
       id: 13,
     },
     {
-      link: "order",
+      link: "order/",
       element: <OrderPage />,
       id: 14,
     },
@@ -152,9 +164,14 @@ const MainRoutes = () => {
       id: 21,
     },
     {
+      link: "order-product/:id",
+      element: <OrderProductPage />,
+      id: 22,
+    },
+    {
       link: "favorites",
       element: <FavoritePage />,
-      id: 22,
+      id: 23,
     },
   ];
 
@@ -187,17 +204,22 @@ const MainRoutes = () => {
     {
       link: "shoppingBag",
       element: <AdminPageShopping />,
-      id: 28,
+      id: 29,
     },
     {
       link: "ad",
       element: <AdminPageAd />,
-      id: 29,
+      id: 30,
     },
     {
       link: "chat",
       element: <AdminPageChat />,
-      id: 30,
+      id: 31,
+    },
+    {
+      link: "user",
+      element: <AdminPageUser />,
+      id: 32,
     },
   ];
 

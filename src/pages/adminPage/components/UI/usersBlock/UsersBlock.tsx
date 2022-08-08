@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 
+import { IBlock } from "../../../../../utils/types/types";
+
 import classes from "./usersBlock.module.scss";
 
-import { IBlock } from "../../../../../utils/types/types";
 
 const UsersBlock = ({ value, text }: IBlock) => {
   return (

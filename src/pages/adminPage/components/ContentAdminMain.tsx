@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-
-import { IAdmin } from "../../../utils/types/types";
+// import React, { useState } from "react";
 
 import { Link, useLocation } from "react-router-dom";
 
+import { IAdmin } from "../../../utils/types/types";
+
+
 import classes from "../adminPageMain.module.scss";
-import style from "../../../containers/header/Header.module.scss";
+
+// import style from "../../../containers/header/Header.module.scss";
 
 const ContentAdminMain = ({ title, image, route }: IAdmin) => {
   const location = useLocation();
