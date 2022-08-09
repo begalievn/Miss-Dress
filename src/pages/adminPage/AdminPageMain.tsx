@@ -23,7 +23,6 @@ import ViewMoreButton from "./components/UI/viewMoreButton/ViewMoreButton";
 
 import { UserApi } from "../../store/services/UserApi";
 
-
 const AdminPageMain = () => {
   const info = [
     {
@@ -61,8 +60,6 @@ const AdminPageMain = () => {
   const { data = {} } = UserApi.useGetAllQuery("");
 
   const cards = data.result?.data || {};
-
-  console.log(cards);
 
   return (
     <div className={classes.container_parent}>
