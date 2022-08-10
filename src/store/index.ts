@@ -1,3 +1,4 @@
+import { adminCollectionApi } from './services/adminCollectionApi';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import { AuthorizationAPI } from "./services/AuthorizationApi";
@@ -38,6 +39,7 @@ const rootreducer = combineReducers({
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
   [ratingApi.reducerPath]: ratingApi.reducer,
+  [adminCollectionApi.reducerPath]: adminCollectionApi.reducer,
 });
 
 export const store = configureStore({
@@ -58,7 +60,8 @@ export const store = configureStore({
 
       orderApi.middleware,
       productsApi.middleware,
-      ratingApi.middleware
+      ratingApi.middleware,
+      adminCollectionApi.middleware,
     ),
 });
 

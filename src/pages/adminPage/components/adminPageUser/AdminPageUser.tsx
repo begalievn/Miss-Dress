@@ -29,13 +29,10 @@ function AdminPageUser() {
             <img className={styles.goBackIcon} src={goBackIcon} alt="" />
             <p className={styles.goBackText}>Вернуться ко всем пользователям</p>
           </div>
-
           <AdminProfile />
         </div>
-
         <AdminPageUserContent />
-      </div>
-      
+      </div>     
     </div>
   );
 }

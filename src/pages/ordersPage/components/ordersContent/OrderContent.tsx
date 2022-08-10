@@ -27,7 +27,7 @@ function OrderContent() {
             <div className={styles.contentBlock}>
               <ul className={styles.contentBlockList}>  
                 <li>
-                  {item.cart.products.filter((elem:any, index:number)=>index<3).map((elem:any) => {
+                  {item.cart.products.filter((_elem:any, index:number)=>index<3).map((elem:any) => {
                     return (   
                       <span key={elem.id} className={styles.contentBlockImg}>
                         <img src={elem.product.images[1]?.url} alt=""></img> 
@@ -37,7 +37,7 @@ function OrderContent() {
                 </li>
                            
                 <li>
-                  <Link to={`/order-product/${item.id}`}>
+                  <Link to={`/order/${item.id}`}>
                     <div className={styles.contentBlockImgPlus}>+{item.cart.amount-3}</div>
                   </Link>
                 </li>

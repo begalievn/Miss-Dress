@@ -10,8 +10,8 @@ import bellIcon from "./bellIcon.svg";
 import profileAva from "./profileAva.svg";
 import autumnCollection from "./autumnCollection.png";
 import winterCollection from "./winterCollection.png";
-import springCollection from "./autumnCollection.png";
-import summerCollection from "./autumnCollection.png";
+import springCollection from "./springCollection.png";
+import summerCollection from "./summerCollection.png";
 
 export {
   dashboardIcon,

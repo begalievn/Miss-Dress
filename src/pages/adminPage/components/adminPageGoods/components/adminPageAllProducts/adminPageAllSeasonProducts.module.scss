@@ -1,0 +1,119 @@
+
+.main{
+    width: 100%;
+    padding: 51px 41px;
+    .content_top{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      .users{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 850px;
+      }
+      .regularUsers{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .inner{
+          display: flex;
+          margin-top: 25px;
+          h5{
+            width: 194px;
+          }
+          p{
+            margin-left: 20px;
+            width: 105px;
+          }
+        }
+      }
+    }
+    .content_bot{
+      margin-top: 94px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .search_parent{
+        display: flex;
+        align-items: center;
+        select{
+          background: #DBB593;
+          width: 193px;
+          height: 50px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+          color: #74614D;
+          margin-left: 20px;
+        }
+        .search{
+          display: flex;
+          align-items: center;
+          background: #F1DAC5;
+          border-radius: 45px;
+          width: 350px;
+          height: 50px;
+          padding: 15px 25px;
+          input{
+            margin-left: 20px;
+            outline: none;
+            border: none;
+            background-color: inherit;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            color: #74614D;
+          }
+        }
+      }
+    }
+  }
+  
+  .users_container{
+    height: 100%;
+    display: flex;
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    *{
+      color: #372E24;
+      font-weight: 500;
+    }
+    h3{
+      font-size: 32px;
+      text-align: center;
+    }
+    h4{
+      font-size: 20px;
+    }
+    h2{
+      font-size: 24px;
+      line-height: 29px;
+    }
+    h5{
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+  }
+  
+  .view_more{
+    background: #DBB593;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    margin-top: 40px;
+    width: 200px;
+    height: 50px;
+  }
+  
+  .subtitle{
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 17px !important;
+  }
+  
+  

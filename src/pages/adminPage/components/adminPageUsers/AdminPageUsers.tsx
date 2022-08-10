@@ -1,5 +1,6 @@
 import React from "react";
 
+import LinearProgress from "@mui/material/LinearProgress";
 import classes from "../../adminPageMain.module.scss";
 
 import AdminMenu from "../UI/adminMenu/AdminMenu";
@@ -10,8 +11,6 @@ import ProfileAva from "../UI/profileAva/ProfileAva";
 
 import UsersBlock from "../UI/usersBlock/UsersBlock";
 import { UserApi } from "../../../../store/services/UserApi";
-
-import LinearProgress from "@mui/material/LinearProgress";
 import Paginations from "../../../../components/pagination/Paginations";
 import DeleteButton from "../UI/deleteButton/DeleteButton";
 
@@ -23,7 +22,7 @@ const AdminPageUsers = () => {
 
   const cards = data.result?.data || [];
 
-  console.log(cards);
+  // console.log(cards);
 
   const regularUsers = [
     {

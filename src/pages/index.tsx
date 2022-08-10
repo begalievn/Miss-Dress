@@ -47,8 +47,8 @@ import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
 import AdminPageMain from "./adminPage/AdminPageMain";
 
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
-
-// import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
+import AdminCollectionById from "./adminPage/components/adminPageGoods/components/adminCollectionById/AdminCollectionById";
+import AdminProductById from "./adminPage/components/adminPageGoods/components/adminProductById/AdminProductById";
 
 const MainRoutes = () => {
   const validAdmin = parseJwt();
@@ -164,7 +164,7 @@ const MainRoutes = () => {
       id: 21,
     },
     {
-      link: "order-product/:id",
+      link: "order/:id",
       element: <OrderProductPage />,
       id: 22,
     },
@@ -220,6 +220,16 @@ const MainRoutes = () => {
       link: "user",
       element: <AdminPageUser />,
       id: 32,
+    },
+    {
+      link: "/collection/:collection",
+      element: <AdminCollectionById  />,
+      id: 33,
+    },
+    {
+      link: "product/:id",
+      element: <AdminProductById  />,
+      id: 34,
     },
   ];
 
