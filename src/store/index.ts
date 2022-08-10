@@ -19,6 +19,8 @@ import { dropDownApi } from "./services/dropDownApi";
 import { orderApi } from "./services/OrderApi";
 import { searchApi } from "./services/SearchApi";
 import { ratingApi } from "./services/RatingApi";
+import { adminUserOneApi } from "./services/adminUserOneApi";
+import { adminDeleteUserApi } from "./services/adminDeleteUserApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -30,14 +32,14 @@ const rootreducer = combineReducers({
   [categoryApi.reducerPath]: categoryApi.reducer,
   [UserApi.reducerPath]: UserApi.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
-
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [collectionCategoryApi.reducerPath]: collectionCategoryApi.reducer,
   [dropDownApi.reducerPath]: dropDownApi.reducer,
-
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
   [ratingApi.reducerPath]: ratingApi.reducer,
+  [adminUserOneApi.reducerPath]: adminUserOneApi.reducer,
+  [adminDeleteUserApi.reducerPath]: adminDeleteUserApi.reducer,
 });
 
 export const store = configureStore({
@@ -58,7 +60,9 @@ export const store = configureStore({
 
       orderApi.middleware,
       productsApi.middleware,
-      ratingApi.middleware
+      ratingApi.middleware,
+      adminUserOneApi.middleware,
+      adminDeleteUserApi.middleware
     ),
 });
 

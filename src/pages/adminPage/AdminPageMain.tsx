@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import AdminMenu from "./components/UI/adminMenu/AdminMenu";
 
@@ -23,8 +23,10 @@ import ViewMoreButton from "./components/UI/viewMoreButton/ViewMoreButton";
 
 import { UserApi } from "../../store/services/UserApi";
 
-
 const AdminPageMain = () => {
+  const [counte, setCounte] = useState(1);
+  const limit = 7;
+
   const info = [
     {
       amount: "1050",
@@ -58,11 +60,15 @@ const AdminPageMain = () => {
     },
   ];
 
-  const { data = {} } = UserApi.useGetAllQuery("");
+  const Data = {
+    limit: limit,
+    counte: counte,
+  };
 
-  const cards = data.result?.data || {};
+  const { data = [] } = UserApi.useGetAllQuery(Data);
+  const cards = data || [];
 
-  console.log(cards);
+  const allPages = Math.ceil(data?.result?.count / 7);
 
   return (
     <div className={classes.container_parent}>
@@ -130,87 +136,101 @@ const AdminPageMain = () => {
               </div>
             </div>
             <div className={classes.table}>
-              <div>
+              <div className={classes.table_children}>
                 <h4>Пользователь</h4>
-                <h4>
-                  {cards.firstName} {cards.lastName}
-                </h4>
-              </div>
-              <div>
                 <h4>Продажи</h4>
-                <h5>{cards.id}</h5>
-              </div>
-              <div>
                 <h4>Доход</h4>
-                <h5>{cards.id}</h5>
-              </div>
-              <div className={classes.status}>
                 <h4>Статус</h4>
-                {cards.status == "В ожидании" ? (
-                  <h5 style={{ backgroundColor: "#F1F2C1" }}>{cards.status}</h5>
-                ) : cards.status == "Не проверен" ? (
-                  <h5 style={{ backgroundColor: "#ECCFB5" }}>{cards.status}</h5>
-                ) : (
-                  <h5>{cards.status}</h5>
-                )}
-              </div>
-              <div className={classes.rating}>
                 <h4>Рейтинг</h4>
-                {cards.id == "Рейтинг не подтвержден" ? (
-                  <h5 className={classes.confirmRating}>
-                    Рейтинг не подтвержден
-                  </h5>
-                ) : (
-                  <div className={classes.content}>
-                    <LinearProgress
-                      className={classes.progress}
-                      variant="determinate"
-                      value={+cards.id}
-                      color={"inherit"}
-                    />
-                    <h5>
-                      {cards.id}%{" "}
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M5.83203 14.1668L14.1654 5.8335"
-                          stroke="#374151"
-                          stroke-width="2.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M5.83203 5.8335H14.1654V14.1668"
-                          stroke="#374151"
-                          stroke-width="2.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                      3%
-                    </h5>
-                  </div>
-                )}
               </div>
+              {cards?.result?.data?.map((item: any) => (
+                <div className={classes.table_info}>
+                  <h4>
+                    {item.firstName} {item.lastName}
+                  </h4>
+                  <h5>{item.id} продаж</h5>
+                  <h5>{item.id}k+ доход</h5>
+                  <div>
+                    {item.status == "1" ? (
+                      <h6
+                        style={{
+                          backgroundColor: "#F1F2C1",
+                          paddingLeft: "14px",
+                        }}
+                      >
+                        Проверен
+                      </h6>
+                    ) : item.status == "0" ? (
+                      <h6 style={{ backgroundColor: "#ECCFB5" }}>
+                        Не проверен
+                      </h6>
+                    ) : (
+                      <h6>{item.status}</h6>
+                    )}
+                  </div>
+                  <div>
+                    {item.id == "Рейтинг не подтвержден" ? (
+                      <p className={classes.confirmRating}>
+                        Рейтинг не подтвержден
+                      </p>
+                    ) : (
+                      <div className={classes.content}>
+                        <LinearProgress
+                          className={classes.progress}
+                          variant="determinate"
+                          value={+item.id}
+                          color={"inherit"}
+                        />
+                        <p>
+                          {item.id}%{" "}
+                          <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M5.83203 14.1668L14.1654 5.8335"
+                              stroke="#374151"
+                              stroke-width="2.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M5.83203 5.8335H14.1654V14.1668"
+                              stroke="#374151"
+                              stroke-width="2.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                          3%
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-            <Paginations />
+            <Paginations
+              onChange={(event: any, page: number) => setCounte(page)}
+              count={allPages}
+            />
           </div>
           <div className={classes.right}>
             <PopularProducts />
             <ViewMoreButton />
-            <h3 className={classes.regularUsers}>Постоянные пользователи</h3>
-            {regularUsers.map((item) => (
-              <div className={classes.products}>
-                <h4>{item.name}</h4>
-                <h5>{item.sales} продаж</h5>
-                <h5>{item.income} доход</h5>
-              </div>
-            ))}
+            <div>
+              <h3 className={classes.regularUsers}>Постоянные пользователи</h3>
+              {regularUsers.map((item) => (
+                <div className={classes.products}>
+                  <h4>{item.name}</h4>
+                  <h5>{item.sales} продаж</h5>
+                  <h5>{item.income} доход</h5>
+                </div>
+              ))}
+            </div>
             <ViewMoreButton />
           </div>
         </div>

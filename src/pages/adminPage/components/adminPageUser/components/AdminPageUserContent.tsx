@@ -1,67 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./adminPageUserContent.module.scss";
 
-
-export interface IAdminUserType {
-  user: string;
-  email: string;
-  phone: number | string;
-  address: string;
-  sales: string;
-  income: string;
-  status: string;
-  rating: string;
-}
-
-const adminUserContent = [
-  {
-    user: "Пользователь",
-    email: "Адрес почты",
-    phone: "Номер телефона",
-    address: "Адрес",
-    sales: "Продажи",
-    income: "Доход",
-    status: "Статус",
-    rating: "Рейтинг",
-      
-  },
-  {
-    name: "Ророноа Зоро",
-    email: "zoro@gmail.com",
-    phone: "+996712345678",
-    address: "Кыргызстан, г. Бишкек ул. Исанова, 79",
-    sales: "104 продаж",
-    income: "500k+ доход",
-    status: "Проверен",
-    rating: "87% Удалить пользователя",     
-  },  
-];
+import { useParams } from "react-router-dom";
+import { adminUserOneApi } from "../../../../../store/services/adminUserOneApi";
 
 function AdminPageUserContent() {
+  const [counte, setCounte] = useState(1);
+  const { userId } = useParams();
+  const { isLoading, isError, data } =
+    adminUserOneApi.useFetchAdminUserOneApiQuery(userId);
 
-  
   return (
     <div>
       <h2 className={classes.userTitle}>Информация о пользователе</h2>
       <section className={classes.userContent}>
-        {adminUserContent.map((item, index)=>{
-          return (
-            <div key={index} className={classes.userContentList}>
-              <p className={classes.userContentItem}>{item.name}</p>
-              <p className={classes.userContentItem}>{item.email}</p>
-              <p className={classes.userContentItem}>{item.phone}</p>
-              <p className={classes.userContentItem}>{item.address}</p>
-              <p className={classes.userContentItem}>{item.sales}</p>
-              <p className={classes.userContentItem}>{item.income}</p>
-              <p className={classes.userContentItem}>{item.status}</p>
-              <p className={classes.userContentItem}>{item.rating}</p>
-            </div>
-          );
-        })}
+        <div key={data?.id} className={classes.userContentList}>
+          <p className={classes.userContentItem}>
+            <p>Пользователь</p>
+            {data?.firstName} {data?.lastName}
+          </p>
+          <p className={classes.userContentItem}>
+            <p>Адрес почты</p>
+            example@gmail.com
+          </p>
+          <p className={classes.userContentItem}>
+            <p>Номер телефона</p> {data?.phoneNumber}
+          </p>
+          <p className={classes.userContentItem}>
+            <p>Адрес</p> Кыргызстан, г. Бишкек <br /> ул. Исанова, 79
+          </p>
+          <p className={classes.userContentItem}>
+            <p>Продажи</p> 104 продаж
+          </p>
+          <p className={classes.userContentItem}>
+            <p>Доход</p> 50k+ доход
+          </p>
+          <p className={classes.userContentItem}>
+            <p>Статус</p> {data?.status}
+          </p>
+          <p className={classes.userContentItem}>
+            <p>Рейтинг</p> {data?.role}
+          </p>
+        </div>
       </section>
     </div>
-      
   );
 }
 

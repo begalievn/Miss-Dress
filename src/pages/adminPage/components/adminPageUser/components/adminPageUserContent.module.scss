@@ -11,6 +11,7 @@
 
 .userContentList {
     margin-right: 7%;
+
 }
 
 .userContentItem {
@@ -18,4 +19,9 @@
     font-size: 16px;
     line-height: 45px;
     color: #372E24;
+    display: flex;
+    p{
+        font-weight: 600;
+        width: 200px;
+    }
 }
