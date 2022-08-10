@@ -19,6 +19,7 @@ import { dropDownApi } from "./services/dropDownApi";
 import { orderApi } from "./services/OrderApi";
 import { searchApi } from "./services/SearchApi";
 import { ratingApi } from "./services/RatingApi";
+import { categoryOneProductApi } from "./services/categoryOneProductApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -38,6 +39,7 @@ const rootreducer = combineReducers({
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
   [ratingApi.reducerPath]: ratingApi.reducer,
+  [categoryOneProductApi.reducerPath]: categoryOneProductApi.reducer,
 });
 
 export const store = configureStore({
@@ -58,7 +60,8 @@ export const store = configureStore({
 
       orderApi.middleware,
       productsApi.middleware,
-      ratingApi.middleware
+      ratingApi.middleware,
+      categoryOneProductApi.middleware
     ),
 });
 

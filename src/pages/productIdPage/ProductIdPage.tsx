@@ -21,10 +21,21 @@ import ZoomModal from "./components/zoom-modal/ZoomModal";
 
 import classes from "./productIdPage.module.scss";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
-
-const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
+import { useParams } from "react-router-dom";
+import { categoryOneProductApi } from "../../store/services/categoryOneProductApi";
 
 const ProductIdPage = () => {
+  const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
+  const { productID } = useParams();
+  console.log(productID);
+
+  const {
+    data: newData,
+    isLoading: loading,
+    isError: error,
+  } = categoryOneProductApi.useFetchCategoryOneProductApiQuery(productID);
+  console.log("newData", newData);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
 

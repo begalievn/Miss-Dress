@@ -24,7 +24,6 @@ const CollectionCategory = () => {
 
   //! Запрос initialState
   const [datas, setDatas] = useState<Datum[]>([]);
-  // console.log(datas);
 
   const {
     data: collectionApi,
@@ -53,14 +52,14 @@ const CollectionCategory = () => {
     setDatas(filtere.slice(0, 6));
     console.log("filtere", filtere);
   }, [filtered]);
-
   //! Пагинация
+
   let pages: number;
   const pageCount: number = Math.ceil(datas.length / 6);
 
   function handleClick(): void {
     let pageNum: React.ChangeEvent<unknown> | number = pages || 1;
-    let start: number = (+pageNum - 1) * 6;
+    let start: number = (+pageNum - 1) * 6; /* ?. */
     let end: number = start + 6;
     if (!name) {
       setDatas(collectionApi.slice(start, end));

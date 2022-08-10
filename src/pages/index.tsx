@@ -1,10 +1,7 @@
-
-
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { parseJwt } from "../utils/helpers/authorization";
-
 
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
 import ContactsPage from "./contactsPage/ContactsPage";
@@ -84,94 +81,95 @@ const MainRoutes = () => {
       id: 4,
     },
     {
+      link: "category/:productID",
+      element: <ProductIdPage />,
+      id: 5,
+    },
+    {
       link: "/news/:id",
       element: <NewsPage edit={false} />,
-      id: 5,
+      id: 6,
     },
     {
       link: "/contacts",
       element: <ContactsPage />,
-      id: 6,
+      id: 7,
     },
     {
       link: "*",
       element: <ErrorPage />,
-      id: 7,
-    },
-    {
-      link: "/category/:productId",
-      element: <ProductIdPage />,
       id: 8,
     },
+
     {
       link: "/collection/:collection",
       element: <CollectionPagesContent />,
-      id: 10,
+      id: 9,
     },
     {
       link: "/collection/:id/:collection",
       element: <CollectionCategory />,
-      id: 11,
+      id: 10,
     },
     {
       link: "shopping",
       element: <ShoppingCartPage />,
-      id: 12,
+      id: 11,
     },
     {
       link: "profile",
       element: <ProfilePage />,
-      id: 13,
+      id: 12,
     },
     {
       link: "order/",
       element: <OrderPage />,
-      id: 14,
+      id: 13,
     },
     {
       link: "public-offer",
       element: <PublicOfferPage />,
-      id: 15,
+      id: 14,
     },
     {
       link: "how-order",
       element: <HowOrderPage />,
-      id: 16,
+      id: 15,
     },
     {
       link: "search/name=:name",
       element: <SearchPage />,
-      id: 17,
+      id: 16,
     },
     {
       link: "payment",
       element: <PaymentPage />,
-      id: 18,
+      id: 17,
     },
     {
       link: "requisite",
       element: <RequisitePage />,
-      id: 19,
+      id: 18,
     },
     {
       link: "Faq",
       element: <FaqPage />,
-      id: 20,
+      id: 19,
     },
     {
       link: "return-product",
       element: <ReturnProduct />,
-      id: 21,
+      id: 20,
     },
     {
       link: "order-product/:id",
       element: <OrderProductPage />,
-      id: 22,
+      id: 21,
     },
     {
       link: "favorites",
       element: <FavoritePage />,
-      id: 23,
+      id: 22,
     },
   ];
 
