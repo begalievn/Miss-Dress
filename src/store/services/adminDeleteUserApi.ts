@@ -9,7 +9,7 @@ export const adminDeleteUserApi = createApi({
   tagTypes: ["adminDeleteUserApi"],
   endpoints: (build) => ({
     deleteAdminUser: build.mutation<IRootObject | any, IResult | any>({
-      query: (deleteId: any) => ({
+      query: (deleteId: number) => ({
         url: `/user/admin/deletes/user/${Number(deleteId)}`,
         method: "DELETE",
         headers: {
