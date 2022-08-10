@@ -4,7 +4,6 @@ import { IBlock } from "../../../../../utils/types/types";
 
 import classes from "./usersBlock.module.scss";
 
-
 const UsersBlock = ({ value, text }: IBlock) => {
   return (
     <div className={classes.newUsers}>

@@ -8,8 +8,8 @@ export const UserApi = createApi({
   tagTypes: ["UserAPI"],
   endpoints: (build) => ({
     getAll: build.query({
-      query: (data) => ({
-        url: "/user/get-all",
+      query: (Data: any) => ({
+        url: `/user/get-all?page=${Data.counte}&take=${Data.limit}`,
         method: "GET",
         headers: {
           Authorization: `Bearer ${JSON.parse(

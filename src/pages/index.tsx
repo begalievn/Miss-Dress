@@ -1,10 +1,7 @@
-
-
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { parseJwt } from "../utils/helpers/authorization";
-
 
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
 import ContactsPage from "./contactsPage/ContactsPage";
@@ -182,44 +179,49 @@ const MainRoutes = () => {
       id: 1,
     },
     {
+      link: "users/:userId",
+      element: <AdminPageUser />,
+      id: 2,
+    },
+    {
       link: "dashboard",
       element: <AdminPageDashboard />,
-      id: 2,
+      id: 3,
     },
     {
       link: "users",
       element: <AdminPageUsers />,
-      id: 3,
+      id: 4,
     },
     {
       link: "goods",
       element: <AdminPageGoods />,
-      id: 4,
+      id: 5,
     },
     {
       link: "sales",
       element: <AdminPageSales />,
-      id: 5,
+      id: 6,
     },
     {
       link: "shoppingBag",
       element: <AdminPageShopping />,
-      id: 29,
+      id: 7,
     },
     {
       link: "ad",
       element: <AdminPageAd />,
-      id: 30,
+      id: 8,
     },
     {
       link: "chat",
       element: <AdminPageChat />,
-      id: 31,
+      id: 9,
     },
     {
       link: "user",
       element: <AdminPageUser />,
-      id: 32,
+      id: 10,
     },
   ];
 
