@@ -1,0 +1,106 @@
+@import "../../../../scss/mixin";
+@import "../../../../scss/settings";
+
+.select  {
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: toD(75px);
+  border-radius: 45px;
+  background-color:$primaryColor;
+  border: none;
+  width: 100%;
+  padding: toD(23px) toD(23px) toD(23px) toD(48px);
+  @include desktop{
+    height: toD(75px);
+  }
+  @include phone{
+    height: toM(43px);
+  }
+  @include desktop{
+    height: toMax(75px);
+  }
+}
+.placeHolder{
+  color: $fadedFont;
+  @include fontSize($desk:24px,$m:16px,$t:16px)
+}
+
+.arrow {
+  @include fontSize($desk: 24px, $m: 16px, $t: 16px)
+}
+.menu{
+  list-style-type: none;
+  z-index: 1;
+  flex-direction: column;
+  position: absolute;
+  top:100%;
+  left: 0;
+  background-color: $primaryColor;
+  width: 100%;
+  border-radius: 0 0 toD(45px) toD(45px);
+  display: none;
+
+  //padding-bottom: 50px;
+  //@include phone{
+  //  border-radius: 0 0 toM(45px) toM(45px);
+  //}
+}
+
+ .active  {
+display: flex;
+   //border-radius: 0 0 toD(45px) toD(45px);
+}
+ .activeSelect{
+   border-radius: toD(45px) toD(45px) 0 0;
+ }
+.item{
+  @include fontSize($desk: 24px, $m: 16px, $t: 16px);
+  padding: toD(23px) toD(23px) toD(23px) toD(48px);
+}
+
+//.select select {
+//       font-family: 'Arial';
+//       display: inline-block;
+//       width: 100%;
+//       cursor: pointer;
+//       padding: 10px 15px;
+//       outline: 0;
+//       border: 0px solid #000000;
+//       border-radius: 47px;
+//       background: #e6e6e6;
+//       color: #7b7b7b;
+//       appearance: none;
+//       -webkit-appearance: none;
+//       -moz-appearance: none;
+//     }
+//.select select::-ms-expand {
+//  display: none;
+//}
+//.select select:hover,
+//.select select:focus {
+//  color: #000000;
+//  background: #cccccc;
+//}
+//.select select:disabled {
+//  opacity: 0.3;
+//  pointer-events: none;
+//}
+//.select_arrow {
+//  position: absolute;
+//  top: 16px;
+//  right: 15px;
+//  pointer-events: none;
+//  border-style: solid;
+//  border-width: 8px 5px 0px 5px;
+//  border-color: #7b7b7b transparent transparent transparent;
+//}
+//.select select:hover ~ .select_arrow,
+//.select select:focus ~ .select_arrow {
+//  border-top-color: #000000;
+//}
+//.select select:disabled ~ .select_arrow {
+//  border-top-color: #cccccc;
+//}
