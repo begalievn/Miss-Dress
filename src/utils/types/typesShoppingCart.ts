@@ -57,10 +57,42 @@ export interface Iimage {
   contentType: string;
   url: string;
 }
+
+// ДАННЫЕ ПОЛЬЗОВАТЕЛЯ
 export interface IUserData {
   firstName: string;
   lastName: string;
   phoneNumber: string;
   cityId: number;
   countryId: number;
+}
+
+// ВСЕ СТРАНЫ
+
+export interface ICountry {
+  id: number;
+  status: number;
+  createDate: Date;
+  updateDate: Date;
+  title: string;
+}
+
+export interface ICountries {
+  statusCode: number;
+  result: ICountry[];
+}
+
+// ВСЕ ГОРОДА
+
+export interface ICity {
+  id: number;
+  status: number;
+  createDate: Date;
+  updateDate: Date;
+  title: string;
+}
+
+export interface ICities {
+  statusCode: number;
+  result: ICity[];
 }

@@ -32,7 +32,7 @@ export interface Address {
   updateDate: Date;
 }
 
-export interface Result {
+export interface IContactInfo {
   status: number;
   firstName: string;
   lastName: string;
@@ -47,7 +47,7 @@ export interface Result {
 
 export interface ISaveUserData {
   statusCode: number;
-  result: Result;
+  result: IContactInfo;
 }
 export interface IUserData {
   firstName: string;
@@ -55,4 +55,9 @@ export interface IUserData {
   phoneNumber: string;
   cityId: number;
   countryId: number;
+}
+//запрос с кантри гет олл
+export interface IContactInfoGetAll {
+  statusCode: number;
+  result: IContactInfo[];
 }

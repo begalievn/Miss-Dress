@@ -72,6 +72,7 @@
   width: 100%;
   height: toD(75px);
   padding: toD(23px) 0 toD(23px) toD(48px);
+  outline-color: $fadedFont;
   @include desktop{
     height: toD(75px);
   }
@@ -81,6 +82,7 @@
 }
 .input::placeholder{
    @include fontSize($desk:24px,$m:16px,$t:16px)
+
 }
 .warning{
   margin-left: 5%;
@@ -159,7 +161,10 @@
     width: 100%;
   }
 }
-
+.rightBlock{
+  display: flex;
+  flex-direction: column;
+}
 
 
 

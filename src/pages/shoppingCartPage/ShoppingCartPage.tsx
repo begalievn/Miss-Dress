@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import SubmitButton from "../../components/submitButton/SubmitButton";
 
@@ -7,6 +9,8 @@ import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
 import useInput from "../../hooks/validation/useInput";
 
 import { IResult } from "../../utils/types/typesShoppingCart";
+
+import { IContactInfo, IUserData } from "../../utils/types/typesUserData";
 
 import styles from "./shoppingCardPage.module.scss";
 import Total from "./components/total/Total";
@@ -17,7 +21,7 @@ const ShoppingCartPage = () => {
   const inputs = [
     {
       placeholder: "Ваше имя",
-      name: "firsName",
+      name: "firstName",
       hook: useInput("", {
         minLength: 1,
         maxLength: 30,
@@ -48,25 +52,20 @@ const ShoppingCartPage = () => {
     {
       placeholder: "Страна",
       name: "countryId",
-      hook: useInput("", {
-        minLength: 2,
-        maxLength: 30,
-        isEmpty: true,
-        cyrillic: true,
-      }),
+      hook: useInput("", {}),
     },
     {
       placeholder: "Город",
       name: "cityId",
-      hook: useInput("", {
-        cyrillic: true,
-        minLength: 2,
-        maxLength: 30,
-        isEmpty: true,
-      }),
+      hook: useInput("", {}),
     },
   ];
   const [resultState, setResultState] = useState<IResult | null>();
+  const [countryId, setCountryId] = useState<number | null>(null);
+  const [city, setCityId] = useState<number | null>(null);
+  const [edit, setEdit] = useState<boolean>(false);
+  const [contactInfo, setContactInfo] = useState<IContactInfo | null>(null);
+  const navigate = useNavigate();
 
   const {
     data: getProducts,
@@ -74,11 +73,18 @@ const ShoppingCartPage = () => {
     error,
     refetch,
   } = shoppingCartApi.useFetchAllPostsQuery();
+  // const { data: getContactInfo } = shoppingCartApi.useGetAllContactInfoQuery();
+  // const firstContactInfo = getContactInfo?.result[0];
+  // console.log(getContactInfo);
 
   const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
   const [removeProduct, {}] = shoppingCartApi.useRemoveProductMutation();
   const [deleteProduct, {}] = shoppingCartApi.useDeleteProductMutation();
   const [saveUserData, {}] = shoppingCartApi.useSaveUserDataMutation();
+  const [placeOrder, {}] = shoppingCartApi.usePlaceOrderMutation();
+  const [editContactInfo, {}] = shoppingCartApi.useEditContactInfoMutation();
+  const userInputData = useRef<null | IUserData>(null);
+
   const token = localStorage.getItem("accessToken");
   const products = getProducts?.result.products;
   const result = getProducts?.result;
@@ -87,28 +93,46 @@ const ShoppingCartPage = () => {
   useEffect(() => {
     setResultState(result);
   }, [getProducts]);
-  console.log(error);
 
   const saveHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const data: string[] = [];
-    console.log(inputs[0].hook.value);
-    let sendData: { [name: string]: string } = {};
+    setEdit(false);
+
+    let sendData: IUserData = {
+      countryId: 0,
+      cityId: 0,
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+    };
 
     inputs.forEach((item) => {
+      // @ts-ignore
       sendData[item.name] = item.hook.value;
     });
 
-    console.log(sendData, "ASdASd");
-    const valid = inputs.every(({ hook }) => {
-      // console.log(i.hook.inputValid, i.name);
-      data.push(hook.value);
+    sendData.countryId = countryId ? countryId : 0;
+    sendData.cityId = city ? city : 0;
+    const valid = inputs.every(({ hook, name }) => {
+      console.log(hook.inputValid, name);
       return hook.inputValid;
     });
-    console.log(data);
+    console.log(valid);
     if (valid) {
-      inputs.forEach((i) => i.hook.clearFields());
-      // await saveUserData();
+      if (edit) {
+        const editedContactInfo = await editContactInfo({
+          id: contactInfo?.id!,
+          body: userInputData.current!,
+        }).unwrap();
+        console.log(editedContactInfo);
+        setContactInfo(editedContactInfo.result);
+        setEdit(false);
+        userInputData.current = sendData;
+      } else {
+        const userData = await saveUserData(sendData).unwrap();
+        setContactInfo(userData.result);
+        userInputData.current = sendData;
+      }
     }
   };
 
@@ -145,17 +169,33 @@ const ShoppingCartPage = () => {
     setResultState({ ...result, products: newProductState! });
   }
 
-  function placeOrderHandler() {}
+  function placeOrderHandler() {
+    if (contactInfo && resultState && !edit) {
+      placeOrder({
+        cartId: resultState.id,
+        contactInfoId: contactInfo.id,
+      });
+    } else alert("Веведите ваши данные");
+  }
 
-  function editHandler() {}
+  async function editHandler(e: React.SyntheticEvent) {
+    e.preventDefault();
+    const editedContactInfo = await editContactInfo({
+      id: contactInfo?.id!,
+      body: userInputData.current!,
+    }).unwrap();
+    console.log(editedContactInfo);
+    setContactInfo(editedContactInfo.result);
+    setEdit(false);
+  }
 
-  // if (!token) {
-  //   return (
-  //     <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
-  //       Вам необходимо зарегистрироваться
-  //     </h1>
-  //   );
-  // }
+  if (!token) {
+    return (
+      <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
+        Вам необходимо зарегистрироваться
+      </h1>
+    );
+  }
 
   if (products && !products.length) {
     return (
@@ -164,13 +204,13 @@ const ShoppingCartPage = () => {
       </h1>
     );
   }
-  // if (error) {
-  //   return (
-  //     <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
-  //       Ошибка сервера
-  //     </h1>
-  //   );
-  // }
+  if (error) {
+    return (
+      <h1 style={{ height: "40vh", textAlign: "center", marginTop: "10vw" }}>
+        Ошибка сервера
+      </h1>
+    );
+  }
   return (
     <section className={styles.container}>
       <div className={styles.content}>
@@ -178,47 +218,70 @@ const ShoppingCartPage = () => {
           <section className={styles.order}>
             <section className={styles.booking}>
               <h3 className={styles.header}>Оформление заказа</h3>
-              <section className={styles.addressBlock}>
-                <h3 className={styles.addressTitle}>Адрес доставки</h3>
-                <p>Исанова, 79, +996712345678</p>
-                <p>Кыргызстан, г. Бишкек</p>
-                <div className={styles.buttonBlock}>
+              {!edit && contactInfo && (
+                <section className={styles.addressBlock}>
+                  <h3 className={styles.addressTitle}>Адрес доставки</h3>
+                  <p>Исанова, 79, {contactInfo?.phoneNumber}</p>
+                  <p>
+                    {contactInfo?.address.country.title}, г.{" "}
+                    {contactInfo?.address.city.title}
+                  </p>
+                  <div className={styles.buttonBlock}>
+                    <SubmitButton
+                      text="Редактировать"
+                      onClick={(e) => setEdit(true)}
+                    />
+                  </div>
+                </section>
+              )}
+              {(!contactInfo || edit) && (
+                <form className={styles.form} action="">
+                  {inputs.map((item, index) => {
+                    return (
+                      <div className={styles.inputBlock}>
+                        {index >= 3 ? (
+                          (index === 3 && (
+                            <Select
+                              onChange={(id) => {
+                                setCountryId(id);
+                                setCityId(null);
+                              }}
+                              placeholder={"Страна"}
+                            />
+                          )) ||
+                          (index === 4 && (
+                            <Select
+                              onChange={setCityId}
+                              key={countryId}
+                              id={countryId!}
+                              placeholder={
+                                countryId ? "Город" : "Сначала выберите страну"
+                              }
+                            />
+                          ))
+                        ) : (
+                          <input
+                            placeholder={item.placeholder}
+                            name={item.name}
+                            onChange={(e) => item.hook.onChange(e)}
+                            onBlur={() => item.hook.onBlur()}
+                            value={item.hook.value}
+                            className={styles.input}
+                            type="text"
+                          />
+                        )}
+                        <p className={styles.warning}>
+                          {item.hook.isDirty && item.hook.error}
+                        </p>
+                      </div>
+                    );
+                  })}
                   <SubmitButton
-                    text="Редактировать"
-                    onClick={() => editHandler()}
+                    onClick={(e: React.SyntheticEvent) => saveHandler(e)}
+                    text={"Сохранить"}
                   />
-                </div>
-              </section>
-
-              <form className={styles.form} action="">
-                {inputs.map((item, index) => {
-                  console.log(index);
-                  return (
-                    <div className={styles.inputBlock}>
-                      {index >= 3 ? (
-                        <Select />
-                      ) : (
-                        <input
-                          placeholder={item.placeholder}
-                          name={item.name}
-                          onChange={(e) => item.hook.onChange(e)}
-                          onBlur={() => item.hook.onBlur()}
-                          value={item.hook.value}
-                          className={styles.input}
-                          type="text"
-                        />
-                      )}
-                      <p className={styles.warning}>
-                        {item.hook.isDirty && item.hook.error}
-                      </p>
-                    </div>
-                  );
-                })}
-                <SubmitButton
-                  onClick={(e: React.SyntheticEvent) => saveHandler(e)}
-                  text={"Редактировать"}
-                />
-              </form>
+                </form>
+              )}
             </section>
 
             <div className={styles.orderList}>
@@ -236,12 +299,18 @@ const ShoppingCartPage = () => {
                 })}
             </div>
           </section>
-          <Total
-            placeOrder={placeOrderHandler}
-            fullPrice={resultState?.price!}
-            discount={123}
-            total={122}
-          />
+          <section className={styles.rightBlock}>
+            <Total
+              placeOrder={placeOrderHandler}
+              fullPrice={resultState?.price!}
+              discount={123}
+              total={122}
+            />
+            <SubmitButton
+              onClick={(e) => navigate("/order")}
+              text={"История заказов"}
+            />
+          </section>
         </div>
       </div>
     </section>
