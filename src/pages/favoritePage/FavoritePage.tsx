@@ -1,14 +1,13 @@
-import React, { FC } from "react";
-
-import classes from "./favorite.module.scss";
-
-import ContentFavorite from "./components/ContentFavorite";
 
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
 import Paginations from "../../components/pagination/Paginations";
+
+import ContentFavorite from "./components/ContentFavorite";
+
+import classes from "./favorite.module.scss";
 
 const FavoritePage = () => {
   const info = [

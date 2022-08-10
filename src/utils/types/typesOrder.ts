@@ -1,11 +1,6 @@
-import { Iimage, IProductCurrent } from "./typesShoppingCart";
-
-export interface ICartType {
-  id: number;
-  images: { image: string }[];
-  status: string;
-  date: string;
-  price: number;
+import { Iimage } from "./typesShoppingCart";
+export interface ICartImageType {
+    images:{image:string}[],
 }
 
 // НИЖЕ ТИПИЗАЦИЯ ДЛЯ ОРДЕР
@@ -31,7 +26,17 @@ export interface IProduct {
   updateDate: Date;
   totalCount: number;
   amount: number;
-  product: IProductInner | IProductCurrent;
+  product: IProductInner;
+}
+
+export interface IProductOrder {
+  page: "sending" | "viewing";
+  info: IProduct;
+  change?: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    id: number,
+    action: "+" | "-" | "x"
+  ) => void;
 }
 
 export interface ICart {
@@ -46,6 +51,7 @@ export interface ICart {
 }
 
 export interface ContactInfo {
+  address: any;
   id: number;
   status: number;
   createDate: Date;
@@ -72,11 +78,11 @@ export interface IResult {
   user: IUser;
   id: number;
   status: number;
-  createDate: Date;
+  createDate: string;
   updateDate: Date;
 }
 
 export interface Iorder {
   statusCode: number;
-  result: IResult;
+  result: IResult[];
 }

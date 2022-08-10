@@ -1,5 +1,10 @@
-import React from "react";
+
+
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+
+import { parseJwt } from "../utils/helpers/authorization";
+
 
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
 import ContactsPage from "./contactsPage/ContactsPage";
@@ -23,22 +28,39 @@ import PaymentPage from "./paymentPage/PaymentPage";
 import RequisitePage from "./requisitePage/RequisitePage";
 import FaqPage from "./faqPage/FaqPage";
 import ReturnProduct from "./returnProduct/ReturnProduct";
+
+import OrderProductPage from "./orderProductPage/OrderProductPage";
 import FavoritePage from "./favoritePage/FavoritePage";
-import AdminPageDashboard from "./adminPage/adminPageDashboard/AdminPageDashboard";
-import AdminPageUsers from "./adminPage/adminPageUsers/AdminPageUsers";
-import AdminPageGoods from "./adminPage/adminPageGoods/AdminPageGoods";
-import AdminPageSales from "./adminPage/adminPageSales/AdminPageSales";
-import AdminPageShopping from "./adminPage/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/adminPageAd/AdminPageAd";
-import AdminPageChat from "./adminPage/adminPageChat/AdminPageChat";
-import AdminMenu from "./adminPage/adminPageMain/AdminMenu";
-import AdminPageMain from "./adminPage/adminPageMain/AdminPageMain";
-import { useAppSelector } from "../utils/app/hooks";
-import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
+
+import AdminPageDashboard from "./adminPage/components/adminPageDashboard/AdminPageDashboard";
+
+import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers";
+import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
+import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
+import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
+import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
+
+import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
+
+// import AdminMenu from "./adminPage/AdminMenu";
+
+import AdminPageMain from "./adminPage/AdminPageMain";
+
+import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
+
+// import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
 const MainRoutes = () => {
-  const isAdmin = useAppSelector((state) => state.AuthorizationUserSlice.token);
-  console.log(isAdmin);
+  const validAdmin = parseJwt();
+  let [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  if (validAdmin?.role === "SUPER_ADMIN" || validAdmin?.role === "ADMIN") {
+    isAdmin = true;
+  } else {
+    isAdmin = false;
+  }
+
+  console.log(validAdmin);
 
   const PUBLIC_ROUTES = [
     {
@@ -81,7 +103,6 @@ const MainRoutes = () => {
       element: <ProductIdPage />,
       id: 8,
     },
-
     {
       link: "/collection/:collection",
       element: <CollectionPagesContent />,
@@ -103,7 +124,7 @@ const MainRoutes = () => {
       id: 13,
     },
     {
-      link: "order",
+      link: "order/",
       element: <OrderPage />,
       id: 14,
     },
@@ -143,45 +164,14 @@ const MainRoutes = () => {
       id: 21,
     },
     {
-      link: "favorites",
-      element: <FavoritePage />,
+      link: "order-product/:id",
+      element: <OrderProductPage />,
       id: 22,
     },
-
     {
-      link: "dashboard",
-      element: <AdminPageDashboard />,
-      id: 24,
-    },
-    {
-      link: "users",
-      element: <AdminPageUsers />,
-      id: 25,
-    },
-    {
-      link: "goods",
-      element: <AdminPageGoods />,
-      id: 26,
-    },
-    {
-      link: "sales",
-      element: <AdminPageSales />,
-      id: 27,
-    },
-    {
-      link: "shoppingBag",
-      element: <AdminPageShopping />,
-      id: 28,
-    },
-    {
-      link: "ad",
-      element: <AdminPageAd />,
-      id: 29,
-    },
-    {
-      link: "chat",
-      element: <AdminPageChat />,
-      id: 30,
+      link: "favorites",
+      element: <FavoritePage />,
+      id: 23,
     },
   ];
 
@@ -191,14 +181,58 @@ const MainRoutes = () => {
       element: <AdminPageMain />,
       id: 1,
     },
+    {
+      link: "dashboard",
+      element: <AdminPageDashboard />,
+      id: 2,
+    },
+    {
+      link: "users",
+      element: <AdminPageUsers />,
+      id: 3,
+    },
+    {
+      link: "goods",
+      element: <AdminPageGoods />,
+      id: 4,
+    },
+    {
+      link: "sales",
+      element: <AdminPageSales />,
+      id: 5,
+    },
+    {
+      link: "shoppingBag",
+      element: <AdminPageShopping />,
+      id: 29,
+    },
+    {
+      link: "ad",
+      element: <AdminPageAd />,
+      id: 30,
+    },
+    {
+      link: "chat",
+      element: <AdminPageChat />,
+      id: 31,
+    },
+    {
+      link: "user",
+      element: <AdminPageUser />,
+      id: 32,
+    },
   ];
 
   return (
     <Routes>
-      {isAdmin &&
-        PRIVATE_ROUTES.map(({ link, id, element }) => {
-          <Route path={link} element={element} key={id} />;
-        })}
+      {isAdmin ? (
+        PRIVATE_ROUTES.map(({ link, id, element }) => (
+          <Route path={link} element={element} key={id} />
+        ))
+      ) : (
+        <Route path="*" element={<ErrorPage />} />
+      )}
+
       {PUBLIC_ROUTES.map(({ link, id, element }) => (
         <Route path={link} element={element} key={id} />
       ))}
