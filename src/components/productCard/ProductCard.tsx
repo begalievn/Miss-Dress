@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { colorsPalletIcon, favoriteIcon } from "../../assets/icons/icons";
+import {
+  colorsPalletIcon,
+  favoriteIcon,
+  filledLike,
+} from "../../assets/icons/icons";
 
 import ProductPhoto from "../productPhoto/ProductPhoto";
 
@@ -9,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { RatingComponent } from "../RatingComponent/RatingComponent";
 
 import classes from "./productCard.module.scss";
+import { productFavoritesApi } from "../../store/services/productFavoritesApi";
 
 interface Images {
   contentSize: number;
@@ -43,6 +48,30 @@ const ProductCard = ({
 }: IProductCard) => {
   const navigate = useNavigate();
 
+  const [addFav] = productFavoritesApi.useAddFavoritesMutation();
+
+  const [counte, setCounte] = useState(1);
+  const limit = 10;
+
+  const Data = {
+    limit: limit,
+    counte: counte,
+    // name: "privet",
+  };
+
+  const { data: cards = [] } = productFavoritesApi.useGetFavoritesQuery(Data);
+
+  const handleAddFav = () => {
+    addFav({ title, price, image, id, rate, status, width });
+    setFavorite(!favorite);
+  };
+
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    if (cards.length > 0) setFavorite(cards.map((card: any) => card.id === id));
+  }, [cards]);
+
   return (
     <div className={classes.container}>
       <div>
@@ -71,8 +100,11 @@ const ProductCard = ({
           <div className={classes.stars}>
             <RatingComponent rate={rate} />
           </div>
-          <div className={classes.favorite_icon}>
-            <img src={favoriteIcon} alt={"favorite icon"} />
+          <div className={classes.favorite_icon} onClick={handleAddFav}>
+            <img
+              src={favorite ? filledLike : favoriteIcon}
+              alt={"favorite icon"}
+            />
           </div>
         </div>
       </div>

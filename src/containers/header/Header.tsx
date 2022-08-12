@@ -27,6 +27,7 @@ import style from "./Header.module.scss";
 import HeaderBurgerMenu from "./HeaderBurgerMenu";
 import { icons, pages } from "./constants";
 import ProfileModal from "./ProfileModal/ProfileModal";
+import { productFavoritesApi } from "../../store/services/productFavoritesApi";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -68,26 +69,26 @@ const Header = () => {
     editColorIcon(name);
 
     switch (name) {
-    case "search":
-      dispatch(openSearch(!modalSearch));
-      break;
-    case "heart":
-      navigate("/favorites");
-      dispatch(closeAll());
-      break;
-    case "shopping":
-      navigate("/shopping");
-      dispatch(closeAll());
-      break;
-    case "sign":
-      dispatch(openModal(!modal));
-      dispatch(AddModalChoise("sign"));
-      break;
-    case "user":
-      dispatch(openProfile(!menuProfile));
-      break;
-    default:
-      break;
+      case "search":
+        dispatch(openSearch(!modalSearch));
+        break;
+      case "heart":
+        navigate("/favorites");
+        dispatch(closeAll());
+        break;
+      case "shopping":
+        navigate("/shopping");
+        dispatch(closeAll());
+        break;
+      case "sign":
+        dispatch(openModal(!modal));
+        dispatch(AddModalChoise("sign"));
+        break;
+      case "user":
+        dispatch(openProfile(!menuProfile));
+        break;
+      default:
+        break;
     }
   };
 
@@ -164,6 +165,19 @@ const Header = () => {
     checkAuth();
   }, []);
 
+  const [counte, setCounte] = useState(1);
+  const limit = 10;
+
+  const Data = {
+    limit: limit,
+    counte: counte,
+    // name: "privet",
+  };
+
+  const { data = {} } = productFavoritesApi.useGetFavoritesQuery(Data);
+
+  const cards = data?.result?.data;
+
   return (
     <>
       <div className={style.mainBlock}>
@@ -202,10 +216,14 @@ const Header = () => {
                   alt=""
                   className={style[icon.class]}
                 />
-                {icon.id === 2 ? <span>4</span> : null} {/* Favorites Count  */}
-                {icon.id === 3 ? <span>7</span> : null} {/* Shopping Count */}
+                {/*{icon.id === 3 ? <span>7</span> : null} /!* Shopping Count *!/*/}
               </div>
             ))}
+            {cards && cards.length > 0 && (
+              <div className={style.shopping_img_count}>
+                <span>{cards && cards.length}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
