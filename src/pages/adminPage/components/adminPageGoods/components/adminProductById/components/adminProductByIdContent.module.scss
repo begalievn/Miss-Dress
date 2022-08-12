@@ -1,0 +1,150 @@
+
+.title {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+
+    .contentLeft {
+        width: 100%;
+        line-height: 30px;
+
+        .contentLeftImgList {
+            display: flex;
+            justify-content: space-between;
+
+            .contentLeftImg {
+                width: 80px;
+                height: 110px;
+            }
+        }
+
+        .contentLeftImgEdit {
+            display: flex;
+            justify-content: flex-end;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        .contentLeftTitleContent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+
+            .contentLeftTitle {
+                font-weight: 500;
+                font-size: 20px;
+            }
+
+            .contentLeftSeasonCollection {
+                font-weight: 300;
+                font-size: 16px;
+            }
+        }
+
+        .contentLeftArticleContent {
+            display: flex;
+            justify-content: space-between;
+
+            .contentLeftArticle {
+                font-weight: 300;
+                font-size: 16px;
+            }
+
+            .contentLeftLikes {
+                font-weight: 400;
+                font-size: 14px;
+            }
+        }
+
+        .contentLeftCountInLine,
+        .contentLeftColor {
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        .contentLeftPrices {
+            display: flex;
+
+            .contentLeftPrice {
+                font-weight: 500;
+                font-size: 20px;
+                color: #372E24;
+                margin-right: 15px;
+            }
+
+            .contentLeftOldPrice {
+                font-weight: 300;
+                font-size: 14px;
+            }
+        }
+
+        .contentLeftSizes {
+            display: flex;
+            font-weight: 300;
+            font-size: 16px;
+
+            .contentLeftSize {
+                margin-right: 100px;
+            }
+        }
+
+        .contentLeftStyles {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 300;
+            font-size: 16px;
+        }
+    }
+
+    .contentRight {
+        width: 100%;
+
+        .contentRightUpperSection {
+            margin-bottom: 30%;
+
+            .contentRightTop {
+                margin-bottom: 2%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                .contentRightTitle {
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+    
+                .contentRightEdit {
+                    font-weight: 300;
+                    font-size: 14px;
+                }
+            }
+    
+            .contentRightText {
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }  
+        
+        .contentRightLowSection {
+            display: flex;
+            justify-content: space-between;
+
+            .contentRightTrashBtn,
+            .contentRightDeleteBtn {
+                font-weight: 400;
+                font-size: 16px;
+                background: #DBB593;
+                border-radius: 45px;
+                border: none;
+                cursor: pointer;
+                padding: 20px 30px;
+            }
+        }
+    }
+}

@@ -1,5 +1,7 @@
-import { adminCollectionApi } from './services/adminCollectionApi';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
+import { adminCollectionApi } from "./services/adminCollectionApi";
+
 
 import { AuthorizationAPI } from "./services/AuthorizationApi";
 
@@ -20,6 +22,10 @@ import { dropDownApi } from "./services/dropDownApi";
 import { orderApi } from "./services/OrderApi";
 import { searchApi } from "./services/SearchApi";
 import { ratingApi } from "./services/RatingApi";
+import { adminUserOneApi } from "./services/adminUserOneApi";
+import { adminDeleteUserApi } from "./services/adminDeleteUserApi";
+import { adminPopularProductApi } from "./services/adminPopularProduct";
+import { adminPopularProductPriceApi } from "./services/adminPopularProductPrice";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -31,15 +37,20 @@ const rootreducer = combineReducers({
   [categoryApi.reducerPath]: categoryApi.reducer,
   [UserApi.reducerPath]: UserApi.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
-
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [collectionCategoryApi.reducerPath]: collectionCategoryApi.reducer,
   [dropDownApi.reducerPath]: dropDownApi.reducer,
-
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
   [ratingApi.reducerPath]: ratingApi.reducer,
+
   [adminCollectionApi.reducerPath]: adminCollectionApi.reducer,
+
+  [adminUserOneApi.reducerPath]: adminUserOneApi.reducer,
+  [adminDeleteUserApi.reducerPath]: adminDeleteUserApi.reducer,
+  [adminPopularProductApi.reducerPath]:adminPopularProductApi.reducer,
+  [adminPopularProductPriceApi.reducerPath]:adminPopularProductPriceApi.reducer,
+
 });
 
 export const store = configureStore({
@@ -61,7 +72,14 @@ export const store = configureStore({
       orderApi.middleware,
       productsApi.middleware,
       ratingApi.middleware,
+
       adminCollectionApi.middleware,
+
+      adminUserOneApi.middleware,
+      adminDeleteUserApi.middleware,
+      adminPopularProductApi.middleware,
+      adminPopularProductPriceApi.middleware,
+
     ),
 });
 

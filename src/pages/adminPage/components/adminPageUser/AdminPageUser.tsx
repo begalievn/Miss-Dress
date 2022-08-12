@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import AdminMenu from "../UI/adminMenu/AdminMenu";
 
@@ -14,8 +14,8 @@ import styles from "./adminPageUser.module.scss";
 
 import AdminPageUserContent from "./components/AdminPageUserContent";
 
-
 function AdminPageUser() {
+  const { userId } = useParams();
 
   const navigate = useNavigate();
   const goBack = () => navigate("/users");
@@ -32,7 +32,7 @@ function AdminPageUser() {
           <AdminProfile />
         </div>
         <AdminPageUserContent />
-      </div>     
+      </div>
     </div>
   );
 }

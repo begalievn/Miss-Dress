@@ -14,15 +14,5 @@ export const adminCollectionApi = createApi({
         },
       })
     }),
-    // fetchOrderById: build.query<Iorder, string>({
-    //   query: (id) => ({
-    //     url: `/order/${id}`,
-    //     headers: {
-    //       Authorization: `Bearer ${JSON.parse(
-    //         localStorage.getItem("accessToken") || "{}"
-    //       )}`,
-    //     },
-    //   })
-    // })
   })
 });

@@ -48,7 +48,7 @@ const AdminMenu = () => {
     {
       title: "Реклама",
       image: adIcon,
-      route: "/ad",
+      route: "/advertisement",
     },
     {
       title: "Чат",
@@ -61,7 +61,7 @@ const AdminMenu = () => {
     <div>
       <div className={classes.container_parent}>
         <div className={classes.logo}>
-          <Link to={"/admin"}>
+          <Link to={"/"}>
             <Logo />
           </Link>
           <div className={classes.logo_routes}>

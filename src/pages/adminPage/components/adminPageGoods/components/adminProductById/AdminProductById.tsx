@@ -14,18 +14,16 @@ import styles from "./adminProductById.module.scss";
 
 import AdminProductByIdContent from "./components/AdminProductByIdContent";
 
-
-
 function AdminProductById() {
 
   const navigate = useNavigate();
-  const goBack = () => navigate("/goods");
+  const goBack = () => navigate(-1);
 
   return (
     <div className={classes.container_parent}>
       <AdminMenu />
       <div className={styles.container}>
-        <div className={styles.main_top}>
+        <div className={styles.mainTop}>
           <div onClick={goBack} className={styles.backPage}>
             <img className={styles.goBackIcon} src={goBackIcon} alt="" />
             <p className={styles.goBackText}>Вернуться ко всем товарам</p>

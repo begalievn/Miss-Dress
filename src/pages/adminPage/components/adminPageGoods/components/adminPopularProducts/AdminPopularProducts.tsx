@@ -11,24 +11,25 @@ import classes from "../../../../adminPageMain.module.scss";
 import { goBackIcon } from "../../../../../../assets/adminPage/adminPageIcons";
 
 import styles from "./adminPopularProducts.module.scss";
+import AdminPopularProductsContent from "./components/AdminPopularProductsContent";
 
 function AdminPopularProducts() {
 
   const navigate = useNavigate();
-  const goBack = () => navigate("/goods");
+  const goBack = () => navigate(-1);
 
   return (
     <div className={classes.container_parent}>
       <AdminMenu />
       <div className={styles.container}>
-        <div className={styles.main_top}>
+        <div className={styles.mainTop}>
           <div onClick={goBack} className={styles.backPage}>
             <img className={styles.goBackIcon} src={goBackIcon} alt="" />
             <p className={styles.goBackText}>Вернуться ко всем товарам</p>
           </div>
           <AdminProfile />
         </div>
-        
+        <AdminPopularProductsContent />
       </div>
     </div>
   );

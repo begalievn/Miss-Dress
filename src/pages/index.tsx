@@ -1,10 +1,7 @@
-
-
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { parseJwt } from "../utils/helpers/authorization";
-
 
 import AboutUsPage from "./aboutUsPage/AboutUsPage";
 import ContactsPage from "./contactsPage/ContactsPage";
@@ -38,7 +35,7 @@ import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers
 import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
 import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
 import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
+import AdminPageAd from "./adminPage/components/adminPageAdvert/AdminPageAdvert";
 
 import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
 
@@ -49,6 +46,7 @@ import AdminPageMain from "./adminPage/AdminPageMain";
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
 import AdminCollectionById from "./adminPage/components/adminPageGoods/components/adminCollectionById/AdminCollectionById";
 import AdminProductById from "./adminPage/components/adminPageGoods/components/adminProductById/AdminProductById";
+import AdminPopularProducts from "./adminPage/components/adminPageGoods/components/adminPopularProducts/AdminPopularProducts";
 
 const MainRoutes = () => {
   const validAdmin = parseJwt();
@@ -60,7 +58,7 @@ const MainRoutes = () => {
     isAdmin = false;
   }
 
-  console.log(validAdmin);
+  // console.log(validAdmin);
 
   const PUBLIC_ROUTES = [
     {
@@ -182,54 +180,64 @@ const MainRoutes = () => {
       id: 1,
     },
     {
+      link: "users/:userId",
+      element: <AdminPageUser />,
+      id: 2,
+    },
+    {
       link: "dashboard",
       element: <AdminPageDashboard />,
-      id: 2,
+      id: 3,
     },
     {
       link: "users",
       element: <AdminPageUsers />,
-      id: 3,
+      id: 4,
     },
     {
       link: "goods",
       element: <AdminPageGoods />,
-      id: 4,
+      id: 5,
     },
     {
       link: "sales",
       element: <AdminPageSales />,
-      id: 5,
+      id: 6,
     },
     {
       link: "shoppingBag",
       element: <AdminPageShopping />,
-      id: 29,
+      id: 7,
     },
     {
-      link: "ad",
+      link: "advertisement",
       element: <AdminPageAd />,
-      id: 30,
+      id: 8,
     },
     {
       link: "chat",
       element: <AdminPageChat />,
-      id: 31,
+      id: 9,
     },
     {
       link: "user",
       element: <AdminPageUser />,
-      id: 32,
+      id: 10,
     },
     {
-      link: "/collection/:collection",
+      link: "season-products/:id",
       element: <AdminCollectionById  />,
-      id: 33,
+      id: 11,
     },
     {
       link: "product/:id",
       element: <AdminProductById  />,
-      id: 34,
+      id: 12,
+    },
+    {
+      link: "popular-products",
+      element: <AdminPopularProducts  />,
+      id: 13,
     },
   ];
 

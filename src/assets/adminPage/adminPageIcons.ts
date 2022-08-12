@@ -12,6 +12,12 @@ import autumnCollection from "./autumnCollection.png";
 import winterCollection from "./winterCollection.png";
 import springCollection from "./springCollection.png";
 import summerCollection from "./summerCollection.png";
+import advertImageOne from "./advertImageOne.png";
+import advertImageTwo from "./advertImageTwo.png";
+import advertImageThree from "./advertImageThree.png";
+import advertImageFour from "./advertImageFour.png";
+import advertImageFive from "./advertImageFive.png";
+import advertImageSix from "./advertImageSix.png";
 
 export {
   dashboardIcon,
@@ -28,4 +34,10 @@ export {
   winterCollection,
   springCollection,
   summerCollection,
+  advertImageOne,
+  advertImageTwo,
+  advertImageThree,
+  advertImageFour,
+  advertImageFive,
+  advertImageSix,
 };

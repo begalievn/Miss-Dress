@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { CYRYLLYC_INPUT, PHONE_NUMBER } from "./regex";
 
 interface IRules {
-  isEmpty: boolean;
-  minLength: number;
-  maxLength: number;
+  isEmpty?: boolean;
+  minLength?: number;
+  maxLength?: number;
   phoneNumber?: boolean;
   cyrillic?: boolean;
 }
@@ -22,13 +22,13 @@ const useValidation = (value: string, validations: IRules) => {
       if (
         !error &&
         validation === "minLength" &&
-        value.length < validations[validation]
+        value.length < validations[validation]!
       ) {
         error = "Мало Знаков";
       }
       if (
         validation === "maxLength" &&
-        value.length > validations[validation]
+        value.length > validations[validation]!
       ) {
         error = "Много Знаков";
       }

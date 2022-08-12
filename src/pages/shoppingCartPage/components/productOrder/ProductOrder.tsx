@@ -67,7 +67,7 @@ const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
             </div>
           )}
           <div className={styles.priceBlock}>
-            {discount ? (
+            {discount && page === "sending" ? (
               <>
                 <p className={styles.realPrice}>{price * (discount / 100)}</p>
                 <p className={styles.wrongPrice}>{price}</p>

@@ -1,20 +1,22 @@
 h3 {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 29px;
     color: #372e24;
 }
-
 .products {
     display: flex;
+    margin-top: 25px;
     h4 {
+        font-size: 14px;
         width: 100%;
-        margin-top: 27px;
-        max-width: 194px;
+        max-width: 145px;
+
     }
     h5 {
-        margin: 27px 0 0 20px;
         width: 100%;
-        max-width: 97px;
+        max-width: 90px;
+        font-size: 13px;
+        margin-left: 10px;
     }
 }
