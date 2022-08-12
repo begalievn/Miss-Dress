@@ -36,17 +36,7 @@ const ImagesVerticalSlider = () => {
                   },
                 }}
                 modules={[Navigation, Thumbs]}
-              >
-                {/*{slides.map((slide, index) => {*/}
-                {/*  return (*/}
-                {/*    <SwiperSlide key={index}>*/}
-                {/*      <div className="slider__image">*/}
-                {/*        <img src={slide} alt="" />*/}
-                {/*      </div>*/}
-                {/*    </SwiperSlide>*/}
-                {/*  );*/}
-                {/*})}*/}
-              </Swiper>
+              ></Swiper>
             </div>
 
             <div className="slider__next">Next</div>
@@ -73,17 +63,7 @@ const ImagesVerticalSlider = () => {
               }}
               className="swiper-container2"
               modules={[Navigation, Thumbs, Mousewheel]}
-            >
-              {/*{slides.map((slide, index) => {*/}
-              {/*  return (*/}
-              {/*    <SwiperSlide key={index}>*/}
-              {/*      <div className="slider__image">*/}
-              {/*        <img src={slide} alt="" />*/}
-              {/*      </div>*/}
-              {/*    </SwiperSlide>*/}
-              {/*  );*/}
-              {/*})}*/}
-            </Swiper>
+            ></Swiper>
           </div>
         </div>
       </section>

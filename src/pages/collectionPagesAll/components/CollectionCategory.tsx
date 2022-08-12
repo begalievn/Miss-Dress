@@ -16,6 +16,8 @@ import { getDataFromSort } from "../../../utils/helpers/getDataFromSort";
 import Paginations from "../../../components/pagination/Paginations";
 
 import classes from "./CollectionCategory.module.scss";
+import { jeans } from "../../../assets/main-page/images";
+import { RatingComponent } from "../../../components/RatingComponent/RatingComponent";
 
 const CollectionCategory = () => {
   const [name, setName] = useState<string>("");
@@ -24,7 +26,6 @@ const CollectionCategory = () => {
 
   //! Запрос initialState
   const [datas, setDatas] = useState<Datum[]>([]);
-  // console.log(datas);
 
   const {
     data: collectionApi,
@@ -53,14 +54,14 @@ const CollectionCategory = () => {
     setDatas(filtere.slice(0, 6));
     console.log("filtere", filtere);
   }, [filtered]);
-
   //! Пагинация
+
   let pages: number;
   const pageCount: number = Math.ceil(datas.length / 6);
 
   function handleClick(): void {
     let pageNum: React.ChangeEvent<unknown> | number = pages || 1;
-    let start: number = (+pageNum - 1) * 6;
+    let start: number = (+pageNum - 1) * 6; /* ?. */
     let end: number = start + 6;
     if (!name) {
       setDatas(collectionApi.slice(start, end));
@@ -90,16 +91,24 @@ const CollectionCategory = () => {
         {isError ? <ErrorPage /> : null}
         {datas &&
           datas.map((item) => {
+            console.log(item);
+
             return (
               <div className={classes.content_container}>
                 <div className={classes.container_img}>
-                  {item?.images[2]?.url ? (
+                  {item?.images[0]?.url ? (
                     <img
                       className={classes.content_img}
-                      src={item?.images[2]?.url}
+                      src={item?.images[0]?.url}
                       alt=""
                     />
-                  ) : null}
+                  ) : (
+                    <img
+                      className={classes.content_img}
+                      src="https://via.placeholder.com/400x560"
+                      alt=""
+                    />
+                  )}
                 </div>
                 <div className={classes.content}>
                   <div className={classes.first}>
@@ -112,32 +121,7 @@ const CollectionCategory = () => {
                     </div>
                     <div className={classes.fourth}>
                       <div>
-                        <img
-                          className={classes.stars}
-                          src={blackStarIcon}
-                          alt={"star"}
-                        />
-                        <img
-                          className={classes.stars}
-                          src={blackStarIcon}
-                          alt={"star"}
-                        />
-                        <img
-                          className={classes.stars}
-                          src={blackStarIcon}
-                          alt={"star"}
-                        />
-                        <img
-                          className={classes.stars}
-                          src={blackStarIcon}
-                          alt={"star"}
-                        />
-                        <img
-                          className={classes.stars}
-                          src={blackStarIcon}
-                          alt={"star"}
-                        />
-                        <p>{item.rate}</p>
+                        <RatingComponent rate={item.rate} />
                       </div>
 
                       <div className={classes.favorite_icon}>
