@@ -106,6 +106,8 @@ const AdminPageUsers = () => {
 
   const navigate = useNavigate();
 
+  const { userId } = useParams();
+
   const [counte, setCounte] = useState(1);
   const limit = 7;
 
@@ -128,22 +130,60 @@ const AdminPageUsers = () => {
     if (isSuccess) refetch();
   }, [deleteInfo]);
 
-  const handleDelete = (event: React.MouseEvent, id: number) => {
-    event.stopPropagation();
-    deleteIdl(id);
+  const handleDelete = (userId: number): void => {
+    deleteIdl(userId);
   };
+
 
   const [value, setValue] = useState("");
 
-  function handleSearch(event: any) {
-    setValue(event.target.value);
-    // Data.name = event.target.value;
+  console.log(data);
+
+  const regularUsers = [
+    {
+      name: "Ророноа Зоро",
+      sales: 104,
+      income: 500,
+    },
+    {
+      name: "Портгас Д. Эйс",
+      sales: 85,
+      income: 400,
+    },
+    {
+      name: "Винсмок Санджи",
+      sales: 25,
+      income: 125,
+    },
+  ];
+
+  const [name, setName] = useState("");
+
+
+  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (name !== "") {
+      navigate(`/users/name=${name}`);
+    }
+  };
+
+  function userMore(userId: any) {
+    navigate(`/users/${userId}`);
   }
+
 
   console.log(data);
 
   // console.log(userStatus(1).color);
   
+
+  // function handleSearch(event: any) {
+  //   setValue(event.target.value);
+  //   // Data.name = event.target.value;
+  // }
+
+  // console.log(Data);
+
 
   return (
     <div className={styles.users_container}>
@@ -179,12 +219,25 @@ const AdminPageUsers = () => {
                   </clipPath>
                 </defs>
               </svg>
-              <input
-                value={value}
-                onChange={handleSearch}
-                placeholder={"Поиск пользователей"}
-                type="text"
-              />
+              {/*<input*/}
+              {/*  value={value}*/}
+              {/*  onChange={handleSearch}*/}
+              {/*  placeholder={"Поиск пользователей"}*/}
+              {/*  type="text"*/}
+              {/*/>*/}
+              <form onSubmit={handleSave} className={styles.container}>
+                <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className={styles.searchMain}
+                  placeholder="Поиск пользователей"
+                  type="text"
+                />
+                <button
+                  style={{ display: "none", visibility: "hidden" }}
+                  type={"submit"}
+                ></button>
+              </form>
             </div>
             <CategoriesDropdowBtn />
           </div>
@@ -221,11 +274,11 @@ const AdminPageUsers = () => {
                   key={item.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell onClick={userMore} component="th" scope="row">
                     {item.firstName} {item.lastName}
                   </TableCell>
                   <TableCell align="right">zoro@gmail.com</TableCell>
-                  <TableCell align="right">+996712345678</TableCell>
+                  <TableCell align="right">{item.phoneNumber}</TableCell>
                   <TableCell align="right">{item.id} продаж</TableCell>
                   <TableCell align="right">{item.id}k+ доход</TableCell>
                   <TableCell>
@@ -292,8 +345,11 @@ const AdminPageUsers = () => {
                         />
                       </div>
                     )}
-                  </TableCell> */}
-                  <DeleteButton />
+
+                  </TableCell>
+                  <button onClick={() => handleDelete(item.id)}>Delete</button>
+                  {/*<DeleteButton />*/}
+
                 </TableRow>
               ))}
             </TableBody>

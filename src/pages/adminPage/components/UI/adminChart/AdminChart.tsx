@@ -4,8 +4,29 @@ import { Chart } from "react-google-charts";
 
 import styles from "./chart.module.scss";
 
+const result: any = [
+  {
+    collection: "summer",
+    sales: [
+      {
+        count: 23,
+        month: "7",
+      },
+    ],
+  },
+  {
+    collection: "autumn",
+    sales: [
+      {
+        count: 9,
+        month: "7",
+      },
+    ],
+  },
+];
+console.log(result);
 export const data = [
-  [" ", "Зимняя коллекция", "Летняя коллекция", "Осенняя коллекция"],
+  [result[0].collection ? result[0].collection : result[0].collection],
   ["Янв", 70, 40, 41.8],
   ["Фев", 50, 50, 32.4],
   ["Мар", 50, 40, 25.7],
