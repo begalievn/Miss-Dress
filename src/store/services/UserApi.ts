@@ -18,6 +18,17 @@ export const UserApi = createApi({
         },
       }),
     }),
+    // getOneUser: build.query({
+    //   query: (name: any) => ({
+    //     url: `/user/get-all?name=${name}`,
+    //     method: "GET",
+    //     headers: {
+    //       Authorization: `Bearer ${JSON.parse(
+    //         localStorage.getItem("accessToken") || "{}"
+    //       )}`,
+    //     },
+    //   }),
+    // }),
     getMe: build.query({
       query: (data) => ({
         url: "/user/me",
