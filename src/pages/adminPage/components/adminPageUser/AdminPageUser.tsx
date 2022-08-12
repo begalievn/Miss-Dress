@@ -18,7 +18,7 @@ function AdminPageUser() {
   const { userId } = useParams();
 
   const navigate = useNavigate();
-  const goBack = () => navigate("/users");
+  const goBack = () => navigate(-1);
 
   return (
     <div className={classes.container_parent}>
@@ -29,10 +29,8 @@ function AdminPageUser() {
             <img className={styles.goBackIcon} src={goBackIcon} alt="" />
             <p className={styles.goBackText}>Вернуться ко всем пользователям</p>
           </div>
-
           <AdminProfile />
         </div>
-
         <AdminPageUserContent />
       </div>
     </div>

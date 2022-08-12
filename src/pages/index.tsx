@@ -35,7 +35,7 @@ import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers
 import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
 import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
 import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
+import AdminPageAd from "./adminPage/components/adminPageAdvert/AdminPageAdvert";
 
 import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
 
@@ -44,6 +44,9 @@ import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
 import AdminPageMain from "./adminPage/AdminPageMain";
 
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
+import AdminCollectionById from "./adminPage/components/adminPageGoods/components/adminCollectionById/AdminCollectionById";
+import AdminProductById from "./adminPage/components/adminPageGoods/components/adminProductById/AdminProductById";
+import AdminPopularProducts from "./adminPage/components/adminPageGoods/components/adminPopularProducts/AdminPopularProducts";
 import AdminPageProduct from "./adminPage/components/adminPageShopping/components/AdminPageProduct";
 
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
@@ -58,7 +61,7 @@ const MainRoutes = () => {
     isAdmin = false;
   }
 
-  console.log(validAdmin);
+  // console.log(validAdmin);
 
   const PUBLIC_ROUTES = [
     {
@@ -162,7 +165,7 @@ const MainRoutes = () => {
       id: 21,
     },
     {
-      link: "order-product/:id",
+      link: "order/:id",
       element: <OrderProductPage />,
       id: 22,
     },
@@ -215,7 +218,7 @@ const MainRoutes = () => {
       id: 8,
     },
     {
-      link: "ad",
+      link: "advertisement",
       element: <AdminPageAd />,
       id: 9,
     },
@@ -233,6 +236,21 @@ const MainRoutes = () => {
       link: "product",
       element: <AdminPageProduct />,
       id: 12,
+    },
+    {
+      link: "season-products/:id",
+      element: <AdminCollectionById  />,
+      id: 11,
+    },
+    {
+      link: "product/:id",
+      element: <AdminProductById  />,
+      id: 12,
+    },
+    {
+      link: "popular-products",
+      element: <AdminPopularProducts  />,
+      id: 13,
     },
   ];
 

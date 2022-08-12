@@ -18,7 +18,7 @@ import BrownButton from "../../components/brown-button/BrownButton";
 
 import ProfileAva from "./components/UI/profileAva/ProfileAva";
 import UsersBlock from "./components/UI/usersBlock/UsersBlock";
-import PopularProducts from "./components/UI/popularProducts/PopularProducts";
+import PopularProducts from "./components/UI/adminPopularProducts/AdminPopularProducts";
 import ViewMoreButton from "./components/UI/viewMoreButton/ViewMoreButton";
 
 import { UserApi } from "../../store/services/UserApi";

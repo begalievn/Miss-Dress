@@ -1,0 +1,77 @@
+
+.advertTitle {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.advertTop {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+} 
+
+.advertSubTitle {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.advertSubText {
+    font-weight: 300;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.advertEdit {
+    font-weight: 300;
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.advertLeftEdit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.advertContent {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .advertContentLeft {
+        width: 60%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .advertLeftContent {
+            width: 40%;
+            margin-right: 10%;
+
+            .advertLeftImgList {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 25%;
+
+                .advertLeftImg {
+                    width: 100%;
+                    height: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    .advertContentRight {
+        width: 40%;
+        margin-top: -50px;
+        width: 40%;
+
+        .advertRightImg {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}

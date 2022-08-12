@@ -1,4 +1,8 @@
+import { adminRegularUsersApi } from './services/adminRegularUsersApi';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
+import { adminCollectionApi } from "./services/adminCollectionApi";
+
 
 import { AuthorizationAPI } from "./services/AuthorizationApi";
 
@@ -21,6 +25,8 @@ import { searchApi } from "./services/SearchApi";
 import { ratingApi } from "./services/RatingApi";
 import { adminUserOneApi } from "./services/adminUserOneApi";
 import { adminDeleteUserApi } from "./services/adminDeleteUserApi";
+import { adminPopularProductsApi } from "./services/adminPopularProducts";
+import { adminPopularProductPriceApi } from "./services/adminPopularProductPrice";
 import { adminGetCartApi } from "./services/adminGetCartApi";
 import { productFavoritesApi } from "./services/productFavoritesApi";
 
@@ -40,10 +46,19 @@ const rootreducer = combineReducers({
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
   [ratingApi.reducerPath]: ratingApi.reducer,
+
+  [adminCollectionApi.reducerPath]: adminCollectionApi.reducer,
+
   [adminUserOneApi.reducerPath]: adminUserOneApi.reducer,
   [adminDeleteUserApi.reducerPath]: adminDeleteUserApi.reducer,
+  [adminPopularProductsApi.reducerPath]:adminPopularProductsApi.reducer,
+  [adminPopularProductPriceApi.reducerPath]:adminPopularProductPriceApi.reducer,
   [adminGetCartApi.reducerPath]: adminGetCartApi.reducer,
+
+  [adminRegularUsersApi.reducerPath]: adminRegularUsersApi.reducer,
+
   [productFavoritesApi.reducerPath]: productFavoritesApi.reducer,
+
 });
 
 export const store = configureStore({
@@ -65,10 +80,20 @@ export const store = configureStore({
       orderApi.middleware,
       productsApi.middleware,
       ratingApi.middleware,
+
+      adminCollectionApi.middleware,
+
       adminUserOneApi.middleware,
       adminDeleteUserApi.middleware,
+
+      adminPopularProductsApi.middleware,
+      adminPopularProductPriceApi.middleware,
+      adminGetCartApi.middleware,
+      adminRegularUsersApi.middleware,
+
       adminGetCartApi.middleware,
       productFavoritesApi.middleware
+
     ),
 });
 

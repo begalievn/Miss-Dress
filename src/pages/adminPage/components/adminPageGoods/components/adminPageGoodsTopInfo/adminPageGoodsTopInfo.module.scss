@@ -1,5 +1,20 @@
-.topInfo {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
+
+.main{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 50px;
+
+    .contentTop{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .topInfo {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 650px;
+      }
+    }
+  }

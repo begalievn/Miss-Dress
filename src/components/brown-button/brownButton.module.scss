@@ -3,8 +3,8 @@
 .button {
   width: 90%;
   height: calc(60px);
-  background: variables.$brown;
-  color: variables.$yellow;
+  background: variables.$yellow;
+  color: variables.$brown;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -12,6 +12,7 @@
   border-radius: 45px;
   border-style: none;
   margin-top: 5%;
+  cursor: pointer;
 
   @media (max-width: 1000px) {
     height: 50px;
@@ -34,4 +35,10 @@
   @media (max-width: 425px) {
     font-size: 13px;
   }
+}
+
+.button:hover {
+  background: variables.$brown;
+  color: variables.$yellow;
+  transition: .7s;
 }

@@ -1,5 +1,7 @@
+/* eslint-disable indent */
 import React, { useEffect, useState } from "react";
 
+import LinearProgress from "@mui/material/LinearProgress";
 import classes from "../../adminPageMain.module.scss";
 
 import AdminMenu from "../UI/adminMenu/AdminMenu";
@@ -10,14 +12,15 @@ import ProfileAva from "../UI/profileAva/ProfileAva";
 
 import UsersBlock from "../UI/usersBlock/UsersBlock";
 import { UserApi } from "../../../../store/services/UserApi";
-
-import LinearProgress from "@mui/material/LinearProgress";
 import Paginations from "../../../../components/pagination/Paginations";
 import DeleteButton from "../UI/deleteButton/DeleteButton";
 
 import styles from "./adminPageUsers.module.scss";
+
 import ViewMoreButton from "../UI/viewMoreButton/ViewMoreButton";
+
 import { useNavigate, useParams } from "react-router-dom";
+
 import { adminDeleteUserApi } from "../../../../store/services/adminDeleteUserApi";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -25,8 +28,82 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
+import AdminRegularUsers from "../UI/adminRegularUsers/AdminRegularUsers";
+
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+
+
+
+
+
+
+
 
 const AdminPageUsers = () => {
+
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
+
+
+  const userStatus = (item:number) =>{
+    let statusNum = {
+      text: "В ожидании",
+      color: "#F1F2C1",
+    };
+    switch (item) {
+      case 0:
+        statusNum= {
+          text: "В ожидании",
+          color: "#F1F2C1",
+        };
+        break;
+      case 1:
+        statusNum= {
+          text: "Проверен",
+          color: "#C1F2D8",
+        };
+        break;
+      case 2:
+        statusNum= {
+          text: "Не проверен",
+          color: "#ECCFB5",
+        };
+        break;
+      case 3:
+        statusNum= {
+          text: "Забанен",
+          color: "#e56471",
+        };
+        break;      
+      default:
+        statusNum= {
+          text: "В ожидании",
+          color: "#F1F2C1",
+        };
+    }
+
+    return statusNum;
+
+  };
+
+
+
+
   const navigate = useNavigate();
 
   const { userId } = useParams();
@@ -57,6 +134,9 @@ const AdminPageUsers = () => {
     deleteIdl(userId);
   };
 
+
+  const [value, setValue] = useState("");
+
   console.log(data);
 
   const regularUsers = [
@@ -79,6 +159,7 @@ const AdminPageUsers = () => {
 
   const [name, setName] = useState("");
 
+
   const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name !== "") {
@@ -90,12 +171,19 @@ const AdminPageUsers = () => {
     navigate(`/users/${userId}`);
   }
 
+
+  console.log(data);
+
+  // console.log(userStatus(1).color);
+  
+
   // function handleSearch(event: any) {
   //   setValue(event.target.value);
   //   // Data.name = event.target.value;
   // }
 
   // console.log(Data);
+
 
   return (
     <div className={styles.users_container}>
@@ -104,17 +192,7 @@ const AdminPageUsers = () => {
         <div className={styles.content_top}>
           <div className={styles.users}>
             <UsersBlock value={"230"} text={"новых пользователей"} />
-            <div className={styles.regularUsers}>
-              <h2>Постоянные пользователи</h2>
-              {regularUsers.map((item) => (
-                <div className={styles.inner}>
-                  <h5>{item.name}</h5>
-                  <p>{item.sales} продаж</p>
-                  <p>{item.income}k+ доход</p>
-                </div>
-              ))}
-              <button className={styles.view_more}>Посмотреть все</button>
-            </div>
+            <AdminRegularUsers />
           </div>
           <ProfileAva />
         </div>
@@ -184,9 +262,9 @@ const AdminPageUsers = () => {
                 <TableCell className={styles.title} align="left">
                   Статус
                 </TableCell>
-                <TableCell className={styles.title} align="left">
+                {/* <TableCell className={styles.title} align="left">
                   Рейтинг
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody className={styles.table}>
@@ -203,8 +281,43 @@ const AdminPageUsers = () => {
                   <TableCell align="right">{item.phoneNumber}</TableCell>
                   <TableCell align="right">{item.id} продаж</TableCell>
                   <TableCell align="right">{item.id}k+ доход</TableCell>
+                  <TableCell>
+                    <div>
+                      <Button
+                      // eslint-disable-next-line indent
+                      style={{borderRadius: "20px", backgroundColor: `${userStatus(item.status).color}`, fontSize: "12px"}}
+                         aria-describedby={id} variant="contained" onClick={handleClick}>
+                        {userStatus(item.status).text}
+                      </Button>
+                      <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "left"
+                        }}
+                      >
+                        <Typography style={{ backgroundColor: "#C1F2D8" }} sx={{ p: 2 }}>
+                          Проверен
+                        </Typography>{" "}
+                        <Typography style={{ backgroundColor: "#ECCFB5" }} sx={{ p: 2 }}>
+                          Не проверен.
+                        </Typography>{" "}
+                        <Typography style={{ backgroundColor: "#F1F2C1" }} sx={{ p: 2 }}>
+                          В ожидании
+                        </Typography>{" "}
+                      </Popover>
+                    </div>
+                  </TableCell>
 
-                  {item.status == 1 ? (
+
+
+
+
+
+                  {/* {item.status === 1 ? (
                     <TableCell align={"left"}>
                       <span className={styles.verified}>Проверен</span>
                     </TableCell>
@@ -212,10 +325,10 @@ const AdminPageUsers = () => {
                     <TableCell align={"left"}>
                       <span className={styles.notVerified}>Не проверен</span>
                     </TableCell>
-                  )}
+                  )} */}
 
-                  <TableCell align="right">
-                    {item.id == "Рейтинг не подтвержден" ? (
+                  {/* <TableCell align="right">
+                    {item.id === "Рейтинг не подтвержден" ? (
                       <TableCell
                         align="right"
                         className={classes.confirmRating}
@@ -232,9 +345,11 @@ const AdminPageUsers = () => {
                         />
                       </div>
                     )}
+
                   </TableCell>
                   <button onClick={() => handleDelete(item.id)}>Delete</button>
                   {/*<DeleteButton />*/}
+
                 </TableRow>
               ))}
             </TableBody>

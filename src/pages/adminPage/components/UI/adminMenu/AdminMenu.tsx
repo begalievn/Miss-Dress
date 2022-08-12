@@ -48,7 +48,7 @@ const AdminMenu = () => {
     {
       title: "Реклама",
       image: adIcon,
-      route: "/ad",
+      route: "/advertisement",
     },
     {
       title: "Чат",

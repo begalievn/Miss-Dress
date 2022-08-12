@@ -13,7 +13,7 @@ import BestSellersBlock from "./components/best-sellers-block/BestSellersBlock";
 import NewProductsBlock from "./components/new-products-block/NewProductsBlock";
 import Slider from "./components/slider/Slider";
 
-const collectionInfo = [
+export const collectionInfo = [
   {
     image: winter,
     title: "ЛЕТО",
