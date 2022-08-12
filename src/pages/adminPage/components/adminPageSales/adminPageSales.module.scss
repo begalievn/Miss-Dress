@@ -1,0 +1,24 @@
+.container_right{
+  width: 100%;
+  padding: 20px;
+}
+.container{
+  h2{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 40px;
+  }
+  h4{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    width: 300px;
+
+  }
+}
+.block{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}

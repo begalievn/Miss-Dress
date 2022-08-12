@@ -15,7 +15,7 @@ function OrderPage() {
       <div className={styles.content}>
         <Breadcrumbs />
         <h3 className={styles.header}>Мои заказы</h3>
-        <hr />
+        <hr className={styles.horizontLine} />
         <OrdersContent />
       </div>
     </section>

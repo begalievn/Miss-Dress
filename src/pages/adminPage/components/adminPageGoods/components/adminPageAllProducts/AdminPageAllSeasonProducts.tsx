@@ -1,29 +1,70 @@
 import { LinearProgress } from "@mui/material";
+import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import CategoriesDropdowBtn from "../../../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 import Paginations from "../../../../../../components/pagination/Paginations";
 import { adminCollectionApi } from "../../../../../../store/services/adminCollectionApi";
+import { adminDeleteUserApi } from "../../../../../../store/services/adminDeleteUserApi";
 import { AdminPageAllSeasonProductsProps } from "../../../../../../utils/types/typesAdminCollection";
 import DeleteButton from "../../../UI/deleteButton/DeleteButton";
 
 import classes from "./adminPageAllSeasonProducts.module.scss";
 
-
-
 function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
 
+
+  const [counte, setCounte] = useState(1);
+  const limit = 7;
+
+  const Data = {
+    limit: limit,
+    counte: counte,
+  };
+
   const navigateToProductId = useNavigate();
-  const {data} = adminCollectionApi.useGetProductByCollectionQuery(id);
+  const {data} = adminCollectionApi.useGetProductByCollectionQuery({collection:id, Data});
   const cards = data?.result[0]||[];
   // console.log(cards);
+
+  const allPages = Math.ceil(cards.length / 7);
+
+
+  const [deleteIdl, { isLoading, isError, isSuccess, data: deleteInfo }] =
+    adminDeleteUserApi.useDeleteAdminUserMutation();
+
+  // const handleDelete = (event: React.MouseEvent, id: number) => {
+  //   event.stopPropagation();
+  //   deleteIdl(id);
+  // };
+
+
+
+
+
+  // useEffect(() => {
+  //   if (isSuccess) refetch();
+  // }, [deleteInfo]);
+
+
+  // const [value, setValue] = useState("");
+
+  // function handleSearch(event: any) {
+  //   setValue(event.target.value);
+  //   // Data.name = event.target.value;
+  // }
+
+  // console.log(Data);
+
   
   return (
     <>
       <div className={classes.contentBot}>
-        <h2>Все товары</h2>
-        <p>{id}</p>
+        <div className={classes.seasonTitle}>
+          <h2 className={classes.seasonProducts}>Все товары</h2>
+          <p className={classes.seasonName}>{id} collection</p>
+        </div>
         <div className={classes.searchParent}>
           <div className={classes.search}>
             <svg
@@ -58,7 +99,7 @@ function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
           <h4>Продажи</h4>
           <h4>Доход</h4>
           <h4>Статус</h4>
-          <h4>Рейтинг</h4>
+          {/* <h4>Рейтинг</h4> */}
         </div>
 
         {cards?.map((items: any) => {
@@ -71,7 +112,7 @@ function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
                 <h5>{items.allAmount} продаж</h5>
                 <h5>{items.allTotalCount}k+ доход</h5>
                 <div>
-                  {items.status === "1" ? (
+                  {items.status === 1 ? (
                     <h6
                       style={{
                         backgroundColor: "#F1F2C1",
@@ -80,13 +121,13 @@ function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
                     >
                       Проверен
                     </h6>
-                  ) : items.status === "0" ? (
+                  ) : items.status === 0 ? (
                     <h6 style={{ backgroundColor: "#ECCFB5" }}>Не проверен</h6>
                   ) : (
                     <h6>{items.status}</h6>
                   )}
                 </div>
-                <div>
+                {/* <div>
                   {items.id === "Рейтинг не подтвержден" ? (
                     <p className={classes.confirmRating}>
                       Рейтинг не подтвержден
@@ -127,7 +168,7 @@ function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
                       </p>
                     </div>
                   )}
-                </div>
+                </div> */}
                 {/*<DeleteButton handleClick={setDeleteId} id={item.id} />*/}
                 {/*<button onClick={(id) => deleteIdl(setDeleteId(item.id))}>*/}
                 {/*  delete*/}
@@ -141,8 +182,8 @@ function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
         })}
       </div>
       <Paginations
-        // onChange={(event: any, page: number) => setCounte(page)}
-        // count={allPages}
+        onChange={(event: any, page: number) => setCounte(page)}
+        count={allPages}
       /> 
     </>
   );

@@ -1,3 +1,4 @@
+import { adminRegularUsersApi } from './services/adminRegularUsersApi';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import { adminCollectionApi } from "./services/adminCollectionApi";
@@ -24,8 +25,9 @@ import { searchApi } from "./services/SearchApi";
 import { ratingApi } from "./services/RatingApi";
 import { adminUserOneApi } from "./services/adminUserOneApi";
 import { adminDeleteUserApi } from "./services/adminDeleteUserApi";
-import { adminPopularProductApi } from "./services/adminPopularProduct";
+import { adminPopularProductsApi } from "./services/adminPopularProducts";
 import { adminPopularProductPriceApi } from "./services/adminPopularProductPrice";
+import { adminGetCartApi } from "./services/adminGetCartApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -48,9 +50,10 @@ const rootreducer = combineReducers({
 
   [adminUserOneApi.reducerPath]: adminUserOneApi.reducer,
   [adminDeleteUserApi.reducerPath]: adminDeleteUserApi.reducer,
-  [adminPopularProductApi.reducerPath]:adminPopularProductApi.reducer,
+  [adminPopularProductsApi.reducerPath]:adminPopularProductsApi.reducer,
   [adminPopularProductPriceApi.reducerPath]:adminPopularProductPriceApi.reducer,
-
+  [adminGetCartApi.reducerPath]: adminGetCartApi.reducer,
+  [adminRegularUsersApi.reducerPath]: adminRegularUsersApi.reducer,
 });
 
 export const store = configureStore({
@@ -77,9 +80,10 @@ export const store = configureStore({
 
       adminUserOneApi.middleware,
       adminDeleteUserApi.middleware,
-      adminPopularProductApi.middleware,
+      adminPopularProductsApi.middleware,
       adminPopularProductPriceApi.middleware,
-
+      adminGetCartApi.middleware,
+      adminRegularUsersApi.middleware,
     ),
 });
 

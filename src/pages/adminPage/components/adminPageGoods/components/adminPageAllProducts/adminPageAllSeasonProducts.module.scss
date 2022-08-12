@@ -5,6 +5,15 @@
   justify-content: space-between;
   align-items: center;
 
+  .seasonTitle {
+    display: flex;
+    align-items: center;
+  }
+
+  .seasonProducts {
+    margin-right: 15px;
+  }
+
   .searchParent {
     display: flex;
     align-items: center;
@@ -99,19 +108,19 @@
   h4:nth-child(2) {
     position: absolute;
     top: 0;
-    left: 193px;
+    left: 215px;
   }
 
   h4:nth-child(3) {
     position: absolute;
     top: 0;
-    left: 280px;
+    left: 320px;
   }
 
   h4:nth-child(4) {
     position: absolute;
     top: 0;
-    right: 395px;
+    right: 355px;
   }
 
   h4:nth-child(5) {
@@ -139,7 +148,7 @@
   h5 {
     font-weight: 400;
     font-size: 13px;
-    line-height: 20px;
+    // line-height: 20px;
   }  
 }
 
@@ -153,6 +162,7 @@
     font-size: 13px;
     width: 100%;
     max-width: 170px;
+    font-weight: 600;
   }
 
   .product:hover {
@@ -172,7 +182,7 @@
     padding: 1px 5px;
     font-weight: 400;
     font-size: 12px;
-    line-height: 20px;
+    // line-height: 20px;
   }
 
   p {
@@ -180,7 +190,7 @@
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    line-height: 20px;
+    // line-height: 20px;
     background: #C1F2D8;
     border-radius: 20px;
     width: 100%;
@@ -201,7 +211,7 @@
   h5:nth-child(4) {
     width: 100%;
     max-width: 90px;
-    margin-left: 20px;
+    // margin-left: 20px;
   }
 
   h5:nth-child(5) {

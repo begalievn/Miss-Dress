@@ -1,19 +1,15 @@
 import { LinearProgress } from "@mui/material";
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
 import CategoriesDropdowBtn from "../../../../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 import Paginations from "../../../../../../../components/pagination/Paginations";
 import { adminDeleteUserApi } from "../../../../../../../store/services/adminDeleteUserApi";
-import { adminPopularProductApi } from "../../../../../../../store/services/adminPopularProduct";
-// import { UserApi } from "../../../../../../../store/services/UserApi";
+import { adminPopularProductsApi } from "../../../../../../../store/services/adminPopularProducts";
 import classes from "../../../../../adminPageMain.module.scss";
 
 import styles from "./adminPopularProductsContent.module.scss";
 
 function AdminPopularProductsContent() {
-
-  //   const navigate = useNavigate();
 
   const [counte, setCounte] = useState(1);
   const limit = 7;
@@ -22,14 +18,12 @@ function AdminPopularProductsContent() {
     limit: limit,
     counte: counte,                                                                 
   };
-  
-  //   const { data = [] } = UserApi.useGetAllQuery(Data);
 
-  const { data:prod = [] } = adminPopularProductApi.useFetchGetPopularProductQuery(Data);
+  const { data:prod = [] } = adminPopularProductsApi.useFetchGetPopularProductQuery(Data);
   const popProducts = prod?.result || [];
   console.log(popProducts);
   
-  const allPages = Math.ceil(popProducts?.result?.count / 7);
+  const allPages = Math.ceil(popProducts.length / 7);
   
 //     const [deleteId, setDeleteId] = useState<any>(0);
 //   console.log("setState", deleteId);

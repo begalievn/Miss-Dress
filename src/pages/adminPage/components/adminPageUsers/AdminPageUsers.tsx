@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable indent */
+import React, { useEffect, useState } from "react";
 
 import LinearProgress from "@mui/material/LinearProgress";
 import classes from "../../adminPageMain.module.scss";
@@ -21,8 +22,88 @@ import ViewMoreButton from "../UI/viewMoreButton/ViewMoreButton";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { adminDeleteUserApi } from "../../../../store/services/adminDeleteUserApi";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+import TableContainer from "@mui/material/TableContainer";
+import AdminRegularUsers from "../UI/adminRegularUsers/AdminRegularUsers";
+
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+
+
+
+
+
+
+
 
 const AdminPageUsers = () => {
+
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
+
+
+  const userStatus = (item:number) =>{
+    let statusNum = {
+      text: "В ожидании",
+      color: "#F1F2C1",
+    };
+    switch (item) {
+      case 0:
+        statusNum= {
+          text: "В ожидании",
+          color: "#F1F2C1",
+        };
+        break;
+      case 1:
+        statusNum= {
+          text: "Проверен",
+          color: "#C1F2D8",
+        };
+        break;
+      case 2:
+        statusNum= {
+          text: "Не проверен",
+          color: "#ECCFB5",
+        };
+        break;
+      case 3:
+        statusNum= {
+          text: "Забанен",
+          color: "#e56471",
+        };
+        break;      
+      default:
+        statusNum= {
+          text: "В ожидании",
+          color: "#F1F2C1",
+        };
+    }
+
+    return statusNum;
+
+  };
+
+
+
+
   const navigate = useNavigate();
 
   const [counte, setCounte] = useState(1);
@@ -31,46 +112,38 @@ const AdminPageUsers = () => {
   const Data = {
     limit: limit,
     counte: counte,
+    // name: "privet",
   };
 
-  const { data = [] } = UserApi.useGetAllQuery(Data);
+  const { data = [], refetch } = UserApi.useGetAllQuery(Data);
 
   const cards = data.result?.data || [];
 
-  // console.log(cards);
-
   const allPages = Math.ceil(data?.result?.count / 7);
 
-  const [deleteId, setDeleteId] = useState<any>(0);
-  // console.log("setState", deleteId);
+  const [deleteIdl, { isLoading, isError, isSuccess, data: deleteInfo }] =
+    adminDeleteUserApi.useDeleteAdminUserMutation();
 
-  const [deleteIdl, { isLoading, isError }] =
-    adminDeleteUserApi.useDeleteAdminUserMutation(deleteId);
-  // adminDeleteUserApi.useFetchAdminDeleteUserApiMutation(deleteId);
-  // console.log(isError);
+  useEffect(() => {
+    if (isSuccess) refetch();
+  }, [deleteInfo]);
 
-  const handleDelete = (event: React.MouseEvent) => {
+  const handleDelete = (event: React.MouseEvent, id: number) => {
     event.stopPropagation();
-    deleteIdl(deleteIdl);
+    deleteIdl(id);
   };
 
-  const regularUsers = [
-    {
-      name: "Ророноа Зоро",
-      sales: 104,
-      income: 500,
-    },
-    {
-      name: "Портгас Д. Эйс",
-      sales: 85,
-      income: 400,
-    },
-    {
-      name: "Винсмок Санджи",
-      sales: 25,
-      income: 125,
-    },
-  ];
+  const [value, setValue] = useState("");
+
+  function handleSearch(event: any) {
+    setValue(event.target.value);
+    // Data.name = event.target.value;
+  }
+
+  console.log(data);
+
+  // console.log(userStatus(1).color);
+  
 
   return (
     <div className={styles.users_container}>
@@ -79,17 +152,7 @@ const AdminPageUsers = () => {
         <div className={styles.content_top}>
           <div className={styles.users}>
             <UsersBlock value={"230"} text={"новых пользователей"} />
-            <div className={styles.regularUsers}>
-              <h2>Постоянные пользователи</h2>
-              {regularUsers.map((item) => (
-                <div className={styles.inner}>
-                  <h5>{item.name}</h5>
-                  <p>{item.sales} продаж</p>
-                  <p>{item.income}k+ доход</p>
-                </div>
-              ))}
-              <button className={styles.view_more}>Посмотреть все</button>
-            </div>
+            <AdminRegularUsers />
           </div>
           <ProfileAva />
         </div>
@@ -116,98 +179,126 @@ const AdminPageUsers = () => {
                   </clipPath>
                 </defs>
               </svg>
-              <input placeholder={"Поиск пользователей"} type="text" />
+              <input
+                value={value}
+                onChange={handleSearch}
+                placeholder={"Поиск пользователей"}
+                type="text"
+              />
             </div>
             <CategoriesDropdowBtn />
           </div>
         </div>
-        <div className={classes.table}>
-          <div className={styles.table_children}>
-            <h4>Пользователь</h4>
-            <h4>Адрес почты</h4>
-            <h4>Номер телефона</h4>
-            <h4>Продажи</h4>
-            <h4>Доход</h4>
-            <h4>Статус</h4>
-            <h4>Рейтинг</h4>
-          </div>
-          {cards.map((item: any) => (
-            <>
-              <div className={styles.table_info}>
-                <h4 onClick={() => navigate(`/users/${item.id}`)}>
-                  {item.firstName} {item.lastName}
-                </h4>
-                <h5>example@gmail.com</h5>
-                <h5>{item.phoneNumber}</h5>
-                <h5>{item.id} продаж</h5>
-                <h5>{item.id}k+ доход</h5>
-                <div>
-                  {item.status == "1" ? (
-                    <h6
-                      style={{
-                        backgroundColor: "#F1F2C1",
-                        paddingLeft: "14px",
-                      }}
-                    >
-                      Проверен
-                    </h6>
-                  ) : item.status == "0" ? (
-                    <h6 style={{ backgroundColor: "#ECCFB5" }}>Не проверен</h6>
-                  ) : (
-                    <h6>{item.status}</h6>
-                  )}
-                </div>
-                <div>
-                  {item.id == "Рейтинг не подтвержден" ? (
-                    <p className={classes.confirmRating}>
-                      Рейтинг не подтвержден
-                    </p>
-                  ) : (
-                    <div className={classes.content}>
-                      <LinearProgress
-                        className={classes.progress}
-                        variant="determinate"
-                        value={+item.id}
-                        color={"inherit"}
-                      />
-                      <p>
-                        {item.id}%{" "}
-                        <svg
-                          width="15"
-                          height="15"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M5.83203 14.1668L14.1654 5.8335"
-                            stroke="#374151"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M5.83203 5.8335H14.1654V14.1668"
-                            stroke="#374151"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                        3%
-                      </p>
+        <TableContainer className={styles.table}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className={styles.title}>Пользователь</TableCell>
+                <TableCell className={styles.title} align="center">
+                  Адрес почты
+                </TableCell>
+                <TableCell className={styles.title} align="right">
+                  Номер телефона
+                </TableCell>
+                <TableCell className={styles.title} align="right">
+                  Продажи
+                </TableCell>
+                <TableCell className={styles.title} align="center">
+                  Доход
+                </TableCell>
+                <TableCell className={styles.title} align="left">
+                  Статус
+                </TableCell>
+                {/* <TableCell className={styles.title} align="left">
+                  Рейтинг
+                </TableCell> */}
+              </TableRow>
+            </TableHead>
+            <TableBody className={styles.table}>
+              {cards.map((item: any) => (
+                <TableRow
+                  className={styles.table_row}
+                  key={item.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {item.firstName} {item.lastName}
+                  </TableCell>
+                  <TableCell align="right">zoro@gmail.com</TableCell>
+                  <TableCell align="right">+996712345678</TableCell>
+                  <TableCell align="right">{item.id} продаж</TableCell>
+                  <TableCell align="right">{item.id}k+ доход</TableCell>
+                  <TableCell>
+                    <div>
+                      <Button
+                      // eslint-disable-next-line indent
+                      style={{borderRadius: "20px", backgroundColor: `${userStatus(item.status).color}`, fontSize: "12px"}}
+                         aria-describedby={id} variant="contained" onClick={handleClick}>
+                        {userStatus(item.status).text}
+                      </Button>
+                      <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "left"
+                        }}
+                      >
+                        <Typography style={{ backgroundColor: "#C1F2D8" }} sx={{ p: 2 }}>
+                          Проверен
+                        </Typography>{" "}
+                        <Typography style={{ backgroundColor: "#ECCFB5" }} sx={{ p: 2 }}>
+                          Не проверен.
+                        </Typography>{" "}
+                        <Typography style={{ backgroundColor: "#F1F2C1" }} sx={{ p: 2 }}>
+                          В ожидании
+                        </Typography>{" "}
+                      </Popover>
                     </div>
-                  )}
-                </div>
-                {/*<DeleteButton handleClick={setDeleteId} id={item.id} />*/}
-                {/*<button onClick={(id) => deleteIdl(setDeleteId(item.id))}>*/}
-                {/*  delete*/}
-                {/*</button>*/}
-                <button onClick={handleDelete}>delete</button>
-              </div>
-            </>
-          ))}
-        </div>
+                  </TableCell>
+
+
+
+
+
+
+                  {/* {item.status === 1 ? (
+                    <TableCell align={"left"}>
+                      <span className={styles.verified}>Проверен</span>
+                    </TableCell>
+                  ) : (
+                    <TableCell align={"left"}>
+                      <span className={styles.notVerified}>Не проверен</span>
+                    </TableCell>
+                  )} */}
+
+                  {/* <TableCell align="right">
+                    {item.id === "Рейтинг не подтвержден" ? (
+                      <TableCell
+                        align="right"
+                        className={classes.confirmRating}
+                      >
+                        Рейтинг не подтвержден
+                      </TableCell>
+                    ) : (
+                      <div className={classes.content}>
+                        <LinearProgress
+                          className={classes.progress}
+                          variant="determinate"
+                          value={+item.id}
+                          color={"inherit"}
+                        />
+                      </div>
+                    )}
+                  </TableCell> */}
+                  <DeleteButton />
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
         <Paginations
           onChange={(event: any, page: number) => setCounte(page)}
           count={allPages}

@@ -1,31 +1,24 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-import AdminProfile from "../../../adminProfile/AdminProfile";
+import AdminPopularProducts from "../../../UI/adminPopularProducts/AdminPopularProducts";
 
-import PopularProducts from "../../../UI/popularProducts/PopularProducts";
+import ProfileAva from "../../../UI/profileAva/ProfileAva";
 
 import UsersBlock from "../../../UI/usersBlock/UsersBlock";
-import ViewMoreButton from "../../../UI/viewMoreButton/ViewMoreButton";
 
 import classes from "./adminPageGoodsTopInfo.module.scss";
 
 function AdminPageGoodsTopInfo() {
-
-  const navigate = useNavigate();
-
   return (
-    <section className={classes.topInfo}>
-      <UsersBlock value={"1045"} text={"проданных товаров"} />
-      <div>
-        <PopularProducts />
-        <div onClick={()=> navigate("/popular-products")}>
-          <ViewMoreButton />
+    <div className={classes.main}>
+      <div className={classes.contentTop}>
+        <div className={classes.topInfo}>
+          <UsersBlock value={"1045"} text={"проданных товаров"} />
+          <AdminPopularProducts />
         </div>
+        <ProfileAva />
       </div>
-      <div className={classes.popularGoods}></div>
-      <AdminProfile />
-    </section>
+    </div>    
   );
 }
 

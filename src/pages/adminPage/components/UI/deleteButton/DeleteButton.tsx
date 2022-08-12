@@ -2,12 +2,10 @@ import React from "react";
 
 import classes from "./deleteButton.module.scss";
 
-const DeleteButton = (props: any) => {
-  console.log("props", props.id);
-
+const DeleteButton = () => {
   return (
     <div className={classes.delete}>
-      <button onClick={() => props.handleClick(props.id)}>Удалить</button>
+      <button>Удалить</button>
     </div>
   );
 };

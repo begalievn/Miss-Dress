@@ -18,7 +18,7 @@ function AdminPageUser() {
   const { userId } = useParams();
 
   const navigate = useNavigate();
-  const goBack = () => navigate("/users");
+  const goBack = () => navigate(-1);
 
   return (
     <div className={classes.container_parent}>
