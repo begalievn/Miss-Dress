@@ -23,6 +23,7 @@ import classes from "./productIdPage.module.scss";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 import { useParams } from "react-router-dom";
 import { categoryOneProductApi } from "../../store/services/categoryOneProductApi";
+import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
 
 const ProductIdPage = () => {
   const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
@@ -43,6 +44,8 @@ const ProductIdPage = () => {
     setModalOpen(true);
   };
 
+  const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
+  const id: any = 1;
   return (
     <div className={classes.container}>
       <ContentContainer>

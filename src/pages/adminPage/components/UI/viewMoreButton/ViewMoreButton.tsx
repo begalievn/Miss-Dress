@@ -6,7 +6,7 @@ import classes from "./viewMoreButton.module.scss";
 
 function ViewMoreButton() {
   return (
-    <div className={classes.view_more}>
+    <div className={classes.viewMore}>
       <BrownButton text={"Посмотреть все"} />
     </div>
   );

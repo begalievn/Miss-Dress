@@ -18,10 +18,12 @@ import BrownButton from "../../components/brown-button/BrownButton";
 
 import ProfileAva from "./components/UI/profileAva/ProfileAva";
 import UsersBlock from "./components/UI/usersBlock/UsersBlock";
-import PopularProducts from "./components/UI/popularProducts/PopularProducts";
+import PopularProducts from "./components/UI/adminPopularProducts/AdminPopularProducts";
 import ViewMoreButton from "./components/UI/viewMoreButton/ViewMoreButton";
 
 import { UserApi } from "../../store/services/UserApi";
+import styles from "./components/adminPageUsers/adminPageUsers.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const AdminPageMain = () => {
   const [counte, setCounte] = useState(1);
@@ -60,15 +62,29 @@ const AdminPageMain = () => {
     },
   ];
 
+  const [name, setName] = useState("");
+
   const Data = {
     limit: limit,
     counte: counte,
+    name: name,
   };
 
   const { data = [] } = UserApi.useGetAllQuery(Data);
   const cards = data || [];
 
   const allPages = Math.ceil(data?.result?.count / 7);
+
+  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (name !== "") {
+      navigate(`/dashboard/name=${name}`);
+    }
+  };
+
+  console.log(Data);
+
+  const navigate = useNavigate();
 
   return (
     <div className={classes.container_parent}>
@@ -97,6 +113,7 @@ const AdminPageMain = () => {
             </svg>
             <input placeholder={"Поиск..."} type="text" />
           </div>
+
           <ProfileAva />
         </div>
         <div className={classes.main_bot}>
@@ -130,7 +147,19 @@ const AdminPageMain = () => {
                       </clipPath>
                     </defs>
                   </svg>
-                  <input placeholder="Поиск пользователей" type="text" />
+                  <form onSubmit={handleSave} className={styles.container}>
+                    <input
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className={styles.searchMain}
+                      placeholder="Поиск пользователей"
+                      type="text"
+                    />
+                    <button
+                      style={{ display: "none", visibility: "hidden" }}
+                      type={"submit"}
+                    ></button>
+                  </form>
                 </div>
                 <CategoriesDropdowBtn />
               </div>
@@ -154,18 +183,18 @@ const AdminPageMain = () => {
                     {item.status == "1" ? (
                       <h6
                         style={{
-                          backgroundColor: "#F1F2C1",
-                          paddingLeft: "14px",
+                          backgroundColor: "#C1F2D8",
+                          paddingLeft: "3px",
                         }}
                       >
                         Проверен
                       </h6>
-                    ) : item.status == "0" ? (
+                    ) : item.status == "2" ? (
+                      <h6 style={{ backgroundColor: "#F1F2C1" }}>В ожидании</h6>
+                    ) : (
                       <h6 style={{ backgroundColor: "#ECCFB5" }}>
                         Не проверен
                       </h6>
-                    ) : (
-                      <h6>{item.status}</h6>
                     )}
                   </div>
                   <div>
@@ -181,6 +210,7 @@ const AdminPageMain = () => {
                           value={+item.id}
                           color={"inherit"}
                         />
+
                         <p>
                           {item.id}%{" "}
                           <svg

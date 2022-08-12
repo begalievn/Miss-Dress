@@ -35,7 +35,7 @@ import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers
 import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
 import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
 import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
+import AdminPageAd from "./adminPage/components/adminPageAdvert/AdminPageAdvert";
 
 // import { AdminPageChat } from "./adminPage/components/adminPageChat/AdminPageChat";
 
@@ -44,6 +44,10 @@ import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
 import AdminPageMain from "./adminPage/AdminPageMain";
 
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
+import AdminCollectionById from "./adminPage/components/adminPageGoods/components/adminCollectionById/AdminCollectionById";
+import AdminProductById from "./adminPage/components/adminPageGoods/components/adminProductById/AdminProductById";
+import AdminPopularProducts from "./adminPage/components/adminPageGoods/components/adminPopularProducts/AdminPopularProducts";
+import AdminPageProduct from "./adminPage/components/adminPageShopping/components/AdminPageProduct";
 
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
@@ -61,7 +65,7 @@ const MainRoutes = () => {
     isAdmin = false;
   }
 
-  console.log(validAdmin);
+  // console.log(validAdmin);
 
   const SuspendedAdminPageChat = AdminPageChat;
 
@@ -168,7 +172,7 @@ const MainRoutes = () => {
       id: 20,
     },
     {
-      link: "order-product/:id",
+      link: "order/:id",
       element: <OrderProductPage />,
       id: 21,
     },
@@ -191,45 +195,70 @@ const MainRoutes = () => {
       id: 2,
     },
     {
+      link: "shopping/:productId",
+      element: <AdminPageUser />,
+      id: 3,
+    },
+    {
       link: "dashboard",
       element: <AdminPageDashboard />,
-      id: 3,
+      id: 4,
     },
     {
       link: "users",
       element: <AdminPageUsers />,
-      id: 4,
+      id: 5,
     },
     {
       link: "goods",
       element: <AdminPageGoods />,
-      id: 5,
+      id: 6,
     },
     {
       link: "sales",
       element: <AdminPageSales />,
-      id: 6,
+      id: 7,
     },
     {
       link: "shoppingBag",
       element: <AdminPageShopping />,
-      id: 7,
+      id: 8,
     },
     {
-      link: "ad",
+      link: "advertisement",
       element: <AdminPageAd />,
-      id: 8,
+      id: 9,
     },
 
     {
       link: "user",
       element: <AdminPageUser />,
-      id: 10,
+      id: 11,
+    },
+    {
+      link: "product",
+      element: <AdminPageProduct />,
+      id: 12,
+    },
+    {
+      link: "season-products/:id",
+      element: <AdminCollectionById />,
+      id: 11,
+    },
+    {
+      link: "product/:id",
+      element: <AdminProductById />,
+      id: 12,
+    },
+    {
+      link: "popular-products",
+      element: <AdminPopularProducts />,
+      id: 13,
     },
     {
       link: "chat",
       element: <AdminPageChat />,
-      id: 11,
+      id: 14,
     },
   ];
 

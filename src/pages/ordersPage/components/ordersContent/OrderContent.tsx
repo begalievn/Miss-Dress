@@ -30,28 +30,24 @@ function OrderContent() {
                   <ul className={styles.contentBlockList}>
                     <li>
                       {item.cart.products
-                        .filter((elem: any, index: number) => index < 3)
+                        .filter((_elem: any, index: number) => index < 3)
                         .map((elem: any) => {
                           return (
                             <span
                               key={elem.id}
                               className={styles.contentBlockImg}
                             >
-                              {elem.product.images[0]?.url ? (
-                                <img src={elem.product.images[0]?.url} alt="" />
-                              ) : (
-                                <img
-                                  src="https://via.placeholder.com/400x560"
-                                  alt=""
-                                />
-                              )}
+                              <img
+                                src={elem.product.images[1]?.url}
+                                alt=""
+                              ></img>
                             </span>
                           );
                         })}
                     </li>
 
                     <li>
-                      <Link to={`/order-product/${item.id}`}>
+                      <Link to={`/order/${item.id}`}>
                         <div className={styles.contentBlockImgPlus}>
                           +{item.cart.amount - 3}
                         </div>
@@ -67,6 +63,7 @@ function OrderContent() {
             );
           })
         : null}
+
       {isError && <h1>Ошибка на сервере</h1>}
     </div>
   );
