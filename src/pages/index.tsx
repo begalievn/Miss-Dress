@@ -44,6 +44,7 @@ import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
 import AdminPageMain from "./adminPage/AdminPageMain";
 
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
+import AdminPageProduct from "./adminPage/components/adminPageShopping/components/AdminPageProduct";
 
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
@@ -184,44 +185,54 @@ const MainRoutes = () => {
       id: 2,
     },
     {
+      link: "shopping/:productId",
+      element: <AdminPageUser />,
+      id: 3,
+    },
+    {
       link: "dashboard",
       element: <AdminPageDashboard />,
-      id: 3,
+      id: 4,
     },
     {
       link: "users",
       element: <AdminPageUsers />,
-      id: 4,
+      id: 5,
     },
     {
       link: "goods",
       element: <AdminPageGoods />,
-      id: 5,
+      id: 6,
     },
     {
       link: "sales",
       element: <AdminPageSales />,
-      id: 6,
+      id: 7,
     },
     {
       link: "shoppingBag",
       element: <AdminPageShopping />,
-      id: 7,
+      id: 8,
     },
     {
       link: "ad",
       element: <AdminPageAd />,
-      id: 8,
+      id: 9,
     },
     {
       link: "chat",
       element: <AdminPageChat />,
-      id: 9,
+      id: 10,
     },
     {
       link: "user",
       element: <AdminPageUser />,
-      id: 10,
+      id: 11,
+    },
+    {
+      link: "product",
+      element: <AdminPageProduct />,
+      id: 12,
     },
   ];
 
