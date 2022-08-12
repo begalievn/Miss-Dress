@@ -1,0 +1,12 @@
+.container_parent {
+  height: 100%;
+  display: flex;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.chat_container {
+  height: 20%;
+  overflow-y: auto;
+}

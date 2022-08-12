@@ -22,10 +22,10 @@ const popularProducts = [
 
 function PopularProducts() {
   return (
-    <div>
+    <div className={classes.container}>
       <h3>Популярные товары</h3>
-      {popularProducts.map((item) => (
-        <div className={classes.products}>
+      {popularProducts.map((item, index) => (
+        <div key={index} className={classes.products}>
           <h4>{item.name}</h4>
           <h5>{item.amount} продаж</h5>
           <h5>{item.income} доход</h5>

@@ -37,7 +37,7 @@ import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales
 import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
 import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
 
-import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
+// import { AdminPageChat } from "./adminPage/components/adminPageChat/AdminPageChat";
 
 // import AdminMenu from "./adminPage/AdminMenu";
 
@@ -46,6 +46,10 @@ import AdminPageMain from "./adminPage/AdminPageMain";
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
 
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
+
+const AdminPageChat = React.lazy(
+  () => import("../pages/adminPage/components/adminPageChat/AdminPageChat")
+);
 
 const MainRoutes = () => {
   const validAdmin = parseJwt();
@@ -58,6 +62,8 @@ const MainRoutes = () => {
   }
 
   console.log(validAdmin);
+
+  const SuspendedAdminPageChat = AdminPageChat;
 
   const PUBLIC_ROUTES = [
     {
@@ -180,61 +186,69 @@ const MainRoutes = () => {
       id: 1,
     },
     {
+      link: "users/:userId",
+      element: <AdminPageUser />,
+      id: 2,
+    },
+    {
       link: "dashboard",
       element: <AdminPageDashboard />,
-      id: 2,
+      id: 3,
     },
     {
       link: "users",
       element: <AdminPageUsers />,
-      id: 3,
+      id: 4,
     },
     {
       link: "goods",
       element: <AdminPageGoods />,
-      id: 4,
+      id: 5,
     },
     {
       link: "sales",
       element: <AdminPageSales />,
-      id: 5,
+      id: 6,
     },
     {
       link: "shoppingBag",
       element: <AdminPageShopping />,
-      id: 29,
+      id: 7,
     },
     {
       link: "ad",
       element: <AdminPageAd />,
-      id: 30,
+      id: 8,
+    },
+
+    {
+      link: "user",
+      element: <AdminPageUser />,
+      id: 10,
     },
     {
       link: "chat",
       element: <AdminPageChat />,
-      id: 31,
-    },
-    {
-      link: "user",
-      element: <AdminPageUser />,
-      id: 32,
+      id: 11,
     },
   ];
 
   return (
-    <Routes>
-      {isAdmin ? (
-        PRIVATE_ROUTES.map(({ link, id, element }) => (
-          <Route path={link} element={element} key={id} />
-        ))
-      ) : (
-        <Route path="*" element={<ErrorPage />} />
-      )}
+    <React.Suspense fallback={<span>Loading...</span>}>
+      <Routes>
+        {isAdmin ? (
+          PRIVATE_ROUTES.map(({ link, id, element }) => (
+            <Route path={link} element={element} key={id} />
+          ))
+        ) : (
+          <Route path="*" element={<ErrorPage />} />
+        )}
 
-      {PUBLIC_ROUTES.map(({ link, id, element }) => (
-        <Route path={link} element={element} key={id} />
-      ))}
-    </Routes>
+        {PUBLIC_ROUTES.map(({ link, id, element }) => (
+          <Route path={link} element={element} key={id} />
+        ))}
+      </Routes>
+    </React.Suspense>
   );
 };
 

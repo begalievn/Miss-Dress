@@ -1,87 +1,85 @@
-
 .container {
-    width: 100%;
-    padding: 0 13px 0 13px;
+  width: 100%;
+  padding: 0 13px 0 13px;
 }
 
 .content {
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding-bottom: 180px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-bottom: 180px;
 }
 
 .header {
-    margin-top: 100px;
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 35px;
-    color: #372E24;
+  margin-top: 100px;
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 35px;
+  color: #372e24;
 }
 
-hr {
-    margin: 20px 0px 60px;
-    width: 65%;
-    border-top: 1px solid #372E24;
-}
-
+// hr {
+//     margin: 20px 0px 60px;
+//     width: 65%;
+//     border-top: 1px solid #372E24;
+// }
 
 // ===== Adaptive =====
 @media (max-width: 970px) {
-    .content {
-        padding-bottom: 140px;
-    }
+  .content {
+    padding-bottom: 140px;
+  }
 
-    .header {
-        font-size: 30px;
-    }
+  .header {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 810px) {
-    .header {
-        margin-top: 70px;
-        font-size: 24px;
-    }
+  .header {
+    margin-top: 70px;
+    font-size: 24px;
+  }
 
-    hr {
-        margin: 10px 0px 40px;
-    }
+  hr {
+    margin: 10px 0px 40px;
+  }
 }
 
 @media (max-width: 715px) {
-    .content {
-        padding-bottom: 100px;
-    }
+  .content {
+    padding-bottom: 100px;
+  }
 }
 
 @media (max-width: 650px) {
-    .header {
-        font-weight: 600;
-        font-size: 20px;
-    }
+  .header {
+    font-weight: 600;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 500px) {
-    .header {
-        text-align: center;
-    }
+  .header {
+    text-align: center;
+  }
 
-    hr {
-        display: none;
-    }
+  hr {
+    display: none;
+  }
 
-    .content {
-        padding-bottom: 70px;
-    }
+  .content {
+    padding-bottom: 70px;
+  }
 }
 
 @media (max-width: 386px) {
-    .header {
-        margin-top: 50px;
-        font-size: 14px;
-    }
+  .header {
+    margin-top: 50px;
+    font-size: 14px;
+  }
 
-    .content {
-        padding-bottom: 40px;
-    }
+  .content {
+    padding-bottom: 40px;
+  }
 }
