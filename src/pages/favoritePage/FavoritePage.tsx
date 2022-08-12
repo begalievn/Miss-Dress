@@ -1,4 +1,3 @@
-
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
@@ -8,31 +7,26 @@ import Paginations from "../../components/pagination/Paginations";
 import ContentFavorite from "./components/ContentFavorite";
 
 import classes from "./favorite.module.scss";
+import { productFavoritesApi } from "../../store/services/productFavoritesApi";
+import { useState } from "react";
 
 const FavoritePage = () => {
-  const info = [
-    {
-      name: "Choper Shoulder Frill Vent Dress",
-      price: 7900,
-      colors: 4,
-      size: 29,
-      id: 1,
-    },
-    {
-      name: "Envy Look Button Eco Dress",
-      price: 7900,
-      colors: 4,
-      size: 29,
-      id: 2,
-    },
-    {
-      name: "Envy Look All Season Skirt",
-      price: 7900,
-      colors: 4,
-      size: 29,
-      id: 2,
-    },
-  ];
+  const [counte, setCounte] = useState(1);
+  const limit = 10;
+
+  const Data = {
+    limit: limit,
+    counte: counte,
+    // name: "privet",
+  };
+
+  const { data = {} } = productFavoritesApi.useGetFavoritesQuery(Data);
+
+  const allPages = Math.ceil(data?.result?.count / 7);
+
+  const cards = data?.result?.data;
+
+  console.log(cards);
 
   return (
     <>
@@ -44,20 +38,25 @@ const FavoritePage = () => {
             <CategoriesDropdowBtn />
           </div>
         </div>
-        {info.map((item) => (
-          <div>
-            <ContentFavorite
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              colors={item.colors}
-              size={item.size}
-              id={item.id}
-            />
-          </div>
-        ))}
+        {cards &&
+          cards.map((item: any) => (
+            <div>
+              <ContentFavorite
+                key={item.id}
+                name={item.title}
+                price={item.price}
+                colors={item.id}
+                size={item.id}
+                id={item.id}
+                rate={item.rate}
+              />
+            </div>
+          ))}
       </div>
-      <Paginations />
+      <Paginations
+        onChange={(event: any, page: number) => setCounte(page)}
+        count={allPages}
+      />
     </>
   );
 };

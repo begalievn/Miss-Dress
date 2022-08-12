@@ -22,6 +22,7 @@ export interface IFavorites {
   colors: number;
   size: number;
   id: number;
+  rate: number;
 }
 
 interface Images {

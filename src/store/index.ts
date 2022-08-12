@@ -22,6 +22,7 @@ import { ratingApi } from "./services/RatingApi";
 import { adminUserOneApi } from "./services/adminUserOneApi";
 import { adminDeleteUserApi } from "./services/adminDeleteUserApi";
 import { adminGetCartApi } from "./services/adminGetCartApi";
+import { productFavoritesApi } from "./services/productFavoritesApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -42,6 +43,7 @@ const rootreducer = combineReducers({
   [adminUserOneApi.reducerPath]: adminUserOneApi.reducer,
   [adminDeleteUserApi.reducerPath]: adminDeleteUserApi.reducer,
   [adminGetCartApi.reducerPath]: adminGetCartApi.reducer,
+  [productFavoritesApi.reducerPath]: productFavoritesApi.reducer,
 });
 
 export const store = configureStore({
@@ -65,7 +67,8 @@ export const store = configureStore({
       ratingApi.middleware,
       adminUserOneApi.middleware,
       adminDeleteUserApi.middleware,
-      adminGetCartApi.middleware
+      adminGetCartApi.middleware,
+      productFavoritesApi.middleware
     ),
 });
 
