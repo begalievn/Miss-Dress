@@ -11,8 +11,7 @@ function OrderProductContent() {
   const {id} = useParams();
   const {data, isLoading, isError} = orderApi.useFetchOrderByIdQuery(id!);
   const cartOrderId = data?.result; 
-  console.log(cartOrderId);
-  
+  // console.log(cartOrderId);
   
   return (
     <div>

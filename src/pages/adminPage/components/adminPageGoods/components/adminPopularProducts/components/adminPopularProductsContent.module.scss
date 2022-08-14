@@ -1,0 +1,248 @@
+
+.main {
+    width: 100%;
+    padding: 20px;
+
+    .contentTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .users {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 650px;
+      }
+
+      .regularUsers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .inner{
+          display: flex;
+          margin-top: 25px;
+
+          h5 {
+            width: 150px;
+          }
+
+          p {
+            margin-left: 20px;
+            width: 105px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .contentBot {
+      margin-top: 94px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .searchParent {
+        display: flex;
+        align-items: center;
+        select {
+          background: #DBB593;
+          width: 193px;
+          height: 50px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+          color: #74614D;
+          margin-left: 20px;
+        }
+
+        .search {
+          display: flex;
+          align-items: center;
+          background: #F1DAC5;
+          border-radius: 45px;
+          width: 350px;
+          height: 50px;
+          padding: 15px 25px;
+          input {
+            margin-left: 20px;
+            outline: none;
+            border: none;
+            background-color: inherit;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            color: #74614D;
+          }
+        }
+      }
+    }
+  }
+  
+  .productsContainer {
+    height: 100%;
+    display: flex;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+
+    * {
+      color: #372E24;
+      font-weight: 500;
+    }
+
+    h3 {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    h4 {
+      font-size: 14px;
+    }
+
+    h2 {
+      font-size: 20px;
+      line-height: 29px;
+    }
+  }
+  
+  .viewMore {
+    background: #DBB593;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    margin-top: 40px;
+    width: 200px;
+    height: 50px;
+  }
+  
+  .subtitle {
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 17px !important;
+  }
+  
+  .tableChildren {
+    display: flex;
+    margin: 30px 0 50px 0;
+    justify-content: space-between;
+    position: relative;
+  
+    h4:nth-child(1) {
+      position: absolute;
+      top: 0;
+    }
+
+    h4:nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 193px;
+    }
+
+    h4:nth-child(3) {
+      position: absolute;
+      top: 0;
+      left: 280px;
+    }
+
+    h4:nth-child(4) {
+      position: absolute;
+      top: 0;
+      right: 395px;
+    }
+
+    h4:nth-child(5) {
+      position: absolute;
+      top: 0;
+      right: 325px;
+    }
+
+    h4:nth-child(6) {
+      position: absolute;
+      top: 0;
+      right: 248px;
+    }
+
+    h4:nth-child(7) {
+      position: absolute;
+      top: 0;
+      right: 150px;
+    }
+
+    h4 {
+      font-weight: 600;
+    }
+
+    h5 {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 20px;
+    }  
+  }
+
+  .tableInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      // cursor: pointer;
+      font-size: 13px;
+      width: 100%;
+      max-width: 170px;
+    }
+
+    h5 {
+      width: 100%;
+      max-width: 150px;
+    }
+
+    h6 {
+      width: 94px;
+      background: #C1F2D8;
+      border-radius: 20px;
+      padding: 1px 5px;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      line-height: 20px;
+      background: #C1F2D8;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 60px;
+      padding: 0 2px;
+      margin-left: 10px;
+    }
+  }
+
+  .tableInfo {
+    margin: 30px 0 0 0;
+
+    h5:nth-child(3) {
+      width: 100%;
+      max-width: 110px;
+    }
+
+    h5:nth-child(4) {
+      width: 100%;
+      max-width: 90px;
+      margin-left: 20px;
+    }
+
+    h5:nth-child(5) {
+      width: 100%;
+      max-width: 90px;
+    }
+  }
+  
+  

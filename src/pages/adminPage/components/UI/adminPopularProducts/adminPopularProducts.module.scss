@@ -1,0 +1,30 @@
+.container {
+    h2 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 29px;
+        color: #372e24;
+    }
+
+    .title, .viewMoreBtn {
+        display: flex;
+        justify-content: center;
+    }
+
+    .products {
+        display: flex;
+        margin-top: 25px;
+
+        .productTitle {
+            font-weight: 600;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        p {
+            margin-left: 20px;
+            width: 105px;
+            font-size: 14px;
+        }
+    }
+}

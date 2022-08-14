@@ -41,17 +41,6 @@ const CategoryPage = () => {
   if (!categoriesLoading) {
     getNestedCategories(categories?.result || []);
   }
-  const {
-    data: products,
-    isLoading: productsLoading,
-    error: productsError,
-    refetch,
-  } = productsApi.useGetAllProductsQuery("");
-
-  // useEffect(() => {
-  //   console.log("Refetched");
-  //   refetch();
-  // }, [selectedCategory]);
 
   const {
     data: productsByCategory,
@@ -61,13 +50,8 @@ const CategoryPage = () => {
 
   console.log("Products by Category", productsByCategory);
 
-  const [outputCategories, setOutputCategories] = useState<CategoryTypes[]>([]);
-
-  // console.log("Products", products);
-
-  const { data = [] } = productsApi.useGetAllProductsQuery("");
-
-  const cards = data.result?.data || [];
+  const cards = productsByCategory?.result?.data || [];
+  console.log("Data: ", cards);
 
   const [name, setName] = useState("");
 
@@ -115,19 +99,23 @@ const CategoryPage = () => {
             </div>
             <section className={classes.products}>
               <ProductsGridContainer>
-                {cards.map((item: any, index: any) => (
-                  <div className={classes.product_card}>
-                    <ProductCard
-                      status={item.status}
-                      rate={item.rate}
-                      title={item.title}
-                      price={item.price}
-                      key={index}
-                      image={item.images}
-                      id={item.id}
-                    />
-                  </div>
-                ))}
+                {cards.length !== 0 ? (
+                  cards.map((item: any, index: any) => (
+                    <div className={classes.product_card}>
+                      <ProductCard
+                        status={item.status}
+                        rate={item.rate}
+                        title={item.title}
+                        price={item.price}
+                        key={index}
+                        image={item.images}
+                        id={item.id}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <h2>Нет товаров в данной категорий</h2>
+                )}
               </ProductsGridContainer>
             </section>
           </main>

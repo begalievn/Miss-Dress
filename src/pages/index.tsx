@@ -35,18 +35,25 @@ import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers
 import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
 import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
 import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/components/adminPageAd/AdminPageAd";
+import AdminPageAd from "./adminPage/components/adminPageAdvert/AdminPageAdvert";
 
-import AdminPageChat from "./adminPage/components/adminPageChat/AdminPageChat";
+// import { AdminPageChat } from "./adminPage/components/adminPageChat/AdminPageChat";
 
 // import AdminMenu from "./adminPage/AdminMenu";
 
 import AdminPageMain from "./adminPage/AdminPageMain";
 
 import AdminPageUser from "./adminPage/components/adminPageUser/AdminPageUser";
+import AdminCollectionById from "./adminPage/components/adminPageGoods/components/adminCollectionById/AdminCollectionById";
+import AdminProductById from "./adminPage/components/adminPageGoods/components/adminProductById/AdminProductById";
+import AdminPopularProducts from "./adminPage/components/adminPageGoods/components/adminPopularProducts/AdminPopularProducts";
 import AdminPageProduct from "./adminPage/components/adminPageShopping/components/AdminPageProduct";
 
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
+
+const AdminPageChat = React.lazy(
+  () => import("../pages/adminPage/components/adminPageChat/AdminPageChat")
+);
 
 const MainRoutes = () => {
   const validAdmin = parseJwt();
@@ -58,7 +65,9 @@ const MainRoutes = () => {
     isAdmin = false;
   }
 
-  console.log(validAdmin);
+  // console.log(validAdmin);
+
+  const SuspendedAdminPageChat = AdminPageChat;
 
   const PUBLIC_ROUTES = [
     {
@@ -82,94 +91,95 @@ const MainRoutes = () => {
       id: 4,
     },
     {
+      link: "category/:productID",
+      element: <ProductIdPage />,
+      id: 5,
+    },
+    {
       link: "/news/:id",
       element: <NewsPage edit={false} />,
-      id: 5,
+      id: 6,
     },
     {
       link: "/contacts",
       element: <ContactsPage />,
-      id: 6,
+      id: 7,
     },
     {
       link: "*",
       element: <ErrorPage />,
-      id: 7,
-    },
-    {
-      link: "/category/:productId",
-      element: <ProductIdPage />,
       id: 8,
     },
+
     {
       link: "/collection/:collection",
       element: <CollectionPagesContent />,
-      id: 10,
+      id: 9,
     },
     {
       link: "/collection/:id/:collection",
       element: <CollectionCategory />,
-      id: 11,
+      id: 10,
     },
     {
       link: "shopping",
       element: <ShoppingCartPage />,
-      id: 12,
+      id: 11,
     },
     {
       link: "profile",
       element: <ProfilePage />,
-      id: 13,
+      id: 12,
     },
     {
       link: "order/",
       element: <OrderPage />,
-      id: 14,
+      id: 13,
     },
     {
       link: "public-offer",
       element: <PublicOfferPage />,
-      id: 15,
+      id: 14,
     },
     {
       link: "how-order",
       element: <HowOrderPage />,
-      id: 16,
+      id: 15,
     },
     {
       link: "search/name=:name",
       element: <SearchPage />,
-      id: 17,
+      id: 16,
     },
     {
       link: "payment",
       element: <PaymentPage />,
-      id: 18,
+      id: 17,
     },
     {
       link: "requisite",
       element: <RequisitePage />,
-      id: 19,
+      id: 18,
     },
     {
       link: "Faq",
       element: <FaqPage />,
-      id: 20,
+      id: 19,
     },
     {
       link: "return-product",
       element: <ReturnProduct />,
-      id: 21,
+      id: 20,
     },
     {
-      link: "order-product/:id",
+      link: "order/:id",
       element: <OrderProductPage />,
-      id: 22,
+      id: 21,
     },
     {
       link: "favorites",
       element: <FavoritePage />,
-      id: 23,
+      id: 22,
     },
   ];
 
@@ -215,15 +225,11 @@ const MainRoutes = () => {
       id: 8,
     },
     {
-      link: "ad",
+      link: "advertisement",
       element: <AdminPageAd />,
       id: 9,
     },
-    {
-      link: "chat",
-      element: <AdminPageChat />,
-      id: 10,
-    },
+
     {
       link: "user",
       element: <AdminPageUser />,
@@ -234,22 +240,44 @@ const MainRoutes = () => {
       element: <AdminPageProduct />,
       id: 12,
     },
+    {
+      link: "season-products/:id",
+      element: <AdminCollectionById />,
+      id: 11,
+    },
+    {
+      link: "product/:id",
+      element: <AdminProductById />,
+      id: 12,
+    },
+    {
+      link: "popular-products",
+      element: <AdminPopularProducts />,
+      id: 13,
+    },
+    {
+      link: "chat",
+      element: <AdminPageChat />,
+      id: 14,
+    },
   ];
 
   return (
-    <Routes>
-      {isAdmin ? (
-        PRIVATE_ROUTES.map(({ link, id, element }) => (
-          <Route path={link} element={element} key={id} />
-        ))
-      ) : (
-        <Route path="*" element={<ErrorPage />} />
-      )}
+    <React.Suspense fallback={<span>Loading...</span>}>
+      <Routes>
+        {isAdmin ? (
+          PRIVATE_ROUTES.map(({ link, id, element }) => (
+            <Route path={link} element={element} key={id} />
+          ))
+        ) : (
+          <Route path="*" element={<ErrorPage />} />
+        )}
 
-      {PUBLIC_ROUTES.map(({ link, id, element }) => (
-        <Route path={link} element={element} key={id} />
-      ))}
-    </Routes>
+        {PUBLIC_ROUTES.map(({ link, id, element }) => (
+          <Route path={link} element={element} key={id} />
+        ))}
+      </Routes>
+    </React.Suspense>
   );
 };
 
