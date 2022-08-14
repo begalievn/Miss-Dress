@@ -55,6 +55,11 @@ const AdminMenu = () => {
       image: commentsIcon,
       route: "/chat",
     },
+    {
+      title: "Новости",
+      image: commentsIcon,
+      route: "/news",
+    },
   ];
 
   return (
