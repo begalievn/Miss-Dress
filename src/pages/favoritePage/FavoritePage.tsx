@@ -26,8 +26,6 @@ const FavoritePage = () => {
 
   const cards = data?.result?.data;
 
-  console.log(cards);
-
   return (
     <>
       <div className={classes.content_main}>

@@ -1,12 +1,24 @@
-import React from "react";
+
+
 import { useParams } from "react-router-dom";
 
-import { favoriteIcon } from "../../../../assets/icons/icons";
+import React, { useState } from "react";
+
 import { categoryOneProductApi } from "../../../../store/services/categoryOneProductApi";
+
+
+import { favoriteIcon, filledLike } from "../../../../assets/icons/icons";
+
+
+import productCard from "../../../../components/productCard/ProductCard";
+
+import { productFavoritesApi } from "../../../../store/services/productFavoritesApi";
 
 import classes from "./productContentInfo.module.scss";
 
+
 const ProductContentInfo = () => {
+
 
   const { productID } = useParams();
 
@@ -16,6 +28,15 @@ const ProductContentInfo = () => {
     isError: error,
   } = categoryOneProductApi.useFetchCategoryOneProductApiQuery(productID);
   // console.log("newData", newData);
+
+  const [addFav] = productFavoritesApi.useAddFavoritesMutation();
+
+  const handleAddFav = () => {
+    addFav(productCard);
+    setFavorite(!favorite);
+  };
+
+  const [favorite, setFavorite] = useState(false);
 
   return (
     <div className={classes.container}>
@@ -27,8 +48,12 @@ const ProductContentInfo = () => {
           <span className={classes.article_name}>{"Артикул:"}</span>
           <span className={classes.article_data}>{newData ? newData.article : null}</span>
         </div>
-        <div className={classes.like_icon}>
-          <img src={favoriteIcon} alt="favorite icon" />
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={handleAddFav}
+          className={classes.like_icon}
+        >
+          <img src={favorite ? filledLike : favoriteIcon} alt="favorite icon" />
         </div>
       </div>
       <div className={classes.quantity}>

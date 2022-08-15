@@ -26,7 +26,7 @@ const result: any = [
 ];
 console.log(result);
 export const data = [
-  [result[0].collection ? result[0].collection : result[0].collection],
+  [result[0].collection],
   ["Янв", 70, 40, 41.8],
   ["Фев", 50, 50, 32.4],
   ["Мар", 50, 40, 25.7],

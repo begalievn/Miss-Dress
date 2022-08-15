@@ -31,15 +31,15 @@ import classes from "./productIdPage.module.scss";
 
 const ProductIdPage = () => {
   const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
-  const { productID } = useParams();
-  // console.log(productID);
+
+  const { productID }: any = useParams();
+  console.log("productID", productID);
 
   const {
     data:newData,
     isLoading: loading,
     isError: error,
   } = categoryOneProductApi.useFetchCategoryOneProductApiQuery(productID);
-  console.log("newData", newData);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -49,7 +49,15 @@ const ProductIdPage = () => {
   };
 
   const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
+
+  const [cart, setCart] = useState(false);
+
   const id: any = 1;
+
+  const handleAddCart = () => {
+    addProduct(productID);
+    setCart(!cart);
+  };
 
   return (
     <div className={classes.container}>
@@ -84,8 +92,11 @@ const ProductIdPage = () => {
                   text={newData ? newData.description : null}
                 />
               </div>
-              <div className={classes.add_button}>
-                <AddToBusketButton text={"Добавить в корзину"} />
+              <div onClick={handleAddCart} className={classes.add_button}>
+                <AddToBusketButton
+                  style={{ cursor: "pointer" }}
+                  text={"Добавить в корзину"}
+                />
               </div>
             </div>
           </div>

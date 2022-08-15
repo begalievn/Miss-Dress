@@ -56,9 +56,7 @@ const info = [
 const AdminPageShopping = () => {
   const { data = {} } = adminGetCartApi.useGetCartQuery("");
 
-  const cards = data?.result;
-
-  console.log(cards);
+  const cards = data;
 
   return (
     <div className={classes.container_parent}>
