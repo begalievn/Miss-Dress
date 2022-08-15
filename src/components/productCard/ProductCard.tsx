@@ -46,6 +46,7 @@ const ProductCard = ({
   status,
   width,
 }: IProductCard) => {
+
   const navigate = useNavigate();
 
   const [addFav] = productFavoritesApi.useAddFavoritesMutation();
@@ -75,7 +76,7 @@ const ProductCard = ({
   return (
     <div className={classes.container}>
       <div>
-        <ProductPhoto image={image[1]?.url} id={id} />
+        <ProductPhoto image={image[0]?.url} id={id} />
       </div>
       <div className={classes.content}>
         <div className={classes.first}>

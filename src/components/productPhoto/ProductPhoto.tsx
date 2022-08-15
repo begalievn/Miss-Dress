@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import classes from "./productPhoto.module.scss";
 
@@ -10,17 +10,15 @@ interface IProductPhoto {
 }
 
 const ProductPhoto = ({ image, id, category }: IProductPhoto) => {
-  const navigate = useNavigate();
-  const clickHandler = () => {
-    navigate("/category");
-  };
-
+  // const { productID } = useParams();
   return (
     <div className={classes.container}>
       <img src={image} alt="" />
-      <button className={classes.button} onClick={clickHandler}>
-        {"Смотреть"}
-      </button>
+
+      <Link to={`${id}`}>
+        <button className={classes.button}>{"Смотреть"}</button>
+      </Link>
+
     </div>
   );
 };

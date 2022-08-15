@@ -12,40 +12,18 @@ import { productsApi } from "../../store/services/productsApi";
 
 import classes from "./similarProductsBlock.module.scss";
 
-// const cards = [
-//   {
-//     image: bestSellers1,
-//     id: 1,
-//   },
-//   {
-//     image: bestSellers2,
-//     id: 2,
-//   },
-//   {
-//     image: bestSellers3,
-//     id: 3,
-//   },
-//   {
-//     image: bestSellers4,
-//     id: 4,
-//   },
-//   {
-//     image: bestSellers5,
-//     id: 5,
-//   },
-//   {
-//     image: bestSellers6,
-//     id: 6,
-//   },
-// ];
-
 const SimilarProductsBlock = () => {
   const { data = [] } = productsApi.useGetAllProductsQuery("");
   const [cards, setCards] = useState([]);
-  const dataCards = useMemo(() => {
-    setCards(data.result?.data || []);
-  }, [data]);
-  console.log(cards);
+  console.log(data.result);
+
+  // const dataCards: any = useMemo(() => {
+  //   setCards(data?.result?.data || []);
+  //   return dataCards;
+  // }, [data]);
+
+  // console.log(dataCards);
+
   return (
     <div className={classes.container}>
       <div className={classes.title}>

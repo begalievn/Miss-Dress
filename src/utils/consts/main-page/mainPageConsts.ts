@@ -1,3 +1,7 @@
 const bestSellers = "Хит продаж";
+const newProducts = "Новинки";
 
-export { bestSellers };
+export { 
+  bestSellers,
+  newProducts,
+};

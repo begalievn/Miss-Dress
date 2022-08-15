@@ -1,9 +1,11 @@
 import React from "react";
 
-import { advertContentLeft, advertContentRight } from "../../../../../utils/consts/admin-page-advert/adminPageAdvert";
+import {
+  advertContentLeft,
+  advertContentRight,
+} from "../../../../../utils/consts/admin-page-advert/adminPageAdvert";
 
 import classes from "./adminPageAdvertContent.module.scss";
-
 
 function AdminPageAdvertContent() {
   return (
@@ -24,7 +26,7 @@ function AdminPageAdvertContent() {
                 </div>
               </div>
             );
-          })}    
+          })}
         </div>
 
         <div className={classes.advertContentRight}>
@@ -42,7 +44,7 @@ function AdminPageAdvertContent() {
             );
           })}
         </div>
-      </div> 
+      </div>
     </>
   );
 }

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { categoryOneProductApi } from "../../../../store/services/categoryOneProductApi";
 
 import classes from "./productPicturesVerticalSlider.module.scss";
 
@@ -8,13 +11,13 @@ interface IProductPicturesVerticalSlider {
 }
 
 interface ImageCardTypes {
-  card: string;
+  card: any;
 }
 
 const ImageCard = ({ card }: ImageCardTypes) => {
   return (
     <div className={classes.image_card}>
-      <img src={card} alt="" />
+      <img src={card?.url} alt="" />
     </div>
   );
 };
@@ -63,6 +66,16 @@ const ProductPicturesVerticalSlider = ({
 
   // Mobile version carousel indexes
 
+  const { productID } = useParams();
+  // console.log(productID);
+
+  const {
+    data:newData,
+    isLoading: loading,
+    isError: error,
+  } = categoryOneProductApi.useFetchCategoryOneProductApiQuery(productID);
+  // console.log("newData", newData);
+
   function prev() {
     setActiveIndex((prev: number) =>
       prev ? prev - 1 : sliderCards.length - 1
@@ -84,8 +97,10 @@ const ProductPicturesVerticalSlider = ({
           key={hiddenLeftIndex}
           className={[classes.hiddenLeft, classes.card].join(" ")}
         >
+        
           <ImageCard card={sliderCards[hiddenLeftIndex]} />
         </div>
+
         <div
           onClick={() => handleImageClick(leftIndex)}
           key={leftIndex}
@@ -93,6 +108,7 @@ const ProductPicturesVerticalSlider = ({
         >
           <ImageCard card={sliderCards[leftIndex]} />
         </div>
+
         <div
           onClick={() => handleImageClick(activeIndex)}
           key={activeIndex}
@@ -100,6 +116,7 @@ const ProductPicturesVerticalSlider = ({
         >
           <ImageCard card={sliderCards[activeIndex]} />
         </div>
+
         <div
           onClick={() => handleImageClick(rightIndex)}
           key={rightIndex}
@@ -120,8 +137,9 @@ const ProductPicturesVerticalSlider = ({
           className={[classes.hiddenRight, classes.card].join(" ")}
         >
           <ImageCard card={sliderCards[hiddenRightIndex]} />
-        </div>
+        </div> 
       </div>
+
       <div className={classes.arrow_down} onClick={next}></div>
     </div>
   );

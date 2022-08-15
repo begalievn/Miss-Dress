@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useParams } from "react-router-dom";
+
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
 
 import {
@@ -11,6 +13,12 @@ import {
 
 import SimilarProductsBlock from "../../components/similar-products-block/SimilarProductsBlock";
 
+import LoaderCircular from "../../components/loader-circular/LoaderCircular";
+
+import { categoryOneProductApi } from "../../store/services/categoryOneProductApi";
+
+import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
+
 import ProductPicturesSlider from "./components/productPicturesSlider/ProductPicturesSlider";
 import ProductContentInfo from "./components/productContentInfo/ProductContentInfo";
 import AddToBusketButton from "./components/add-to-busket-button/AddToBusketButton";
@@ -20,11 +28,19 @@ import ProductPicturesVerticalSlider from "./components/productPicturesVerticalS
 import ZoomModal from "./components/zoom-modal/ZoomModal";
 
 import classes from "./productIdPage.module.scss";
-import LoaderCircular from "../../components/loader-circular/LoaderCircular";
-
-const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
 
 const ProductIdPage = () => {
+  const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
+  const { productID } = useParams();
+  // console.log(productID);
+
+  const {
+    data:newData,
+    isLoading: loading,
+    isError: error,
+  } = categoryOneProductApi.useFetchCategoryOneProductApiQuery(productID);
+  console.log("newData", newData);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -32,32 +48,40 @@ const ProductIdPage = () => {
     setModalOpen(true);
   };
 
+  const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
+  const id: any = 1;
+
   return (
     <div className={classes.container}>
       <ContentContainer>
         <div className={classes.product_container}>
           <div className={classes.product_vertical_slider}>
-            <ProductPicturesVerticalSlider
-              setImageIndex={setActiveIndex}
-              cards={images}
-            />
+            {
+              loading ? null : <ProductPicturesVerticalSlider
+                setImageIndex={setActiveIndex}
+                cards={newData.images}
+              />
+            }
+            
           </div>
           <div className={classes.product_content}>
             <div
               className={classes.product_image}
               onClick={() => handleZoomOpen()}
             >
-              <img src={images[activeIndex]} alt={""} />
+              {newData ? newData.images.filter((_elem: any, index: number) => index < 1).map((item:any)=>{
+                return (
+                  <>
+                    <img src={item.url} alt={""} />
+                  </>
+                );
+              }) : null}
             </div>
             <div className={classes.product_content_info}>
-              <ProductContentInfo />
+              <ProductContentInfo  />
               <div className={classes.about}>
                 <ProductAbout
-                  text={`В наши дни платья по-прежнему пользуются спросом и популярностью
-                среди молодежи, они занимают почетные места на презентациях мод.
-                Однако постепенно в моду входит повседневный стиль, который не
-                подразумевает использование красочных и ярких образов.Платье
-                Benito Kate Wrap Dress отличный пример этому.`}
+                  text={newData ? newData.description : null}
                 />
               </div>
               <div className={classes.add_button}>
@@ -66,20 +90,23 @@ const ProductIdPage = () => {
             </div>
           </div>
         </div>
+
+        
         <div className={classes.product_horizontal_slider}>
-          <ProductPicturesSlider
-            cards={images}
+          {loading ? null : <ProductPicturesSlider
             setImageIndex={setActiveIndex}
-          />
+            cards={newData.images}
+          />}          
         </div>
         <div className={classes.product_content_info_bottom}>
           <div className={classes.about}>
             <ProductAbout
-              text={`В наши дни платья по-прежнему пользуются спросом и популярностью
-                среди молодежи, они занимают почетные места на презентациях мод.
-                Однако постепенно в моду входит повседневный стиль, который не
-                подразумевает использование красочных и ярких образов.Платье
-                Benito Kate Wrap Dress отличный пример этому.`}
+              // text={`В наши дни платья по-прежнему пользуются спросом и популярностью
+              //   среди молодежи, они занимают почетные места на презентациях мод.
+              //   Однако постепенно в моду входит повседневный стиль, который не
+              //   подразумевает использование красочных и ярких образов.Платье
+              //   Benito Kate Wrap Dress отличный пример этому.`}
+              text={newData ? newData.description : null}
             />
           </div>
           <div className={classes.add_button}>
