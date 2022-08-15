@@ -48,6 +48,7 @@ import AdminCollectionById from "./adminPage/components/adminPageGoods/component
 import AdminProductById from "./adminPage/components/adminPageGoods/components/adminProductById/AdminProductById";
 import AdminPopularProducts from "./adminPage/components/adminPageGoods/components/adminPopularProducts/AdminPopularProducts";
 import AdminPageProduct from "./adminPage/components/adminPageShopping/components/AdminPageProduct";
+import AdminPageNews from "./adminPage/components/adminPageNews/AdminPageNews";
 
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
@@ -259,6 +260,11 @@ const MainRoutes = () => {
       link: "chat",
       element: <AdminPageChat />,
       id: 14,
+    },
+    {
+      link: "news",
+      element: <AdminPageNews />,
+      id: 15,
     },
   ];
 

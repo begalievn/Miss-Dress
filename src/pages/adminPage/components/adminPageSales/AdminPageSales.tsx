@@ -15,6 +15,7 @@ const AdminPageSales = () => {
       incomeWeek: "354k+",
       incomeMonth: "1.5m",
       incomeSum: "257m+",
+      id: 1,
     },
   ];
 
@@ -27,7 +28,7 @@ const AdminPageSales = () => {
         </div>
         <div className={styles.container}>
           {info.map((item) => (
-            <div>
+            <div key={item.id}>
               <h2>Информация о доходах</h2>
               <div className={styles.block}>
                 <h4>Доход за неделю</h4>

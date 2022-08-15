@@ -14,6 +14,8 @@ import {
 
 import Logo from "../../../../../components/logo/Logo";
 
+import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
+
 import { Link } from "react-router-dom";
 
 import classes from "../../../adminPageMain.module.scss";
@@ -54,6 +56,11 @@ const AdminMenu = () => {
       title: "Чат",
       image: commentsIcon,
       route: "/chat",
+    },
+    {
+      title: "Новости",
+      image: "https://cdn-icons-png.flaticon.com/512/2258/2258840.png",
+      route: "/news",
     },
   ];
 
