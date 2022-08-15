@@ -14,9 +14,11 @@ const ProductPhoto = ({ image, id, category }: IProductPhoto) => {
   return (
     <div className={classes.container}>
       <img src={image} alt="" />
+
       <Link to={`${id}`}>
         <button className={classes.button}>{"Смотреть"}</button>
       </Link>
+
     </div>
   );
 };

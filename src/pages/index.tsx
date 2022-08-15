@@ -48,6 +48,10 @@ import AdminCollectionById from "./adminPage/components/adminPageGoods/component
 import AdminProductById from "./adminPage/components/adminPageGoods/components/adminProductById/AdminProductById";
 import AdminPopularProducts from "./adminPage/components/adminPageGoods/components/adminPopularProducts/AdminPopularProducts";
 import AdminPageProduct from "./adminPage/components/adminPageShopping/components/AdminPageProduct";
+import AdminPageNews from "./adminPage/components/adminPageNews/AdminPageNews";
+import BestsellersPage from "./bestsellersPage/BestsellersPage";
+import NewProductsPage from "./newProductsPage/NewProductsPage";
+
 
 // import AuthorizationUserSlice from "../store/reducers/AuthorizationUserSlice";
 
@@ -132,7 +136,7 @@ const MainRoutes = () => {
       id: 12,
     },
     {
-      link: "order/",
+      link: "order",
       element: <OrderPage />,
       id: 13,
     },
@@ -180,6 +184,31 @@ const MainRoutes = () => {
       link: "favorites",
       element: <FavoritePage />,
       id: 22,
+    },
+    {
+      link: "bestsellers",
+      element: <BestsellersPage />,
+      id: 23,
+    },
+    {
+      link: "bestsellers/:productID",
+      element: <ProductIdPage />,
+      id: 24,
+    },
+    {
+      link: "new-products",
+      element: <NewProductsPage />,
+      id: 25,
+    },
+    {
+      link: "new-products/:productID",
+      element: <ProductIdPage />,
+      id: 26,
+    },
+    {
+      link: "/:productID",
+      element: <ProductIdPage />,
+      id: 27,
     },
   ];
 
@@ -259,6 +288,11 @@ const MainRoutes = () => {
       link: "chat",
       element: <AdminPageChat />,
       id: 14,
+    },
+    {
+      link: "news",
+      element: <AdminPageNews />,
+      id: 15,
     },
   ];
 

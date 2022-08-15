@@ -9,11 +9,11 @@ export const categoryOneProductApi = createApi({
   }),
   tagTypes: ["categoryOneProductApi"],
   endpoints: (build) => ({
-    fetchCategoryOneProductApi: build.query<RootObject, Result | any>({
+    fetchCategoryOneProductApi: build.query<RootObject | any, Result | any>({
       query: (productID) => ({
         url: `/product/${productID}`,
       }),
-      transformResponse: (response: any) => response.result.data,
+      transformResponse: (response: any) => response.result,
       providesTags: ["categoryOneProductApi"],
     }),
   }),

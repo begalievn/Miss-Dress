@@ -8,7 +8,7 @@ interface IProductPicturesSlider {
 }
 
 interface ImageCardTypes {
-  card: string;
+  card: any;
 }
 
 const ImageCard = ({ card }: ImageCardTypes) => {

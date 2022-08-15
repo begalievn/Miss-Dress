@@ -31,15 +31,15 @@ import classes from "./productIdPage.module.scss";
 
 const ProductIdPage = () => {
   const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
-  const { productID } = useParams();
-  console.log(productID);
+
+  const { productID }: any = useParams();
+  console.log("productID", productID);
 
   const {
-    data: newData,
+    data:newData,
     isLoading: loading,
     isError: error,
   } = categoryOneProductApi.useFetchCategoryOneProductApiQuery(productID);
-  console.log("newData", newData);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -49,55 +49,75 @@ const ProductIdPage = () => {
   };
 
   const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
+
+  const [cart, setCart] = useState(false);
+
   const id: any = 1;
+
+  const handleAddCart = () => {
+    addProduct(productID);
+    setCart(!cart);
+  };
+
   return (
     <div className={classes.container}>
       <ContentContainer>
         <div className={classes.product_container}>
           <div className={classes.product_vertical_slider}>
-            <ProductPicturesVerticalSlider
-              setImageIndex={setActiveIndex}
-              cards={images}
-            />
+            {
+              loading ? null : <ProductPicturesVerticalSlider
+                setImageIndex={setActiveIndex}
+                cards={newData.images}
+              />
+            }
+            
           </div>
           <div className={classes.product_content}>
             <div
               className={classes.product_image}
               onClick={() => handleZoomOpen()}
             >
-              <img src={images[activeIndex]} alt={""} />
+              {newData ? newData.images.filter((_elem: any, index: number) => index < 1).map((item:any)=>{
+                return (
+                  <>
+                    <img src={item.url} alt={""} />
+                  </>
+                );
+              }) : null}
             </div>
             <div className={classes.product_content_info}>
-              <ProductContentInfo />
+              <ProductContentInfo  />
               <div className={classes.about}>
                 <ProductAbout
-                  text={`В наши дни платья по-прежнему пользуются спросом и популярностью
-                среди молодежи, они занимают почетные места на презентациях мод.
-                Однако постепенно в моду входит повседневный стиль, который не
-                подразумевает использование красочных и ярких образов.Платье
-                Benito Kate Wrap Dress отличный пример этому.`}
+                  text={newData ? newData.description : null}
                 />
               </div>
-              <div className={classes.add_button}>
-                <AddToBusketButton text={"Добавить в корзину"} />
+              <div onClick={handleAddCart} className={classes.add_button}>
+                <AddToBusketButton
+                  style={{ cursor: "pointer" }}
+                  text={"Добавить в корзину"}
+                />
               </div>
             </div>
           </div>
         </div>
+
+        
         <div className={classes.product_horizontal_slider}>
-          <ProductPicturesSlider
-            cards={images}
+          {loading ? null : <ProductPicturesSlider
             setImageIndex={setActiveIndex}
-          />
+            cards={newData.images}
+          />}          
         </div>
         <div className={classes.product_content_info_bottom}>
           <div className={classes.about}>
             <ProductAbout
-              text={`В наши дни платья по-прежнему пользуются спросом и популярностью
-                среди молодежи, они занимают почетные места на презентациях мод.
-                Однако постепенно в моду входит повседневный стиль, который не
-                подразумевает использование красочных и ярких образов.Платье
-                Benito Kate Wrap Dress отличный пример этому.`}
+              // text={`В наши дни платья по-прежнему пользуются спросом и популярностью
+              //   среди молодежи, они занимают почетные места на презентациях мод.
+              //   Однако постепенно в моду входит повседневный стиль, который не
+              //   подразумевает использование красочных и ярких образов.Платье
+              //   Benito Kate Wrap Dress отличный пример этому.`}
+              text={newData ? newData.description : null}
             />
           </div>
           <div className={classes.add_button}>

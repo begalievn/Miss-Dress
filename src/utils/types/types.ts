@@ -1,6 +1,6 @@
 export interface IAdmin {
   title: string;
-  image: string;
+  image: any;
   route: string;
 }
 

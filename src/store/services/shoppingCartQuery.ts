@@ -44,7 +44,7 @@ export const shoppingCartApi = createApi({
             localStorage.getItem("accessToken") || "{}"
           )}`,
         },
-        body,
+        body: { productId: Number(body.productId) },
       }),
       // invalidatesTags: ["Product"],
     }),
