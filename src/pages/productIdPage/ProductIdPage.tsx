@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useParams } from "react-router-dom";
+
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
 
 import {
@@ -11,6 +13,12 @@ import {
 
 import SimilarProductsBlock from "../../components/similar-products-block/SimilarProductsBlock";
 
+import LoaderCircular from "../../components/loader-circular/LoaderCircular";
+
+import { categoryOneProductApi } from "../../store/services/categoryOneProductApi";
+
+import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
+
 import ProductPicturesSlider from "./components/productPicturesSlider/ProductPicturesSlider";
 import ProductContentInfo from "./components/productContentInfo/ProductContentInfo";
 import AddToBusketButton from "./components/add-to-busket-button/AddToBusketButton";
@@ -20,10 +28,6 @@ import ProductPicturesVerticalSlider from "./components/productPicturesVerticalS
 import ZoomModal from "./components/zoom-modal/ZoomModal";
 
 import classes from "./productIdPage.module.scss";
-import LoaderCircular from "../../components/loader-circular/LoaderCircular";
-import { useParams } from "react-router-dom";
-import { categoryOneProductApi } from "../../store/services/categoryOneProductApi";
-import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
 
 const ProductIdPage = () => {
   const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];

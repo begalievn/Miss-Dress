@@ -7,7 +7,6 @@ import { IProductOrder } from "../../../../utils/types/typesOrder";
 import styles from "./productOrder.module.scss";
 
 const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
-
   const { title, price, amount, article, discount, id, images } = info.product;
 
   const pageContainer =
@@ -15,12 +14,11 @@ const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
 
   return (
     <div className={pageContainer}>
-      {
-        images?.length ? 
-          <img className={styles.img} src={images && images[1].url} alt="" />
-          :
-          <img className={styles.img} src={productImg} alt="" />
-      }
+      {images?.length ? (
+        <img className={styles.img} src={images && images[1].url} alt="" />
+      ) : (
+        <img className={styles.img} src={productImg} alt="" />
+      )}
 
       <section className={styles.block}>
         <div className={styles.infoBlock}>
@@ -42,14 +40,14 @@ const ProductOrder: FC<IProductOrder> = ({ info, page, change }) => {
           {page === "sending" && (
             <section className={styles.control}>
               <div
-                onClick={(e) => change && change(e, id, "-")}
+                onClick={(e) => change?.(e, id, "-")}
                 className={styles.minus}
               >
                 -
               </div>
               <div className={styles.count}>{info.amount}</div>
               <div
-                onClick={(e) => change && change(e, id, "+")}
+                onClick={(e) => change?.(e, id, "+")}
                 className={styles.plus}
               >
                 +
