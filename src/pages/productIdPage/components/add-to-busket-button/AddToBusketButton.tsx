@@ -1,7 +1,7 @@
-import React from "react";
-import { on } from "stream";
+import React, { useState } from "react";
 
 import classes from "./addToBusketButton.module.scss";
+import { shoppingCartApi } from "../../../../store/services/shoppingCartQuery";
 
 interface IAddToBusketButton {
   text: string;

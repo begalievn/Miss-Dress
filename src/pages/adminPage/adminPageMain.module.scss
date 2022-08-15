@@ -4,6 +4,7 @@ h3{
   line-height: 29px;
   color: #372E24;
 }
+
 h4{
   font-weight: 500;
   line-height: 20px;
@@ -59,6 +60,7 @@ h5{
     font-size: 18px;
     color: #372E24;
     img{
+      width: 26px;
       margin-right: 20px;
     }
   }
@@ -151,7 +153,6 @@ h5{
   display: flex;
   align-items: center;
 }
-
 .progress{
   width: 80px;
   border-radius: 20px;
@@ -180,29 +181,18 @@ h5{
   align-items: center;
   max-width: 340px;
   width: 100%;
-  .regularUsers{
-    margin-top: 40px;
-  }
-  h3{
-    text-align: center;
-  }
-  .viewMore{
-    display: flex;
-    justify-content: center;
-  }
   button{
-    cursor: pointer;
     background: #DBB593;
     border-radius: 20px;
     color: #372E24;
     width: 200px;
     height: 50px;
-
   }
 }
 .table_children{
   display: flex;
   margin-top: 30px;
+  justify-content: space-between;
 }
 .table_info{
   margin-top: 30px;
@@ -242,14 +232,11 @@ h5{
   }
 }
 .table_children > h4:nth-child(2){
-  margin-left: 23px;
+  margin-left: -60px;
 }
 .table_children > h4:nth-child(3){
-  margin-left: 70px;
+  margin-left: -12px;
 }
 .table_children > h4:nth-child(4){
-  margin-left: 73px;
-}
-.table_children > h4:nth-child(5){
-  margin-left: 50px;
+  margin-right: 23px;
 }

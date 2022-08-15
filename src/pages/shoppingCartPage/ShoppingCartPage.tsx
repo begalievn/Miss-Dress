@@ -77,6 +77,8 @@ const ShoppingCartPage = () => {
   // const firstContactInfo = getContactInfo?.result[0];
   // console.log(getContactInfo);
 
+  console.log(getProducts);
+
   const [addProduct, {}] = shoppingCartApi.useAddProductMutation();
   const [removeProduct, {}] = shoppingCartApi.useRemoveProductMutation();
   const [deleteProduct, {}] = shoppingCartApi.useDeleteProductMutation();

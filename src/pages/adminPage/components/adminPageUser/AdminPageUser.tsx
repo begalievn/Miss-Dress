@@ -25,7 +25,11 @@ function AdminPageUser() {
       <AdminMenu />
       <div className={styles.container}>
         <div className={styles.main_top}>
-          <div onClick={goBack} className={styles.backPage}>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={goBack}
+            className={styles.backPage}
+          >
             <img className={styles.goBackIcon} src={goBackIcon} alt="" />
             <p className={styles.goBackText}>Вернуться ко всем пользователям</p>
           </div>

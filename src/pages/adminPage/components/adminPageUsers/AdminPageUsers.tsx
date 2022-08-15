@@ -92,9 +92,8 @@ const AdminPageUsers = () => {
 
   const navigate = useNavigate();
 
-  const { userId } = useParams();
-
   const [counte, setCounte] = useState(1);
+
   const limit = 7;
 
   const Data = {
@@ -120,28 +119,6 @@ const AdminPageUsers = () => {
     deleteIdl(userId);
   };
 
-  const [value, setValue] = useState("");
-
-  console.log(data);
-
-  const regularUsers = [
-    {
-      name: "Ророноа Зоро",
-      sales: 104,
-      income: 500,
-    },
-    {
-      name: "Портгас Д. Эйс",
-      sales: 85,
-      income: 400,
-    },
-    {
-      name: "Винсмок Санджи",
-      sales: 25,
-      income: 125,
-    },
-  ];
-
   const [name, setName] = useState("");
 
   const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
@@ -154,17 +131,6 @@ const AdminPageUsers = () => {
   function userMore(userId: any) {
     navigate(`/users/${userId}`);
   }
-
-  console.log(data);
-
-  // console.log(userStatus(1).color);
-
-  // function handleSearch(event: any) {
-  //   setValue(event.target.value);
-  //   // Data.name = event.target.value;
-  // }
-
-  // console.log(Data);
 
   return (
     <div className={styles.users_container}>
@@ -239,9 +205,6 @@ const AdminPageUsers = () => {
                 <TableCell className={styles.title} align="left">
                   Статус
                 </TableCell>
-                {/* <TableCell className={styles.title} align="left">
-                  Рейтинг
-                </TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody className={styles.table}>
@@ -251,7 +214,12 @@ const AdminPageUsers = () => {
                   key={item.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell onClick={userMore} component="th" scope="row">
+                  <TableCell
+                    style={{ cursor: "pointer" }}
+                    onClick={() => userMore(item.id)}
+                    component="th"
+                    scope="row"
+                  >
                     {item.firstName} {item.lastName}
                   </TableCell>
                   <TableCell align="right">zoro@gmail.com</TableCell>
