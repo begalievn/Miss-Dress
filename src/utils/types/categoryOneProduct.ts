@@ -26,6 +26,7 @@ export interface Result {
 }
 
 export interface RootObject {
+  title: RootObject | undefined;
   statusCode: number;
   result: Result;
 }

@@ -130,7 +130,7 @@ const AdminPageMain = () => {
                       >
                         Проверен
                       </h6>
-                    ) : item.status == "2" ? (
+                    ) : item.status === "2" ? (
                       <h6 style={{ backgroundColor: "#F1F2C1" }}>В ожидании</h6>
                     ) : (
                       <h6 style={{ backgroundColor: "#ECCFB5" }}>

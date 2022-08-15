@@ -15,7 +15,7 @@ import classes from "./similarProductsBlock.module.scss";
 const SimilarProductsBlock = () => {
   const { data = [] } = productsApi.useGetAllProductsQuery("");
   const [cards, setCards] = useState([]);
-  console.log(cards);
+  console.log(data.result);
 
   // const dataCards: any = useMemo(() => {
   //   setCards(data?.result?.data || []);

@@ -1,50 +1,112 @@
-import { LinearProgress } from "@mui/material";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
-
-// import { Link, useParams } from "react-router-dom";
-
-import CategoriesDropdowBtn from "../../../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
-
-import Paginations from "../../../../../../components/pagination/Paginations";
+import { Link } from "react-router-dom";
 
 import { adminCollectionApi } from "../../../../../../store/services/adminCollectionApi";
-
-import { adminDeleteUserApi } from "../../../../../../store/services/adminDeleteUserApi";
-
-import { UserApi } from "../../../../../../store/services/UserApi";
 
 import { adminCollectionProducts } from "../../../../../../utils/consts/admin-page-collection-seasons/adminPageConsts";
 
 import { IAdminCollection } from "../../../../../../utils/types/typesAdminCollection";
 
-import DeleteButton from "../../../UI/deleteButton/DeleteButton";
-
 import classes from "./adminPageGoodsContent.module.scss";
+
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { FormGroup, InputLabel, TextField } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 function AdminPageGoodsContent() {
 
-  const [collection, setCollection]=useState<string|any>("");
+  const [collection]=useState<string|any>("");
   const {data:cards} = adminCollectionApi.useGetProductByCollectionQuery(collection);
   console.log(cards);
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+
+
+
+  // const {title} = adminCollectionProducts
+
+
+  // const [title, setTitle] = useState("");
+  
+  // const dispatch = useDispatch();
+  
+  // useEffect(() => {
+  //   setTodo(elem);
+  //   setStatus(elem?.status);
+  // }, [elem]);
+
+  // const saveEdit = (e) => {
+  //   e.preventDefault();
+  //   let data = {
+  //     title: todo.title,
+  //   };
+  //   console.log(data);
+  //   dispatch(edit_todo(elem._id, data));
+  // };
+
+  // const changeData = (prop) => (e) => {
+  //   setTodo({ ...todo, [prop]: e.target.value });
+  // };
+  
 
   return (
     <div className={classes.container}>  
       {adminCollectionProducts.map((item:IAdminCollection)=> {
         return (
-          <div className={classes.collectionDark} key={item.id}>
-            <div  className={classes.collectionContent}>
-              <div className={classes.collectionText}>
-                <h2 className={classes.collectionTitle}>{item.title}</h2>
-                <p className={classes.collectionEdit}>Редактировать</p>
-              </div> 
-              <Link className={classes.link} to={`/season-products/${item.path}`}>
-                <img className={classes.collectionImage} src={item.image.image}  alt="" /> 
-              </Link>
-              <p className={classes.collectionChangePhoto}>Изменить фото</p>
-            </div>
+          <div key={item.id} className={classes.collectionContent}>
+            <div className={classes.collectionText}>
+              <h2 className={classes.collectionTitle}>{item.title}</h2>
+              <p onClick={handleClickOpen} className={classes.collectionEdit}>Редактировать</p>
+              <div>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <form>
+                    <FormGroup sx={{width: "400px", padding: "20px"}}>
+                      <InputLabel sx={{color: "#000"}}>
+                      Изменить текст
+                      </InputLabel>
+                      <TextField
+                        sx={{backgroundColor: "#fff", borderRadius: "4px"}}
+                        multiline
+                        rows={1}
+                        // value={item?.title}
+                        // onChange={changeData("title")}
+                        variant="outlined"
+                      />
+                    </FormGroup>
+                  </form>    
+                  <DialogActions>
+                    <Button onClick={handleClose}>Отмена</Button>
+                    <Button onClick={handleClose} autoFocus>
+                      Изменить
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </div>
+            </div> 
+            <Link className={classes.link} to={`/season-products/${item.path}`}>
+              <img className={classes.collectionImage} src={item.image.image}  alt="" /> 
+            </Link>
+            <p className={classes.collectionChangePhoto}>Изменить фото</p>
           </div>
         );
       })}

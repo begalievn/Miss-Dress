@@ -1,17 +1,21 @@
 import React from "react";
 
-import styles from "./adminPageNews.module.scss";
+import NewsPage from "../../../newsPage/NewsPage";
 
-import classes from "../../adminPageMain.module.scss";
 import AdminMenu from "../UI/adminMenu/AdminMenu";
 
-const AdminPageNews = () => {
+import classes from "../../adminPageMain.module.scss";
+
+function AdminPageNews() {
   return (
-    <div className={classes.container_parent}>
-      <AdminMenu />
-      <div>asd</div>
+    <div>
+      <div className={classes.container_parent}>
+        <AdminMenu />
+        <NewsPage edit={true} />
+      </div>
     </div>
   );
-};
+}
 
 export default AdminPageNews;
+

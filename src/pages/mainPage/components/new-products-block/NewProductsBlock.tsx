@@ -1,14 +1,17 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import CardsContainer from "../../../../containers/cardsContainer/CardsContainer";
 
 import BottomButton from "../bottom-button/BottomButton";
 
-import classes from "./newProductsBlock.module.scss";
-
 import ProductCard from "../../../../components/productCard/ProductCard";
 
 import { productsApi } from "../../../../store/services/productsApi";
+
+import classes from "./newProductsBlock.module.scss";
+
 
 const NewProductsBlock = () => {
   const { data = [] } = productsApi.useGetAllProductsQuery("");
@@ -36,7 +39,9 @@ const NewProductsBlock = () => {
           ))}
         </CardsContainer>
       </div>
-      <BottomButton text={"Смотреть все новинки"} />
+      <Link to={"/new-products"}>
+        <BottomButton text={"Смотреть все новинки"} />
+      </Link>
     </div>
   );
 };

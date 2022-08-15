@@ -2,25 +2,28 @@ import React, { FC } from "react";
 
 import { bestSellers } from "../../../../utils/consts/main-page/mainPageConsts";
 
-import PhotoCardContent from "../../../../components/main-page/photo-card-content/PhotoCardContent";
+// import PhotoCardContent from "../../../../components/main-page/photo-card-content/PhotoCardContent";
 import CardsContainer from "../../../../containers/cardsContainer/CardsContainer";
 
 import BottomButton from "../bottom-button/BottomButton";
 
-import {
-  bestSellers1,
-  bestSellers2,
-  bestSellers3,
-  bestSellers4,
-  bestSellers5,
-  bestSellers6,
-} from "../../../../assets/main-page/images";
+// import {
+//   bestSellers1,
+//   bestSellers2,
+//   bestSellers3,
+//   bestSellers4,
+//   bestSellers5,
+//   bestSellers6,
+// } from "../../../../assets/main-page/images";
 
 import ProductCard from "../../../../components/productCard/ProductCard";
-import ProductsGridContainer from "../../../../containers/productsGridContainer/ProductsGridContainer";
+// import ProductsGridContainer from "../../../../containers/productsGridContainer/ProductsGridContainer";
+
+import { productsApi } from "../../../../store/services/productsApi";
 
 import classes from "./bestSellersBlock.module.scss";
-import { productsApi } from "../../../../store/services/productsApi";
+import { Link, useNavigate } from "react-router-dom";
+
 
 // const cards = [
 //   {
@@ -53,6 +56,8 @@ const BestSellersBlock: FC = () => {
   const { data = [] } = productsApi.useGetAllProductsQuery("");
 
   const cards = data.result?.data || [];
+  // console.log(cards);
+
   return (
     <div className={classes.container}>
       <div className={classes.title}>
@@ -74,7 +79,9 @@ const BestSellersBlock: FC = () => {
           ))}
         </CardsContainer>
       </div>
-      <BottomButton text={"Смотреть все хиты"} />
+      <Link to={"/bestsellers"}>
+        <BottomButton text={"Смотреть все хиты"} />
+      </Link>
     </div>
   );
 };

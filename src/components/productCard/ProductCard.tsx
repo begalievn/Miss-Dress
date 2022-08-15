@@ -46,6 +46,7 @@ const ProductCard = ({
   status,
   width,
 }: IProductCard) => {
+
   const navigate = useNavigate();
 
   const [addFav] = productFavoritesApi.useAddFavoritesMutation();
