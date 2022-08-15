@@ -13,7 +13,7 @@ function AdminPageAdvertContent() {
       <h3 className={classes.advertTitle}>Архив рекламы</h3>
       <div className={classes.advertContent}>
         <div className={classes.advertContentLeft}>
-          {advertContentLeft.map((item)=>{
+          {advertContentLeft.map((item) => {
             return (
               <div className={classes.advertLeftContent}>
                 <div className={classes.advertTop}>
@@ -21,7 +21,11 @@ function AdminPageAdvertContent() {
                   <h4 className={classes.advertSubText}>{item.text}</h4>
                 </div>
                 <div className={classes.advertLeftImgList}>
-                  <img className={classes.advertLeftImg} src={item.image} alt="" />
+                  <img
+                    className={classes.advertLeftImg}
+                    src={item.image}
+                    alt=""
+                  />
                   <p className={classes.advertEdit}>{item.edit}</p>
                 </div>
               </div>
@@ -30,7 +34,7 @@ function AdminPageAdvertContent() {
         </div>
 
         <div className={classes.advertContentRight}>
-          {advertContentRight.map((item)=>{
+          {advertContentRight.map((item) => {
             return (
               <>
                 <h3 className={classes.advertTitle}>{item.upperTitle}</h3>
@@ -38,7 +42,11 @@ function AdminPageAdvertContent() {
                   <h4 className={classes.advertSubTitle}>{item.title}</h4>
                   <h4 className={classes.advertSubText}>{item.text}</h4>
                 </div>
-                <img className={classes.advertRightImg} src={item.image} alt="" />
+                <img
+                  className={classes.advertRightImg}
+                  src={item.image}
+                  alt=""
+                />
                 <p className={classes.advertEdit}>{item.edit}</p>
               </>
             );

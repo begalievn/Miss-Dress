@@ -154,6 +154,7 @@ const ShoppingCartPage = () => {
         : action === "-"
         ? await removeProduct(body).unwrap()
         : await deleteProduct(body).unwrap();
+
     const { products } = result;
     if (action === "x" && products.length < resultState?.products.length!) {
       const shortedArray = resultState?.products.filter((item) => {
