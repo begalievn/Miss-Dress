@@ -18,7 +18,6 @@ const ProductPhoto = ({ image, id, category }: IProductPhoto) => {
       <Link to={`${id}`}>
         <button className={classes.button}>{"Смотреть"}</button>
       </Link>
-
     </div>
   );
 };

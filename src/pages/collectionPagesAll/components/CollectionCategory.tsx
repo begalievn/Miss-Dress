@@ -6,7 +6,11 @@ import { collectionCategoryApi } from "../../../store/services/collectionCategor
 import LoaderCircular from "../../../components/loader-circular/LoaderCircular";
 import ErrorPage from "../../errorPage/ErrorPage";
 
-import { blackStarIcon, favoriteIcon } from "../../../assets/icons/icons";
+import {
+  blackStarIcon,
+  favoriteIcon,
+  filledLike,
+} from "../../../assets/icons/icons";
 
 import { Datum, IParams } from "../../../utils/types/collectionsCategory";
 
@@ -18,6 +22,7 @@ import Paginations from "../../../components/pagination/Paginations";
 import classes from "./CollectionCategory.module.scss";
 import { jeans } from "../../../assets/main-page/images";
 import { RatingComponent } from "../../../components/RatingComponent/RatingComponent";
+import { productFavoritesApi } from "../../../store/services/productFavoritesApi";
 
 const CollectionCategory = () => {
   const [name, setName] = useState<string>("");
@@ -52,7 +57,7 @@ const CollectionCategory = () => {
 
   useEffect(() => {
     setDatas(filtere.slice(0, 6));
-    console.log("filtere", filtere);
+    // console.log("filtere", filtere);
   }, [filtered]);
   //! Пагинация
 
@@ -68,13 +73,40 @@ const CollectionCategory = () => {
       return;
     }
     setDatas(filtere.slice(start, end));
-    console.log("collectionApi Запрос initialState");
+    // console.log("collectionApi Запрос initialState");
   }
 
   function setPage(event: React.ChangeEvent<unknown>, page: number): void {
     pages = page;
     handleClick();
   }
+
+  const [addFav] = productFavoritesApi.useAddFavoritesMutation();
+
+  const handleAddFav = (item: any) => {
+    addFav(item);
+    setFavorite(!favorite);
+  };
+
+  const [favorite, setFavorite] = useState(false);
+
+  const [counte, setCounte] = useState(1);
+  const limit = 10;
+
+  const query = {
+    limit: limit,
+    counte: counte,
+    // name: "privet",
+  };
+
+  const { data = [] } = productFavoritesApi.useGetFavoritesQuery(query);
+
+  const cards = data?.result?.data || [];
+
+  useEffect(() => {
+    if (cards.length !== 0)
+      setFavorite(cards.some((card: any) => card.id === id));
+  }, [cards]);
 
   return (
     <>
@@ -91,8 +123,6 @@ const CollectionCategory = () => {
         {isError ? <ErrorPage /> : null}
         {datas &&
           datas.map((item) => {
-            console.log(item);
-
             return (
               <div className={classes.content_container}>
                 <div className={classes.container_img}>
@@ -124,8 +154,15 @@ const CollectionCategory = () => {
                         <RatingComponent rate={item.rate} />
                       </div>
 
-                      <div className={classes.favorite_icon}>
-                        <img src={favoriteIcon} alt="" />
+                      <div
+                        style={{ cursor: "pointer" }}
+                        onClick={() => handleAddFav(item)}
+                        className={classes.favorite_icon}
+                      >
+                        <img
+                          src={favorite ? filledLike : favoriteIcon}
+                          alt=""
+                        />
                       </div>
                     </div>
                   </div>
