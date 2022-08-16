@@ -27,7 +27,7 @@ interface Images {
   url: string;
 }
 
-interface IProductCard {
+export interface IProductCard {
   title: string;
   price: number;
   id: number;
@@ -35,6 +35,7 @@ interface IProductCard {
   width?: string;
   rate: number;
   status: number;
+  category?: any;
 }
 
 const ProductCard = ({
@@ -46,7 +47,6 @@ const ProductCard = ({
   status,
   width,
 }: IProductCard) => {
-
   const navigate = useNavigate();
 
   const [addFav] = productFavoritesApi.useAddFavoritesMutation();
@@ -60,7 +60,9 @@ const ProductCard = ({
     // name: "privet",
   };
 
-  const { data: cards = [] } = productFavoritesApi.useGetFavoritesQuery(Data);
+  const { data = [] } = productFavoritesApi.useGetFavoritesQuery(Data);
+
+  const cards = data?.result?.data || [];
 
   const handleAddFav = () => {
     addFav({ title, price, image, id, rate, status, width });
@@ -70,7 +72,8 @@ const ProductCard = ({
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
-    if (cards.length > 0) setFavorite(cards.map((card: any) => card.id === id));
+    if (cards.length !== 0)
+      setFavorite(cards.some((card: any) => card.id === id));
   }, [cards]);
 
   return (

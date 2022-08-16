@@ -9,8 +9,8 @@ const result: any = [
     collection: "summer",
     sales: [
       {
-        count: 23,
-        month: "7",
+        count: 20,
+        month: "1",
       },
     ],
   },
@@ -18,18 +18,34 @@ const result: any = [
     collection: "autumn",
     sales: [
       {
-        count: 9,
-        month: "7",
+        count: 60,
+        month: "5",
+      },
+    ],
+  },
+  {
+    collection: "winter",
+    sales: [
+      {
+        count: 80,
+        month: "9",
       },
     ],
   },
 ];
-console.log(result);
+
+const newResult = result.map((item: any) => item);
+console.log(newResult);
 export const data = [
-  [result[0].collection],
-  ["Янв", 70, 40, 41.8],
-  ["Фев", 50, 50, 32.4],
-  ["Мар", 50, 40, 25.7],
+  [
+    "Year",
+    newResult[0].collection,
+    newResult[1].collection,
+    newResult[2].collection,
+  ],
+  ["Янв", newResult[0].sales[0].count, 10, newResult[0].sales[0].month],
+  ["Фев", newResult[1].sales[0].count, 20, newResult[1].sales[0].month],
+  ["Мар", newResult[2].sales[0].count, 30, newResult[2].sales[0].month],
   ["Апр", 40, 50, 20.5],
   ["Май", 40, 60, 10.4],
   ["Июн", 40, 80, 7.7],
@@ -42,9 +58,10 @@ export const data = [
 ];
 
 export const options = {
-  chart: {
-    title: "Статистика продаж",
-  },
+  title: "Company Performance",
+  hAxis: { title: "Year", titleTextStyle: { color: "#333" } },
+  vAxis: { minValue: 0 },
+  chartArea: { width: "50%", height: "70%" },
 };
 
 export function AdminChart() {
