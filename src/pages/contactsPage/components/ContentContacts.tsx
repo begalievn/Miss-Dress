@@ -34,26 +34,26 @@ const ContentContacts = () => {
             <ul className={classes.item}>
               <li className={classes.listItem}>Тел: {item.phone}</li>
               <li className={classes.listItem}>
-                <a href="https://wa.me/0553404406" target="_blank">
-                  <img className={classes.imageWhatsApp} src={whatsappIcon} />
+                <a href="https://wa.me/0553404406" target="_blank" rel="noreferrer">
+                  <img className={classes.imageWhatsApp} src={whatsappIcon} alt="" />
                 </a>
                 <a href="tel:+996553404406">{item.whatsApp}</a>
               </li>
               <li className={classes.listItem}>
-                <a href="https://t.me/double_absolute" target="_blank">
-                  <img className={classes.imageTelegram} src={telegramIcon} />
+                <a href="https://t.me/double_absolute" target="_blank" rel="noreferrer">
+                  <img className={classes.imageTelegram} src={telegramIcon} alt="" />
                 </a>
                 <a href="tel:+996553404406">{item.telegram}</a>
               </li>
               <li className={classes.listItem}>
-                <a href="https://www.instagram.com/missdress" target="_blank">
-                  <img className={classes.imageInstagram} src={instagramIcon} />
+                <a href="https://www.instagram.com/missdress" target="_blank" rel="noreferrer">
+                  <img className={classes.imageInstagram} src={instagramIcon} alt="" />
                 </a>
                 {item.instagram}
               </li>
               <li>
                 Email:{" "}
-                <a href="mailto:missdress@gmail.com" target="_blank">
+                <a href="mailto:missdress@gmail.com" target="_blank" rel="noreferrer">
                   {item.Email}
                 </a>
               </li>

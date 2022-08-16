@@ -8,9 +8,14 @@ import ContentFavorite from "./components/ContentFavorite";
 
 import classes from "./favorite.module.scss";
 import { productFavoritesApi } from "../../store/services/productFavoritesApi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FavoritePage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const [counte, setCounte] = useState(1);
   const limit = 10;
 

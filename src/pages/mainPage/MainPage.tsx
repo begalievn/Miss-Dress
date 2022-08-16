@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { winter } from "../../assets/main-page/images";
 
@@ -37,6 +37,11 @@ export const collectionInfo = [
 ];
 
 const MainPage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   return (
     <>
       <Slider />

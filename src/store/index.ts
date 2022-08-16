@@ -1,3 +1,5 @@
+import { newProductsApi } from './services/productNewProductsApi';
+import { productBestsellersApi } from './services/productBestsellersApi';
 import { adminRegularUsersApi } from "./services/adminRegularUsersApi";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
@@ -27,8 +29,8 @@ import { categoryOneProductApi } from "./services/categoryOneProductApi";
 
 import { adminUserOneApi } from "./services/adminUserOneApi";
 import { adminDeleteUserApi } from "./services/adminDeleteUserApi";
-import { adminPopularProductsApi } from "./services/adminPopularProducts";
-import { adminPopularProductPriceApi } from "./services/adminPopularProductPrice";
+import { adminPopularProductsApi } from "./services/adminPopularProductsApi";
+import { adminPopularProductPriceApi } from "./services/adminPopularProductPriceApi";
 import { adminGetCartApi } from "./services/adminGetCartApi";
 import { productFavoritesApi } from "./services/productFavoritesApi";
 
@@ -58,6 +60,8 @@ const rootreducer = combineReducers({
   [adminGetCartApi.reducerPath]: adminGetCartApi.reducer,
   [adminRegularUsersApi.reducerPath]: adminRegularUsersApi.reducer,
   [productFavoritesApi.reducerPath]: productFavoritesApi.reducer,
+  [productBestsellersApi.reducerPath]: productBestsellersApi.reducer,
+  [newProductsApi.reducerPath]: newProductsApi.reducer,
 });
 
 export const store = configureStore({
@@ -86,7 +90,9 @@ export const store = configureStore({
       adminGetCartApi.middleware,
       adminRegularUsersApi.middleware,
       adminGetCartApi.middleware,
-      productFavoritesApi.middleware
+      productFavoritesApi.middleware,
+      productBestsellersApi.middleware,
+      newProductsApi.middleware,
     ),
 });
 

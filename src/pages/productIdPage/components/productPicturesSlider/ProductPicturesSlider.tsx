@@ -14,7 +14,7 @@ interface ImageCardTypes {
 const ImageCard = ({ card }: ImageCardTypes) => {
   return (
     <div className={classes.image_card}>
-      <img src={card} alt="" />
+      <img src={card?.url} alt="" />
     </div>
   );
 };
@@ -25,7 +25,7 @@ const ProductPicturesSlider = ({
 }: IProductPicturesSlider) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sliderCards, setSliderCards] = useState<any>([]);
-  console.log(cards);
+  // console.log(cards);
   useEffect(() => {
     let arrCards: any = [];
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 
 import errorImage from "../../assets/error/errorImages.png";
@@ -9,6 +9,11 @@ import style from "./ErrorPage.module.scss";
 
 
 const ErrorPage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   return (
     <>
       <div className={style.container}>

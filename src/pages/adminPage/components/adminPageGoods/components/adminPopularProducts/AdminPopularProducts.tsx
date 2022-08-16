@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,10 @@ import styles from "./adminPopularProducts.module.scss";
 import AdminPopularProductsContent from "./components/AdminPopularProductsContent";
 
 function AdminPopularProducts() {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);

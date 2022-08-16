@@ -35,35 +35,6 @@ function AdminPageGoodsContent() {
   const handleClose = () => {
     setOpen(false);
   };
-
-
-
-
-
-  // const {title} = adminCollectionProducts
-
-
-  // const [title, setTitle] = useState("");
-  
-  // const dispatch = useDispatch();
-  
-  // useEffect(() => {
-  //   setTodo(elem);
-  //   setStatus(elem?.status);
-  // }, [elem]);
-
-  // const saveEdit = (e) => {
-  //   e.preventDefault();
-  //   let data = {
-  //     title: todo.title,
-  //   };
-  //   console.log(data);
-  //   dispatch(edit_todo(elem._id, data));
-  // };
-
-  // const changeData = (prop) => (e) => {
-  //   setTodo({ ...todo, [prop]: e.target.value });
-  // };
   
 
   return (

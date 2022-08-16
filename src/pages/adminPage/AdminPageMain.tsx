@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import AdminMenu from "./components/UI/adminMenu/AdminMenu";
 
@@ -16,6 +16,11 @@ import styles from "./components/adminPageUsers/adminPageUsers.module.scss";
 import AdminRegularUsers from "./components/UI/adminRegularUsers/AdminRegularUsers";
 
 const AdminPageMain = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const [counte, setCounte] = useState(1);
   const limit = 7;
 

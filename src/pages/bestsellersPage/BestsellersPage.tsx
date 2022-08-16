@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import Paginations from "../../components/pagination/Paginations";
 
 import ProductCard from "../../components/productCard/ProductCard";
 
 import CardsContainer from "../../containers/cardsContainer/CardsContainer";
-import { productsApi } from "../../store/services/productsApi";
+import { productBestsellersApi } from "../../store/services/productBestsellersApi";
 import { bestSellers } from "../../utils/consts/main-page/mainPageConsts";
 
 import classes from "./bestsellersPage.module.scss";
 
 function BestsellersPage() {
 
-  const { data = [] } = productsApi.useGetAllProductsQuery("");
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: "smooth"});
+  }, []);
+
+  const [counte, setCounte] = useState(1);
+
+  const limit = 6;
+
+  const Data = {
+    limit: limit,
+    counte: counte,
+  };
+
+  const { data = [] } = productBestsellersApi.useGetBestsellersProductsQuery(Data);
+
   const cards = data.result?.data || [];
-  console.log(cards);
-  
+
+  const allPages = Math.ceil(data?.result?.count / 6);
 
   return (
     <>
@@ -39,6 +55,10 @@ function BestsellersPage() {
             </CardsContainer>
           </div>
         </div>
+        <Paginations
+          onChange={(event: any, page: number) => setCounte(page)}
+          count={allPages}
+        />
       </div>     
     </>  
   );

@@ -21,6 +21,11 @@ interface IChangedData {
 }
 
 const NewsPage: FC<INewsPage> = ({ edit = false }) => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const newsStr = localStorage.getItem("news");
   const [refreshInfo, setRefreshInfo] = useState<IRefreshInfo | null>(null);
   const params = useParams();

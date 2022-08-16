@@ -11,11 +11,14 @@ import BrownButton from "../brown-button/BrownButton";
 import { productsApi } from "../../store/services/productsApi";
 
 import classes from "./similarProductsBlock.module.scss";
+import { DataArray } from "@mui/icons-material";
 
 const SimilarProductsBlock = () => {
   const { data = [] } = productsApi.useGetAllProductsQuery("");
   const [cards, setCards] = useState([]);
-  console.log(data.result);
+  // console.log(data.result);
+  console.log(data);
+  
 
   // const dataCards: any = useMemo(() => {
   //   setCards(data?.result?.data || []);
@@ -32,16 +35,20 @@ const SimilarProductsBlock = () => {
       <div className={classes.content}>
         <div className={classes.slider}>
           <SimilarProductsSlider>
-            {cards.map((item: any, index: any) => (
-              <ProductCard
-                status={item.status}
-                rate={item.rate}
-                title={item.title}
-                price={item.price}
-                image={item.images}
-                id={item.id}
-              />
-            ))}
+            {data?.result?.data?.map((item: any, index: any) => {
+              return (
+                <ProductCard
+                  status={item.status}
+                  rate={item.rate}
+                  title={item.title}
+                  price={item.price}
+                  image={item.images}
+                  id={item.id}
+                />
+              );
+            }
+             
+            )}
           </SimilarProductsSlider>
         </div>
         <div className={classes.cards}>

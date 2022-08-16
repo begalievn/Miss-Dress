@@ -27,6 +27,11 @@ import { productsApi } from "../../store/services/productsApi";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 
 const CategoryPage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const [selectedCategory, setSelectedCategory] = useState(0);
   console.log("Selected category", selectedCategory);
 

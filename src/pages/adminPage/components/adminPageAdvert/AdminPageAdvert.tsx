@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "../../adminPageMain.module.scss";
 
@@ -11,6 +11,11 @@ import styles from "./adminPageAdvert.module.scss";
 import AdminPageAdvertContent from "./components/AdminPageAdvertContent";
 
 const AdminPageAdvert = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   return (
     <>
       <div className={classes.container_parent}>

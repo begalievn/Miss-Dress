@@ -1,42 +1,51 @@
 import { LinearProgress } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import CategoriesDropdowBtn from "../../../../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 import Paginations from "../../../../../../../components/pagination/Paginations";
 import { adminDeleteUserApi } from "../../../../../../../store/services/adminDeleteUserApi";
-import { adminPopularProductsApi } from "../../../../../../../store/services/adminPopularProducts";
+import { adminPopularProductsApi } from "../../../../../../../store/services/adminPopularProductsApi"; 
+import { Datum } from "../../../../../../../utils/types/collectionsCategory";
 import classes from "../../../../../adminPageMain.module.scss";
 
 import styles from "./adminPopularProductsContent.module.scss";
 
 function AdminPopularProductsContent() {
+  const [newData, setData] = useState<Datum[]>([]);
 
-  const [counte, setCounte] = useState(1);
-  const limit = 7;
+  const { data:product ,isLoading,isError } = adminPopularProductsApi.useFetchGetPopularProductQuery("");
+  console.log("1 Начальное состояние",product);
   
-  const Data = {
-    limit: limit,
-    counte: counte,                                                                 
-  };
+  const filtere = useMemo(()=>{
+    return product?.result || [];
+  }, [product]);
+  // console.log("2 useMemo" , filtere);
 
-  const { data:prod = [] } = adminPopularProductsApi.useFetchGetPopularProductQuery(Data);
-  const popProducts = prod?.result || [];
-  console.log(popProducts);
-  
-  const allPages = Math.ceil(popProducts.length / 7);
-  
-//     const [deleteId, setDeleteId] = useState<any>(0);
-//   console.log("setState", deleteId);
-  
-//     const [deleteIdl, { isLoading, isError }] =
-//         adminDeleteUserApi.useDeleteAdminUserMutation(deleteId);
-//   adminDeleteUserApi.useFetchAdminDeleteUserApiMutation(deleteId);
-  // console.log(isError);
-  
-  //   const handleDelete = (event: React.MouseEvent) => {
-  //     event.stopPropagation();
-  //     deleteIdl(deleteIdl);
-  //   };
+
+  useEffect(()=>{
+    setData(filtere?.slice(0, 6))
+    // console.log("3 useEffect",newData);
+  },[filtere]);
+
+  // Пагинация 
+  let pages:number;
+  const pageCount :number=Math.ceil(filtere.length / 6);
+
+
+
+  function handleClick(): void {
+    let pageNum: React.ChangeEvent<unknown> | number = pages || 1;
+    let start: number = (+pageNum - 1) * 6; /* ?. */
+    let end: number = start + 6;
+    setData(filtere.slice(start, end));
+    // console.log("handleClick slice" , newData);
+  }
+
+  function setPage(event: React.ChangeEvent<unknown>, page: number): void {
+    pages = page;
+    // console.log(pages);
+    handleClick();
+  }
 
 
   return (
@@ -82,7 +91,8 @@ function AdminPopularProductsContent() {
             <h4>Статус</h4>
             <h4>Рейтинг</h4>
           </div>
-          {popProducts?.map((item:any)=> { 
+          {newData && newData?.map((item:any)=> { 
+            // console.log(item,"newData");          
             return (
               <div key={item.id}>
                 {item.cart.products.map((items:any)=>{
@@ -172,8 +182,10 @@ function AdminPopularProductsContent() {
           
         </div>
         <Paginations
-          onChange={(event: any, page: number) => setCounte(page)}
-          count={allPages}
+          count={pageCount}
+          onChange={(event: React.ChangeEvent<unknown>, page: number) =>
+            setPage(event, page)
+          }
         />
       </div>
     </div>

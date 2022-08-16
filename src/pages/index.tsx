@@ -210,6 +210,11 @@ const MainRoutes = () => {
       element: <ProductIdPage />,
       id: 27,
     },
+    {
+      link: "/category/:productID",
+      element: <ProductIdPage />,
+      id: 28,
+    },
   ];
 
   const PRIVATE_ROUTES = [

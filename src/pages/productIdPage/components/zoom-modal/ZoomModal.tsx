@@ -36,7 +36,7 @@ const ZoomModal = ({ isModalOpen, setModalOpen, image }: IZoomModal) => {
       >
         <Box sx={style}>
           <div className={classes.container}>
-            {/*<ZoomImage image={image} />*/}
+            {/* <ZoomImage image={image} /> */}
             <img src={image} alt="zoomed image" />
           </div>
         </Box>

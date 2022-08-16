@@ -13,6 +13,11 @@ export type ChatMessageType = {
 };
 
 const AdminPageChat: React.FC = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   return (
     <div className={classes.container_parent}>
       <AdminMenu />

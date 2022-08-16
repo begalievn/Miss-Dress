@@ -16,6 +16,11 @@ import { addUserId } from "../../store/reducers/AuthorizationUserSlice";
 import style from "./ProfilePage.module.scss";
 
 const ProfilePage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const dispatch = useAppDispatch();
 
   const editNumberFunc = () => {

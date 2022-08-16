@@ -18,6 +18,11 @@ import ProductOrder from "./components/productOrder/ProductOrder";
 import Select from "./components/select/Select";
 
 const ShoppingCartPage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const inputs = [
     {
       placeholder: "Ваше имя",
