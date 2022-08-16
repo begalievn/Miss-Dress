@@ -9,6 +9,28 @@ import styles from "./orderContent.module.scss";
 function OrderContent() {
   const { data, isError, isLoading } = orderApi.useFetchAllOrderQuery();
   const cart = data?.result;
+  console.log(cart);
+  
+
+  // const userStatus = (item: number) => {
+  //   switch (item) {
+  //   case 0:
+  //     // eslint-disable-next-line no-labels
+  //     text: "В ожидании";
+  //     break;
+  //   case 1:
+  //     text: "Проверен";
+  //     break;
+  //   case 2:
+  //     text: "Не проверен";
+  //     break;
+  //   case 3:
+  //     text: "Забанен";
+  //     break;
+  //   default:
+  //     text: "В ожидании";
+  //   }
+  // };
 
   return (
     <div>
@@ -19,7 +41,10 @@ function OrderContent() {
               <div className={styles.infoBlock}>
                 <div className={styles.infoBlockLeft}>
                   <h4 className={styles.infoOrder}>Заказ №{item.id}</h4>
-                  <p className={styles.infoStatus}>{item.status}</p>
+                  {item.status === 0 
+                    ? <p className={styles.infoStatus}>Не доставлено</p>
+                    : <p className={styles.infoStatus}>Доставлено</p>
+                  }              
                 </div>
                 <p className={styles.infoDate}>
                   {item.createDate.slice(0, 10)}

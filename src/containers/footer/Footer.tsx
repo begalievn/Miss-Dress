@@ -97,10 +97,22 @@ const mobileContent = {
 const Footer = () => {
   return (
     <footer className={classes.container}>
-      <div className={classes.social_medias_container}>
-        {socialMediaIcons.map((icon, index) => (
-          <img key={index} src={icon} alt="icon" />
-        ))}
+      <div className={classes.social_medias_container}>       
+        <a href="https://wa.me/0553404406" target="_blank" rel="noreferrer">
+          <img className={classes.imageWhatsApp} src={whatsappIcon} alt="" />
+        </a>
+
+        <a href="https://www.facebook.com/missdress" target="_blank" rel="noreferrer">
+          <img className={classes.imageFacebook} src={facebookIcon} alt="" />
+        </a>
+
+        <a href="https://www.instagram.com/missdress" target="_blank" rel="noreferrer">
+          <img className={classes.imageInstagram} src={instagramIcon} alt="" />
+        </a>
+
+        <a href="https://t.me/double_absolute" target="_blank" rel="noreferrer">
+          <img className={classes.imageTelegram} src={telegramIcon} alt="" />
+        </a>
       </div>
       <div className={classes.content}>
         {footerContent.map((item, index) => (

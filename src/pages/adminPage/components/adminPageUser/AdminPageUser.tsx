@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -15,6 +15,11 @@ import styles from "./adminPageUser.module.scss";
 import AdminPageUserContent from "./components/AdminPageUserContent";
 
 function AdminPageUser() {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const { userId } = useParams();
 
   const navigate = useNavigate();

@@ -1,7 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
+import { useEffect } from "react";
+
 import classes from "./requisitePage.module.scss";
 
 function RequisitePage() {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   return (
     <section>
       <div className={classes.container}>

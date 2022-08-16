@@ -35,6 +35,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 const AdminPageUsers = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
@@ -86,7 +91,6 @@ const AdminPageUsers = () => {
           color: "#F1F2C1",
         };
     }
-
     return statusNum;
   };
 

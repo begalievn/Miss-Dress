@@ -18,6 +18,11 @@ import LoaderError from "../../components/loader-Error/LoaderError";
 import { categoriesApi } from "../../store/services/categoriesApi";
 
 const CollectionPagesContent: FC = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const { collection } = useParams();
 
   let [load, setLoad] = useState<boolean>(false);

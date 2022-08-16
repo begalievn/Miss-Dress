@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "../../adminPageMain.module.scss";
 
@@ -11,6 +11,11 @@ import AdminPageGoodsContent from "./components/adminPageGoodsContent/AdminPageG
 import styles from "./adminPageGoods.module.scss";
 
 const AdminPageGoods = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   return (
     <div className={classes.container_parent}>
       <AdminMenu />

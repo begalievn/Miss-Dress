@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -30,6 +30,11 @@ import ZoomModal from "./components/zoom-modal/ZoomModal";
 import classes from "./productIdPage.module.scss";
 
 const ProductIdPage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const images = [bestSellers1, bestSellers2, bestSellers3, bestSellers4];
 
   const { productID }: any = useParams();
@@ -127,11 +132,19 @@ const ProductIdPage = () => {
         <div>
           <SimilarProductsBlock />
         </div>
-        <ZoomModal
-          isModalOpen={isModalOpen}
-          setModalOpen={setModalOpen}
-          image={images[activeIndex]}
-        />
+        {newData ? newData.images.filter((_elem: any, index: number) => index < 1).map((item:any)=>{
+          return (
+            <>
+              <ZoomModal
+                isModalOpen={isModalOpen}
+                setModalOpen={setModalOpen}
+                image={item.url}
+              />
+              {/* <img src={item.url} alt={""} /> */}
+            </>
+          );
+        }) : null}
+       
       </ContentContainer>
     </div>
   );

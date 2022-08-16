@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
@@ -7,6 +7,11 @@ import ContentFaq from "./components/ContentFaq";
 import classes from "./faq.module.scss";
 
 const FaqPage = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const info = [
     {
       question: "Где вы находитесь? У вас есть магазин в Бишкеке?",

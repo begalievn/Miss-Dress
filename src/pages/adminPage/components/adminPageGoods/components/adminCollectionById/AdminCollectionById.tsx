@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -14,6 +14,10 @@ import styles from "./adminCollectionById.module.scss";
 
 
 function AdminCollectionById() {
+  
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
 
   const {id}= useParams();
 

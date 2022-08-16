@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
@@ -9,6 +9,9 @@ import OrdersContent from "./components/ordersContent/OrderContent";
 
 function OrderPage() {
 
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
     
   return (
     <section className={styles.container}>

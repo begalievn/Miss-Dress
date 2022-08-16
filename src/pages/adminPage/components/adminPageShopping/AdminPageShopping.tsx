@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "../../adminPageMain.module.scss";
 import AdminMenu from "../UI/adminMenu/AdminMenu";
@@ -54,6 +54,11 @@ const info = [
 ];
 
 const AdminPageShopping = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const { data = {} } = adminGetCartApi.useGetCartQuery("");
 
   const cards = data;

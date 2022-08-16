@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "../../adminPageMain.module.scss";
 
@@ -10,6 +10,11 @@ import ProfileAva from "../UI/profileAva/ProfileAva";
 import { AdminChart } from "../UI/adminChart/AdminChart";
 
 const AdminPageSales = () => {
+
+  useEffect(()=>{
+    window.scrollTo({top: 0, left: 0, behavior:"smooth"});
+  }, []);
+
   const info = [
     {
       incomeWeek: "354k+",
