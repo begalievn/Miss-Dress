@@ -12,21 +12,19 @@ import styles from "./adminPopularProductsContent.module.scss";
 
 function AdminPopularProductsContent() {
   const [newData, setData] = useState<Datum[]>([]);
-  
-
 
   const { data:product ,isLoading,isError } = adminPopularProductsApi.useFetchGetPopularProductQuery("");
   console.log("1 Начальное состояние",product);
   
   const filtere = useMemo(()=>{
-    return product?.result || []
-  },[product]);
-  console.log("2 useMemo" , filtere);
+    return product?.result || [];
+  }, [product]);
+  // console.log("2 useMemo" , filtere);
 
 
   useEffect(()=>{
     setData(filtere?.slice(0, 6))
-    console.log("3 useEffect",newData);
+    // console.log("3 useEffect",newData);
   },[filtere]);
 
   // Пагинация 
@@ -40,12 +38,12 @@ function AdminPopularProductsContent() {
     let start: number = (+pageNum - 1) * 6; /* ?. */
     let end: number = start + 6;
     setData(filtere.slice(start, end));
-    console.log("handleClick slice" , newData);
+    // console.log("handleClick slice" , newData);
   }
 
   function setPage(event: React.ChangeEvent<unknown>, page: number): void {
     pages = page;
-    console.log(pages);
+    // console.log(pages);
     handleClick();
   }
 
@@ -93,9 +91,8 @@ function AdminPopularProductsContent() {
             <h4>Статус</h4>
             <h4>Рейтинг</h4>
           </div>
-          {newData && newData?.filter((_elem: any, index: number) => index < 7).map((item:any)=> { 
-            console.log(item,"newData");
-            
+          {newData && newData?.map((item:any)=> { 
+            // console.log(item,"newData");          
             return (
               <div key={item.id}>
                 {item.cart.products.map((items:any)=>{
