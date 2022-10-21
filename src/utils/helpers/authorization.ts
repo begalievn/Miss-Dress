@@ -26,8 +26,10 @@ export const checkValidation = (valueNumber: string) => {
 };
 
 export const parseJwt = () => {
-  let token: any = localStorage.getItem("accessToken");
-  token = JSON.parse(token);
+  let token: any = localStorage.getItem("accessToken") || "{}";
+  if(token) {
+    token = JSON.parse(token);
+  }
   try {
     return JSON.parse(atob(token.split(".")[1]));
   } catch (e) {

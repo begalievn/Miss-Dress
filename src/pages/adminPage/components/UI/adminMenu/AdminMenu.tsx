@@ -1,5 +1,9 @@
 import React from "react";
 
+import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
+
+import { Link } from "react-router-dom";
+
 import ContentAdminMain from "../../ContentAdminMain";
 
 import {
@@ -10,13 +14,10 @@ import {
   salesIcon,
   shoppingBagIcon,
   userIcon,
+  authorIcon
 } from "../../../../../assets/adminPage/adminPageIcons";
 
 import Logo from "../../../../../components/logo/Logo";
-
-import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
-
-import { Link } from "react-router-dom";
 
 import classes from "../../../adminPageMain.module.scss";
 
@@ -37,26 +38,26 @@ const AdminMenu = () => {
       image: productsIcon,
       route: "/goods",
     },
+    // {
+    //   title: "Продажи",
+    //   image: salesIcon,
+    //   route: "/sales",
+    // },
+    // {
+    //   title: "Корзина",
+    //   image: shoppingBagIcon,
+    //   route: "/shoppingBag",
+    // },
     {
-      title: "Продажи",
-      image: salesIcon,
-      route: "/sales",
+      title: "Авторы",
+      image: authorIcon,
+      route: "/authors",
     },
-    {
-      title: "Корзина",
-      image: shoppingBagIcon,
-      route: "/shoppingBag",
-    },
-    {
-      title: "Реклама",
-      image: adIcon,
-      route: "/advertisement",
-    },
-    {
-      title: "Чат",
-      image: commentsIcon,
-      route: "/chat",
-    },
+    // {
+    //   title: "Чат",
+    //   image: commentsIcon,
+    //   route: "/chat",
+    // },
     {
       title: "Новости",
       image: "https://cdn-icons-png.flaticon.com/512/2258/2258840.png",
@@ -65,7 +66,7 @@ const AdminMenu = () => {
   ];
 
   return (
-    <div>
+    <div className={classes.box}>
       <div className={classes.container_parent}>
         <div className={classes.logo}>
           <Link to={"/"}>

@@ -1,22 +1,25 @@
 import React from "react";
 
-import classes from "./profileAva.module.scss";
 
 import styles from "../../adminPageUsers/adminPageUsers.module.scss";
 import {
   bellIcon,
   profileAva,
 } from "../../../../../assets/adminPage/adminPageIcons";
+import { adminAva } from '../../../../../assets/adminPage/adminPageIcons';
+
+import classes from "./profileAva.module.scss";
 
 const ProfileAva = () => {
   return (
     <div className={classes.profile}>
-      <img src={profileAva} alt="avatar" />
+      <div className={classes.avatar}>
+        <img src={adminAva} alt="avatar" />
+      </div>
       <div className={classes.text}>
-        <h4>Манки Д. Луффи</h4>
+        <h4>Админ</h4>
         <p>Админ</p>
       </div>
-      <img src={bellIcon} alt="bellIcon" />
     </div>
   );
 };

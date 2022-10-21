@@ -13,11 +13,9 @@ function AdminPageNews() {
   }, []);
 
   return (
-    <div>
-      <div className={classes.container_parent}>
-        <AdminMenu />
-        <NewsPage edit={true} />
-      </div>
+    <div className={classes.container_parent}>
+      <AdminMenu />
+      <NewsPage edit={true} />
     </div>
   );
 }

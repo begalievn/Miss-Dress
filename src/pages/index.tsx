@@ -35,7 +35,7 @@ import AdminPageUsers from "./adminPage/components/adminPageUsers/AdminPageUsers
 import AdminPageGoods from "./adminPage/components/adminPageGoods/AdminPageGoods";
 import AdminPageSales from "./adminPage/components/adminPageSales/AdminPageSales";
 import AdminPageShopping from "./adminPage/components/adminPageShopping/AdminPageShopping";
-import AdminPageAd from "./adminPage/components/adminPageAdvert/AdminPageAdvert";
+import AdminPageAd from "./adminPage/components/adminPageAuthors/AdminPageAuthors";
 
 // import { AdminPageChat } from "./adminPage/components/adminPageChat/AdminPageChat";
 
@@ -60,16 +60,16 @@ const AdminPageChat = React.lazy(
 );
 
 const MainRoutes = () => {
-  const validAdmin = parseJwt();
-  let [isAdmin, setIsAdmin] = useState<boolean>(false);
+  // const validAdmin = parseJwt();
+  const validAdmin: any = {role: "ADMIN"};
+  let [isAdmin, setIsAdmin] = useState<boolean>(true);
 
-  if (validAdmin?.role === "SUPER_ADMIN" || validAdmin?.role === "ADMIN") {
-    isAdmin = true;
-  } else {
-    isAdmin = false;
-  }
+  // if (validAdmin?.role === "SUPER_ADMIN" || validAdmin?.role === "ADMIN") {
+  //   isAdmin = true;
+  // } else {
+  //   isAdmin = false;
+  // }
 
-  // console.log(validAdmin);
 
   const SuspendedAdminPageChat = AdminPageChat;
 
@@ -259,7 +259,7 @@ const MainRoutes = () => {
       id: 8,
     },
     {
-      link: "advertisement",
+      link: "authors",
       element: <AdminPageAd />,
       id: 9,
     },

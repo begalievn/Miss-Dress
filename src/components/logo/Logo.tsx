@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import hero from "../../assets/header/hero.svg";
+import { libraryIcon } from '../../assets/icons';
 
 import style from "./Logo.module.scss";
 
@@ -24,8 +25,7 @@ const Logo = () => {
 
 
   return (
-    <div className={style[styleLogo]} >MissDress <img src={hero} alt="hero" /></div>
-
+    <div className={style[styleLogo]} >Library </div> //<img src={hero} alt="hero" />
   );
 };
 

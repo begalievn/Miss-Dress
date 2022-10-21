@@ -18,6 +18,8 @@ import advertImageThree from "./advertImageThree.png";
 import advertImageFour from "./advertImageFour.png";
 import advertImageFive from "./advertImageFive.png";
 import advertImageSix from "./advertImageSix.png";
+import authorIcon from './authorIcon.png';
+import adminAva from './adminAva.png';
 
 export {
   dashboardIcon,
@@ -40,4 +42,6 @@ export {
   advertImageFour,
   advertImageFive,
   advertImageSix,
+  authorIcon,
+  adminAva
 };

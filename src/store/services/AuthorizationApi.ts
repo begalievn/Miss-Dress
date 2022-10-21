@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
-import { API } from "../../utils/consts/API";
+import {API, BASE_URL} from "../../utils/consts/API";
 
 export const AuthorizationAPI = createApi({
   reducerPath: "AuthorizationApi",
-  baseQuery: fetchBaseQuery({ baseUrl: API }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   tagTypes: ["Authorization"],
   endpoints: (build) => ({
     registrationNewUser: build.mutation({
@@ -20,12 +20,10 @@ export const AuthorizationAPI = createApi({
       invalidatesTags: (result) => ["Authorization"],
     }),
     authorizationUser: build.mutation({
-      query: (phoneNumber) => ({
-        url: "/auth/login",
+      query: (data) => ({
+        url: "/login",
         method: "POST",
-        body: {
-          phoneNumber,
-        },
+        body: data,
       }),
       invalidatesTags: (result) => ["Authorization"],
     }),

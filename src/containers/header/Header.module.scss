@@ -43,17 +43,17 @@
 
 
 .icons {
-    max-width: 220px;
+    max-width: 150px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     min-width: 122px;
-    
+
     img{
         cursor: pointer;
         width: 25px;
         height: 25px;
-        
+
         min-height: 20px;
         min-width: 20px;
     }
@@ -102,10 +102,10 @@ span{
 animation: modalOpen 0.5s ;
 @keyframes modalOpen {
     0%{
-       margin-left: -241px; 
+       margin-left: -241px;
     }
     100%{
-        margin-left: 0px;  
+        margin-left: 0px;
     }
 }
 }
@@ -114,10 +114,10 @@ animation: modalOpen 0.5s ;
     animation: modalClose 0.5s ;
     @keyframes modalClose {
         0%{
-           margin-left: 0px; 
+           margin-left: 0px;
         }
         100%{
-            margin-left: -241px;  
+            margin-left: -241px;
         }
     }
 }
@@ -167,7 +167,7 @@ animation: modalOpen 0.5s ;
         height: 80px;
         padding-top: 0px;
     }
-    
+
     .burgerMenu{
         display: block;
         margin-right: 2vw;

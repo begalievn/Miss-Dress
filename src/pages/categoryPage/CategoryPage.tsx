@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import ContentContainer from "../../containers/contentContainer/ContentContainer";
 
-import CategoriesAside from "./components/categoriesAside/CategoriesAside";
 
-import FilterSelect from "./components/filterSelect/FilterSelect";
 import {
   bestSellers1,
   bestSellers2,
@@ -16,15 +14,19 @@ import {
 import CardsContainer from "../../containers/cardsContainer/CardsContainer";
 import ProductsGridContainer from "../../containers/productsGridContainer/ProductsGridContainer";
 import ProductCard from "../../components/productCard/ProductCard";
-import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
+
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
-import classes from "./categoryPage.module.scss";
 import { categoryApi } from "../../store/services/categoryApi";
 import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
 import { CategoryTypes } from "../../utils/types/types";
 import { productsApi } from "../../store/services/productsApi";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
+
+import classes from "./categoryPage.module.scss";
+import CategoryDropdown from "./components/categoryDropdown/CategoryDropdown";
+import FilterSelect from "./components/filterSelect/FilterSelect";
+import CategoriesAside from "./components/categoriesAside/CategoriesAside";
 
 const CategoryPage = () => {
 
@@ -65,7 +67,6 @@ const CategoryPage = () => {
   return (
     <div className={classes.container}>
       <ContentContainer>
-        <div>Breadcrumb</div>
         <div className={classes.content}>
           <aside className={classes.aside}>
             <div className={classes.title_category}>

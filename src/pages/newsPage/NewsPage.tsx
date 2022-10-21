@@ -49,10 +49,10 @@ const NewsPage: FC<INewsPage> = ({ edit = false }) => {
       newsStr && setRefreshInfo({ currentNews: null, otherNews: news });
     } else {
       window.scrollTo(0, 0);
-      const other = news.filter((item) => {
+      const other = news?.filter((item) => {
         return item.id.toString() !== params.id;
       });
-      const one = news.filter((item) => {
+      const one = news?.filter((item) => {
         return item.id.toString() === params.id;
       })[0];
 

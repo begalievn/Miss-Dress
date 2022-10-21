@@ -6,11 +6,11 @@ import AdminProfile from "../adminProfile/AdminProfile";
 
 import AdminMenu from "../UI/adminMenu/AdminMenu";
 
-import styles from "./adminPageAdvert.module.scss";
+import styles from "./adminPageAuthors.module.scss";
 
 import AdminPageAdvertContent from "./components/AdminPageAdvertContent";
 
-const AdminPageAdvert = () => {
+const AdminPageAuthors = () => {
 
   useEffect(()=>{
     window.scrollTo({top: 0, left: 0, behavior:"smooth"});
@@ -24,11 +24,12 @@ const AdminPageAdvert = () => {
           <div className={styles.mainTop}>
             <AdminProfile />
           </div>
-          <AdminPageAdvertContent />
+          {/*<AdminPageAdvertContent />*/}
+          <h1>Book Authors</h1>
         </div>
-      </div>   
+      </div>
     </>
   );
 };
 
-export default AdminPageAdvert;
+export default AdminPageAuthors;

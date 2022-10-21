@@ -5,6 +5,8 @@ h3{
   color: #372E24;
 }
 
+
+
 h4{
   font-weight: 500;
   line-height: 20px;
@@ -67,6 +69,7 @@ h5{
   .logo{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: flex-start;
     background: #ECCFB5;
     padding: 25px 10px ;

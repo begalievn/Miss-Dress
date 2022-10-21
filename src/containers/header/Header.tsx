@@ -23,11 +23,15 @@ import sign from "../../assets/header/sign-in.svg";
 import { AuthorizationAPI } from "../../store/services/AuthorizationApi";
 import { userStateToogle } from "../../store/reducers/AuthorizationUserSlice";
 
+import { productFavoritesApi } from "../../store/services/productFavoritesApi";
+
+import { libraryIcon } from "../../assets/icons";
+
 import style from "./Header.module.scss";
 import HeaderBurgerMenu from "./HeaderBurgerMenu";
 import { icons, pages } from "./constants";
 import ProfileModal from "./ProfileModal/ProfileModal";
-import { productFavoritesApi } from "../../store/services/productFavoritesApi";
+
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -69,41 +73,39 @@ const Header = () => {
     editColorIcon(name);
 
     switch (name) {
-      case "search":
-        dispatch(openSearch(!modalSearch));
-        break;
-      case "heart":
-        navigate("/favorites");
-        dispatch(closeAll());
-        break;
-      case "shopping":
-        navigate("/shopping");
-        dispatch(closeAll());
-        break;
-      case "sign":
-        dispatch(openModal(!modal));
-        dispatch(AddModalChoise("sign"));
-        break;
-      case "user":
-        dispatch(openProfile(!menuProfile));
-        break;
-      default:
-        break;
+    case "heart":
+      navigate("/favorites");
+      dispatch(closeAll());
+      break;
+    case "shopping":
+      navigate("/shopping");
+      dispatch(closeAll());
+      break;
+    case "sign":
+      dispatch(openModal(!modal));
+      dispatch(AddModalChoise("sign"));
+      break;
+    case "user":
+      dispatch(openProfile(!menuProfile));
+      break;
+    default:
+      break;
     }
   };
 
   const checkAuth = () => {
+    console.log(iconsArr);
     if (userState) {
       let obj = [...iconsArr];
-      obj[3].url = user;
-      obj[3].name = "user";
-      obj[3].class = "";
+      obj[2].url = user;
+      obj[2].name = "user";
+      obj[2].class = "";
       setIconsArr(obj);
     } else {
       let obj = [...iconsArr];
-      obj[3].url = sign;
-      obj[3].name = "sign";
-      obj[3].class = "";
+      obj[2].url = sign;
+      obj[2].name = "sign";
+      obj[2].class = "";
       setIconsArr(obj);
     }
   };
@@ -160,10 +162,10 @@ const Header = () => {
     checkAuth();
   }, [userState]);
 
-  useEffect(() => {
-    updateRefreshFunc();
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   updateRefreshFunc();
+  //   checkAuth();
+  // }, []);
 
   const [counte, setCounte] = useState(1);
   const limit = 10;
@@ -216,7 +218,6 @@ const Header = () => {
                   alt=""
                   className={style[icon.class]}
                 />
-                {/*{icon.id === 3 ? <span>7</span> : null} /!* Shopping Count *!/*/}
               </div>
             ))}
             {cards && cards.length > 0 && (
@@ -231,7 +232,7 @@ const Header = () => {
       {burgerMenuModal ? (
         <HeaderBurgerMenu animation={animation} setAnimation={setAnimation} />
       ) : null}
-      {modalSearch ? <SearchMain /> : null}
+      {/*{modalSearch ? <SearchMain /> : null}*/}
       {menuProfile ? <ProfileModal /> : null}
     </>
   );
