@@ -60,15 +60,18 @@ const AdminPageMain = (props) => {
   const handleSave = (e) => {
     e.preventDefault();
     if (name !== "") {
+    
     }
   };
 
   return (
     <div className={classes.container_parent}>
-      <AdminMenu />
-      <div>
+      <div className={classes.menu_left}>
+        <AdminMenu />
+      </div>
+      <div className={classes.content}>
         <h1>Content</h1>
-        <div>
+        <div className={classes.content_body} >
           {props.children}
         </div>
       </div>
