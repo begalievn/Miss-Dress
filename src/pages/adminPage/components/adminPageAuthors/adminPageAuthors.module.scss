@@ -5,6 +5,38 @@
     .mainTop {
         margin-bottom: 20%;
         display: flex;
-        justify-content: flex-end;   
+        justify-content: flex-end;
     }
 }
+
+.title_container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    .title {
+        font-size: 24px;
+    }
+
+    .add_user {
+        width: 160px;
+        height: 40px;
+        background: #DBB593;
+        border-radius: 20px;
+        border-style: none;
+    }
+
+}
+
+
+
+.authors_list {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //flex-direction: column;
+}
+
+

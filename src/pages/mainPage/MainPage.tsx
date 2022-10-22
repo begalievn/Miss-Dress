@@ -47,8 +47,8 @@ const MainPage = () => {
       {/*<Slider />*/}
       <div className={classes.container}>
         <div className={classes.content}>
-          <CategoriesBlock />
-          <BestSellersBlock />
+          {/*<CategoriesBlock />*/}
+          {/*<BestSellersBlock />*/}
           {/*<NewProductsBlock />*/}
           {/*<Collection info={collectionInfo} />*/}
           {/*<Subscribe />*/}

@@ -1,0 +1,42 @@
+
+.input_container {
+  width: 100%;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 11px;
+  left: 8px;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.input {
+  max-width: 550px;
+  width: 100%;
+  max-height: 90px;
+  height: 3em;
+  border-radius: 45px;
+  text-align: center;
+  font-size: 1em;
+  border: none;
+  background: #DBB593;
+  margin: 10px 0;
+  outline: none;
+  color: #77644F
+}
+
+::placeholder {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  display: flex;
+  align-items: flex-end;
+  color: gray;
+}

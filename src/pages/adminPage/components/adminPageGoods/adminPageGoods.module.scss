@@ -2,3 +2,41 @@
     width: 100%;
     padding: 20px;
 }
+
+.actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+    .button {
+        width: 200px;
+        height: 50px;
+        border-radius: 45px;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+        background: #372E24;
+        color: white;
+        margin-top: 30px;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.books_list {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+

@@ -5,6 +5,8 @@ import NewsPage from "../../../newsPage/NewsPage";
 import AdminMenu from "../UI/adminMenu/AdminMenu";
 
 import classes from "../../adminPageMain.module.scss";
+import AdminContentContainer from "../UI/adminContentContainer/AdminContentContainer";
+import AdminHeader from "../UI/adminHeader/AdminHeader";
 
 function AdminPageNews() {
 
@@ -14,8 +16,13 @@ function AdminPageNews() {
 
   return (
     <div className={classes.container_parent}>
+      {/*<AdminMenu />*/}
+      {/*<NewsPage edit={true} />*/}
       <AdminMenu />
-      <NewsPage edit={true} />
+      <AdminContentContainer>
+        <AdminHeader />
+        <h2>Content</h2>
+      </AdminContentContainer>
     </div>
   );
 }

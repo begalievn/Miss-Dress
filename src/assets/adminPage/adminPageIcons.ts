@@ -20,6 +20,12 @@ import advertImageFive from "./advertImageFive.png";
 import advertImageSix from "./advertImageSix.png";
 import authorIcon from './authorIcon.png';
 import adminAva from './adminAva.png';
+import authorImage from './authorIcon.png';
+import bookIcon from './bookIcon.png';
+import addBook from './addBook.png';
+import giveBook from './giveBook.png';
+import returnBook from './returnBook.png';
+import downArrow from './downArrow.svg';
 
 export {
   dashboardIcon,
@@ -43,5 +49,11 @@ export {
   advertImageFive,
   advertImageSix,
   authorIcon,
-  adminAva
+  adminAva,
+  authorImage,
+  bookIcon,
+  addBook,
+  returnBook,
+  giveBook,
+  downArrow
 };

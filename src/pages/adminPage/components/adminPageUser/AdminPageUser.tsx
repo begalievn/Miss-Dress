@@ -10,9 +10,11 @@ import { goBackIcon } from "../../../../assets/adminPage/adminPageIcons";
 
 import AdminProfile from "../adminProfile/AdminProfile";
 
-import styles from "./adminPageUser.module.scss";
 
-import AdminPageUserContent from "./components/AdminPageUserContent";
+import AdminContentContainer from "../UI/adminContentContainer/AdminContentContainer";
+import AdminHeader from "../UI/adminHeader/AdminHeader";
+
+import styles from "./adminPageUser.module.scss";
 
 function AdminPageUser() {
 
@@ -28,20 +30,10 @@ function AdminPageUser() {
   return (
     <div className={classes.container_parent}>
       <AdminMenu />
-      <div className={styles.container}>
-        <div className={styles.main_top}>
-          <div
-            style={{ cursor: "pointer" }}
-            onClick={goBack}
-            className={styles.backPage}
-          >
-            <img className={styles.goBackIcon} src={goBackIcon} alt="" />
-            <p className={styles.goBackText}>Вернуться ко всем пользователям</p>
-          </div>
-          <AdminProfile />
-        </div>
-        <AdminPageUserContent />
-      </div>
+      <AdminContentContainer>
+        <AdminHeader />
+        <h2>Content</h2>
+      </AdminContentContainer>
     </div>
   );
 }

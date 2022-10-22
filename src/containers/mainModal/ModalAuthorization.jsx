@@ -2,6 +2,8 @@ import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import jwt_decode from "jwt-decode";
 
+import {useNavigate} from "react-router-dom";
+
 import {addUserId, userStateToogle} from "../../store/reducers/AuthorizationUserSlice";
 
 import {
@@ -20,7 +22,7 @@ import style from "./ModalRegistration.module.scss";
 
 const ModalAuthorization= () => {
   const [valueNumber, setValueNumber] = useState("");
-
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const textError = useAppSelector((state) => state.ModalSlice.textError);
 
@@ -66,6 +68,7 @@ const ModalAuthorization= () => {
       localStorage.setItem("accessToken", response?.data?.data);
       dispatch(userStateToogle(true));
       dispatch(closeAll());
+      navigate('/books');
     }
     if(isError) {
       console.log("Error occured");

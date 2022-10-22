@@ -20,7 +20,7 @@ function App() {
       {isExcept && <Header />}
       <MainRoutes />
       {/* <Footer /> */}
-      {isExcept && <Footer />}
+      {/*{isExcept && <Footer />}*/}
     </div>
   );
 }

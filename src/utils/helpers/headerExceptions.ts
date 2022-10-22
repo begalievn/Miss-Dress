@@ -8,8 +8,9 @@ const headerExceptions = [
   "chat",
   "shoppingBag",
   "authorization",
-  "advertisement",
+  "authors",
   "news",
+  "books"
 ];
 
 export const useExcept = (path: string) =>

@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 
 import classes from "../../adminPageMain.module.scss";
+import AdminMenu from "../UI/adminMenu/AdminMenu";
+import AdminContentContainer from "../UI/adminContentContainer/AdminContentContainer";
+import AdminHeader from "../UI/adminHeader/AdminHeader";
 
-import AdminPageMain from "../../AdminPageMain";
+
 
 const AdminPageDashboard = () => {
 
@@ -12,7 +15,11 @@ const AdminPageDashboard = () => {
 
   return (
     <div className={classes.container_parent}>
-      <AdminPageMain />
+      <AdminMenu />
+      <AdminContentContainer>
+        <AdminHeader />
+        <h2>Dashboard</h2>
+      </AdminContentContainer>
     </div>
   );
 };

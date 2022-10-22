@@ -244,12 +244,12 @@ const MainRoutes = () => {
       id: 5,
     },
     {
-      link: "goods",
+      link: "books",
       element: <AdminPageGoods />,
       id: 6,
     },
     {
-      link: "sales",
+      link: "books/:id",
       element: <AdminPageSales />,
       id: 7,
     },
@@ -262,12 +262,6 @@ const MainRoutes = () => {
       link: "authors",
       element: <AdminPageAd />,
       id: 9,
-    },
-
-    {
-      link: "user",
-      element: <AdminPageUser />,
-      id: 11,
     },
     {
       link: "product",

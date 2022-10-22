@@ -19,6 +19,8 @@ import PopularProducts from "./components/UI/adminPopularProducts/AdminPopularPr
 
 import styles from "./components/adminPageUsers/adminPageUsers.module.scss";
 import AdminRegularUsers from "./components/UI/adminRegularUsers/AdminRegularUsers";
+import AdminContentContainer from "./components/UI/adminContentContainer/AdminContentContainer";
+import AdminHeader from "./components/UI/adminHeader/AdminHeader";
 
 const AdminPageMain = (props) => {
 
@@ -66,12 +68,10 @@ const AdminPageMain = (props) => {
   return (
     <div className={classes.container_parent}>
       <AdminMenu />
-      <div>
-        <h1>Content</h1>
-        <div>
-          {props.children}
-        </div>
-      </div>
+      <AdminContentContainer>
+        <AdminHeader />
+        <h2>Content</h2>
+      </AdminContentContainer>
       {/*<div className={classes.main_part}>*/}
       {/*  <div className={classes.main_top}>*/}
       {/*    <ProfileAva />*/}
@@ -129,7 +129,7 @@ const AdminPageMain = (props) => {
       {/*          <h4>Доход</h4>*/}
       {/*          <h4>Статус</h4>*/}
       {/*        </div>*/}
-      {/*        {cards?.result?.data?.map((item: any) => (*/}
+      {/*        {cards?.result?.data?.map((item) => (*/}
       {/*          <div key={item.id} className={classes.table_info}>*/}
       {/*            <h4>*/}
       {/*              {item.firstName} {item.lastName}*/}
@@ -158,7 +158,7 @@ const AdminPageMain = (props) => {
       {/*        ))}*/}
       {/*      </div>*/}
       {/*      <Paginations*/}
-      {/*        onChange={(event: any, page: number) => setCounte(page)}*/}
+      {/*        onChange={(event, page) => setCounte(page)}*/}
       {/*        count={allPages}*/}
       {/*      />*/}
       {/*    </div>*/}

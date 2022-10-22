@@ -195,20 +195,20 @@ const Header = () => {
               <Logo />
             </Link>
           </div>
-          <ul className={style.mainBlock_navbar}>
-            {pages.map((page) => (
-              <Link to={page.link} key={page.id}>
-                <li
-                  className={
-                    location.pathname === page.link ? style.activeNavbar : ""
-                  }
-                  onClick={() => modalFunc("close")}
-                >
-                  {page.name}
-                </li>
-              </Link>
-            ))}
-          </ul>
+          {/*<ul className={style.mainBlock_navbar}>*/}
+          {/*  {pages.map((page) => (*/}
+          {/*    <Link to={page.link} key={page.id}>*/}
+          {/*      <li*/}
+          {/*        className={*/}
+          {/*          location.pathname === page.link ? style.activeNavbar : ""*/}
+          {/*        }*/}
+          {/*        onClick={() => modalFunc("close")}*/}
+          {/*      >*/}
+          {/*        {page.name}*/}
+          {/*      </li>*/}
+          {/*    </Link>*/}
+          {/*  ))}*/}
+          {/*</ul>*/}
           <div className={style.icons}>
             {iconsArr.map((icon, index) => (
               <div key={index} className={style.shopping_img_count}>
