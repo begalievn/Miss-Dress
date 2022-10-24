@@ -12,14 +12,14 @@ interface IPhotoCardCategory {
   id: number;
 }
 
-const PhotoCardCategory = ({ image, category, id }: IPhotoCardCategory) => {
+const PhotoCardCategory = ({ cover, title, id }: any) => {
   return (
     <div className={classes.container}>
       <div>
-        <ProductPhoto image={image} category={category} id={id} />
+        <ProductPhoto image={cover} category={title} id={id} />
       </div>
       <div className={classes.content}>
-        <p>{category}</p>
+        <p>{title}</p>
       </div>
     </div>
   );

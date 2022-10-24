@@ -3,8 +3,8 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import CategoriesDropdowBtn from "../../../../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 import Paginations from "../../../../../../../components/pagination/Paginations";
-import { adminDeleteUserApi } from "../../../../../../../store/services/adminDeleteUserApi";
-import { adminPopularProductsApi } from "../../../../../../../store/services/adminPopularProductsApi"; 
+import { adminDeleteUserApi } from "../../../../../../../store/secondary/adminDeleteUserApi";
+import { adminPopularProductsApi } from "../../../../../../../store/services/adminPopularProductsApi";
 import { Datum } from "../../../../../../../utils/types/collectionsCategory";
 import classes from "../../../../../adminPageMain.module.scss";
 
@@ -15,7 +15,7 @@ function AdminPopularProductsContent() {
 
   const { data:product ,isLoading,isError } = adminPopularProductsApi.useFetchGetPopularProductQuery("");
   console.log("1 Начальное состояние",product);
-  
+
   const filtere = useMemo(()=>{
     return product?.result || [];
   }, [product]);
@@ -23,11 +23,11 @@ function AdminPopularProductsContent() {
 
 
   useEffect(()=>{
-    setData(filtere?.slice(0, 6))
+    setData(filtere?.slice(0, 6));
     // console.log("3 useEffect",newData);
   },[filtere]);
 
-  // Пагинация 
+  // Пагинация
   let pages:number;
   const pageCount :number=Math.ceil(filtere.length / 6);
 
@@ -50,9 +50,9 @@ function AdminPopularProductsContent() {
 
   return (
     <div className={styles.productsContainer}>
-      
+
       <div className={styles.main}>
-        
+
         <div className={styles.contentBot}>
           <h2>Популярные товары</h2>
           <div className={styles.searchParent}>
@@ -91,8 +91,8 @@ function AdminPopularProductsContent() {
             <h4>Статус</h4>
             <h4>Рейтинг</h4>
           </div>
-          {newData && newData?.map((item:any)=> { 
-            // console.log(item,"newData");          
+          {newData && newData?.map((item:any)=> {
+            // console.log(item,"newData");
             return (
               <div key={item.id}>
                 {item.cart.products.map((items:any)=>{
@@ -114,9 +114,9 @@ function AdminPopularProductsContent() {
                              Проверен
                           </h6>
                         ) : items.status === 0 ? (
-                          <h6 
-                            style={{ 
-                              backgroundColor: "#ECCFB5" 
+                          <h6
+                            style={{
+                              backgroundColor: "#ECCFB5"
                             }}
                           >
                                 Не проверен
@@ -167,19 +167,19 @@ function AdminPopularProductsContent() {
                             </p>
                           </div>
                         )}
-                      </div> 
+                      </div>
                       {/* <DeleteButton handleClick={setDeleteId} id={item.id} /> */}
                       {/* <button onClick={(id) => deleteIdl(setDeleteId(item.id))}> */}
                       {/* delete */}
                       {/* </button> */}
                       {/* <button onClick={handleDelete}>delete</button> */}
-                    </div> 
+                    </div>
                   );
-                })}          
+                })}
               </div>
             );
-          })} 
-          
+          })}
+
         </div>
         <Paginations
           count={pageCount}

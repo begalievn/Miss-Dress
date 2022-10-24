@@ -1,9 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { searchApi } from "../../store/services/SearchApi";
+import { searchApi } from "../../store/secondary/SearchApi";
 
-import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
 import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 
@@ -26,7 +25,6 @@ const SearchPage = () => {
     <>
       <div className={classes.content_main}>
         <div className={classes.content_parent}>
-          <Breadcrumbs />
           <div className={classes.result}>
             <h2 className={classes.title}>Результаты поиска</h2>
             <CategoriesDropdowBtn />

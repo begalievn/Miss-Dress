@@ -46,6 +46,7 @@ export const CreateAuthorModal = ({open, handleClose}) => {
         });
       // const response = await createAuthor(formData);
       console.log("response", response);
+      handleClose();
     } catch (err) {
       console.log(err);
     }

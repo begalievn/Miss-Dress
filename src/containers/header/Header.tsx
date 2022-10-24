@@ -23,7 +23,7 @@ import sign from "../../assets/header/sign-in.svg";
 import { AuthorizationAPI } from "../../store/services/AuthorizationApi";
 import { userStateToogle } from "../../store/reducers/AuthorizationUserSlice";
 
-import { productFavoritesApi } from "../../store/services/productFavoritesApi";
+import { productFavoritesApi } from "../../store/secondary/productFavoritesApi";
 
 import { libraryIcon } from "../../assets/icons";
 

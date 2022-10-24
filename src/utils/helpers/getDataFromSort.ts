@@ -1,4 +1,4 @@
-import { dropDownApi } from "../../store/services/dropDownApi";
+import { dropDownApi } from "../../store/secondary/dropDownApi";
 import { IParams } from "../types/collectionsCategory";
 
 export function getDataFromSort(Data: IParams) {

@@ -1,17 +1,16 @@
 import React from "react";
 
-import classes from "../return.module.scss";
-import Breadcrumbs from "../../../components/breadcrumbs/Breadcrumbs";
 import { Accordion } from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
+import classes from "../return.module.scss";
+
 const ContentReturnProduct = () => {
   return (
     <div>
-      <Breadcrumbs />
       <h1>Возврат товара</h1>
       <img
         src="https://rskrf.ru/upload/iblock/993/99397dcf8ac6f7d2ddc2dfd3fd3f8aaf.jpg"

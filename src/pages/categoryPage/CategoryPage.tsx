@@ -20,7 +20,7 @@ import CategoriesDropdowBtn from "../../components/categoriesDropdowButton/Categ
 import { categoryApi } from "../../store/services/categoryApi";
 import { getNestedCategories } from "../../utils/helpers/getNestedCategories";
 import { CategoryTypes } from "../../utils/types/types";
-import { productsApi } from "../../store/services/productsApi";
+import { productsApi } from "../../store/secondary/productsApi";
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 
 import classes from "./categoryPage.module.scss";

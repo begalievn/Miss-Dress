@@ -12,18 +12,20 @@ import LinearProgress from "@mui/material/LinearProgress";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import { adminDeleteUserApi } from "../../../../store/services/adminDeleteUserApi";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
-import AdminRegularUsers from "../UI/adminRegularUsers/AdminRegularUsers";
+
 
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+
+import AdminRegularUsers from "../UI/adminRegularUsers/AdminRegularUsers";
+import { adminDeleteUserApi } from "../../../../store/secondary/adminDeleteUserApi";
 import ViewMoreButton from "../UI/viewMoreButton/ViewMoreButton";
 import DeleteButton from "../UI/deleteButton/DeleteButton";
 import Paginations from "../../../../components/pagination/Paginations";

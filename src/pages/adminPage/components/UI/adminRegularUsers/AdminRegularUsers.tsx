@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { adminRegularUsersApi } from "../../../../../store/services/adminRegularUsersApi";
+
+import { adminRegularUsersApi } from "../../../../../store/secondary/adminRegularUsersApi";
 import ViewMoreButton from "../viewMoreButton/ViewMoreButton";
 
 import classes from "./adminRegularUsers.module.scss";

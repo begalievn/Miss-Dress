@@ -25,7 +25,7 @@ const Logo = () => {
 
 
   return (
-    <div className={style[styleLogo]} >Library </div> //<img src={hero} alt="hero" />
+    <div className={style[styleLogo]} >AlaToo-lib </div> //<img src={hero} alt="hero" />
   );
 };
 

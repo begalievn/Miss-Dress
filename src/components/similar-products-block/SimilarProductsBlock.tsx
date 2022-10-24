@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from "react";
 
+import { DataArray } from "@mui/icons-material";
+
 import SimilarProductsSlider from "../similar-products-slider/SimilarProductsSlider";
 
 import ProductCard from "../productCard/ProductCard";
@@ -8,17 +10,16 @@ import CardsContainer from "../../containers/cardsContainer/CardsContainer";
 
 import BrownButton from "../brown-button/BrownButton";
 
-import { productsApi } from "../../store/services/productsApi";
+import { productsApi } from "../../store/secondary/productsApi";
 
 import classes from "./similarProductsBlock.module.scss";
-import { DataArray } from "@mui/icons-material";
 
 const SimilarProductsBlock = () => {
   const { data = [] } = productsApi.useGetAllProductsQuery("");
   const [cards, setCards] = useState([]);
   // console.log(data.result);
   console.log(data);
-  
+
 
   // const dataCards: any = useMemo(() => {
   //   setCards(data?.result?.data || []);
@@ -47,7 +48,7 @@ const SimilarProductsBlock = () => {
                 />
               );
             }
-             
+
             )}
           </SimilarProductsSlider>
         </div>

@@ -4,12 +4,16 @@ import PhotoCardCategory from "../../../../components/photo-card-category/PhotoC
 
 import CardsContainer from "../../../../containers/cardsContainer/CardsContainer";
 
+import { adminGetCartApi } from "../../../../store/services/adminGetCartApi";
+
 import {
   dresses,
   skirts,
   trousers,
   jeans,
 } from "../../../../assets/main-page/images";
+
+import LoaderCircular from "../../../../components/loader-circular/LoaderCircular";
 
 import classes from "./categoriesBlock.module.scss";
 
@@ -22,6 +26,7 @@ interface ICardData {
   category: string;
   id: number;
 }
+
 
 export const cards: ICategoriesBlock = [
   {
@@ -67,14 +72,22 @@ export const cards: ICategoriesBlock = [
 ];
 
 const CategoriesBlock: FC = () => {
+
+  const { data, isLoading, isError } = adminGetCartApi.useGetAllBooksQuery(1);
+  console.log("data form Categories", data);
+
   return (
     <div className={classes.container}>
       <CardsContainer>
-        {cards.map((item, index) => (
-          <div key={index} className={classes.card}>
-            <PhotoCardCategory {...item} />
-          </div>
-        ))}
+        {
+          isLoading ? <LoaderCircular /> :(
+            data?.data?.results.map((item: any, index: number) => (
+              <div key={index} className={classes.card}>
+                <PhotoCardCategory {...item} />
+              </div>
+            ))
+          )
+        }
       </CardsContainer>
     </div>
   );

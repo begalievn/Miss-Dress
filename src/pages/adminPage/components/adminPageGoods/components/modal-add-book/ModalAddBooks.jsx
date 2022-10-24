@@ -75,6 +75,7 @@ const ModalAddBooks = ({open, handleClose}) => {
           },
         });
       // const response = await createAuthor(formData);
+      handleClose();
       console.log("response", response);
     } catch (err) {
       console.log(err);

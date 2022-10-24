@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import CategoriesDropdowBtn from "../../../../../../components/categoriesDropdowButton/CategoriesDropdowBtn";
 import Paginations from "../../../../../../components/pagination/Paginations";
 import { adminCollectionApi } from "../../../../../../store/services/adminCollectionApi";
-import { adminDeleteUserApi } from "../../../../../../store/services/adminDeleteUserApi";
+import { adminDeleteUserApi } from "../../../../../../store/secondary/adminDeleteUserApi";
 import { AdminPageAllSeasonProductsProps } from "../../../../../../utils/types/typesAdminCollection";
 import DeleteButton from "../../../UI/deleteButton/DeleteButton";
 
@@ -127,7 +127,7 @@ function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
 
   // console.log(Data);
 
-  
+
   return (
     <>
       <div className={classes.contentBot}>
@@ -204,8 +204,8 @@ function AdminPageAllSeasonProducts({id}:AdminPageAllSeasonProductsProps) {
                 key={item.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell 
-                  className={classes.product} 
+                <TableCell
+                  className={classes.product}
                   onClick={()=>navigateToProductId(`/product/&{item.id}`)} component="th" scope="row">
                   {item.product.title}
                 </TableCell>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { adminPopularProductPriceApi } from "../../../../../store/services/adminPopularProductPriceApi";
+import { adminPopularProductPriceApi } from "../../../../../store/secondary/adminPopularProductPriceApi";
 import ViewMoreButton from "../viewMoreButton/ViewMoreButton";
 
 import classes from "./adminPopularProducts.module.scss";

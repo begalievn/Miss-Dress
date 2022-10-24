@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 
+import { Link, useNavigate } from "react-router-dom";
+
 import { bestSellers } from "../../../../utils/consts/main-page/mainPageConsts";
 
 // import PhotoCardContent from "../../../../components/main-page/photo-card-content/PhotoCardContent";
@@ -19,41 +21,18 @@ import BottomButton from "../bottom-button/BottomButton";
 import ProductCard from "../../../../components/productCard/ProductCard";
 // import ProductsGridContainer from "../../../../containers/productsGridContainer/ProductsGridContainer";
 
-import { productsApi } from "../../../../store/services/productsApi";
+import { productsApi } from "../../../../store/secondary/productsApi";
+import { adminGetCartApi } from "../../../../store/services/adminGetCartApi";
 
 import classes from "./bestSellersBlock.module.scss";
-import { Link, useNavigate } from "react-router-dom";
 
 
-// const cards = [
-//   {
-//     image: bestSellers1,
-//     id: 1,
-//   },
-//   {
-//     image: bestSellers2,
-//     id: 2,
-//   },
-//   {
-//     image: bestSellers3,
-//     id: 3,
-//   },
-//   {
-//     image: bestSellers4,
-//     id: 4,
-//   },
-//   {
-//     image: bestSellers5,
-//     id: 5,
-//   },
-//   {
-//     image: bestSellers6,
-//     id: 6,
-//   },
-// ];
+
 
 const BestSellersBlock: FC = () => {
   const { data = [] } = productsApi.useGetAllProductsQuery("");
+  const { data: books, isLoading, isError } = adminGetCartApi.useGetAllBooksQuery(1);
+
 
   const cards = data.result?.data || [];
   // console.log(cards);

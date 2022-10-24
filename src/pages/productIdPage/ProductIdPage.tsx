@@ -15,9 +15,9 @@ import SimilarProductsBlock from "../../components/similar-products-block/Simila
 
 import LoaderCircular from "../../components/loader-circular/LoaderCircular";
 
-import { categoryOneProductApi } from "../../store/services/categoryOneProductApi";
+import { categoryOneProductApi } from "../../store/secondary/categoryOneProductApi";
 
-import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
+import { shoppingCartApi } from "../../store/secondary/shoppingCartQuery";
 
 import ProductPicturesSlider from "./components/productPicturesSlider/ProductPicturesSlider";
 import ProductContentInfo from "./components/productContentInfo/ProductContentInfo";
@@ -75,7 +75,7 @@ const ProductIdPage = () => {
                 cards={newData.images}
               />
             }
-            
+
           </div>
           <div className={classes.product_content}>
             <div
@@ -107,12 +107,12 @@ const ProductIdPage = () => {
           </div>
         </div>
 
-        
+
         <div className={classes.product_horizontal_slider}>
           {loading ? null : <ProductPicturesSlider
             setImageIndex={setActiveIndex}
             cards={newData.images}
-          />}          
+          />}
         </div>
         <div className={classes.product_content_info_bottom}>
           <div className={classes.about}>
@@ -144,7 +144,7 @@ const ProductIdPage = () => {
             </>
           );
         }) : null}
-       
+
       </ContentContainer>
     </div>
   );

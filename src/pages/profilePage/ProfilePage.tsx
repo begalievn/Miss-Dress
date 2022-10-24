@@ -4,7 +4,6 @@ import Logo from "../../components/logo/Logo";
 
 import hero from "../../assets/profile/hero.png";
 
-import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
 
 import { useAppDispatch, useAppSelector } from "../../utils/app/hooks";
@@ -30,7 +29,7 @@ const ProfilePage = () => {
 
   // const { data: dataMe, isLoading } = UserApi.useLazyGetMeQuery();
   const modalState = useAppSelector((state) => state.ModalSlice.modalState);
-  
+
   const [getMe, { data:dataMe,isSuccess }] = UserApi.useLazyGetMeQuery();
 
   useEffect(() => {
@@ -45,12 +44,11 @@ const ProfilePage = () => {
   useEffect(() => {
     getMe(1);
   }, [getMe, modalState]);
-  
-  
+
+
 
   return (
     <div className={style.container}>
-      <Breadcrumbs />
       {!isSuccess ? (
         <LoaderCircular />
       ) : (

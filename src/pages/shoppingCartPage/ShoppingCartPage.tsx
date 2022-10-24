@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import SubmitButton from "../../components/submitButton/SubmitButton";
 
-import { shoppingCartApi } from "../../store/services/shoppingCartQuery";
+import { shoppingCartApi } from "../../store/secondary/shoppingCartQuery";
 
 import useInput from "../../hooks/validation/useInput";
 
@@ -157,8 +157,8 @@ const ShoppingCartPage = () => {
       action === "+"
         ? await addProduct({ productId: id }).unwrap()
         : action === "-"
-        ? await removeProduct(body).unwrap()
-        : await deleteProduct(body).unwrap();
+          ? await removeProduct(body).unwrap()
+          : await deleteProduct(body).unwrap();
 
     const { products } = result;
     if (action === "x" && products.length < resultState?.products.length!) {

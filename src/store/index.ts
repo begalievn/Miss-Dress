@@ -1,7 +1,8 @@
-import { newProductsApi } from './services/productNewProductsApi';
-import { productBestsellersApi } from './services/productBestsellersApi';
-import { adminRegularUsersApi } from "./services/adminRegularUsersApi";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
+import { newProductsApi } from './secondary/productNewProductsApi';
+import { productBestsellersApi } from './secondary/productBestsellersApi';
+import { adminRegularUsersApi } from "./secondary/adminRegularUsersApi";
 
 import { adminCollectionApi } from "./services/adminCollectionApi";
 
@@ -11,28 +12,27 @@ import AuthorizationUserSlice from "./reducers/AuthorizationUserSlice";
 import Breadcrumbs from "./reducers/BreadcrumbsSlice";
 import ModalSlice from "./reducers/ModalSlice";
 
-import { shoppingCartApi } from "./services/shoppingCartQuery";
-import { LikeApi } from "./services/LikeApi";
+import { shoppingCartApi } from "./secondary/shoppingCartQuery";
+import { LikeApi } from "./secondary/LikeApi";
 import { categoryApi } from "./services/categoryApi";
 import { UserApi } from "./services/UserApi";
-import { productsApi } from "./services/productsApi";
+import { productsApi } from "./secondary/productsApi";
 
-import { categoriesApi } from "./services/categoriesApi";
-import { collectionCategoryApi } from "./services/collectionCategoryApi";
-import { dropDownApi } from "./services/dropDownApi";
+import { categoriesApi } from "./secondary/categoriesApi";
+import { collectionCategoryApi } from "./secondary/collectionCategoryApi";
+import { dropDownApi } from "./secondary/dropDownApi";
 
-import { orderApi } from "./services/OrderApi";
-import { searchApi } from "./services/SearchApi";
-import { ratingApi } from "./services/RatingApi";
+import { orderApi } from "./secondary/OrderApi";
+import { searchApi } from "./secondary/SearchApi";
 
-import { categoryOneProductApi } from "./services/categoryOneProductApi";
+import { categoryOneProductApi } from "./secondary/categoryOneProductApi";
 
-import { adminUserOneApi } from "./services/adminUserOneApi";
-import { adminDeleteUserApi } from "./services/adminDeleteUserApi";
+import { adminUserOneApi } from "./secondary/adminUserOneApi";
+import { adminDeleteUserApi } from "./secondary/adminDeleteUserApi";
 import { adminPopularProductsApi } from "./services/adminPopularProductsApi";
-import { adminPopularProductPriceApi } from "./services/adminPopularProductPriceApi";
+import { adminPopularProductPriceApi } from "./secondary/adminPopularProductPriceApi";
 import { adminGetCartApi } from "./services/adminGetCartApi";
-import { productFavoritesApi } from "./services/productFavoritesApi";
+import { productFavoritesApi } from "./secondary/productFavoritesApi";
 
 const rootreducer = combineReducers({
   ModalSlice: ModalSlice,
@@ -49,7 +49,6 @@ const rootreducer = combineReducers({
   [dropDownApi.reducerPath]: dropDownApi.reducer,
   [orderApi.reducerPath]: orderApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
-  [ratingApi.reducerPath]: ratingApi.reducer,
   [categoryOneProductApi.reducerPath]: categoryOneProductApi.reducer,
   [adminCollectionApi.reducerPath]: adminCollectionApi.reducer,
   [adminUserOneApi.reducerPath]: adminUserOneApi.reducer,
@@ -80,7 +79,6 @@ export const store = configureStore({
       dropDownApi.middleware,
       orderApi.middleware,
       productsApi.middleware,
-      ratingApi.middleware,
       categoryOneProductApi.middleware,
       adminCollectionApi.middleware,
       adminUserOneApi.middleware,

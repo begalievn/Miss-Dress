@@ -9,13 +9,13 @@ interface IProductPhoto {
   id: number;
 }
 
-const ProductPhoto = ({ image, id, category }: IProductPhoto) => {
+const ProductPhoto = ({ image, id}: any) => {
   // const { productID } = useParams();
   return (
     <div className={classes.container}>
       <img src={image} alt="" />
 
-      <Link to={`${id}`}>
+      <Link to={`books/${id}`}>
         <button className={classes.button}>{"Смотреть"}</button>
       </Link>
     </div>

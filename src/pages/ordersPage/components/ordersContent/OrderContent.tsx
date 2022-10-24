@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-import { orderApi } from "../../../../store/services/OrderApi";
+import { orderApi } from "../../../../store/secondary/OrderApi";
 
 import styles from "./orderContent.module.scss";
 
@@ -10,7 +10,7 @@ function OrderContent() {
   const { data, isError, isLoading } = orderApi.useFetchAllOrderQuery();
   const cart = data?.result;
   console.log(cart);
-  
+
 
   // const userStatus = (item: number) => {
   //   switch (item) {
@@ -41,10 +41,10 @@ function OrderContent() {
               <div className={styles.infoBlock}>
                 <div className={styles.infoBlockLeft}>
                   <h4 className={styles.infoOrder}>Заказ №{item.id}</h4>
-                  {item.status === 0 
+                  {item.status === 0
                     ? <p className={styles.infoStatus}>Не доставлено</p>
                     : <p className={styles.infoStatus}>Доставлено</p>
-                  }              
+                  }
                 </div>
                 <p className={styles.infoDate}>
                   {item.createDate.slice(0, 10)}

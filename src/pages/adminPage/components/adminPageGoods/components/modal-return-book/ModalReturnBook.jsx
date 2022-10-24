@@ -55,7 +55,7 @@ const ModalReturnBook = ({open, handleClose}) => {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
       });
-    
+    handleClose();
     console.log('response', response);
   };
   

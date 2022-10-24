@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { categoryOneProductApi } from "../../../../store/services/categoryOneProductApi";
+import { categoryOneProductApi } from "../../../../store/secondary/categoryOneProductApi";
 
 import classes from "./productPicturesVerticalSlider.module.scss";
 
@@ -97,7 +97,7 @@ const ProductPicturesVerticalSlider = ({
           key={hiddenLeftIndex}
           className={[classes.hiddenLeft, classes.card].join(" ")}
         >
-        
+
           <ImageCard card={sliderCards[hiddenLeftIndex]} />
         </div>
 
@@ -137,7 +137,7 @@ const ProductPicturesVerticalSlider = ({
           className={[classes.hiddenRight, classes.card].join(" ")}
         >
           <ImageCard card={sliderCards[hiddenRightIndex]} />
-        </div> 
+        </div>
       </div>
 
       <div className={classes.arrow_down} onClick={next}></div>

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
-import classes from "./adminPageUserContent.module.scss";
 
 import { useParams } from "react-router-dom";
-import { adminUserOneApi } from "../../../../../store/services/adminUserOneApi";
+
+import { adminUserOneApi } from "../../../../../store/secondary/adminUserOneApi";
+
+import classes from "./adminPageUserContent.module.scss";
 
 function AdminPageUserContent() {
   const [counte, setCounte] = useState(1);

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
-import { Iorder } from "./../../utils/types/typesOrder";
+import { Iorder } from "../../utils/types/typesOrder";
 
 
 export const orderApi = createApi({

@@ -8,7 +8,7 @@ import BottomButton from "../bottom-button/BottomButton";
 
 import ProductCard from "../../../../components/productCard/ProductCard";
 
-import { productsApi } from "../../../../store/services/productsApi";
+import { productsApi } from "../../../../store/secondary/productsApi";
 
 import classes from "./newProductsBlock.module.scss";
 

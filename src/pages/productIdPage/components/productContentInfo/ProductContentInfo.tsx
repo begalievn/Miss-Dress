@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import React, { useState } from "react";
 
-import { categoryOneProductApi } from "../../../../store/services/categoryOneProductApi";
+import { categoryOneProductApi } from "../../../../store/secondary/categoryOneProductApi";
 
 
 import { favoriteIcon, filledLike } from "../../../../assets/icons/icons";
@@ -12,7 +12,7 @@ import { favoriteIcon, filledLike } from "../../../../assets/icons/icons";
 
 import productCard from "../../../../components/productCard/ProductCard";
 
-import { productFavoritesApi } from "../../../../store/services/productFavoritesApi";
+import { productFavoritesApi } from "../../../../store/secondary/productFavoritesApi";
 
 import classes from "./productContentInfo.module.scss";
 
@@ -70,21 +70,21 @@ const ProductContentInfo = () => {
       </div>
       <div className={classes.information}>
         {/* <div> */}
-          {/* <span>
+        {/* <span>
             <span>{"Размер:"}</span>
             <span>{"Дата"}</span>
           </span> */}
-          {/* <span>
+        {/* <span>
             <span>{"Ткань:"}</span>
             <span>{"Data"}</span>
           </span> */}
         {/* </div> */}
         {/* <div> */}
-          {/* <span>
+        {/* <span>
             <span>{"Длина:"}</span>
             <span>{"Дата"}</span>
           </span> */}
-          {/* <span>
+        {/* <span>
             <span>{"Фасон:"}</span>
             <span>{"Дата"}</span>
           </span> */}

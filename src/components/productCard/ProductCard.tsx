@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   colorsPalletIcon,
   favoriteIcon,
@@ -8,12 +10,12 @@ import {
 
 import ProductPhoto from "../productPhoto/ProductPhoto";
 
-import { useNavigate } from "react-router-dom";
 
 import { RatingComponent } from "../RatingComponent/RatingComponent";
 
+import { productFavoritesApi } from "../../store/secondary/productFavoritesApi";
+
 import classes from "./productCard.module.scss";
-import { productFavoritesApi } from "../../store/services/productFavoritesApi";
 
 interface Images {
   contentSize: number;

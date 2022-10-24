@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 
-import { shoppingCartApi } from "../../../../store/services/shoppingCartQuery";
+import { shoppingCartApi } from "../../../../store/secondary/shoppingCartQuery";
 import { ICountry } from "../../../../utils/types/typesShoppingCart";
 
 import styles from "./select.module.scss";
